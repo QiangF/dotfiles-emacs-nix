@@ -1,0 +1,18 @@
+#!/bin/sh
+
+alias clone="cd $HOME/code/git && git clone"
+
+alias sshpi="ssh pi@pi.hole"
+
+alias cdgo="cd $HOME/code/go/src/purplg.com/"
+
+alias dud="du -h -d1"
+
+alias start="sudo systemctl start"
+alias restart="sudo systemctl restart"
+alias stop="sudo systemctl stop"
+alias status="sudo systemctl status"
+alias enable="sudo systemctl enable"
+alias disable="sudo systemctl disable"
+
+alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
