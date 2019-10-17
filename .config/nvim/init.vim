@@ -20,8 +20,8 @@ Plug 'calviken/vim-gdscript3'
 "--------------------
 Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
+Plug 'junegunn/goyo.vim'
 Plug 'sirver/ultisnips'
-"Plug 'honza/vim-snippets'
 call plug#end()
 
 let mapleader = " "
@@ -38,7 +38,6 @@ set background=dark
 set number
 set relativenumber
 set list lcs=tab:\┊\ 
-
 set autoread
 set noswapfile
 "set colorcolumn=81
@@ -46,24 +45,41 @@ set noswapfile
 "--------------------
 " Plugin: vimwiki
 "--------------------
-let g:vimwiki_list = [{'path': '~/wiki/'}]
-"
+let g:vimwiki_list = [{'path': '~/wiki'}]
+autocmd FileType vimwiki setlocal spell spelllang=en_us
+autocmd FileType vimwiki inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+autocmd FileType vimwiki setlocal wrap
+autocmd FileType vimwiki setlocal linebreak
+autocmd FileType vimwiki noremap <silent> k gk
+autocmd FileType vimwiki noremap <silent> j gj
+autocmd FileType vimwiki noremap <silent> 0 g0
+autocmd FileType vimwiki noremap <silent> $ g$
+autocmd FileType vimwiki setlocal showbreak=»\ 
+
 "--------------------
-" Plugin: Vimtex
+" Plugin: vimtex
 "--------------------
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-"set conceallevel=1
-let g:tex_conceal='adbmg'
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:vimtex_compiler_progname = 'nvr'
+autocmd FileType tex setlocal spell
+autocmd FileType tex setlocal spelllang=en_us
+autocmd FileType tex inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+autocmd FileType tex nnoremap <leader>a :VimtexCompile<cr>
+"call deoplete#custom#var('omni', 'input_patterns', {
+"      \ 'tex': g:vimtex#re#deoplete
+"      \})
 
 "--------------------
-" Plugin: UltiSnips
+" Plugin: ultisnips
 "--------------------
+"let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/UltiSnips']
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-"let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/UltiSnips']
 
 "--------------------
 " Plugin: deoplete
@@ -96,13 +112,15 @@ au FileType yaml set tabstop=4
 "--------------------
 " Language: Go
 "--------------------
+au FileType go let g:deoplete#enable_at_startup = 1
 au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
-
+au FileType go set number
+au FileType go set relativenumber
+au FileType go set list lcs=tab:\┊\ 
 au FileType go nmap <leader>gr <Plug>(go-run)
-
 let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 
