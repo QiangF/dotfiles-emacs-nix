@@ -1,5 +1,8 @@
 #!/bin/sh
 
+bak() {
+}
+
 gclonecd() {
   git clone "$1" && cd "$(basename "$1" .git)"
 }
@@ -20,3 +23,7 @@ alias enable="sudo systemctl enable"
 alias disable="sudo systemctl disable"
 
 alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
+
+alias psaux="ps aux | rg -i"
+
+alias proton="~/.steam/root/compatibilitytools.d/Proton-4.15-GE-4/dist/bin/wine64"

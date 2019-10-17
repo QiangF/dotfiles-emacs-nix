@@ -100,8 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+export EDITOR="nvim"
 export GOPATH=${HOME}/code/go
 export PATH=$PATH:$GOPATH/bin
 source $HOME/.aliases
+
+export PATH=$PATH:$HOME/.dotnet
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
