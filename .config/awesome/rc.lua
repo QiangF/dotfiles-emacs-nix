@@ -17,8 +17,7 @@ local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
 --local menubar       = require("menubar")
-local freedesktop   = require("freedesktop")
-local hotkeys_popup = require("awful.hotkeys_popup").widget
+local freedesktop   = require("freedesktop") local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys")
 local my_table      = awful.util.table or gears.table -- 4.{0,1} compatibility
 local dpi           = require("beautiful.xresources").apply_dpi
@@ -94,7 +93,7 @@ local terminal     = "urxvtc"
 local editor       = os.getenv("EDITOR") or "nvim"
 local gui_editor   = "gvim"
 local browser      = "firefox"
-local guieditor    = "atom"
+local guieditor    = "code"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
@@ -119,7 +118,7 @@ awful.layout.layouts = {
     --lain.layout.cascade,
     --lain.layout.cascade.tile,
     --lain.layout.centerwork,
-    --lain.layout.centerwork.horizontal,
+    lain.layout.centerwork.horizontal,
     --lain.layout.termfair,
     --lain.layout.termfair.center,
 }
@@ -256,6 +255,11 @@ root.buttons(my_table.join(
 globalkeys = my_table.join(
     -- Take a screenshot
     -- https://github.com/lcpz/dots/blob/master/bin/screenshot
+    awful.key({ altkey }, "Tab", function()
+            awful.client.focus.global_bydirection("right")
+            if client.focus then client.focus:raise() end
+        end,
+        {description = "focus right", group = "client"}),
     awful.key({ modkey }, "g", function () constr.toggle() end),
     awful.key({ modkey }, "p", function () awful.spawn(string.format("%s/scripts/rofi-pass", os.getenv("HOME"))) end ),
     awful.key({ modkey }, "space", function () awful.spawn("rofi -show drun") end ),
@@ -677,13 +681,19 @@ awful.rules.rules = {
      }
     },
 
+    { rule = { class="battle.net.exe"},
+    	properties = { floating = true } },
+
+    { rule = { class = "Spotify" },
+    	properties = { screen = 2 } },
+
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
 
     -- Set Firefox to always map on the first tag on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    --{ rule = { class = "firefox" },
+    --  properties = { maximized = false, floating = false, tag = awful.util.tagnames[1] } },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
@@ -757,6 +767,7 @@ end)
 --client.connect_signal("mouse::enter", function(c)
 --    c:emit_signal("request::activate", "mouse_enter", {raise = true})
 --end)
+--client.connect_signal()
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
