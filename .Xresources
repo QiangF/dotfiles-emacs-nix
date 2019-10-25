@@ -1,12 +1,15 @@
 ! URxvt.geometry: 87x20
-URxvt.internalBorder: 0
+URxvt.internalBorder: 2
 URxvt.font: xft:DejaVuSansMonoForPowerline Nerd Font:style=Regular:size=11
 URxvt.boldFont: xft:DejaVuSansMonoForPowerline Nerd Font:style=Bold:size=11
 URxvt.italicFont: xft:DejaVuSansMonoForPowerline Nerd Font:style=Italic:size=11
 URxvt.boldItalicFont: xft:DejaVuSansMonoForPowerline Nerd Font:style=Bold Italic:size=11
 URxvt.scrollBar: false
+URxvt.colorUL: #cc6666
 Xft.dpi: 96
 Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
 Xft.rgba: rgb
 
 ! special

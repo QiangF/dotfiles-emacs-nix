@@ -9,7 +9,7 @@ Plug 'bling/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -23,6 +23,10 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/goyo.vim'
 Plug 'sirver/ultisnips'
 call plug#end()
+
+filetype on
+filetype plugin on
+filetype indent on
 
 let mapleader = " "
 
@@ -45,7 +49,12 @@ set noswapfile
 "--------------------
 " Plugin: vimwiki
 "--------------------
-let g:vimwiki_list = [{'path': '~/wiki'}]
+let g:vimwiki_list = [{'path': '~/school'}]
+let g:vimwiki_conceallevel=0
+autocmd FileType vimwiki setlocal conceallevel=2
+autocmd FileType vimwiki setlocal concealcursor=nc
+autocmd FileType vimwiki highlight clear SpellBad
+autocmd FileType vimwiki highlight SpellBad cterm=underline
 autocmd FileType vimwiki setlocal spell spelllang=en_us
 autocmd FileType vimwiki inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 autocmd FileType vimwiki setlocal wrap
@@ -62,7 +71,7 @@ autocmd FileType vimwiki setlocal showbreak=»\
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+autocmd FileType tex setlocal conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname = 'nvr'
 autocmd FileType tex setlocal spell
