@@ -21,7 +21,6 @@ local freedesktop   = require("freedesktop") local hotkeys_popup = require("awfu
                       require("awful.hotkeys_popup.keys")
 local my_table      = awful.util.table or gears.table -- 4.{0,1} compatibility
 local dpi           = require("beautiful.xresources").apply_dpi
-local constr         = require("awesome-constrain-mouse")
 -- }}}
 
 -- {{{ Error handling
@@ -260,7 +259,6 @@ globalkeys = my_table.join(
             if client.focus then client.focus:raise() end
         end,
         {description = "focus right", group = "client"}),
-    awful.key({ modkey }, "g", function () constr.toggle() end),
     awful.key({ modkey }, "p", function () awful.spawn(string.format("%s/scripts/rofi-pass", os.getenv("HOME"))) end ),
     awful.key({ modkey }, "space", function () awful.spawn("rofi -show drun") end ),
     awful.key({ altkey }, "p", function() os.execute("screenshot") end,
