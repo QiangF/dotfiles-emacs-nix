@@ -685,6 +685,12 @@ awful.rules.rules = {
     { rule = { class = "Spotify" },
     	properties = { screen = 2 } },
 
+    { rule = { class = "discord" },
+    	properties = { screen = 2 } },
+
+    { rule = { class = "TelegramDesktop" },
+    	properties = { screen = 2 } },
+
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
