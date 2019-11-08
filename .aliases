@@ -1,8 +1,5 @@
 #!/bin/sh
 
-bak() {
-}
-
 gclonecd() {
   git clone "$1" && cd "$(basename "$1" .git)"
 }
@@ -26,4 +23,8 @@ alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
 
 alias psaux="ps aux | rg -i"
 
-alias proton="~/.steam/root/compatibilitytools.d/Proton-4.15-GE-4/dist/bin/wine64"
+alias proton="~/.steam/root/compatibilitytools.d/latest/dist/bin/wine64"
+
+if which exa > /dev/null 2>&1; then
+	alias ls="exa"
+fi

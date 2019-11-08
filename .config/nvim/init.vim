@@ -96,9 +96,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 set completeopt-=preview
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-"let g:deoplete#sources#go#source_importer = 1
-"let g:deoplete#sources#go#builtin_objects = 1
-"let g:deoplete#sources#go#unimported_packages = 0
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#builtin_objects = 1
+let g:deoplete#sources#go#unimported_packages = 1
 
 "--------------------
 " Plugin: vim-airline

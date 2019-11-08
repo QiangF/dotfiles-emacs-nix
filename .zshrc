@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 export GOPATH=${HOME}/code/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.local/bin
 source $HOME/.aliases
 
 export PATH=$PATH:$HOME/.dotnet

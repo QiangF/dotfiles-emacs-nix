@@ -56,7 +56,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root" }) -- entries must be separated by commas
+run_once({ "urxvtd", "unclutter -root", "picom --xrender-sync-fence" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -121,6 +121,16 @@ awful.layout.layouts = {
     --lain.layout.termfair,
     --lain.layout.termfair.center,
 }
+--tags = {
+--	settings = {
+--		{ names = {"1", "2", "3", "4", "5"},
+--		layout = { awful.layout.layouts }
+--		},
+--		{ names = {"1", "2", "3", "4", "5"},
+--		layout = { awful.layout.layouts[5] }
+--		}
+--	}
+--}
 
 awful.util.taglist_buttons = my_table.join(
     awful.button({ }, 1, function(t) t:view_only() end),
@@ -252,8 +262,12 @@ root.buttons(my_table.join(
 
 -- {{{ Key bindings
 globalkeys = my_table.join(
-    -- Take a screenshot
-    -- https://github.com/lcpz/dots/blob/master/bin/screenshot
+    -- MEDIA
+    awful.key({ modkey }, "\\", function () awful.spawn("playerctl play-pause") end ),
+    awful.key({ modkey, "Shift" }, "\\", function () awful.spawn("playerctl pause") end ),
+    awful.key({ modkey }, "]", function () awful.spawn("playerctl next") end ),
+    awful.key({ modkey }, "[", function () awful.spawn("playerctl previous") end ),
+
     awful.key({ altkey }, "Tab", function()
             awful.client.focus.global_bydirection("right")
             if client.focus then client.focus:raise() end
@@ -261,6 +275,9 @@ globalkeys = my_table.join(
         {description = "focus right", group = "client"}),
     awful.key({ modkey }, "p", function () awful.spawn(string.format("%s/scripts/rofi-pass", os.getenv("HOME"))) end ),
     awful.key({ modkey }, "space", function () awful.spawn("rofi -show drun") end ),
+
+    -- Take a screenshot
+    -- https://github.com/lcpz/dots/blob/master/bin/screenshot
     awful.key({ altkey }, "p", function() os.execute("screenshot") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
