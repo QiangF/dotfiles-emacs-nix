@@ -47,6 +47,16 @@ do
 end
 -- }}}
 
+local numScreens = 1
+for s in screen do
+	numScreens = s.index
+end
+--naughty.notify({
+--	preset = naughty.config.presets.critical,
+--	title = "Number of screens",
+--	text = tostring(numScreens)
+--})
+
 -- {{{ Autostart windowless processes
 
 -- This function will run once every time Awesome is started
@@ -699,15 +709,6 @@ awful.rules.rules = {
     { rule = { class="battle.net.exe"},
     	properties = { floating = true } },
 
-    { rule = { class = "Spotify" },
-    	properties = { screen = 2 } },
-
-    { rule = { class = "discord" },
-    	properties = { screen = 2 } },
-
-    { rule = { class = "TelegramDesktop" },
-    	properties = { screen = 2 } },
-
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
@@ -719,6 +720,21 @@ awful.rules.rules = {
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
 }
+
+-- Dual screen only rules
+if(numScreens > 1)
+then
+table.insert(awful.rules.rules, 
+    { rule = { class = "Spotify" },
+    	properties = { screen = 2 } })
+table.insert(awful.rules.rules, 
+    { rule = { class = "discord" },
+    	properties = { screen = 2 } })
+table.insert(awful.rules.rules, 
+    { rule = { class = "TelegramDesktop" },
+    	properties = { screen = 2 } })
+end
+
 -- }}}
 
 -- {{{ Signals
