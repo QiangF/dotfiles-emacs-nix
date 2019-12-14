@@ -24,6 +24,7 @@ alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
 alias psaux="ps aux | rg -i"
 
 alias proton="~/.steam/root/compatibilitytools.d/latest/dist/bin/wine64"
+alias proton32="~/.steam/root/compatibilitytools.d/latest/dist/bin/wine"
 
 alias vpnon="sudo systemctl start openvpn-client@mullvad_us-tx.service"
 alias vpnoff="sudo systemctl stop openvpn-client@mullvad_us-tx.service"

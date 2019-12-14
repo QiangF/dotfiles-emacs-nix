@@ -14,6 +14,7 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'calviken/vim-gdscript3'
+Plug 'OmniSharp/omnisharp-vim'
 
 "--------------------
 " School stuff
@@ -23,6 +24,11 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/goyo.vim'
 Plug 'sirver/ultisnips'
 call plug#end()
+"
+"--------------------
+" Unity
+"--------------------
+let g:OmniSharp_server_stdio = 1
 
 filetype on
 filetype plugin on

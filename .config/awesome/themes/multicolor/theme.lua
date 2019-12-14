@@ -212,7 +212,8 @@ local netupinfo = lain.widget.net({
 
         widget:set_markup(markup.fontfg(theme.font, "#e54c62", net_now.sent .. " "))
         netdowninfo:set_markup(markup.fontfg(theme.font, "#87af5f", net_now.received .. " "))
-    end
+    end,
+    units = 1048576 -- MiB
 })
 
 -- MEM

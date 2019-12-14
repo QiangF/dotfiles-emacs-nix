@@ -283,7 +283,7 @@ globalkeys = my_table.join(
             if client.focus then client.focus:raise() end
         end,
         {description = "focus right", group = "client"}),
-    awful.key({ modkey }, "p", function () awful.spawn(string.format("%s/scripts/rofi-pass", os.getenv("HOME"))) end ),
+    awful.key({ modkey }, "p", function () awful.spawn(string.format("%s/sh/rofi-pass", os.getenv("HOME"))) end ),
     awful.key({ modkey }, "space", function () awful.spawn("rofi -show drun") end ),
 
     -- Take a screenshot
@@ -716,6 +716,11 @@ awful.rules.rules = {
     -- Set Firefox to always map on the first tag on screen 1.
     --{ rule = { class = "firefox" },
     --  properties = { maximized = false, floating = false, tag = awful.util.tagnames[1] } },
+    { rule = { class = "firefox" },
+      properties = { maximized = false, floating = false } },
+
+    { rule = { class = "Godot_Engine" },
+      properties = { maximized = false, floating = true } },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
