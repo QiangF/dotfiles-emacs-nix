@@ -70,7 +70,8 @@ ZSH_THEME="avit-mine"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode cp)
+plugins=(vi-mode cp)
+#plugins=(git vi-mode cp)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,7 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+KEYTIMEOUT=1
 
 export EDITOR="nvim"
 export GOPATH=${HOME}/code/go
@@ -108,5 +110,6 @@ export PATH=$PATH:$HOME/.local/bin
 source $HOME/.aliases
 
 export PATH=$PATH:$HOME/.dotnet
+export PATH=$PATH:$HOME/.emacs.d/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -32,6 +32,8 @@ alias vpnstat="systemctl status openvpn-client@mullvad_us-tx.service"
 alias wgon="wg-quick up mullvad-us7"
 alias wgoff="wg-quick down mullvad-us7"
 
+alias open="xdg-open"
+
 if which exa > /dev/null 2>&1; then
 	alias ls="exa"
 fi

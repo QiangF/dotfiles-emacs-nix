@@ -2,37 +2,34 @@ call plug#begin('~/.config/nvim/plugged')
 "--------------------
 " Dev stuff
 "--------------------
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'bling/vim-airline'
-Plug 'dense-analysis/ale'
-Plug 'sebdah/vim-delve'
-Plug 'tpope/vim-surround'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+"Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+"Plug 'bling/vim-airline'
+"Plug 'dense-analysis/ale'
+"Plug 'sebdah/vim-delve'
+"Plug 'tpope/vim-surround'
 "Plug 'Yggdroot/indentLine'
-Plug 'fatih/vim-go'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'calviken/vim-gdscript3'
+"Plug 'fatih/vim-go'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'calviken/vim-gdscript3'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'mattn/vim-lsp-settings'
 
 "--------------------
 " School stuff
 "--------------------
-Plug 'vimwiki/vimwiki'
-Plug 'lervag/vimtex'
-Plug 'junegunn/goyo.vim'
-Plug 'sirver/ultisnips'
+"Plug 'vimwiki/vimwiki'
+"Plug 'lervag/vimtex'
+"Plug 'junegunn/goyo.vim'
+"Plug 'sirver/ultisnips'
 call plug#end()
-"
-"--------------------
-" Unity
-"--------------------
-let g:OmniSharp_server_stdio = 1
-
-filetype on
-filetype plugin on
-filetype indent on
 
 let mapleader = " "
 
@@ -50,6 +47,10 @@ set relativenumber
 set list lcs=tab:\┊\ 
 set autoread
 set noswapfile
+set noexpandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 "set colorcolumn=81
 
 "--------------------
@@ -107,6 +108,20 @@ let g:deoplete#sources#go#builtin_objects = 1
 let g:deoplete#sources#go#unimported_packages = 1
 
 "--------------------
+" Plugin: asyncomplete
+"--------------------
+"let g:asyncomplete_auto_popup = 0
+set completeopt+=preview
+"let g:asyncomplete_log_file = expand('asyncomplete.log')
+
+"--------------------
+" Plugin: lsp
+"--------------------
+let g:lsp_settings_filetype_csharp = 'omnisharp-lsp'
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/lsp.log')
+
+"--------------------
 " Plugin: vim-airline
 "--------------------
 let g:airline_powerline_fonts = 0
@@ -117,12 +132,27 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.maxlinenr = ''
 
 "--------------------
+" Plugin: ale
+"--------------------
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+"--------------------
 " Language: yaml
 "--------------------
-au FileType yaml set noexpandtab
-au FileType yaml set shiftwidth=4
-au FileType yaml set softtabstop=4
-au FileType yaml set tabstop=4
+
+"--------------------
+" Language: csharp
+"--------------------
+let g:OmniSharp_server_use_mono = 1
+"let g:OmniSharp_server_path = '~/.cache/omnisharp-vim/omnisharp-roslyn'
+let g:OmniSharp_server_stdio = 1
+au FileType cs set noexpandtab
+au FileType cs set shiftwidth=4
+au FileType cs set softtabstop=4
+au FileType cs set tabstop=4
+au FileType cs set number
+au FileType cs set relativenumber
+au FileType cs set list lcs=tab:\┊\ 
 
 "--------------------
 " Language: Go
