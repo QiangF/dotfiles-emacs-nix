@@ -1,17 +1,56 @@
+* General
+
+#+BEGIN_SRC emacs-lisp
 (setq user-full-name "Ben Whitley"
       user-mail-address "dev@purplg.com")
+#+END_SRC
 
+* Font
+Doom exposes five (optional) variables for controlling fonts in Doom. Here
+are the three important ones:
+
++ `doom-font'
++ `doom-variable-pitch-font'
++ `doom-big-font' -- used for `doom-big-font-mode'; use this for
+  presentations or streaming.
+
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+font string. You generally only need these two:
+setq doom-font (font-spec :family "monospace" :size 14))
+
+#+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Source Code Pro" :size 14))
+#+END_SRC
 
+* Theme
+There are two ways to load a theme. Both assume the theme is installed and
+available. You can either set `doom-theme' or manually load a theme with the
+`load-theme' function. This is the default:
+
+#+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-one)
+#+END_SRC
 
+* Lines
+This determines the style of line numbers in effect. If set to `nil', line
+numbers are disabled. For relative line numbers, set this to `relative'.
+
+#+BEGIN_SRC emacs-lisp
 (setq display-line-numbers-type 'relative)
+#+END_SRC
 
+* Key bindings
+** Find file
+
+#+BEGIN_SRC emacs-lisp
 (map! :desc "File at point"
  :leader
  :n "f h"
  'find-file-at-point )
+#+END_SRC
 
+** LSP
+#+BEGIN_SRC emacs-lisp
 (defun lsp-import-and-format ()
   (interactive)
   (lsp-organize-imports)
@@ -21,7 +60,13 @@
  :leader
  :n "c f"
  'lsp-import-and-format)
+#+END_SRC
 
+** Evil tweaks
+
+Scroll the entire buffer up or down when ^ is held
+
+#+BEGIN_SRC emacs-lisp
 (defun scroll-page-line-down ()
   (interactive)
   (evil-scroll-line-down 1)
@@ -33,12 +78,16 @@
   (evil-scroll-line-up 1)
   (evil-next-line -1))
 (map! :ni "^k" 'scroll-page-line-up)
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 (map! :desc "Clear search highlight"
  :leader
  :n "s c"
  'evil-ex-nohighlight )
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 (defun +fold/close-all-level-2 ()
   (interactive)
   (+fold/close-all 2))
@@ -46,7 +95,12 @@
 (map!
  :n "z m"
  '+fold/close-all-level-2)
+#+END_SRC
 
+#+RESULTS:
+
+** Journal
+#+BEGIN_SRC emacs-lisp
 (map! :desc "Journal"
   :leader
   :n "j")
@@ -65,7 +119,11 @@
   :leader
   :n "j h"
   'org-journal-previous-entry)
+#+END_SRC
 
+** Applications
+
+#+BEGIN_SRC emacs-lisp
 (map! :desc "Open terminal"
  :leader
  :n "o t"
@@ -74,21 +132,35 @@
 (map! :desc "Applications"
  :leader
  :n "a" )
+#+END_SRC
 
+* Packages
+** persp-mode
+Prevent creating new workspaces when opening new emacs-client
+Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-emacs#1949 {REQUEST} No new workspace created on incoming emacs...]]
+#+BEGIN_SRC emacs-lisp
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
-
+#+END_SRC
+** which-key
+#+BEGIN_SRC emacs-lisp
 (setq which-key-idle-delay 0.3)
-
+#+END_SRC
+** org-mode
+#+BeGIN_SRC emacs-lisp
 (setq org-directory "~/.org/")
+#+EnD_SRC
 
+#+BeGIN_SRC emacs-lisp
 (use-package! org-journal
   :custom
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/.org-roam")
   (org-journal-date-format "%A, %d %B %Y"))
+#+EnD_SRC
 
+#+BeGIN_SRC emacs-lisp
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
@@ -101,15 +173,34 @@
 ;;        :desc "Org-Roam-Buffer" "r" #'org-roam)
   :config
   (org-roam-mode +1))
+#+EnD_SRC
 
+** company-mode
+
+#+BeGIN_SRC emacs-lisp
 (after! company
   :config
   (setq! company-idle-delay 0.1
          company-minimum-prefix-length 3))
+#+EnD_SRC
 
+** projectile
+https://github.com/ericdanan/counsel-projectile
+
+This excludes a lot of files I never want to edit in emacs from the file finder.
+Mostly just Unity stuff
+
+#+BeGIN_SRC emacs-lisp
 (after! counsel
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
+#+EnD_SRC
 
+** treemacs
+https://github.com/Alexander-Miller/treemacs#projects-and-workspaces
+
+Also exlucdes some Unity files from treemacs
+
+#+BeGIN_SRC emacs-lisp
 (after! treemacs
   :config
   (defun treemacs-ignore-unity (filename absolute-path)
@@ -117,7 +208,10 @@
         (string-suffix-p ".asset" filename t)))
   (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-unity)
   (treemacs-follow-mode))
+#+EnD_SRC
 
+** deft
+#+BEGIN_SRC emacs-lisp
 (use-package! deft
   :after org
 ;;  :bind
@@ -127,3 +221,4 @@
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
   (deft-directory "~/.org"))
+#+END_SRC

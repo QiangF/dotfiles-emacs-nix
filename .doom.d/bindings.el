@@ -24,6 +24,10 @@
  :leader
  :n "a" )
 
+(map! :desc "Docker"
+ :leader
+ :n "a d" )
+
 (map! :desc "Docker compose"
  :leader
  :n "a d d"
@@ -41,3 +45,22 @@
 
 (map! :ni "^j" 'evil-scroll-line-down)
 (map! :ni "^k" 'evil-scroll-line-up)
+
+(map! :desc "Journal"
+  :leader
+  :n "j")
+
+(map! :desc "New entry"
+  :leader
+  :n "j n"
+  'org-journal-new-entry)
+
+(map! :desc "Next journal"
+  :leader
+  :n "j l"
+  'org-journal-next-entry)
+
+(map! :desc "Previous journal"
+  :leader
+  :n "j h"
+  'org-journal-previous-entry)

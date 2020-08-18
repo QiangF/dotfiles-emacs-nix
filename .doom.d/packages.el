@@ -50,3 +50,7 @@
 (package! company-nginx)
 
 (package! go-dlv)
+
+(package! gradle-mode)
+
+(package! org-journal)
