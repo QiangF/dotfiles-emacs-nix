@@ -3,6 +3,7 @@
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Ben Whitley"
       user-mail-address "dev@purplg.com")
+(setq require-final-newline nil)
 #+END_SRC
 
 * Font
@@ -147,20 +148,20 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
 (setq which-key-idle-delay 0.3)
 #+END_SRC
 ** org-mode
-#+BeGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq org-directory "~/.org/")
-#+EnD_SRC
+#+END_SRC
 
-#+BeGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (use-package! org-journal
   :custom
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/.org-roam")
   (org-journal-date-format "%A, %d %B %Y"))
-#+EnD_SRC
+#+END_SRC
 
-#+BeGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
@@ -173,16 +174,16 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
 ;;        :desc "Org-Roam-Buffer" "r" #'org-roam)
   :config
   (org-roam-mode +1))
-#+EnD_SRC
+#+END_SRC
 
 ** company-mode
 
-#+BeGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (after! company
   :config
   (setq! company-idle-delay 0.1
          company-minimum-prefix-length 3))
-#+EnD_SRC
+#+END_SRC
 
 ** projectile
 https://github.com/ericdanan/counsel-projectile
@@ -190,17 +191,17 @@ https://github.com/ericdanan/counsel-projectile
 This excludes a lot of files I never want to edit in emacs from the file finder.
 Mostly just Unity stuff
 
-#+BeGIN_SRC emacs-lisp
-(after! counsel
-  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
-#+EnD_SRC
+#+BEGIN_SRC emacs-lisp
+;(after! counsel
+;  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
+#+END_SRC
 
 ** treemacs
 https://github.com/Alexander-Miller/treemacs#projects-and-workspaces
 
 Also exlucdes some Unity files from treemacs
 
-#+BeGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (after! treemacs
   :config
   (defun treemacs-ignore-unity (filename absolute-path)
@@ -208,7 +209,7 @@ Also exlucdes some Unity files from treemacs
         (string-suffix-p ".asset" filename t)))
   (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-unity)
   (treemacs-follow-mode))
-#+EnD_SRC
+#+END_SRC
 
 ** deft
 #+BEGIN_SRC emacs-lisp

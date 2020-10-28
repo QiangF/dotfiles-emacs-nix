@@ -1,5 +1,6 @@
 (setq user-full-name "Ben Whitley"
       user-mail-address "dev@purplg.com")
+(setq require-final-newline nil)
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 14))
 
@@ -107,8 +108,8 @@
   (setq! company-idle-delay 0.1
          company-minimum-prefix-length 3))
 
-(after! counsel
-  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
+;(after! counsel
+;  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
 
 (after! treemacs
   :config
