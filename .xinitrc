@@ -33,7 +33,7 @@ $HOME/sh/displays.sh
 nitrogen --restore
 xsetroot -cursor_name left_ptr &
 xrdb $HOME/.Xresources
-picom &
+picom --experimental-backends &
 dunst &
 mpd ; mpc load di.fm.pls &
 
