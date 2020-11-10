@@ -103,9 +103,13 @@
   :config
   (org-roam-mode +1))
 
+(after! lsp-mode
+    :config
+    (setq! lsp-enable-file-watchers nil))
+
 (after! company
   :config
-  (setq! company-idle-delay 0.1
+  (setq! company-idle-delay 0
          company-minimum-prefix-length 3))
 
 ;(after! counsel

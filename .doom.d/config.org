@@ -175,13 +175,19 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
   :config
   (org-roam-mode +1))
 #+END_SRC
+** lsp-mode
+#+BEGIN_SRC emacs-lisp
+(after! lsp-mode
+    :config
+    (setq! lsp-enable-file-watchers nil))
+#+END_SRC
 
 ** company-mode
 
 #+BEGIN_SRC emacs-lisp
 (after! company
   :config
-  (setq! company-idle-delay 0.1
+  (setq! company-idle-delay 0
          company-minimum-prefix-length 3))
 #+END_SRC
 
