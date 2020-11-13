@@ -72,12 +72,13 @@ Scroll the entire buffer up or down when ^ is held
   (interactive)
   (evil-scroll-line-down 1)
   (evil-next-line 1))
-(map! :ni "^j" 'scroll-page-line-down)
 
 (defun scroll-page-line-up ()
   (interactive)
   (evil-scroll-line-up 1)
   (evil-next-line -1))
+
+(map! :ni "^j" 'scroll-page-line-down)
 (map! :ni "^k" 'scroll-page-line-up)
 #+END_SRC
 
