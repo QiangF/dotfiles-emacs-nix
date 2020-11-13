@@ -27,7 +27,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "alacritty"
+myTerminal = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -35,7 +35,7 @@ myFocusFollowsMouse = True
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -130,11 +130,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Move focus to the previous window
     , ((modm, xK_k),
-       windows W.focusUp  )
+       windows W.focusUp)
 
     -- Move focus to the master window
     , ((modm, xK_m),
-       windows W.focusMaster  )
+       windows W.focusMaster)
 
     -- Swap the focused window and the master window
     , ((modm .|. shiftMask, xK_Return),
@@ -142,11 +142,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j),
-       windows W.swapDown  )
+       windows W.swapDown)
 
     -- Swap the focused window with the previous window
     , ((modm .|. shiftMask, xK_k),
-       windows W.swapUp    )
+       windows W.swapUp)
 
     -- Shrink the master area
     , ((modm, xK_h),
@@ -179,7 +179,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- , ((modm, xK_b), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q),
