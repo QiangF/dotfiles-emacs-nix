@@ -20,6 +20,7 @@ import XMonad.Config.Desktop
 import Data.Monoid
 import System.Exit
 import XMonad.Hooks.DynamicLog
+import XMonad.Layout.NoBorders
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -93,8 +94,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
        spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm, xK_p),
-       spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    -- , ((modm, xK_p),
+        --spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
     -- launch rofi
     , ((modm, xK_space),
@@ -174,6 +175,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_backslash),
        spawn "mpc next")
 
+    -- rofi-pass
+    , ((modm, xK_p),
+       spawn "/home/purplg/sh/rofi-pass")
+
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -247,7 +252,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = tiled ||| Mirror tiled ||| noBorders Full
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -277,8 +282,9 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
+    [ className =? "Steam"          --> doFloat
+    , className =? "Lutris"         --> doFloat
+    , className =? "battle.net.exe" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
