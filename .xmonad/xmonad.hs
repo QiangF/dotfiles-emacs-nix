@@ -94,16 +94,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
        spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    -- , ((modm, xK_p),
-        --spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+    , ((modm .|. shiftMask, xK_space),
+       spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
     -- launch rofi
     , ((modm, xK_space),
        spawn "/usr/bin/rofi -show drun")
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p),
-       spawn "gmrun")
+    -- , ((modm .|. shiftMask, xK_p),
+    --    spawn "gmrun")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c),
@@ -192,7 +192,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm, xK_q),
-       spawn "xmonad --recompile; xmonad --restart")
+       spawn "xmonad --recompile && xmonad --restart")
     ]
     ++
 
