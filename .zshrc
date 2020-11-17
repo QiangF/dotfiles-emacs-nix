@@ -12,15 +12,22 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Zsh fzf autocompletions
+# fzf autocompletions
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Case-insensitive autocomplete
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 export EDITOR="nvim"
+
+####################
+# Environment
+
+# Haskell
+[ -f "/home/purplg/.ghcup/env" ] && source "/home/purplg/.ghcup/env" # ghcup-env
 
 # Paths
 export GOPATH=${HOME}/code/go
@@ -30,8 +37,11 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.dotnet
 export PATH=$PATH:$HOME/.emacs.d/bin
 
+# Aliases
 source $HOME/.aliases
 
+# Init keychain
 eval $(keychain --quiet --agents ssh --eval $HOME/.ssh/id_store_srv)
 
+# Starship prompt
 eval "$(starship init zsh)"
