@@ -7,7 +7,6 @@ promptinit
 
 # Vi-mode
 set -o vi
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -26,16 +25,23 @@ export EDITOR="nvim"
 ####################
 # Environment
 
-# Haskell
-[ -f "/home/purplg/.ghcup/env" ] && source "/home/purplg/.ghcup/env" # ghcup-env
+export PATH=$PATH:$HOME/.local/bin
 
-# Paths
+# Haskell
+#[ -f "/home/purplg/.ghcup/env" ] && source "/home/purplg/.ghcup/env" # ghcup-env
+
 export GOPATH=${HOME}/code/go
 export PATH=$PATH:$GOPATH/bin
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$PATH:$HOME/.local/bin
+
+export PATH=$PATH:$HOME/.cargo/bin
+
 export PATH=$PATH:$HOME/.dotnet
+
 export PATH=$PATH:$HOME/.emacs.d/bin
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$PATH:$PYENV_ROOT/bin
 
 # Aliases
 source $HOME/.aliases
