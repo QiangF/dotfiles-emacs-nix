@@ -21,21 +21,20 @@ fi
 
 ### MINE ####
 
-WM=xmonad
+WM=dwm
 
 # Fix IntelliJ
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Fix DPI Scaling
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
-emacs --daemon &
 #$HOME/sh/displays.sh
 nitrogen --restore
 xsetroot -cursor_name left_ptr &
 xrdb $HOME/.Xresources
-picom --experimental-backends &
+#picom --experimental-backends &
 dunst &
-mpd ; mpc load di.fm.pls ; mpc repeat on ; mpc play &
+[ -z $(pgrep mpd) ] && mpd && mpc load di.fm.pls && mpc repeat on && mpc play &
 
 case ${WM} in
 	bspwm)
@@ -45,7 +44,8 @@ case ${WM} in
 	;;
 	dwm)
 		while true; do
-			# Log stderror to a file 
+			# Log stderror to a file
+            sh $HOME/code/git/dwm-bar/dwm_bar.sh &
 			dwm 2> ~/.dwm.log
 			# No error logging
 			#dwm >/dev/null 2>&1
@@ -53,7 +53,7 @@ case ${WM} in
 		;;
 	xmonad)
     # Log stderror to a file 
-    xmonad 2> ~/.xmonad.log
+    xmonad 2>> ~/.xmonad.log
     # No error logging
     #dwm >/dev/null 2>&1
   ;;
