@@ -42,6 +42,8 @@ fi
 
 alias copy="xclip -selection clipboard"
 
+alias play="mpv --hwdec=autosafe"
+
 mountboot () {
   sudo mount ${1}2 $2
   sudo mount ${1}1 $2/boot
