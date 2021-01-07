@@ -41,6 +41,7 @@ if which exa > /dev/null 2>&1; then
 fi
 
 alias copy="xclip -selection clipboard"
+alias sshot="maim -s | xclip -selection clipboard -t image/png"
 
 alias play="mpv --hwdec=autosafe"
 
