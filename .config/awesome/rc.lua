@@ -424,6 +424,7 @@ awful.rules.rules = {
         },
         properties = {
             screen = 2,
+            tags = "1",
         }
     },
 
