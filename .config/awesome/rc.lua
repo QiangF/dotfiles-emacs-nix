@@ -169,8 +169,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
+    -- First screen has horizontal layout
+    local default_layout = (s.index == 0 and awful.layout.layouts[1] or awful.layout.layouts[2])
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, default_layout)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
