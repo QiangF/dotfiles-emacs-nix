@@ -23,11 +23,9 @@ fi
 
 WM=awesome
 
-# Fix IntelliJ
-export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1 # Fix IntelliJ
+export QT_AUTO_SCREEN_SCALE_FACTOR=0 # Fix DPI Scaling
 
-# Fix DPI Scaling
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
 #$HOME/sh/displays.sh
 xsetroot -cursor_name left_ptr &
 picom --experimental-backends &
