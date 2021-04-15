@@ -27,6 +27,7 @@ export EDITOR="nvim"
 # Environment
 
 export PATH=$PATH:$HOME/.local/bin
+export MOZ_ENABLE_WAYLAND=1
 
 # Haskell
 #[ -f "/home/purplg/.ghcup/env" ] && source "/home/purplg/.ghcup/env" # ghcup-env
