@@ -392,11 +392,21 @@ awful.rules.rules = {
         }
     },
 
+    {
+        rule_any = {
+            class = { "Gnome-calculator" }
+        },
+        properties = {
+            floating = true,
+            ontop = true
+        }
+    },
+
     -- Floating clients.
     {
         rule_any = {
             instance = { "pinentry" },
-            class = { "Arandr", "Sxiv" },
+            class = { "Arandr", "Sxiv", "UnityHub" },
 
             -- Note that the name property shown in xprop might be set slightly after creation of the client
             -- and the name shown there might not match defined rules here.
@@ -418,15 +428,40 @@ awful.rules.rules = {
 
     {
         rule_any = {
-          class = {
-              "discord",
-              "TelegramDesktop",
-              "Pavucontrol",
-          },
+            class = {
+                "discord",
+                "TelegramDesktop",
+                "Pavucontrol",
+            },
         },
         properties = {
             screen = 2,
             tags = "1",
+        }
+    },
+
+    {
+        rule_any = {
+            class = {
+                "Code",
+                "code",
+            },
+        },
+        properties = {
+            screen = 2,
+            tags = "2",
+        }
+    },
+
+    {
+        rule_any = {
+            class = {
+                "Unity",
+            },
+        },
+        properties = {
+            screen = 1,
+            tags = "2",
         }
     },
 
