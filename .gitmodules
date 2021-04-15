@@ -1,0 +1,3 @@
+[submodule "wofi-pass"]
+	path = wofi-pass
+	url = git@github.com:purplg/wofi-pass.git
