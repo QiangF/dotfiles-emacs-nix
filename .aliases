@@ -6,6 +6,11 @@ gclonecd() {
 #alias clone="cd $HOME/code/git && git clone"
 alias clone="cd $HOME/code/git && gclonecd"
 
+alias l=ls
+alias ll="ls -al"
+
+alias watch="watch -n 1"
+
 alias sshpi="ssh pi@pi.hole"
 
 alias cdgo="cd $HOME/code/go/src/purplg.com/"
@@ -45,6 +50,8 @@ alias sshot="maim -u -s | xclip -selection clipboard -t image/png"
 alias freeze="maim -u -s /tmp/ya.png && sxiv /tmp/ya.png"
 
 alias play="mpv --hwdec=autosafe"
+
+alias up="${HOME}/sh/update.sh"
 
 mountboot () {
   sudo mount ${1}2 $2
