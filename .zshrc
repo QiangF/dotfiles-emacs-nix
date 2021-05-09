@@ -22,6 +22,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 export EDITOR="nvim"
+export TERM=xterm
 
 ####################
 # Environment
@@ -47,9 +48,6 @@ export PATH=$PATH:$PYENV_ROOT/bin
 
 # Aliases
 source $HOME/.aliases
-
-# Init keychain
-eval $(keychain --quiet --agents ssh --eval $HOME/.ssh/id_store_srv)
 
 # Starship prompt
 eval "$(starship init zsh)"
