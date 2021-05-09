@@ -4,6 +4,7 @@
 (setq user-full-name "Ben Whitley"
       user-mail-address "dev@purplg.com")
 (setq require-final-newline nil)
+(which-function-mode)
 #+END_SRC
 
 * Font
@@ -66,7 +67,6 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 ** Evil tweaks
 
 Scroll the entire buffer up or down when ^ is held
-
 #+BEGIN_SRC emacs-lisp
 (defun scroll-page-line-down ()
   (interactive)
@@ -82,6 +82,7 @@ Scroll the entire buffer up or down when ^ is held
 (map! :ni "^k" 'scroll-page-line-up)
 #+END_SRC
 
+Clear all find matches
 #+BEGIN_SRC emacs-lisp
 (map! :desc "Clear search highlight"
  :leader
@@ -89,17 +90,23 @@ Scroll the entire buffer up or down when ^ is held
  'evil-ex-nohighlight )
 #+END_SRC
 
+Fold all folds at level 2... weird hack for some project I worked on a long time ago. Maybe try a different keybind or allow it to get an integer argument?
 #+BEGIN_SRC emacs-lisp
 (defun +fold/close-all-level-2 ()
   (interactive)
   (+fold/close-all 2))
 
 (map!
+ :leader
  :n "z m"
  '+fold/close-all-level-2)
 #+END_SRC
 
-#+RESULTS:
+#+begin_src emacs-lisp
+(map!
+ :n "C-M-D"
+ 'evil-multiedit-match-all)
+#+end_src
 
 ** Journal
 #+BEGIN_SRC emacs-lisp
@@ -182,7 +189,6 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
     :config
     (setq! lsp-enable-file-watchers nil))
 #+END_SRC
-
 ** company-mode
 
 #+BEGIN_SRC emacs-lisp
