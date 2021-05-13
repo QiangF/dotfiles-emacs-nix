@@ -255,13 +255,11 @@ Also exlucdes some Unity files from treemacs
 
 ** deft
 #+BEGIN_SRC emacs-lisp
-(use-package! deft
-  :after org
+(after! deft
 ;;  :bind
 ;;  ("C-c n d" . deft)
-  :custom
-  (deft-recursive nil)
-  (deft-use-filter-string-for-filename t)
-  (deft-default-extension "org")
-  (deft-directory "~/.org"))
+  (setq deft-recursive nil)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-default-extension "org")
+  (setq deft-directory "~/.org"))
 #+END_SRC
