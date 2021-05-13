@@ -3,9 +3,34 @@
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Ben Whitley"
       user-mail-address "dev@purplg.com")
+#+END_SRC
+
+Disables the extra line at the end of file
+#+BEGIN_SRC emacs-lisp
 (setq require-final-newline nil)
+#+END_SRC
+
+Show the class/function location of the point in the file
+#+BEGIN_SRC emacs-lisp
 (which-function-mode)
 #+END_SRC
+
+This determines the style of line numbers in effect. If set to `nil', line
+numbers are disabled. For relative line numbers, set this to `relative'.
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+END_SRC
+
+
+Save recent files every time a new file is 'found'
+#+begin_src emacs-lisp
+;(add-hook! 'find-file-hook #'recentf-save-list)
+#+end_src
+
+Save recent files every 5 minutes
+#+begin_src emacs-lisp
+;(run-at-time (current-time) (* 5 60) 'recentf-save-list)
+#+end_src
 
 * Font
 Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -31,14 +56,6 @@ available. You can either set `doom-theme' or manually load a theme with the
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-horizon)
-#+END_SRC
-
-* Lines
-This determines the style of line numbers in effect. If set to `nil', line
-numbers are disabled. For relative line numbers, set this to `relative'.
-
-#+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type 'relative)
 #+END_SRC
 
 * Key bindings
@@ -236,14 +253,3 @@ Also exlucdes some Unity files from treemacs
   (deft-default-extension "org")
   (deft-directory "~/.org"))
 #+END_SRC
-* Hooks
-
-Save recent files every time a new file is 'found'
-#+begin_src emacs-lisp
-;(add-hook! 'find-file-hook #'recentf-save-list)
-#+end_src
-
-Save recent files every 5 minutes
-#+begin_src emacs-lisp
-;(run-at-time (current-time) (* 5 60) 'recentf-save-list)
-#+end_src
