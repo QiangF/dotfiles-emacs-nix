@@ -173,10 +173,13 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
 (setq which-key-idle-delay 0.3)
 #+END_SRC
 ** org-mode
+
+Set the default location of org files
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/.org/")
 #+END_SRC
 
+*** Roam
 #+BEGIN_SRC emacs-lisp
 (use-package! org-journal
   :custom
@@ -200,6 +203,15 @@ Found here: [[https://github.com/hlissner/doom-emacs/issues/1949][hlissner/doom-
   :config
   (org-roam-mode +1))
 #+END_SRC
+*** Capture Templates
+
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      '(("w" "Work"
+         entry (file+headline "~/.org/Work.org" "General")
+         "* TODO %?\n %i\n")))
+#+end_src
+
 ** lsp-mode
 #+BEGIN_SRC emacs-lisp
 (after! lsp-mode
@@ -248,7 +260,7 @@ Also exlucdes some Unity files from treemacs
 ;;  :bind
 ;;  ("C-c n d" . deft)
   :custom
-  (deft-recursive t)
+  (deft-recursive nil)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
   (deft-directory "~/.org"))
