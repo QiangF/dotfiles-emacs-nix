@@ -205,11 +205,15 @@ Set the default location of org files
 #+END_SRC
 *** Capture Templates
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :results silent
+(setq +org-capture-todo-file "project.org")
 (setq org-capture-templates
       '(("w" "Work"
          entry (file+headline "~/.org/Work.org" "General")
-         "* TODO %?\n %i\n")))
+         "* TODO %?\n %i\n")
+        ("p" "Current project"
+         entry (file+headline +org-capture-project-todo-file "Tasks")
+        "* TODO %?\n%i\n%a" :prepend t)))
 #+end_src
 
 ** lsp-mode
@@ -233,11 +237,10 @@ https://github.com/ericdanan/counsel-projectile
 This excludes a lot of files I never want to edit in emacs from the file finder.
 Mostly just Unity stuff
 
-#+BEGIN_SRC emacs-lisp
-;(after! counsel
-;  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
+#+BEGIN_SRC emacs-lisp :tangle no
+(after! counsel
+ (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
 #+END_SRC
-
 ** treemacs
 https://github.com/Alexander-Miller/treemacs#projects-and-workspaces
 
@@ -263,3 +266,8 @@ Also exlucdes some Unity files from treemacs
   (setq deft-default-extension "org")
   (setq deft-directory "~/.org"))
 #+END_SRC
+#** undo-fu
+#
+##+begin_src emacs-lisp
+#(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+##+end_src
