@@ -205,26 +205,18 @@ Set the default location of org files
 #+END_SRC
 *** Capture Templates
 
-#+begin_src emacs-lisp :results silent :tangle no
-(setq +org-capture-todo-file "project.org")
-(setq org-capture-templates
-      '(("w" "Work"
-         entry (file+headline "~/.org/Work.org" "General")
-         "* TODO %?\n %i\n")
-        ("p" "Current project"
-         entry (file+headline +org-capture-project-todo-file "Tasks")
-        "* TODO %?\n%i\n%a" :prepend t)))
-#+end_src
-
 #+begin_src emacs-lisp :results silent
 (setq +org-capture-todo-file "project.org")
 (setq org-capture-templates
       '(("w" "Work"
-         entry (file+headline "~/.org/Work.org" "General")
+         entry (file+headline "~/.org/Work.org" "Tasks")
          "* TODO %?\n %i\n")
         ("p" "Current project"
          entry (file+headline (lambda () (expand-file-name +org-capture-todo-file (projectile-project-root))) "Tasks")
-        "* TODO %?\n%i\n%a" :prepend t)))
+        "* TODO %?\n%i\n%a" :prepend t)
+        ("h" "Home"
+         entry (file+headline "~/.org/Home.org" "Tasks")
+        "* TODO %?\n%i" :prepend t)))
 #+end_src
 
 ** lsp-mode
