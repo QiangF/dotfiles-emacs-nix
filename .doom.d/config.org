@@ -58,6 +58,20 @@ available. You can either set `doom-theme' or manually load a theme with the
 (setq doom-theme 'doom-horizon)
 #+END_SRC
 
+change the background color of the [focused/active] window
+#+begin_src emacs-lisp
+(setq highlighted-window-face '(:background "#1a1c23"))
+(defun highlight-selected-window ()
+  "Highlight selected window with a different background color."
+  (interactive)
+  (walk-windows (lambda (w)
+                  (unless (eq w (selected-window))
+                    (with-current-buffer (window-buffer w)
+                      (buffer-face-set highlighted-window-face)))))
+  (buffer-face-set 'default))
+(add-hook 'buffer-list-update-hook 'highlight-selected-window)
+#+end_src
+
 * Key bindings
 ** Find file
 
