@@ -260,6 +260,8 @@ Mostly just Unity stuff
 #+BEGIN_SRC emacs-lisp :tangle no
 (after! counsel
  (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)\\|\\(?:.meta$\\)\\|\\(?:.asset$\\)\\|\\(?:.prefab$\\)"))
+(after! counsel
+  (append projectile-globally-ignored-directories '("~/.rustup/" "~/.cargo")))
 #+END_SRC
 ** treemacs
 https://github.com/Alexander-Miller/treemacs#projects-and-workspaces
@@ -277,7 +279,7 @@ Also exlucdes some Unity files from treemacs
 #+END_SRC
 
 ** deft
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (after! deft
 ;;  :bind
 ;;  ("C-c n d" . deft)
@@ -286,8 +288,27 @@ Also exlucdes some Unity files from treemacs
   (setq deft-default-extension "org")
   (setq deft-directory "~/.org"))
 #+END_SRC
-#** undo-fu
-#
-##+begin_src emacs-lisp
-#(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
-##+end_src
+** undo-fu
+
+#+begin_src emacs-lisp :tangle no
+(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+#+end_src
+** hl-todo
+Existing =hl-todo-keyword-faces=
+#+begin_src emacs-lisp :tangle no
+(("TODO" warning bold)
+ ("FIXME" error bold)
+ ("HACK" font-lock-constant-face bold)
+ ("REVIEW" font-lock-keyword-face bold)
+ ("NOTE" success bold)
+ ("DEPRECATED" font-lock-doc-face bold)
+ ("BUG" error bold)
+ ("XXX" font-lock-constant-face bold))
+#+end_src
+
+Append "LEARN" to above
+#+begin_src emacs-lisp
+(after! hl-todo
+    :config
+    (add-to-list 'hl-todo-keyword-faces '("LEARN" font-lock-keyword-face bold)))
+#+end_src
