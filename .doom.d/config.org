@@ -59,6 +59,8 @@ available. You can either set `doom-theme' or manually load a theme with the
 #+END_SRC
 
 change the background color of the [focused/active] window
+
+There is a problem with this where if you have the same buffer open in multiple windows, both windows will be the inactive color despite one of them being active
 #+begin_src emacs-lisp
 (setq highlighted-window-face '(:background "#1a1c23"))
 (defun highlight-selected-window ()
