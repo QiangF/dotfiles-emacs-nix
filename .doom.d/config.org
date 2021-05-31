@@ -279,7 +279,7 @@ Also exlucdes some Unity files from treemacs
 #+END_SRC
 
 ** deft
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (after! deft
 ;;  :bind
 ;;  ("C-c n d" . deft)
