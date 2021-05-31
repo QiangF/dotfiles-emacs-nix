@@ -312,3 +312,20 @@ Append "LEARN" to above
     :config
     (add-to-list 'hl-todo-keyword-faces '("LEARN" font-lock-keyword-face bold)))
 #+end_src
+** telega
+
+Keybind to open Telega, a Telegram client
+#+begin_src emacs-lisp
+(map! :desc "Telega"
+ :leader
+ :n "o c"
+ 'telega )
+#+end_src
+
+These settings are required to be set manually when running emacs in daemon mode
+#+begin_src emacs-lisp
+(setq telega-use-images t)
+(setq telega-emoji-font-family "Noto Color Emoji")
+(setq telega-emoji-use-images t)
+(setq telega-online-status-function t)
+#+end_src

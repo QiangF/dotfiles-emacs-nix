@@ -48,3 +48,4 @@
 
 (package! org-journal)
 (package! systemd)
+(package! telega)
