@@ -9,6 +9,8 @@ alias clone="cd $HOME/code/git && gclonecd"
 alias l=ls
 alias ll="ls -al"
 
+alias tmpd="cd $(mktemp -d)"
+
 alias watch="watch -n 1"
 
 alias sshpi="ssh pi@pi.hole"
