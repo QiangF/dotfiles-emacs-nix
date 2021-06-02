@@ -23,13 +23,13 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 
 
 Save recent files every time a new file is 'found'
-#+begin_src emacs-lisp
-;(add-hook! 'find-file-hook #'recentf-save-list)
+#+begin_src emacs-lisp :tangle no
+(add-hook! 'find-file-hook #'recentf-save-list)
 #+end_src
 
 Save recent files every 5 minutes
-#+begin_src emacs-lisp
-;(run-at-time (current-time) (* 5 60) 'recentf-save-list)
+#+begin_src emacs-lisp :tangle no
+(run-at-time (current-time) (* 5 60) 'recentf-save-list)
 #+end_src
 
 * Font
