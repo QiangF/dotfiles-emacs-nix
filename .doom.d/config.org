@@ -239,11 +239,30 @@ Set the default location of org files
 #+end_src
 
 ** lsp-mode
+*** General
 #+BEGIN_SRC emacs-lisp
 (after! lsp-mode
     :config
     (setq! lsp-enable-file-watchers nil))
 #+END_SRC
+*** Rust
+
+Keybind to show UI doc overlay
+#+BEGIN_SRC emacs-lisp
+(after! lsp-mode
+    :config
+    (map! :desc "LSP show UI doc"
+    :leader
+    :n "c z"
+    'lsp-ui-doc-show))
+#+END_SRC
+
+Enable by default
+Currently not tangled because I prefer manually triggering with above keybind (SPC c z)
+#+BEGIN_SRC emacs-lisp :tangle no
+(add-hook! 'lsp-configure-hook 'lsp-ui-doc-mode)
+#+END_SRC
+
 ** company-mode
 
 #+BEGIN_SRC emacs-lisp
