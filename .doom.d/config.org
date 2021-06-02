@@ -71,7 +71,7 @@ There is a problem with this where if you have the same buffer open in multiple 
                     (with-current-buffer (window-buffer w)
                       (buffer-face-set highlighted-window-face)))))
   (buffer-face-set 'default))
-(add-hook 'buffer-list-update-hook 'highlight-selected-window)
+(add-hook! 'buffer-list-update-hook 'highlight-selected-window)
 #+end_src
 
 * Key bindings
