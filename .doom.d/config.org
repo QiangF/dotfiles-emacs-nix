@@ -331,3 +331,15 @@ These settings are required to be set manually when running emacs in daemon mode
 (setq telega-emoji-use-images t)
 (setq telega-online-status-function t)
 #+end_src
+** circe (irc)
+
+Dunno why authentication fails when =:sasl_username= uses a similar as the =:sasl_secret= closure but for ~user~ instead. Whatever, the important part is the password
+#+BEGIN_SRC emacs-lisp
+(after! circe
+  (set-irc-server! "irc.libera.chat"
+    `(:tls t
+      :port 6697
+      :nick "purplg"
+      :sasl-username "purplg"
+      :sasl-password (lambda (&rest _) (+pass-get-secret "irc.libera.chat")))))
+#+END_SRC
