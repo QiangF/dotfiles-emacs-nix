@@ -175,7 +175,6 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
  :leader
  :n "a" )
 #+END_SRC
-
 * Packages
 ** persp-mode
 Prevent creating new workspaces when opening new emacs-client
