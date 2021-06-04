@@ -286,7 +286,7 @@ Mostly just Unity stuff
 ** treemacs
 https://github.com/Alexander-Miller/treemacs#projects-and-workspaces
 
-Also exlucdes some Unity files from treemacs
+Also excludes some Unity files from treemacs
 
 #+BEGIN_SRC emacs-lisp
 (after! treemacs
