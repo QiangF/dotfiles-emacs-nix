@@ -239,6 +239,9 @@ Set the default location of org files
         ("s" "Session"
          entry (file+headline "~/.org/Home.org" "Session")
         "* TODO %?\n%i" :prepend t)
+        ("c" "PC"
+         entry (file "~/.org/PC.org")
+        "* TODO %?\n%i" :prepend t)
         ("h" "Home"
          entry (file+headline "~/.org/Home.org" "Tasks")
         "* TODO %?\n%i" :prepend t)))
