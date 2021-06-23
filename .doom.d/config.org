@@ -32,6 +32,11 @@ Save recent files every 5 minutes
 (run-at-time (current-time) (* 5 60) 'recentf-save-list)
 #+end_src
 
+Force minibuffers to follow the bottom of the output as the compilation (or test) runs. I wanted this functionality for running cargo tests so I could quickly see if a test passed or failed.
+#+begin_src emacs-lisp
+(setq compilation-scroll-output t)
+#+end_src
+
 * Font
 Doom exposes five (optional) variables for controlling fonts in Doom. Here
 are the three important ones:
