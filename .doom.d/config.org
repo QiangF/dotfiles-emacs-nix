@@ -188,6 +188,19 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
  :leader
  :n "a" )
 #+END_SRC
+** Point registers
+#+begin_src emacs-lisp
+(map! :desc "Point to register"
+      :leader
+      :n "\""
+      'point-to-register)
+
+(map! :desc "Jump to point in register"
+      :leader
+      :n "'"
+      'register-to-point)
+#+end_src
+
 * Packages
 ** persp-mode
 Prevent creating new workspaces when opening new emacs-client
