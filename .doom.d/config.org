@@ -390,3 +390,13 @@ Dunno why authentication fails when =:sasl_username= uses a similar closure as t
       :sasl-username "purplg"
       :sasl-password (lambda (&rest _) (+pass-get-secret "irc.libera.chat")))))
 #+END_SRC
+** rustic-mode
+
+#+begin_src emacs-lisp
+(setq-hook! 'rustic-mode-hook fill-column 100)
+#+end_src
+
+*** ron-mode
+#+begin_src emacs-lisp
+(use-package! ron-mode)
+#+end_src

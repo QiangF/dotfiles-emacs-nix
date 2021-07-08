@@ -49,3 +49,4 @@
 (package! org-journal)
 (package! systemd)
 (package! telega)
+(package! ron-mode)
