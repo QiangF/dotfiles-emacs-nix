@@ -3,7 +3,6 @@
 gclonecd() {
   git clone "$1" && cd "$(basename "$1" .git)"
 }
-#alias clone="cd $HOME/code/git && git clone"
 alias clone="cd $HOME/code/git && gclonecd"
 
 alias l=ls
