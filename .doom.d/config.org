@@ -200,6 +200,14 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
       :n "'"
       'register-to-point)
 #+end_src
+** git-gutter
+
+#+begin_src emacs-lisp
+(map! :desc "git hunk diff"
+      :leader
+      :n "g d"
+      'git-gutter:popup-hunk)
+#+end_src
 
 * Packages
 ** persp-mode
