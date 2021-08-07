@@ -2,6 +2,8 @@
 - Snippets
 - Org-capture
 - IRC
+- Workspaces
+- File tree project view
 
 * Basic Emacs settings
   
