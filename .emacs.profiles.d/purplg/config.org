@@ -308,6 +308,19 @@ Silence compiler warnings
 #+END_SRC
 
 * Development
+*** Magit
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package magit
+  :straight t
+  :general
+  (purplg/leader-key :states 'normal
+    "g" '(:which-key "git")
+    "g g" '(magic-status :which-key "status")))
+
+#+END_SRC
+
 *** LSP
 #+BEGIN_SRC emacs-lisp :results none
 
