@@ -37,6 +37,12 @@ Force minibuffers to follow the bottom of the output as the compilation (or test
 (setq compilation-scroll-output t)
 #+end_src
 
+Garbage collection
+#+begin_src emacs-lisp
+(setq gc-cons-threshold 402653184)
+(setq gc-cons-percentage 0.6)
+#+end_src
+
 * Font
 Doom exposes five (optional) variables for controlling fonts in Doom. Here
 are the three important ones:
@@ -407,4 +413,9 @@ Dunno why authentication fails when =:sasl_username= uses a similar closure as t
 *** ron-mode
 #+begin_src emacs-lisp
 (use-package! ron-mode)
+#+end_src
+** code folding
+
+#+begin_src emacs-lisp :tangle no
+(use-package! yafolding)
 #+end_src
