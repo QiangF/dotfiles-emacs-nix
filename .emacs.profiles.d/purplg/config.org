@@ -167,6 +167,17 @@ Silence compiler warnings
 
 #+END_SRC
 
+** Unbind SPC in Dired mode
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(general-define-key
+  :states 'normal
+  :keymaps 'dired-mode-map
+  "SPC" nil)
+
+#+END_SRC
+
 * Org
 ** Update and setup
 
