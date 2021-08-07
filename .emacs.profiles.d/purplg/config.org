@@ -209,13 +209,18 @@ Silence compiler warnings
     :keymaps 'org-mode-map
     "t l" '(org-toggle-link-display :which-key "link display"))
 
-  (purplg/local-leader-key
+  (purplg/leader-key
     :states 'normal
     :keymaps 'org-mode-map
     "e" '(:which-key "eval")
-    "e r" '(eval-region :which-key "region")
     "e b" '(eval-buffer :which-key "buffer")
-    "e f" '(eval-defun :which-key "function")))
+    "e f" '(eval-defun :which-key "function"))
+
+  (purplg/leader-key
+    :states 'visual
+    :keymaps 'org-mode-map
+    "e" '(:which-key "eval")
+    "e r" '(eval-region :which-key "region")))
 
 #+END_SRC
 
