@@ -168,7 +168,8 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(use-package org :straight t
+(use-package org
+  :straight t
 
   :config
   ;; Press Enter to follow link under point
@@ -207,13 +208,15 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(use-package evil :straight t
+(use-package evil
+  :straight t
   :init
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1))
 
-(use-package evil-collection :straight t
+(use-package evil-collection
+  :straight t
   :after evil
   :config
   (evil-collection-init))
@@ -365,7 +368,8 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(use-package parinfer-rust-mode :straight t
+(use-package parinfer-rust-mode
+  :straight t
   :config
   (add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
 
