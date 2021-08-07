@@ -62,7 +62,7 @@ Silence compiler warnings
 #+END_SRC
 
 * Package management with straight.el
-** Boostrap copy-pasta
+** Bootstrap copy-pasta
 
 #+BEGIN_SRC emacs-lisp :results none
 
