@@ -125,7 +125,7 @@ Silence compiler warnings
 
 #+END_SRC
 
-** General keybinds
+** Global keybinds
 #+BEGIN_SRC emacs-lisp :results none
 
 (purplg/leader-key :states 'normal
