@@ -86,7 +86,8 @@ Silence compiler warnings
 ** Setup
 
 #+BEGIN_SRC emacs-lisp :results none
-(use-package general :straight t)
+(use-package general
+  :straight t)
 #+END_SRC
 
 ** Helper functions
