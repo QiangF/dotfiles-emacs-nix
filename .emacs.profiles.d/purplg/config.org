@@ -1,7 +1,7 @@
 * Todo's
-** TODO Snippets
-** TODO Org-capture
-** TODO IRC
+- Snippets
+- Org-capture
+- IRC
 
 * Basic Emacs settings
   
