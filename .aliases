@@ -12,10 +12,6 @@ alias tmpd="cd $(mktemp -d)"
 
 alias watch="watch -n 1"
 
-alias sshpi="ssh pi@pi.hole"
-
-alias cdgo="cd $HOME/code/go/src/purplg.com/"
-
 alias dud="du -h -d1"
 
 alias start="sudo systemctl start"
@@ -28,15 +24,6 @@ alias disable="sudo systemctl disable"
 alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
 
 alias psaux="ps aux | rg -i"
-
-alias proton="~/.steam/root/compatibilitytools.d/latest/dist/bin/wine64"
-alias proton32="~/.steam/root/compatibilitytools.d/latest/dist/bin/wine"
-
-alias vpnon="sudo systemctl start openvpn-client@mullvad_us-tx.service"
-alias vpnoff="sudo systemctl stop openvpn-client@mullvad_us-tx.service"
-alias vpnstat="systemctl status openvpn-client@mullvad_us-tx.service"
-alias wgon="wg-quick up mullvad-us7"
-alias wgoff="wg-quick down mullvad-us7"
 
 alias open="xdg-open"
 
