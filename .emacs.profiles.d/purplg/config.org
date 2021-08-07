@@ -23,6 +23,8 @@
 
 (setq-default fill-column 100)
 
+(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
+
 #+END_SRC
 
 * Relative line numbers
@@ -100,7 +102,7 @@ Silence compiler warnings
 
 (defun purplg/find-file-in-profile-dir ()
   (interactive)
-  (counsel-find-file "~/.emacs.profiles.d/purplg"))
+  (counsel-find-file purplg/config-dir))
 
 (defun purplg/find-file-in-home-dir ()
   (interactive)
@@ -294,6 +296,22 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
     "h v" '(describe-variable :which-key "variable")
     "h ." '(helpful-at-point :which-key "this")
     "h k" '(helpful-key :which-key "key")))
+
+#+END_SRC
+
+* Snippets
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package yasnippet-snippets
+  :straight t)
+
+(use-package yasnippet
+  :after yasnippet-snippets
+  :straight t
+  :config
+  (push (expand-file-name "snippets" purplg/config-dir) yas-snippet-dirs)
+  (yas-global-mode 1))
 
 #+END_SRC
 
