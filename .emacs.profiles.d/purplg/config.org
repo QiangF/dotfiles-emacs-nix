@@ -160,8 +160,6 @@ Silence compiler warnings
   "s" '(:which-key "search")
   "s b" 'swiper
 
-  "t" '(:which-key "toggle")
-
   ";" 'eval-expression)
 
 #+END_SRC
