@@ -321,7 +321,7 @@ Silence compiler warnings
   :general
   (purplg/leader-key :states 'normal
     "g" '(:which-key "git")
-    "g g" '(magic-status :which-key "status")))
+    "g g" '(magit-status :which-key "status")))
 
 #+END_SRC
 
