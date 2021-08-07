@@ -1,5 +1,4 @@
 * Todo's
-- Snippets
 - Org-capture
 - IRC
 - Workspaces
