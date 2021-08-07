@@ -19,6 +19,8 @@
 
 (setq auto-save-default nil)
 
+(setq-default fill-column 100)
+
 #+END_SRC
 
 * Relative line numbers
@@ -261,7 +263,9 @@ Silence compiler warnings
 
 * Help!
 
-~describe-function~ and ~describe-variable~ are mapped to their respectful =helpful= functions via the variables ~counsel-describe-variable-function~ and ~counsel-describe-function-function~ in the [[*Ivy][section above]].
+~describe-function~ and ~describe-variable~ are mapped to their respectful =helpful= functions via
+the variables ~counsel-describe-variable-function~ and ~counsel-describe-function-function~ in the
+[[*Ivy][section above]].
 
 #+BEGIN_SRC emacs-lisp :results none
 
