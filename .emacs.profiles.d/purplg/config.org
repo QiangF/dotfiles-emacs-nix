@@ -1,0 +1,366 @@
+* Todo's
+** TODO Snippets
+** TODO Org-capture
+** TODO IRC
+
+* Basic Emacs settings
+  
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq inhibit-startup-message t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
+
+(set-face-attribute 'default nil :font "Fira Code Retina-10" )
+(set-frame-font "Fira Code Retina-10" nil t)
+
+(setq auto-save-default nil)
+
+#+END_SRC
+
+* Relative line numbers
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq-default display-line-numbesr 'visual
+              display-line-numbers-widen t
+              display-line-numbers-current-absolute t)
+
+(defun noct:relative ()
+  (setq-local display-line-numbers 'visual))
+
+(defun noct:absolute ()
+  (setq-local display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'noct:absolute)
+(add-hook 'evil-insert-state-exit-hook #'noct:relative)
+
+#+END_SRC
+
+* Native comp
+  
+Silence compiler warnings
+#+BEGIN_SRC emacs-lisp :results none
+  (setq native-comp-async-report-warnings-errors nil)
+#+END_SRC
+
+* Keep config directory clean
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
+      url-history-file (expand-file-name "url/history" user-emacs-directory))
+
+#+END_SRC
+
+* Package management with straight.el
+** Boostrap copy-pasta
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+    (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+      (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+      (goto-char (point-max))
+    (eval-print-last-sexp)))
+(load bootstrap-file nil 'nomessage))
+
+#+END_SRC
+
+** use-package integration for convenient functions
+
+#+BEGIN_SRC emacs-lisp :results none
+(straight-use-package 'use-package)
+#+END_SRC
+
+* Keybinds with general.el
+** Setup
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package general :straight t)
+#+END_SRC
+
+** Helper functions
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(defun purplg/find-file-in-profile-dir ()
+  (interactive)
+  (counsel-find-file "~/.emacs.profiles.d/purplg"))
+
+(defun purplg/find-file-in-home-dir ()
+  (interactive)
+  (counsel-find-file "~"))
+
+(defun purplg/find-file-in-root-dir ()
+  (interactive)
+  (counsel-find-file "/"))
+
+(defun purplg/test ()
+  (interactive)
+  (message "yay it worked!"))
+
+#+END_SRC
+
+** Leader keys
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(general-create-definer purplg/leader-key :prefix "SPC")
+(general-create-definer purplg/local-leader-key :prefix "SPC m")
+
+#+END_SRC
+
+** General keybinds
+#+BEGIN_SRC emacs-lisp :results none
+
+(purplg/leader-key :states 'normal
+  "m" '(:which-key "local")
+  "t" '(:which-key "toggle")
+
+  "f" '(:which-key "file")
+  "f f" '(counsel-find-file :which-key "find")
+  "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
+  "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
+  "f /" '(purplg/find-file-in-root-dir :which-key "in root")
+  "f r" '(counsel-recentf :which-key "find recent")
+  "f s" '(save-buffer :which-key "save")
+
+  "h" '(:which-key "help")
+  "h k" '(describe-key :which-key "key")
+  "h b" '(counsel-descbinds :which-key "binds")
+
+  "q" '(:which-key "quit")
+  "q w" '(delete-window :which-key "window")
+  "q b" '(kill-this-buffer :which-key "buffer")
+  "q q" '(save-buffers-kill-terminal :which-key "really quit?")
+
+  "w" '(:which-key "window")
+  "w d" 'delete-window
+  "w s" 'split-window-below
+  "w v" 'split-window-right
+
+  "b" '(:which-key "buffer")
+  "b b" '(ido-switch-buffer :which-key open)
+  "b B" '(counsel-switch-buffer :which-key all)
+  "b d" 'kill-this-buffer
+
+  "s" '(:which-key "search")
+  "s b" 'swiper
+
+  "t" '(:which-key "toggle")
+
+  ";" 'eval-expression)
+
+#+END_SRC
+
+* Org
+** Update and setup
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package org :straight t
+
+  :config
+  ;; Press Enter to follow link under point
+  (setq org-return-follows-link t)
+  
+  ;; Stop annoying bug with indenting elisp in a code block
+  (setq org-src-preserve-indentation t
+        org-src-content-indentation 0)
+  
+  ;; Don't ask for confirmation when executing a codeblock
+  (setq org-confirm-babel-evaluate nil)
+
+  :general
+  ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
+  (general-define-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "RET" 'org-return)
+
+  (purplg/leader-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "t l" '(org-toggle-link-display :which-key "link display"))
+
+  (purplg/local-leader-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "e" '(:which-key "eval")
+    "e r" '(eval-region :which-key "region")
+    "e b" '(eval-buffer :which-key "buffer")
+    "e f" '(eval-defun :which-key "function")))
+
+#+END_SRC
+
+* Evil
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package evil :straight t
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection :straight t
+  :after evil
+  :config
+  (evil-collection-init))
+
+#+END_SRC
+
+* Ivy
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package ivy
+  :straight t
+
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-initial-inputs-alist nil)
+  (ivy-mode 1)
+
+  :general
+;; Minibuffer Evil movement keys
+  (general-define-key
+    :keymaps 'ivy-minibuffer-map
+    "C-S-k" 'ivy-scroll-down-command
+    "C-S-j" 'ivy-scroll-up-command
+    "C-k" 'ivy-previous-line
+    "C-j" 'ivy-next-line))
+
+(use-package swiper
+  :straight t
+  :after ivy)
+
+(use-package counsel
+  :straight t
+  :after ivy
+  :config
+  (setq counsel-describe-variable-function 'helpful-variable
+        counsel-describe-function-function 'helpful-function)
+  (counsel-mode 1))
+
+#+END_SRC
+
+* Help!
+
+~describe-function~ and ~describe-variable~ are mapped to their respectful =helpful= functions via the variables ~counsel-describe-variable-function~ and ~counsel-describe-function-function~ in the [[*Ivy][section above]].
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package helpful
+  :straight t
+  :general
+  (purplg/leader-key :states 'normal
+    "h f" '(describe-function :which-key "function")
+    "h v" '(describe-variable :which-key "variable")
+    "h ." '(helpful-at-point :which-key "this")
+    "h k" '(helpful-key :which-key "key")))
+
+#+END_SRC
+
+* Which-key
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package which-key
+  :straight t
+  :config
+  (setq which-key-idle-delay 1)
+  (which-key-mode 1))
+
+#+END_SRC
+
+* Doom stuff
+** Themes
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-themes
+  :straight t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-horizon t))
+
+#+END_SRC
+
+** Modeline
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (doom-modeline-mode 1))
+
+#+END_SRC
+
+* Development
+*** LSP
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package lsp-mode
+  :straight t
+  :config
+  (use-package lsp-ui
+    :straight t)
+
+  :general
+  (general-define-key
+  :keymaps 'lsp-mode-map
+  "S-k" 'lsp-describe-thing-at-point))
+
+#+END_SRC
+
+*** Rust
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package rustic
+  :straight t
+  :config
+  (add-hook 'rustic-mode-hook 'lsp))
+
+#+END_SRC
+
+*** Emacs Lisp
+
+**** Rainbow Delimiters
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package rainbow-delimiters
+  :straight t
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+
+#+END_SRC
+
+**** Parinfer - for easy elisp paren management
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package parinfer-rust-mode :straight t
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
+
+  :general
+  (purplg/local-leader-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
+
+
+#+END_SRC
