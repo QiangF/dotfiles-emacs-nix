@@ -56,6 +56,14 @@ Silence compiler warnings
 #+END_SRC
 
 * Interface
+** Font
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(set-face-attribute 'default nil :font "Fira Code Retina-10" )
+(set-frame-font "Fira Code Retina-10" nil t)
+
+#+END_SRC
 ** Hide extraneous stuff
   
 #+BEGIN_SRC emacs-lisp :results none
@@ -66,9 +74,6 @@ Silence compiler warnings
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (set-fringe-mode 10)
-
-(set-face-attribute 'default nil :font "Fira Code Retina-10" )
-(set-frame-font "Fira Code Retina-10" nil t)
 
 (setq auto-save-default nil)
 
