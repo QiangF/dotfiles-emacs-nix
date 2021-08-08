@@ -349,7 +349,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 #+END_SRC
 
 * Development
-** Magit
+** Git
 
 #+BEGIN_SRC emacs-lisp :results none
 
