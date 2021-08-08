@@ -40,8 +40,7 @@
 (defun noct:absolute ()
   (setq-local display-line-numbers t))
 
-(add-hook 'evil-insert-state-entry-hook #'noct:absolute)
-(add-hook 'evil-insert-state-exit-hook #'noct:relative)
+(add-hook 'text-mode-hook #'noct:relative)
 
 #+END_SRC
 
