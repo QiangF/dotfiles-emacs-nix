@@ -1,3 +1,5 @@
+#+STARTUP: content
+
 * Todo's
 - Org-capture
 - IRC
