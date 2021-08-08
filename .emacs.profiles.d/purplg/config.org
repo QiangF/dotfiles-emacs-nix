@@ -392,6 +392,15 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
     "g g" '(magit-status :which-key "status")))
 
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package git-gutter
+  :straight t
+
+  :config
+  (add-hook 'prog-mode-hook 'git-gutter-mode))
+#+END_SRC
+
 *** Text completion
 
 #+BEGIN_SRC emacs-lisp :results none
