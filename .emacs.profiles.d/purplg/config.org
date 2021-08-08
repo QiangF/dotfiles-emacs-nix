@@ -417,11 +417,6 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
-  :general
-  (general-define-key
-    :keymaps 'lsp-mode-map
-    "S-k" 'lsp-describe-thing-at-point))
-
 (use-package lsp-ui
   :straight t
   :after lsp-mode
