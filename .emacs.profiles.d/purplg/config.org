@@ -78,13 +78,17 @@
               display-line-numbers-widen t
               display-line-numbers-current-absolute t)
 
-(defun noct:relative ()
+(defun purplg/relative-line-numbers ()
   (setq-local display-line-numbers 'visual))
 
-(defun noct:absolute ()
-  (setq-local display-line-numbers t))
+(defun purplg/hide-line-numbers ()
+  (setq-local display-line-numbers nil))
 
-(add-hook 'text-mode-hook #'noct:relative)
+(defun purplg/toggle-line-numbers ()
+  (interactive)
+  (if display-line-numbers (purplg/hide-line-numbers) (purplg/relative-line-numbers)))
+
+(add-hook 'text-mode-hook #'purplg/relative-line-numbers)
 
 #+END_SRC
 
@@ -185,6 +189,7 @@
   "m" '(:which-key "local")
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
+  "t n" '(purplg/toggle-line-numbers :which-key "line numbers")
 
   "f" '(:which-key "file")
   "f f" '(counsel-find-file :which-key "find")
