@@ -423,7 +423,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
   :config
   ;; Disable because it causes input lag
-  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-enable nil)
 
   :general
   (general-define-key
