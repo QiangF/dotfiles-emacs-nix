@@ -86,7 +86,9 @@
 
 (defun purplg/toggle-line-numbers ()
   (interactive)
-  (if display-line-numbers (purplg/hide-line-numbers) (purplg/relative-line-numbers)))
+  (if display-line-numbers
+    (purplg/hide-line-numbers)
+    (purplg/relative-line-numbers)))
 
 (add-hook 'text-mode-hook #'purplg/relative-line-numbers)
 
