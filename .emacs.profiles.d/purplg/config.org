@@ -293,12 +293,17 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
+;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
+(use-package flx
+  :straight t)
+
 (use-package ivy
   :straight t
 
   :config
   (setq ivy-use-virtual-buffers t
-        ivy-initial-inputs-alist nil)
+        ivy-initial-inputs-alist nil
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (ivy-mode 1)
 
   :general
