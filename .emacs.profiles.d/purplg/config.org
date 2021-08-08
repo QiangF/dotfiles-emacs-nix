@@ -439,6 +439,28 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
+*** Project management
+#+BEGIN_SRC emacs-lisp :results none
+
+(defun purplg/project-search-thing-at-point ()
+  (interactive)
+  (counsel-rg (thing-at-point 'symbol)))
+
+(use-package projectile
+  :straight t
+  :config
+  (projectile-mode +1)
+
+  :general
+  (purplg/leader-key
+    :states 'normal
+    "p f" '(projectile-find-file :which-key "file")
+    "p a" '(projectile-add-known-project :which-key "add")
+    "p p" '(projectile-switch-project :which-key "open")
+    "p s" '(counsel-rg :which-key "search")
+    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
+#+END_SRC
+
 ** Lanuages
 *** Rust
 
