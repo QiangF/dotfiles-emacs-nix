@@ -251,57 +251,6 @@ Silence compiler warnings
 
 #+END_SRC
 
-* Org mode
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package org
-  :straight t
-
-  :config
-  ;; Press Enter to follow link under point
-  (setq org-return-follows-link t
-
-  ;; Stop putting indents everywhere
-        org-adapt-indentation nil
-
-  ;; Fixes src block yasnippet not placing cursor in correct place after expanding
-	org-src-tab-acts-natively nil
-
-  ;; Stop annoying bug with indenting elisp in a code block
-        org-src-preserve-indentation t
-        org-src-content-indentation 0
-  
-  ;; Don't ask for confirmation when executing a codeblock
-        org-confirm-babel-evaluate nil)
-
-  :general
-  ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
-  (general-define-key
-    :states 'normal
-    :keymaps 'org-mode-map
-    "RET" 'org-return)
-
-  (purplg/leader-key
-    :states 'normal
-    :keymaps 'org-mode-map
-    "t l" '(org-toggle-link-display :which-key "link display"))
-
-  (purplg/leader-key
-    :states 'normal
-    :keymaps 'org-mode-map
-    "e" '(:which-key "eval")
-    "e b" '(eval-buffer :which-key "buffer")
-    "e f" '(eval-defun :which-key "function"))
-
-  (purplg/leader-key
-    :states 'visual
-    :keymaps 'org-mode-map
-    "e" '(:which-key "eval")
-    "e r" '(eval-region :which-key "region")))
-
-#+END_SRC
-
 * Ivy
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -543,3 +492,54 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 
 #+END_SRC
+*** Org mode
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package org
+  :straight t
+
+  :config
+  ;; Press Enter to follow link under point
+  (setq org-return-follows-link t
+
+  ;; Stop putting indents everywhere
+        org-adapt-indentation nil
+
+  ;; Fixes src block yasnippet not placing cursor in correct place after expanding
+	org-src-tab-acts-natively nil
+
+  ;; Stop annoying bug with indenting elisp in a code block
+        org-src-preserve-indentation t
+        org-src-content-indentation 0
+  
+  ;; Don't ask for confirmation when executing a codeblock
+        org-confirm-babel-evaluate nil)
+
+  :general
+  ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
+  (general-define-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "RET" 'org-return)
+
+  (purplg/leader-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "t l" '(org-toggle-link-display :which-key "link display"))
+
+  (purplg/leader-key
+    :states 'normal
+    :keymaps 'org-mode-map
+    "e" '(:which-key "eval")
+    "e b" '(eval-buffer :which-key "buffer")
+    "e f" '(eval-defun :which-key "function"))
+
+  (purplg/leader-key
+    :states 'visual
+    :keymaps 'org-mode-map
+    "e" '(:which-key "eval")
+    "e r" '(eval-region :which-key "region")))
+
+#+END_SRC
+
