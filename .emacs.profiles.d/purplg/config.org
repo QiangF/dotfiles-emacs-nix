@@ -254,14 +254,20 @@ Silence compiler warnings
 
   :config
   ;; Press Enter to follow link under point
-  (setq org-return-follows-link t)
-  
+  (setq org-return-follows-link t
+
+  ;; Stop putting indents everywhere
+        org-adapt-indentation nil
+
+  ;; Fixes src block yasnippet not placing cursor in correct place after expanding
+	org-src-tab-acts-natively nil
+
   ;; Stop annoying bug with indenting elisp in a code block
-  (setq org-src-preserve-indentation t
-        org-src-content-indentation 0)
+        org-src-preserve-indentation t
+        org-src-content-indentation 0
   
   ;; Don't ask for confirmation when executing a codeblock
-  (setq org-confirm-babel-evaluate nil)
+        org-confirm-babel-evaluate nil)
 
   :general
   ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
