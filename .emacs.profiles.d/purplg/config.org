@@ -54,92 +54,6 @@ Silence compiler warnings
 (straight-use-package 'use-package)
 #+END_SRC
 
-* Interface
-** Font
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(set-face-attribute 'default nil :font "Fira Code Retina-10" )
-(set-frame-font "Fira Code Retina-10" nil t)
-
-#+END_SRC
-** Hide extraneous stuff
-  
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq inhibit-startup-message t)
-
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(set-fringe-mode 10)
-
-(setq auto-save-default nil)
-
-(setq-default fill-column 100)
-
-(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
-
-#+END_SRC
-
-** Relative line numbers
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq-default display-line-numbesr 'visual
-              display-line-numbers-widen t
-              display-line-numbers-current-absolute t)
-
-(defun purplg/relative-line-numbers ()
-  (setq-local display-line-numbers 'visual))
-
-(defun purplg/hide-line-numbers ()
-  (setq-local display-line-numbers nil))
-
-(defun purplg/toggle-line-numbers ()
-  (interactive)
-  (if display-line-numbers
-    (purplg/hide-line-numbers)
-    (purplg/relative-line-numbers)))
-
-(add-hook 'text-mode-hook #'purplg/relative-line-numbers)
-
-#+END_SRC
-
-** Which-key
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package which-key
-  :straight t
-  :config
-  (setq which-key-idle-delay 1)
-  (which-key-mode 1))
-
-#+END_SRC
-
-** Theme
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-themes
-  :straight t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-horizon t))
-
-#+END_SRC
-
-** Modeline
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-modeline
-  :straight t
-  :config
-  (doom-modeline-mode 1))
-
-#+END_SRC
-
 * Keybinds
 ** Packages
 
@@ -247,6 +161,92 @@ Silence compiler warnings
   :states 'normal
   :keymaps 'dired-mode-map
   "SPC" nil)
+
+#+END_SRC
+
+* Interface
+** Font
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(set-face-attribute 'default nil :font "Fira Code Retina-10" )
+(set-frame-font "Fira Code Retina-10" nil t)
+
+#+END_SRC
+** Hide extraneous stuff
+  
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq inhibit-startup-message t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
+
+(setq auto-save-default nil)
+
+(setq-default fill-column 100)
+
+(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
+
+#+END_SRC
+
+** Relative line numbers
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq-default display-line-numbesr 'visual
+              display-line-numbers-widen t
+              display-line-numbers-current-absolute t)
+
+(defun purplg/relative-line-numbers ()
+  (setq-local display-line-numbers 'visual))
+
+(defun purplg/hide-line-numbers ()
+  (setq-local display-line-numbers nil))
+
+(defun purplg/toggle-line-numbers ()
+  (interactive)
+  (if display-line-numbers
+    (purplg/hide-line-numbers)
+    (purplg/relative-line-numbers)))
+
+(add-hook 'text-mode-hook #'purplg/relative-line-numbers)
+
+#+END_SRC
+
+** Which-key
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package which-key
+  :straight t
+  :config
+  (setq which-key-idle-delay 1)
+  (which-key-mode 1))
+
+#+END_SRC
+
+** Theme
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-themes
+  :straight t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-horizon t))
+
+#+END_SRC
+
+** Modeline
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (doom-modeline-mode 1))
 
 #+END_SRC
 
