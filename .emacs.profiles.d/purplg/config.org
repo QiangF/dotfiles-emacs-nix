@@ -4,7 +4,6 @@
 - Org-capture
 - IRC
 - Workspaces
-- File tree project view
 
 * Basic settings
 ** Frame
