@@ -4,6 +4,7 @@
 - Org-capture
 - IRC
 - Workspaces
+- Surround
 
 * Basic settings
 ** Frame
