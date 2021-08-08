@@ -146,6 +146,7 @@ Silence compiler warnings
   "b" '(:which-key "buffer")
   "b b" '(project-switch-to-buffer :which-key open)
   "b d" 'kill-this-buffer
+  "b r" 'revert-buffer
 
   "s" '(:which-key "search")
   "s b" 'swiper
