@@ -415,7 +415,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :straight t
 
   :config
-  (setq evil-lookup-func #'lsp-describe-thing-at-point)
+  (setq evil-lookup-func #'lsp-describe-thing-at-point))
 
 (use-package lsp-ui
   :straight t
