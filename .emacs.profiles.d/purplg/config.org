@@ -384,6 +384,12 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
     "g g" '(magit-status :which-key "status")))
 
 #+END_SRC
+** Text completion
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package company
+  :straight t)
+#+END_SRC
 
 ** LSP
 #+BEGIN_SRC emacs-lisp :results none
