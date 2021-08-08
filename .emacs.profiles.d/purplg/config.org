@@ -415,7 +415,12 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :straight t
 
   :config
-  (setq evil-lookup-func #'lsp-describe-thing-at-point))
+  (setq evil-lookup-func #'lsp-describe-thing-at-point)
+
+  :general
+  (purplg/leader-key
+    :states 'normal
+    "c a" '(lsp-execute-code-action :which-key "execute action")))
 
 (use-package lsp-ui
   :straight t
