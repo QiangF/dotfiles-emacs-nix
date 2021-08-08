@@ -428,7 +428,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
     "h" 'lsp-ui-peek--select-prev-file
     "l" 'lsp-ui-peek--select-next-file
     "k" 'lsp-ui-peek--select-prev
-    "C-RET" 'lsp-ui-peek--goto-xref-other-window))
+    "C-<return>" 'lsp-ui-peek--goto-xref-other-window))
 
 #+END_SRC
 
