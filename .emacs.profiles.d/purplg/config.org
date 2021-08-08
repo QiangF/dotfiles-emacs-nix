@@ -349,7 +349,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 #+END_SRC
 
 * Development
-*** Magit
+** Magit
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -362,7 +362,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
-*** LSP
+** LSP
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package lsp-mode
@@ -378,7 +378,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
-*** Rust
+** Rust
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -389,7 +389,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
-*** Emacs Lisp
+** Emacs Lisp
 
 **** Rainbow Delimiters
 
