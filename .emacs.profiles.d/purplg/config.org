@@ -423,6 +423,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
   :config
   (treemacs-resize-icons 16)
+  (treemacs-set-width 30)
   
   :general
   (purplg/leader-key
@@ -433,8 +434,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :straight t
   :after treemacs
   :config
-  (treemacs-load-theme "all-the-icons")
-  (treemacs-set-width 30))
+  (treemacs-load-theme "all-the-icons"))
 
 #+END_SRC
 
