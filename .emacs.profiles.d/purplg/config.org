@@ -222,8 +222,7 @@ Silence compiler warnings
   "w v" 'split-window-right
 
   "b" '(:which-key "buffer")
-  "b b" '(ido-switch-buffer :which-key open)
-  "b B" '(counsel-switch-buffer :which-key all)
+  "b b" '(project-switch-to-buffer :which-key open)
   "b d" 'kill-this-buffer
 
   "s" '(:which-key "search")
