@@ -117,6 +117,8 @@ Silence compiler warnings
 (purplg/leader-key :states 'normal
   "m" '(:which-key "local")
   "o" '(:which-key "open")
+  "s" '(:which-key "search")
+
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
   "t n" '(purplg/toggle-line-numbers :which-key "line numbers")
@@ -147,9 +149,6 @@ Silence compiler warnings
   "b b" '(project-switch-to-buffer :which-key open)
   "b d" 'kill-this-buffer
   "b r" 'revert-buffer
-
-  "s" '(:which-key "search")
-  "s b" 'swiper
 
   ";" 'eval-expression)
 
@@ -331,15 +330,24 @@ Silence compiler warnings
 
 (use-package swiper
   :straight t
-  :after ivy)
+  :after ivy
+  :general
+  (purplg/leader-key :states 'normal
+    "s b" '(swiper :which-key "buffer")))
 
 (use-package counsel
   :straight t
   :after ivy
+
   :config
   (setq counsel-describe-variable-function 'helpful-variable
         counsel-describe-function-function 'helpful-function)
-  (counsel-mode 1))
+  (counsel-mode 1)
+
+  :general
+  (purplg/leader-key
+    :states 'normal
+    "p s" '(counsel-rg :which-key "search")))
 
 #+END_SRC
 
@@ -491,7 +499,6 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
     "p p" '(projectile-switch-project :which-key "open")
-    "p s" '(counsel-rg :which-key "search")
     "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
 #+END_SRC
 
