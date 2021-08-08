@@ -251,7 +251,7 @@ Silence compiler warnings
 
 #+END_SRC
 
-* Ivy
+** Ivy
 
 #+BEGIN_SRC emacs-lisp :results none
 
