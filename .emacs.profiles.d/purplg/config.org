@@ -4,61 +4,22 @@
 - Workspaces
 - File tree project view
 
-* Basic Emacs settings
+* Basic settings
+** Native comp
   
-#+BEGIN_SRC emacs-lisp :results none
+ Silence compiler warnings
+ #+BEGIN_SRC emacs-lisp :results none
+(setq native-comp-async-report-warnings-errors nil)
+ #+END_SRC
 
-(setq inhibit-startup-message t)
+** Keep config directory clean
 
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(set-fringe-mode 10)
-
-(set-face-attribute 'default nil :font "Fira Code Retina-10" )
-(set-frame-font "Fira Code Retina-10" nil t)
-
-(setq auto-save-default nil)
-
-(setq-default fill-column 100)
-
-(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
-
-#+END_SRC
-
-* Relative line numbers
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq-default display-line-numbesr 'visual
-              display-line-numbers-widen t
-              display-line-numbers-current-absolute t)
-
-(defun noct:relative ()
-  (setq-local display-line-numbers 'visual))
-
-(defun noct:absolute ()
-  (setq-local display-line-numbers t))
-
-(add-hook 'text-mode-hook #'noct:relative)
-
-#+END_SRC
-
-* Native comp
-  
-Silence compiler warnings
-#+BEGIN_SRC emacs-lisp :results none
-  (setq native-comp-async-report-warnings-errors nil)
-#+END_SRC
-
-* Keep config directory clean
-
-#+BEGIN_SRC emacs-lisp :results none
+ #+BEGIN_SRC emacs-lisp :results none
 
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory))
 
-#+END_SRC
+ #+END_SRC
 
 * Package management with straight.el
 ** Bootstrap copy-pasta
@@ -86,13 +47,105 @@ Silence compiler warnings
 (straight-use-package 'use-package)
 #+END_SRC
 
-* Keybinds with general.el
-** Setup
+* Interface
+** Hide extraneous stuff
+  
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq inhibit-startup-message t)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
+
+(set-face-attribute 'default nil :font "Fira Code Retina-10" )
+(set-frame-font "Fira Code Retina-10" nil t)
+
+(setq auto-save-default nil)
+
+(setq-default fill-column 100)
+
+(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
+
+#+END_SRC
+
+** Relative line numbers
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq-default display-line-numbesr 'visual
+              display-line-numbers-widen t
+              display-line-numbers-current-absolute t)
+
+(defun noct:relative ()
+  (setq-local display-line-numbers 'visual))
+
+(defun noct:absolute ()
+  (setq-local display-line-numbers t))
+
+(add-hook 'text-mode-hook #'noct:relative)
+
+#+END_SRC
+
+** Which-key
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package which-key
+  :straight t
+  :config
+  (setq which-key-idle-delay 1)
+  (which-key-mode 1))
+
+#+END_SRC
+
+** Theme
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-themes
+  :straight t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-horizon t))
+
+#+END_SRC
+
+** Modeline
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (doom-modeline-mode 1))
+
+#+END_SRC
+
+* Keybinds
+** Packages
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package general
   :straight t)
 #+END_SRC
+
+ #+BEGIN_SRC emacs-lisp :results none
+
+(use-package evil
+  :straight t
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :straight t
+  :after evil
+  :config
+  (evil-collection-init))
+
+ #+END_SRC
 
 ** Helper functions
 
@@ -178,8 +231,7 @@ Silence compiler warnings
 
 #+END_SRC
 
-* Org
-** Update and setup
+* Org mode
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -221,25 +273,6 @@ Silence compiler warnings
     :keymaps 'org-mode-map
     "e" '(:which-key "eval")
     "e r" '(eval-region :which-key "region")))
-
-#+END_SRC
-
-* Evil
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package evil
-  :straight t
-  :init
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
-
-(use-package evil-collection
-  :straight t
-  :after evil
-  :config
-  (evil-collection-init))
 
 #+END_SRC
 
@@ -313,41 +346,6 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
-* Which-key
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package which-key
-  :straight t
-  :config
-  (setq which-key-idle-delay 1)
-  (which-key-mode 1))
-
-#+END_SRC
-
-* Doom stuff
-** Themes
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-themes
-  :straight t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-horizon t))
-
-#+END_SRC
-
-** Modeline
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-modeline
-  :straight t
-  :config
-  (doom-modeline-mode 1))
-
-#+END_SRC
-
 * Development
 ** Git
 
@@ -390,8 +388,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 #+END_SRC
 
 ** Emacs Lisp
-
-**** Rainbow Delimiters
+*** Rainbow Delimiters
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -402,7 +399,7 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
 
 #+END_SRC
 
-**** Parinfer - for easy elisp paren management
+*** Parinfer - for easy elisp paren management
 
 #+BEGIN_SRC emacs-lisp :results none
 
