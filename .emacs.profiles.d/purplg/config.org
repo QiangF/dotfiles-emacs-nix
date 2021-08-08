@@ -5,9 +5,15 @@
 - File tree project view
 
 * Basic settings
+** Frame
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq frame-title-format "PurplEmacs")
+#+END_SRC
+
 ** Native comp
   
- Silence compiler warnings
+Silence compiler warnings
  #+BEGIN_SRC emacs-lisp :results none
 (setq native-comp-async-report-warnings-errors nil)
  #+END_SRC
