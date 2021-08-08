@@ -202,6 +202,7 @@ Silence compiler warnings
 
 (purplg/leader-key :states 'normal
   "m" '(:which-key "local")
+  "o" '(:which-key "open")
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
   "t n" '(purplg/toggle-line-numbers :which-key "line numbers")
@@ -410,6 +411,30 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   (general-define-key
   :keymaps 'lsp-mode-map
   "S-k" 'lsp-describe-thing-at-point))
+
+#+END_SRC
+
+*** File tree
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package treemacs
+  :straight t
+
+  :config
+  (treemacs-resize-icons 16)
+  
+  :general
+  (purplg/leader-key
+  :states 'normal
+  "o p" 'treemacs))
+
+(use-package treemacs-all-the-icons
+  :straight t
+  :after treemacs
+  :config
+  (treemacs-load-theme "all-the-icons")
+  (treemacs-set-width 30))
 
 #+END_SRC
 
