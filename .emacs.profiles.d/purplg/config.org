@@ -406,15 +406,29 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :straight t
 
   :config
-  (use-package lsp-ui
-    :straight t)
+  (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
   :general
-    (general-define-key
+  (general-define-key
     :keymaps 'lsp-mode-map
-    "S-k" 'lsp-describe-thing-at-point
-    "g d" 'lsp-find-definition
-    "g D" 'lsp-ui-peek-find-references))
+    "S-k" 'lsp-describe-thing-at-point))
+
+(use-package lsp-ui
+  :straight t
+  :after lsp-mode
+
+  :general
+  (general-define-key
+    :keymaps 'lsp-mode-map
+    "g D" '(lsp-ui-peek-find-references :which-key "find references"))
+
+  (general-define-key
+    :keymaps 'lsp-ui-peek-mode-map
+    "j" 'lsp-ui-peek--select-next
+    "h" 'lsp-ui-peek--select-prev-file
+    "l" 'lsp-ui-peek--select-next-file
+    "k" 'lsp-ui-peek--select-prev
+    "C-RET" 'lsp-ui-peek--goto-xref-other-window))
 
 #+END_SRC
 
