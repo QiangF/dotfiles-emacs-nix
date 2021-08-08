@@ -417,6 +417,10 @@ the variables ~counsel-describe-variable-function~ and ~counsel-describe-functio
   :straight t
   :after lsp-mode
 
+  :config
+  ;; Disable because it causes input lag
+  (setq lsp-ui-doc-enable nil)
+
   :general
   (general-define-key
     :keymaps 'lsp-mode-map
