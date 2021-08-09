@@ -255,8 +255,7 @@ Silence compiler warnings
 
 #+END_SRC
 
-** Ivy
-
+** Completion framework
 #+BEGIN_SRC emacs-lisp :results none
 
 ;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
@@ -265,12 +264,13 @@ Silence compiler warnings
 
 (use-package ivy
   :straight t
+  :init
+  (ivy-mode 1)
 
   :config
   (setq ivy-use-virtual-buffers t
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-  (ivy-mode 1)
 
   :general
 ;; Minibuffer Evil movement keys
@@ -281,26 +281,41 @@ Silence compiler warnings
     "C-k" 'ivy-previous-line
     "C-j" 'ivy-next-line))
 
+(use-package counsel
+  :straight t
+  :after ivy
+  :init
+  (counsel-mode 1)
+
+  :config
+  (setq counsel-describe-variable-function 'helpful-variable
+        counsel-describe-function-function 'helpful-function)
+
+  :general
+  (purplg/leader-key
+    :states 'normal
+    "p s" '(counsel-rg :which-key "search")))
+
+(use-package ivy-rich
+  :straight t
+  :after ivy
+  :init
+  (ivy-rich-mode 1))
+
 (use-package swiper
   :straight t
   :after ivy
   :general
   (purplg/leader-key :states 'normal
     "s b" '(swiper :which-key "buffer")))
+#+END_SRC
 
-(use-package counsel
-  :straight t
-  :after ivy
+** Vertico
 
-  :config
-  (setq counsel-describe-variable-function 'helpful-variable
-        counsel-describe-function-function 'helpful-function)
-  (counsel-mode 1)
+#+BEGIN_SRC emacs-lisp :results none :tangle no
 
-  :general
-  (purplg/leader-key
-    :states 'normal
-    "p s" '(counsel-rg :which-key "search")))
+(use-package vertico
+  :straight t)
 
 #+END_SRC
 
