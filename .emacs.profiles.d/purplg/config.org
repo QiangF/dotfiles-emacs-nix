@@ -236,8 +236,12 @@ Silence compiler warnings
   :straight t
   :config
   (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme 'doom-horizon t))
+        doom-themes-enable-italic t))
+
+(use-package dracula-theme
+  :straight t)
+
+(load-theme 'dracula t)
 
 #+END_SRC
 
