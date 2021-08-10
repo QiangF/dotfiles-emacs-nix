@@ -335,41 +335,46 @@ Silence compiler warnings
   :init
   (vertico-mode 1)
 
+  :config
+  ;; Redefine find file functions to support vertico
+  (defun purplg/find-file-in-profile-dir ()
+    (interactive)
+    (ido-find-file-in-dir purplg/config-dir))
+  
+  (defun purplg/find-file-in-home-dir ()
+    (interactive)
+    (ido-find-file-in-dir "~"))
+  
+  (defun purplg/find-file-in-root-dir ()
+    (interactive)
+    (ido-find-file-in-dir "/"))
+
   :general
   (general-define-key
     :keymaps 'minibuffer-local-map
     "C-S-k" 'scroll-down-command
     "C-S-j" 'scroll-up-command
     "C-k" 'previous-line
-    "C-j" 'next-line))
+    "C-j" 'next-line)
+
+  (purplg/leader-key
+    :states 'normal
+    "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
+    "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
+    "f /" '(purplg/find-file-in-root-dir :which-key "in root")))
 
 (use-package consult
   :straight t
   :after vertico
   :config
   (recentf-mode 1)
-  ;; Redefine find file functions to consult variants
-  (defun purplg/find-file-in-profile-dir ()
-    (interactive)
-    (find-file-existing purplg/config-dir))
-  
-  (defun purplg/find-file-in-home-dir ()
-    (interactive)
-    (find-file-existing "~"))
-  
-  (defun purplg/find-file-in-root-dir ()
-    (interactive)
-    (find-file-existing "/"))
 
   :general
   (purplg/leader-key
     :states 'normal
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
-    "f r" '(consult-recent-file :which-key "recent")
-    "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
-    "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
-    "f /" '(purplg/find-file-in-root-dir :which-key "in root")))
+    "f r" '(consult-recent-file :which-key "recent")))
 
 (use-package marginalia
   :straight t
