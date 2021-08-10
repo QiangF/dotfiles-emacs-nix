@@ -84,18 +84,6 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(defun purplg/find-file-in-profile-dir ()
-  (interactive)
-  (counsel-find-file purplg/config-dir))
-
-(defun purplg/find-file-in-home-dir ()
-  (interactive)
-  (counsel-find-file "~"))
-
-(defun purplg/find-file-in-root-dir ()
-  (interactive)
-  (counsel-find-file "/"))
-
 (defun purplg/test ()
   (interactive)
   (message "yay it worked!"))
