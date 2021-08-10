@@ -301,7 +301,7 @@ Silence compiler warnings
 
 (use-package ivy-rich
   :straight t
-  :after vertico
+  :after ivy
   :init
   (ivy-rich-mode 1))
 
