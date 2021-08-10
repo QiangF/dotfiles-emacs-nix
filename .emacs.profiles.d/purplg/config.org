@@ -63,7 +63,7 @@ Silence compiler warnings
   :straight t)
 #+END_SRC
 
- #+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp :results none
 
 (use-package evil
   :straight t
@@ -78,7 +78,7 @@ Silence compiler warnings
   :config
   (evil-collection-init))
 
- #+END_SRC
+#+END_SRC
 
 ** Helper functions
 
@@ -158,6 +158,7 @@ Silence compiler warnings
 (set-frame-font "Fira Code Retina-10" nil t)
 
 #+END_SRC
+
 ** Hide extraneous stuff
   
 #+BEGIN_SRC emacs-lisp :results none
@@ -214,6 +215,7 @@ Silence compiler warnings
 #+END_SRC
 
 ** Theme
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package doom-themes
@@ -230,6 +232,7 @@ Silence compiler warnings
 #+END_SRC
 
 ** Modeline
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package doom-modeline
@@ -241,6 +244,7 @@ Silence compiler warnings
 
 ** Completion framework
 *** Ivy
+
 #+BEGIN_SRC emacs-lisp :results none :tangle no
 
 ;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
@@ -442,16 +446,20 @@ Silence compiler warnings
 
   :config
   (add-hook 'prog-mode-hook 'git-gutter-mode))
+
 #+END_SRC
 
 *** Text completion
 
 #+BEGIN_SRC emacs-lisp :results none
+
 (use-package company
   :straight t)
+
 #+END_SRC
 
 *** LSP
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package lsp-mode
@@ -535,6 +543,7 @@ Silence compiler warnings
     "p a" '(projectile-add-known-project :which-key "add")
     "p p" '(projectile-switch-project :which-key "open")
     "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
+
 #+END_SRC
 
 ** Lanuages
@@ -575,7 +584,6 @@ Silence compiler warnings
     :states 'normal
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
-
 
 #+END_SRC
 *** Org mode
