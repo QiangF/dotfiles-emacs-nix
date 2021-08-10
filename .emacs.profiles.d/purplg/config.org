@@ -355,7 +355,8 @@ Silence compiler warnings
     "C-S-k" 'scroll-down-command
     "C-S-j" 'scroll-up-command
     "C-k" 'previous-line
-    "C-j" 'next-line)
+    "C-j" 'next-line
+    "C-l" 'vertico-insert)
 
   (purplg/leader-key
     :states 'normal
