@@ -380,7 +380,7 @@ Silence compiler warnings
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
-    "p r" '(consult-ripgrep :which-key "search this")
+    "s r" '(consult-ripgrep :which-key "regex")
     "f r" '(consult-recent-file :which-key "recent")))
 
 (use-package marginalia
