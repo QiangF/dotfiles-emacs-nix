@@ -106,6 +106,8 @@ Silence compiler warnings
   "m" '(:which-key "local")
   "o" '(:which-key "open")
   "s" '(:which-key "search")
+  "c" '(:which-key "code")
+  "p" '(:which-key "project")
 
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
