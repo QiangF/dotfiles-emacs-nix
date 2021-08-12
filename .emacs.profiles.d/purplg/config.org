@@ -366,7 +366,6 @@ Silence compiler warnings
     "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
-    "p r" '(consult-ripgrep :which-key "search this")
     "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
 
 (use-package consult
@@ -381,6 +380,7 @@ Silence compiler warnings
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
+    "p r" '(consult-ripgrep :which-key "search this")
     "f r" '(consult-recent-file :which-key "recent")))
 
 (use-package marginalia
