@@ -295,6 +295,10 @@ Silence compiler warnings
     (interactive)
     (counsel-find-file "/"))
 
+  (defun purplg/project-search-thing-at-point ()
+    (interactive)
+    (counsel-rg (thing-at-point 'symbol)))
+
   :general
   (purplg/leader-key
     :states 'normal
@@ -303,7 +307,8 @@ Silence compiler warnings
     "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
-    "f r" '(counsel-recentf :which-key "find recent")))
+    "f r" '(counsel-recentf :which-key "find recent")
+    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
 
 (use-package ivy-rich
   :straight t
@@ -343,6 +348,10 @@ Silence compiler warnings
     (interactive)
     (ido-find-file-in-dir "/"))
 
+  (defun purplg/project-search-thing-at-point ()
+    (interactive)
+    (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
+
   :general
   (general-define-key
     :keymaps 'minibuffer-local-map
@@ -356,7 +365,9 @@ Silence compiler warnings
     :states 'normal
     "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
-    "f /" '(purplg/find-file-in-root-dir :which-key "in root")))
+    "f /" '(purplg/find-file-in-root-dir :which-key "in root")
+    "p r" '(consult-ripgrep :which-key "search this")
+    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
 
 (use-package consult
   :straight t
@@ -369,6 +380,7 @@ Silence compiler warnings
     :states 'normal
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
+    "s b" '(consult-line :which-key "buffer")
     "f r" '(consult-recent-file :which-key "recent")))
 
 (use-package marginalia
@@ -529,10 +541,6 @@ Silence compiler warnings
 *** Project management
 #+BEGIN_SRC emacs-lisp :results none
 
-(defun purplg/project-search-thing-at-point ()
-  (interactive)
-  (counsel-rg (thing-at-point 'symbol)))
-
 (use-package projectile
   :straight t
   :config
@@ -543,8 +551,7 @@ Silence compiler warnings
     :states 'normal
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
-    "p p" '(projectile-switch-project :which-key "open")
-    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
+    "p p" '(projectile-switch-project :which-key "open")))
 
 #+END_SRC
 
