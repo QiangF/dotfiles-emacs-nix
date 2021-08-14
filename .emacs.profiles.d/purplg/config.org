@@ -562,6 +562,15 @@ Silence compiler warnings
 
 #+END_SRC
 
+*** Rest client
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package restclient
+  :straight t)
+  
+#+END_SRC
+
 ** Lanuages
 *** Rust
 
