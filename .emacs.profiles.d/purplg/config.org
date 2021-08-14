@@ -507,7 +507,7 @@ Silence compiler warnings
   (setq lsp-ui-doc-enable nil)
 
   :general
-  (general-define-key
+  (general-define-key 'normal
     :keymaps 'lsp-mode-map
     "g D" '(lsp-ui-peek-find-references :which-key "find references"))
 
