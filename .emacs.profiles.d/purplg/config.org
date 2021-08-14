@@ -141,7 +141,9 @@ Silence compiler warnings
 
   (general-define-key :states 'normal
     "M-j" 'move-line-down
-    "M-k" 'move-line-up))
+    "M-k" 'move-line-up
+    "C-j" 'evil-forward-section-begin
+    "C-k" 'evil-backward-section-begin))
 
 (use-package evil-collection
   :straight t
