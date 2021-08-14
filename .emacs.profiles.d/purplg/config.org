@@ -134,16 +134,6 @@ Silence compiler warnings
 
 #+END_SRC
 
-** Helper functions
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(defun purplg/test ()
-  (interactive)
-  (message "yay it worked!"))
-
-#+END_SRC
-
 ** Unbind SPC in Dired mode
 
 #+BEGIN_SRC emacs-lisp :results none
