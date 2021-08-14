@@ -56,41 +56,11 @@ Silence compiler warnings
 #+END_SRC
 
 * Keybinds
-** Packages
+** general.el for easy keybind configuration
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package general
   :straight t)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package evil
-  :straight t
-  :init
-  (setq evil-want-keybinding nil)
-  (evil-mode 1)
-
-  :general
-  (purplg/leader-key :states 'normal
-    "b n" '(evil-buffer-new :which-key "new")))
-
-(use-package evil-collection
-  :straight t
-  :after evil
-  :config
-  (evil-collection-init))
-
-#+END_SRC
-
-** Helper functions
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(defun purplg/test ()
-  (interactive)
-  (message "yay it worked!"))
-
 #+END_SRC
 
 ** Leader keys
@@ -140,6 +110,37 @@ Silence compiler warnings
   "b r" 'revert-buffer
 
   ";" 'eval-expression)
+
+#+END_SRC
+
+** Evil
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package evil
+  :straight t
+  :init
+  (setq evil-want-keybinding nil)
+  (evil-mode 1)
+
+  :general
+  (purplg/leader-key :states 'normal
+    "b n" '(evil-buffer-new :which-key "new")))
+
+(use-package evil-collection
+  :straight t
+  :after evil
+  :config
+  (evil-collection-init))
+
+#+END_SRC
+
+** Helper functions
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(defun purplg/test ()
+  (interactive)
+  (message "yay it worked!"))
 
 #+END_SRC
 
