@@ -156,8 +156,7 @@ Silence compiler warnings
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(set-face-attribute 'default nil :font "Fira Code Retina-10" )
-(set-frame-font "Fira Code Retina-10" nil t)
+(add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
 
 #+END_SRC
 ** Highlight current line
