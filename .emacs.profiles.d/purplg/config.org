@@ -4,7 +4,6 @@
 - Org-capture
 - IRC
 - Workspaces
-- Surround
 
 * Basic settings
 ** Frame
@@ -144,6 +143,11 @@ Silence compiler warnings
     "M-k" 'move-line-up
     "C-j" 'evil-forward-section-begin
     "C-k" 'evil-backward-section-begin))
+
+(use-package evil-surround
+  :straight t
+  :config
+  (global-evil-surround-mode 1))
 
 (use-package evil-collection
   :straight t
