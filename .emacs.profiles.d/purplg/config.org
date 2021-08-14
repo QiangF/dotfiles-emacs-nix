@@ -69,8 +69,11 @@ Silence compiler warnings
   :straight t
   :init
   (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
+  (evil-mode 1)
+
+  :general
+  (purplg/leader-key :states 'normal
+    "b n" '(evil-buffer-new :which-key "new")))
 
 (use-package evil-collection
   :straight t
@@ -611,6 +614,23 @@ Silence compiler warnings
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 
 #+END_SRC
+**** keybinds
+#+BEGIN_SRC emacs-lisp :results none
+
+(purplg/leader-key
+  :states 'normal
+  :keymaps 'emacs-lisp-mode-map
+  "e" '(:which-key "eval")
+  "e b" '(eval-buffer :which-key "buffer")
+  "e f" '(eval-defun :which-key "function"))
+
+(purplg/leader-key
+  :states 'visual
+  :keymaps 'emacs-lisp-mode-map
+  "e" '(:which-key "eval")
+  "e r" '(eval-region :which-key "region"))
+
+#+END_SRC
 *** Org mode
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -645,20 +665,7 @@ Silence compiler warnings
   (purplg/leader-key
     :states 'normal
     :keymaps 'org-mode-map
-    "t l" '(org-toggle-link-display :which-key "link display"))
-
-  (purplg/leader-key
-    :states 'normal
-    :keymaps 'org-mode-map
-    "e" '(:which-key "eval")
-    "e b" '(eval-buffer :which-key "buffer")
-    "e f" '(eval-defun :which-key "function"))
-
-  (purplg/leader-key
-    :states 'visual
-    :keymaps 'org-mode-map
-    "e" '(:which-key "eval")
-    "e r" '(eval-region :which-key "region")))
+    "t l" '(org-toggle-link-display :which-key "link display")))
 
 #+END_SRC
 
