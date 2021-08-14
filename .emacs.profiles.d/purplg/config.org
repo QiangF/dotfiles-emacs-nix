@@ -116,6 +116,17 @@ Silence compiler warnings
 ** Evil
 #+BEGIN_SRC emacs-lisp :results none
 
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
 (use-package evil
   :straight t
   :init
@@ -124,7 +135,13 @@ Silence compiler warnings
 
   :general
   (purplg/leader-key :states 'normal
-    "b n" '(evil-buffer-new :which-key "new")))
+    "b p" '(evil-prev-buffer :which-key "previous")
+    "b n" '(evil-next-buffer :which-key "next")
+    "b N" '(evil-buffer-new :which-key "new"))
+
+  (general-define-key :states 'normal
+    "M-j" 'move-line-down
+    "M-k" 'move-line-up))
 
 (use-package evil-collection
   :straight t
