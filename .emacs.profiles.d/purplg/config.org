@@ -592,13 +592,10 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
         read-process-output-max (* 1024 1024))
   
   ;; Disable because it causes input lag
-  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-sideline-show-hover t)
 
   :general
-  (general-define-key 'normal
-    :keymaps 'lsp-mode-map
-    "g D" '(lsp-ui-peek-find-references :which-key "find references"))
-
   (general-define-key
     :keymaps 'lsp-ui-peek-mode-map
     "j" 'lsp-ui-peek--select-next
