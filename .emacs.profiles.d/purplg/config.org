@@ -708,29 +708,20 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 #+BEGIN_SRC emacs-lisp :results none
 
-  (use-package rustic
-    :straight t
-    :after lsp
-    :config
-    (add-hook 'rustic-mode-hook 'lsp)
-    (add-to-list 'exec-path (concat (getenv "HOME") "/.cargo/bin"))
-    :general
-    (purplg/local-leader-key :states 'normal
-      "c" '(:which-key "cargo")
-      "c r" '(rustic-cargo-run :which-key "run")
-      "c a" '(:which-key "add dep")
-      "c x" '(:which-key "rm dep")
-      "c t" '(:which-key "test")))
+(use-package rustic
+  :straight t
+  :after lsp
+  :config
+  (add-hook 'rustic-mode-hook 'lsp)
+  (add-to-list 'exec-path (concat (getenv "HOME") "/.cargo/bin"))
+  :general
+  (purplg/local-leader-key :states 'normal
+    "c" '(:which-key "cargo")
+    "c r" '(rustic-cargo-run :which-key "run")
+    "c a" '(rustic-cargo-add :which-key "add dep")
+    "c x" '(rustic-cargo-rm :which-key "rm dep")
+    "c t" '(rustic-cargo-test :which-key "test")))
 
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(purplg/local-leader-key :states 'normal
-  "c" '(:which-key "cargo")
-  "c r" '(rustic-cargo-run :which-key "run")
-  "c a" '(rustic-cargo-add :which-key "add dep")
-  "c x" '(rustic-cargo-rm :which-key "rm dep")
-  "c t" '(rustic-cargo-test :which-key "test"))
 #+END_SRC
 
 #+RESULTS:
