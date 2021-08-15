@@ -514,9 +514,7 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package undo-fu
-  :straight t
-  :config
-  (setq evil-undo-system 'undo-fu))
+  :straight t)
 
 #+END_SRC
 
