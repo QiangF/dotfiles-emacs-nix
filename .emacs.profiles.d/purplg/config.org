@@ -6,6 +6,22 @@
 - Workspaces
 
 * Basic settings
+** config file
+#+BEGIN_SRC emacs-lisp
+
+(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
+
+(defun purplg/config-file (filename)
+  "returns the full path of a file in the purplg/config-dir
+directory if it exists"
+  (unless (string-empty-p filename)
+    (let ((filepath (expand-file-name filename purplg/config-dir)))
+      (if (file-exists-p filepath) filepath nil))))
+
+#+END_SRC
+
+#+RESULTS:
+
 ** Frame
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -198,8 +214,6 @@ Silence compiler warnings
 (setq auto-save-default nil)
 
 (setq-default fill-column 100)
-
-(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
 
 #+END_SRC
 
