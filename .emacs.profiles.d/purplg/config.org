@@ -82,6 +82,16 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 (straight-use-package 'use-package)
 #+END_SRC
 
+** Environment
+
+#+BEGIN_SRC emacs-lisp
+(when (daemonp)
+  (use-package exec-path-from-shell
+    :straight t
+    :init
+    (exec-path-from-shell-initialize)))
+#+END_SRC
+
 * Keybinds
 ** general.el for easy keybind configuration
 
