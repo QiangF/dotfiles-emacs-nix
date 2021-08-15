@@ -1,4 +1,4 @@
-#+STARTUP: overview
+#+STARTUP: content
 
 * Todo's
 - Org-capture
