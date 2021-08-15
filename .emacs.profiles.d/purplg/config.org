@@ -156,8 +156,10 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 (use-package evil
   :straight t
+  :after undo-fu
   :init
   (setq evil-want-keybinding nil)
+  (setq evil-undo-system 'undo-fu)
   (evil-mode 1)
 
   :general
@@ -174,6 +176,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 (use-package evil-surround
   :straight t
+  :after evil
   :config
   (global-evil-surround-mode 1))
 
@@ -503,6 +506,17 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
   :config
   (push (expand-file-name "snippets" purplg/config-dir) yas-snippet-dirs)
   (yas-global-mode 1))
+
+#+END_SRC
+
+* Undo
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package undo-fu
+  :straight t
+  :config
+  (setq evil-undo-system 'undo-fu))
 
 #+END_SRC
 
