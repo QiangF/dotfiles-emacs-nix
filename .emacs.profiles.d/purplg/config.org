@@ -44,6 +44,18 @@ Silence compiler warnings
 
  #+END_SRC
 
+** Util functions
+
+A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(defun save-excursion-wrapper (inner &rest args)
+  (save-excursion
+      (funcall inner)))
+
+#+END_SRC
+
 * Package management with straight.el
 ** Bootstrap copy-pasta
 
@@ -623,8 +635,36 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(use-package origami
-  :straight t)
+(use-package hideshow
+  :straight t
+  :config
+
+  (defun evil-close-fold-below ()
+    "Close fold on current line instead of enclosing block at point"
+    (interactive)
+    (save-excursion
+      (end-of-line)
+      (evil-close-fold)))
+
+  (defun evil-open-fold-save ()
+    "Keep point in place when opening fold"
+    (interactive)
+    (save-excursion
+      (evil-open-fold)))
+
+  (general-define-key
+    :states 'normal
+    "z c" 'evil-close-fold-below
+    "z C" 'evil-close-fold)
+
+  ;; Keep cursor in place when opening a fold
+  (advice-add 'evil-open-fold :around 'save-excursion-wrapper)
+
+  (add-hook 'prog-mode-hook 'hs-minor-mode))
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
 
 #+END_SRC
 
