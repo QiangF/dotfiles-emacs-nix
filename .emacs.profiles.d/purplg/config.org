@@ -516,6 +516,13 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 (use-package undo-fu
   :straight t)
 
+(use-package undo-fu-session
+  :straight t
+  :after undo-fu
+  :config
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+  (global-undo-fu-session-mode))
+
 #+END_SRC
 
 * Development
