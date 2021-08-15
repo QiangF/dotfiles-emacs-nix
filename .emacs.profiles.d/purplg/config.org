@@ -715,15 +715,19 @@ Silence compiler warnings
 (use-package erc
   :straight t
   :after pass
+  :init
+  (defun purplg/connect-to-irc ()
+    (erc-tls :server   "irc.libera.chat"
+             :port     "6697"
+             :nick     (auth-source-pass-get "nick" "irc.libera.chat")
+             :password (auth-source-pass-get 'secret "irc.libera.chat")))
+
   :config
   (setq erc-prompt-for-password nil
         erc-autojoin-channels-alist (list
 	  (cons "irc.libera.chat"
 	    (split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
 
-  (erc-tls :server   "irc.libera.chat"
-           :port     "6697"
-           :nick     (auth-source-pass-get "nick" "irc.libera.chat")
-           :password (auth-source-pass-get 'secret "irc.libera.chat")))
+  (purplg/connect-to-irc)
 
 #+END_SRC
