@@ -184,6 +184,23 @@ Silence compiler warnings
 
 #+END_SRC
 
+** Window switch
+
+I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
+
+#+BEGIN_SRC emacs-lisp
+
+(general-define-key
+  :states 'normal
+  "C-w C-h" 'evil-window-left
+  "C-w C-j" 'evil-window-down
+  "C-w C-k" 'evil-window-up
+  "C-w C-l" 'evil-window-right)
+
+#+END_SRC
+
+#+RESULTS:
+
 * Interface
 ** Font
 
