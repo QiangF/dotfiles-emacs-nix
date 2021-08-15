@@ -558,6 +558,15 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 #+END_SRC
 
+*** Flycheck
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package flycheck
+  :straight t
+  :config
+  (add-hook 'lsp-mode-hook 'flycheck-mode))
+#+END_SRC
+
 *** LSP
 
 #+BEGIN_SRC emacs-lisp :results none
