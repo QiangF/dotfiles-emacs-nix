@@ -621,14 +621,12 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 *** Code Folding
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :results none
 
 (use-package origami
   :straight t)
 
 #+END_SRC
-
-#+RESULTS:
 
 ** Lanuages
 *** Rust
