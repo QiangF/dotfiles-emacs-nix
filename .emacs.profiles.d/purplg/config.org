@@ -243,9 +243,11 @@ Prevent the scratch buffer from being deleted
 (with-current-buffer "*scratch*" (emacs-lock-mode 'kill))
 
 #+END_SRC
+
 ** Dashboard
 
 #+BEGIN_SRC emacs-lisp :results none
+
 (use-package dashboard
   :straight t
   :config
