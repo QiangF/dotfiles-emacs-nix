@@ -234,6 +234,15 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
 
 #+END_SRC
+** Scratch buffer
+
+Prevent the scratch buffer from being deleted
+
+#+BEGIN_SRC emacs-lisp
+
+(with-current-buffer "*scratch*" (emacs-lock-mode 'kill))
+
+#+END_SRC
 ** Dashboard
 
 #+BEGIN_SRC emacs-lisp :results none
