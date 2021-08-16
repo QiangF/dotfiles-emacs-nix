@@ -243,7 +243,12 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
         dashboard-items '((projects . 5)
 	                  (recents . 5)))
-  (dashboard-setup-startup-hook))
+
+  (dashboard-setup-startup-hook)
+
+  (add-hook 'dashboard-after-initialize-hook (lambda () 
+    (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill)))))
+
 #+END_SRC
 
 ** Highlight current line
