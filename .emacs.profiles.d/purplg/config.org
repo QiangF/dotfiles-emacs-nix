@@ -309,6 +309,7 @@ Prevent the scratch buffer from being deleted
     (purplg/hide-line-numbers)
     (purplg/relative-line-numbers)))
 
+(add-hook 'text-mode-hook 'purplg/relative-line-numbers)
 (add-hook 'prog-mode-hook 'purplg/relative-line-numbers)
 
 #+END_SRC
