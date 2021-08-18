@@ -620,7 +620,9 @@ Prevent the scratch buffer from being deleted
   :general
   (purplg/leader-key
     :states 'normal
-    "c a" '(lsp-execute-code-action :which-key "execute action")))
+    "c a" '(lsp-execute-code-action :which-key "execute action")
+    "c f" '(lsp-format-buffer :which-key "format")
+    "c r" '(lsp-rename :which-key "rename")))
 
 (use-package lsp-ui
   :straight t
