@@ -740,10 +740,6 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
-
-#+END_SRC
-
 ** Lanuages
 *** Rust
 
