@@ -567,6 +567,14 @@ Prevent the scratch buffer from being deleted
 #+END_SRC
 
 * Development
+** Disable tabs
+
+#+BEGIN_SRC emacs-lisp
+
+(indent-tabs-mode 0)
+
+#+END_SRC
+
 ** Tools
 *** Git
 
@@ -779,8 +787,12 @@ Prevent the scratch buffer from being deleted
 
 (use-package parinfer-rust-mode
   :straight t
+  :hook emacs-lisp-mode
+  :init
+  (setq parinfer-rust-auto-download t)
+  
   :config
-  (add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
+  (add-hook 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
 
   :general
   (purplg/local-leader-key
