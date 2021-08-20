@@ -752,12 +752,17 @@ Prevent the scratch buffer from being deleted
   (setq rustic-format-on-save t
         rustic-lsp-format t)
 
+  (defun rustic-cargo-run-no-args () 
+    (interactive)
+    (rustic-run-cargo-command "cargo run"))
+
   :general
   (purplg/local-leader-key
     :states  'normal
     :keymaps 'rustic-mode-map
     "c" '(:which-key "cargo")
-    "c r" '(rustic-cargo-run :which-key "run")
+    "c r" '(rustic-cargo-run-no-args :which-key "run")
+    "c R" '(rustic-cargo-run :which-key "run w/ args")
     "c a" '(rustic-cargo-add :which-key "add dep")
     "c x" '(rustic-cargo-rm :which-key "rm dep")
     "c c" '(rustic-cargo-check :which-key "check")
