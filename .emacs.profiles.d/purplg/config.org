@@ -534,23 +534,8 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-* Snippets
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package yasnippet-snippets
-  :straight t)
-
-(use-package yasnippet
-  :after yasnippet-snippets
-  :straight t
-  :config
-  (push (expand-file-name "snippets" purplg/config-dir) yas-snippet-dirs)
-  (yas-global-mode 1))
-
-#+END_SRC
-
-* Undo
+* Editing
+** Undo
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -566,8 +551,8 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-* Development
-** Disable tabs
+
+*** Disable tabs
 
 #+BEGIN_SRC emacs-lisp
 
@@ -575,8 +560,25 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-** Tools
-*** Git
+** Snippets
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package yasnippet-snippets
+  :straight t)
+
+(use-package yasnippet
+  :after yasnippet-snippets
+  :straight t
+  :config
+  (push (expand-file-name "snippets" purplg/config-dir) yas-snippet-dirs)
+  (yas-global-mode 1))
+
+#+END_SRC
+
+** Development
+*** Tools
+**** Git
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -598,7 +600,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** Text completion
+**** Text completion
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -607,7 +609,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** Flycheck
+**** Flycheck
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package flycheck
@@ -616,7 +618,7 @@ Prevent the scratch buffer from being deleted
   (add-hook 'lsp-mode-hook 'flycheck-mode))
 #+END_SRC
 
-*** LSP
+**** LSP
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -633,7 +635,7 @@ Prevent the scratch buffer from being deleted
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename")))
 
-(use-package lsp-ui
+    (use-package lsp-ui
   :straight t
   :after lsp-mode
 
@@ -657,7 +659,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** File tree
+**** File tree
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -681,7 +683,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** Project management
+**** Project management
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package projectile
@@ -698,7 +700,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** Rest client
+**** Rest client
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -707,7 +709,7 @@ Prevent the scratch buffer from being deleted
   
 #+END_SRC
 
-*** Code Folding
+**** Code Folding
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -740,8 +742,8 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-** Lanuages
-*** Rust
+*** Lanuages
+**** Rust
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -770,8 +772,8 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-*** Emacs Lisp
-**** Rainbow Delimiters
+**** Emacs Lisp
+***** Rainbow Delimiters
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -782,7 +784,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-**** Parinfer - for easy elisp paren management
+***** Parinfer - for easy elisp paren management
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -802,7 +804,7 @@ Prevent the scratch buffer from being deleted
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 
 #+END_SRC
-**** keybinds
+***** keybinds
 #+BEGIN_SRC emacs-lisp :results none
 
 (purplg/leader-key
@@ -819,7 +821,7 @@ Prevent the scratch buffer from being deleted
   "e r" '(eval-region :which-key "region"))
 
 #+END_SRC
-*** Org mode
+**** Org mode
 
 #+BEGIN_SRC emacs-lisp :results none
 
