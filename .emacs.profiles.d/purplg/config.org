@@ -635,27 +635,27 @@ Prevent the scratch buffer from being deleted
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename")))
 
-    (use-package lsp-ui
-      :straight t
-      :after lsp-mode
+(use-package lsp-ui
+  :straight t
+  :after lsp-mode
 
-      :config
-      ;; recommended performance tweaks
-      (setq gc-cons-threshold 100000000
-            read-process-output-max (* 1024 1024))
-      
-      ;; Disable because it causes input lag
-      (setq lsp-ui-doc-enable nil
-            lsp-ui-sideline-show-hover t)
+  :config
+  ;; recommended performance tweaks
+  (setq gc-cons-threshold 100000000
+        read-process-output-max (* 1024 1024))
+  
+  ;; Disable because it causes input lag
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-sideline-show-hover t)
 
-      :general
-      (general-define-key
-        :keymaps 'lsp-ui-peek-mode-map
-        "j" 'lsp-ui-peek--select-next
-        "h" 'lsp-ui-peek--select-prev-file
-        "l" 'lsp-ui-peek--select-next-file
-        "k" 'lsp-ui-peek--select-prev
-        "C-<return>" 'lsp-ui-peek--goto-xref-other-window))
+  :general
+  (general-define-key
+    :keymaps 'lsp-ui-peek-mode-map
+    "j" 'lsp-ui-peek--select-next
+    "h" 'lsp-ui-peek--select-prev-file
+    "l" 'lsp-ui-peek--select-next-file
+    "k" 'lsp-ui-peek--select-prev
+    "C-<return>" 'lsp-ui-peek--goto-xref-other-window))
 
 #+END_SRC
 
