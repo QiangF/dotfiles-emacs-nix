@@ -635,6 +635,10 @@ Prevent the scratch buffer from being deleted
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename")))
 
+  (general-define-key
+    :keymaps 'evil-motion-state-map
+    "g D" 'lsp-find-references)
+
 (use-package lsp-ui
   :straight t
   :after lsp-mode
