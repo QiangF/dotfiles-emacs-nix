@@ -751,8 +751,8 @@ Prevent the scratch buffer from being deleted
   :straight t
 
   :config
-  (setq rustic-format-on-save t
-        rustic-lsp-format t)
+  (setq rustic-format-on-save nil
+        rustic-lsp-format nil)
 
   (defun rustic-cargo-run-no-args () 
     (interactive)
