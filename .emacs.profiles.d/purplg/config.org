@@ -7,7 +7,10 @@
 
 * Basic settings
 ** config file
-#+BEGIN_SRC emacs-lisp
+
+Helper vars and functions to assist with finding config files
+
+#+BEGIN_SRC emacs-lisp :results none
 
 (defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
 
@@ -20,9 +23,9 @@ directory if it exists"
 
 #+END_SRC
 
-#+RESULTS:
-
 ** Frame
+
+Set the title of the Emacs frame
 
 #+BEGIN_SRC emacs-lisp :results none
 (setq frame-title-format "PurplEmacs")
@@ -31,11 +34,15 @@ directory if it exists"
 ** Native comp
   
 Silence compiler warnings
+
  #+BEGIN_SRC emacs-lisp :results none
 (setq native-comp-async-report-warnings-errors nil)
  #+END_SRC
 
 ** Keep config directory clean
+
+Move all the packages and other generated files into a different directory to keep the configuration
+directory clean
 
  #+BEGIN_SRC emacs-lisp :results none
 
@@ -59,6 +66,8 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 * Package management with straight.el
 ** Bootstrap copy-pasta
 
+Copied from the straight.el repository README to begin using straight.el
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (defvar bootstrap-version)
@@ -78,11 +87,15 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 ** use-package integration for convenient functions
 
+I prefer the additional features of ~use-package~. This lines enables using ~use-package~ features with straight
+
 #+BEGIN_SRC emacs-lisp :results none
 (straight-use-package 'use-package)
 #+END_SRC
 
 ** Environment
+
+Copy my user enviroment settings into Emacs. Necessary for some things like using Rust Cargo crates
 
 #+BEGIN_SRC emacs-lisp
 (when (daemonp)
@@ -94,6 +107,8 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 * Keybinds
 ** general.el for easy keybind configuration
+
+General.el is really nice for configuring keybinds
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package general
@@ -110,6 +125,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 #+END_SRC
 
 ** Global keybinds
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (purplg/leader-key :states 'normal
@@ -151,6 +167,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 #+END_SRC
 
 ** Evil
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (defun move-line-up ()
@@ -200,6 +217,8 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 ** Unbind SPC in Dired mode
 
+Dired takes precendence for the ~SPC~ key. Don't like that
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (general-define-key
@@ -209,7 +228,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 #+END_SRC
 
-** Window switch
+** Window switch fix
 
 I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
 
@@ -234,6 +253,7 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
 
 #+END_SRC
+
 ** Scratch buffer
 
 Prevent the scratch buffer from being deleted
@@ -264,6 +284,15 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp :tangle no
+(setq dashboard-set-navigator t)
+(setq dashboard-navigator-buttons
+      `(((nil "Home Assistant" "Home Assistant" (lambda (&rest _) (hass/query-entities))))))
+#+END_SRC
+
+#+RESULTS:
+| (nil Home Assistant Home Assistant (lambda (&rest _) (hass/query-entities))) |
+
 ** Highlight current line
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -275,22 +304,21 @@ Prevent the scratch buffer from being deleted
 
 ** Hide extraneous stuff
   
+Configures and minimalizes the main Emacs frame
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (setq inhibit-startup-message t)
-
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (set-fringe-mode 10)
 
-(setq auto-save-default nil)
-
-(setq-default fill-column 100)
-
 #+END_SRC
 
 ** Relative line numbers
+
+A couple functions to enable/disable/toggle line numbers and their hooks.
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -317,6 +345,8 @@ Prevent the scratch buffer from being deleted
 
 ** Which-key
 
+A handy popup to show keybinds.
+
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package which-key
@@ -337,10 +367,7 @@ Prevent the scratch buffer from being deleted
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 
-(use-package dracula-theme
-  :straight t)
-
-(load-theme 'dracula t)
+(load-theme 'doom-dracula t)
 
 #+END_SRC
 
@@ -357,6 +384,8 @@ Prevent the scratch buffer from being deleted
 
 ** Completion framework
 *** Ivy
+
+Ivy config just in case I wanna use it for something. Disabled.
 
 #+BEGIN_SRC emacs-lisp :results none :tangle no
 
@@ -493,6 +522,15 @@ Prevent the scratch buffer from being deleted
     "s b" '(consult-line :which-key "buffer")
     "s r" '(consult-ripgrep :which-key "regex")
     "f r" '(consult-recent-file :which-key "recent")))
+    
+(use-package consult-lsp
+  :straight t
+  :after consult lsp
+  :config
+  (purplg/leader-key
+    :states 'normal
+    :keymap 'lsp-mode-map
+    "s e" '(consult-lsp-diagnostics :which-key "errors")))
 
 (use-package marginalia
   :straight t
@@ -536,6 +574,22 @@ Prevent the scratch buffer from being deleted
 #+END_SRC
 
 * Editing
+** Disable auto save
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq auto-save-default nil)
+
+#+END_SRC
+
+** Set fill-column to 100 characters
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq-default fill-column 100)
+
+#+END_SRC
+
 ** Undo
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -762,6 +816,8 @@ Prevent the scratch buffer from being deleted
   (defun rustic-cargo-run-no-args () 
     (interactive)
     (rustic-run-cargo-command "cargo run"))
+    
+  (add-hook 'rustic-mode (lambda () (electric-indent-mode 1)))
 
   :general
   (purplg/local-leader-key
@@ -774,6 +830,16 @@ Prevent the scratch buffer from being deleted
     "c x" '(rustic-cargo-rm :which-key "rm dep")
     "c c" '(rustic-cargo-check :which-key "check")
     "c t" '(rustic-cargo-test :which-key "test")))
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+
+(general-define-key 
+  :states 'normal
+  :keymaps 'prog-mode-map
+  "C-[" 'previous-error)
+  "C-]" 'next-error)
 
 #+END_SRC
 
@@ -896,5 +962,13 @@ Prevent the scratch buffer from being deleted
 	    (split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
 
   (purplg/connect-to-irc)
+
+#+END_SRC
+
+* Hass
+
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+
+(use-package hass :local-repo "~/code/elisp/hass/")
 
 #+END_SRC
