@@ -1055,6 +1055,9 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
     :states 'normal
     "o t" '(telega :whick-key "telegram"))
 
-  (telega))
+  (telega)
+
+  :general
+  ("C-g" 'telega-chatbuf-cancel-aux))
 
 #+END_SRC
