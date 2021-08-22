@@ -7,6 +7,48 @@
 - Workspaces
 
 * Basic settings
+** Keep config directory clean
+
+Move all the packages and other generated files into a different directory to keep the configuration
+directory clean
+
+ #+BEGIN_SRC emacs-lisp :results none
+
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
+      url-history-file (expand-file-name "url/history" user-emacs-directory))
+
+ #+END_SRC
+
+** Package management with straight.el
+*** Bootstrap copy-pasta
+
+Copied from the straight.el repository README to begin using straight.el
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+    (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+      (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+      (goto-char (point-max))
+    (eval-print-last-sexp)))
+(load bootstrap-file nil 'nomessage))
+
+#+END_SRC
+
+*** use-package integration for convenient functions
+
+I prefer the additional features of ~use-package~. This lines enables using ~use-package~ features with straight
+
+#+BEGIN_SRC emacs-lisp :results none
+(straight-use-package 'use-package)
+#+END_SRC
+
 ** config file
 
 Helper vars and functions to assist with finding config files
@@ -52,18 +94,6 @@ Silence compiler warnings
 (setq native-comp-async-report-warnings-errors nil)
  #+END_SRC
 
-** Keep config directory clean
-
-Move all the packages and other generated files into a different directory to keep the configuration
-directory clean
-
- #+BEGIN_SRC emacs-lisp :results none
-
-(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
-      url-history-file (expand-file-name "url/history" user-emacs-directory))
-
- #+END_SRC
-
 ** Util functions
 
 A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
@@ -74,36 +104,6 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
   (save-excursion
       (funcall inner)))
 
-#+END_SRC
-
-* Package management with straight.el
-** Bootstrap copy-pasta
-
-Copied from the straight.el repository README to begin using straight.el
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(defvar bootstrap-version)
-(let ((bootstrap-file
-      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-    (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-      (url-retrieve-synchronously
-        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-        'silent 'inhibit-cookies)
-      (goto-char (point-max))
-    (eval-print-last-sexp)))
-(load bootstrap-file nil 'nomessage))
-
-#+END_SRC
-
-** use-package integration for convenient functions
-
-I prefer the additional features of ~use-package~. This lines enables using ~use-package~ features with straight
-
-#+BEGIN_SRC emacs-lisp :results none
-(straight-use-package 'use-package)
 #+END_SRC
 
 * Keybinds
