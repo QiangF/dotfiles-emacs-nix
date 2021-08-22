@@ -346,8 +346,13 @@ dashboard-startup-banner (+ 1 (random 3)))
 
   (dashboard-setup-startup-hook)
 
-  (add-hook 'dashboard-after-initialize-hook (lambda () 
-    (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill)))))
+  (add-hook 'dashboard-after-initialize-hook (lambda ()
+    (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+
+  :general
+  (:states 'normal
+  :keymaps 'dashboard-mode-map
+  "q" nil))
 
 #+END_SRC
 
@@ -1029,5 +1034,26 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
         erc-autojoin-channels-alist `(("irc.libera.chat" ,(split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
 
   (purplg/connect-to-irc))
+
+#+END_SRC
+
+* Telegram
+#+BEGIN_SRC emacs-lisp
+
+(use-package telega
+  :straight t
+  :config
+  (setq telega-use-images t
+        telega-emoji-use-images t
+        telega-chat-show-avatars t
+        telega-root-show-avatars t
+        telega-user-show-avatars t
+        telega-emoji-font-family "Noto Color Emoji")
+
+  (purplg/leader-key
+    :states 'normal
+    "o t" '(telega :whick-key "telegram"))
+
+  (telega))
 
 #+END_SRC
