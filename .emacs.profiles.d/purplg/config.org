@@ -1,7 +1,6 @@
 #+STARTUP: overview
 
 * Todo's
-- Org-capture
 - IRC
   Mostly configured but doesn't autojoin channels for some reason
 - Workspaces
