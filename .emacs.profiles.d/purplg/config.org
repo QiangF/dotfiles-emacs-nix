@@ -349,6 +349,11 @@ dashboard-startup-banner (+ 1 (random 3)))
   (add-hook 'dashboard-after-initialize-hook (lambda ()
     (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
 
+  (defun dashboard-refresh-buffer-silent ()
+    "Refresh buffer in background."
+    (interactive)
+    (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists)))
+
   :general
   (:states 'normal
   :keymaps 'dashboard-mode-map
@@ -1067,7 +1072,8 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 
   (with-eval-after-load 'dashboard
     (require 'telega-dashboard "/home/purplg/.emacs.profiles.d/doom/.local/straight/repos/telega.el/contrib/telega-dashboard.el")
-    (add-to-list 'dashboard-items '(telega-chats . 5) t))
+    (add-to-list 'dashboard-items '(telega-chats . 5) t)
+    (add-hook 'telega-chat-update-hook 'dashboard-refresh-buffer-silent))
 
   :general
   ("C-g" 'telega-chatbuf-cancel-aux))
