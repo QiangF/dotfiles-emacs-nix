@@ -673,7 +673,6 @@ Ivy config just in case I wanna use it for something. Disabled.
     :keymaps 'org-mode-map
     "RET" 'org-return))
 
-
 #+END_SRC
 
 * Editing
