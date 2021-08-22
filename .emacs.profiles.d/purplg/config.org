@@ -577,23 +577,23 @@ Ivy config just in case I wanna use it for something. Disabled.
 #+END_SRC
 
 * Editing
-** Disable auto save
+
+General editing tweaks
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(setq auto-save-default nil)
-
-#+END_SRC
-
-** Set fill-column to 100 characters
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq-default fill-column 100)
+(setq auto-save-default nil) ;; No autosave
+(setq-default fill-column 100) ;; Wrap text at 100 characters
+(indent-tabs-mode 0) ;; Disable tabs
 
 #+END_SRC
 
 ** Undo
+
+The default Emacs default undo system has some weird behavior where it can undo changes that
+shouldn't exist anymore and I find it confusing. ~undo-fu~ is a lot more intuitive for me since it
+will prevent undo past the beginning of history. Might try undo-tree one day, but seems unnecessary
+with version control. ~undo-fu-session~ persists undo history between Emacs sessions.
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -606,14 +606,6 @@ Ivy config just in case I wanna use it for something. Disabled.
   :config
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   (global-undo-fu-session-mode))
-
-#+END_SRC
-
-*** Disable tabs
-
-#+BEGIN_SRC emacs-lisp
-
-(indent-tabs-mode 0)
 
 #+END_SRC
 
