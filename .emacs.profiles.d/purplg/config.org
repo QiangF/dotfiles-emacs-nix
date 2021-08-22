@@ -562,6 +562,8 @@ Ivy config just in case I wanna use it for something. Disabled.
 (use-package persp-mode
   :straight t
   :config
+  (setq persp-auto-resume-time -1)
+
   ;; Modified from Doom's `+workspace--tabline
   (defun persp--format-tab (label active) 
     (propertize label
