@@ -190,13 +190,13 @@ General.el is really nice for configuring keybinds
   (setq evil-undo-system 'undo-fu)
   (evil-mode 1)
 
-  :general
   (purplg/leader-key :states 'normal
     "b p" '(evil-prev-buffer :which-key "previous")
     "b n" '(evil-next-buffer :which-key "next")
     "b N" '(evil-buffer-new :which-key "new"))
 
-  (general-define-key :states 'normal
+  :general
+  (:states 'normal
     "M-j" 'move-line-down
     "M-k" 'move-line-up
     "C-j" 'evil-forward-section-begin
@@ -340,9 +340,9 @@ Prevent the scratch buffer from being deleted
   :config
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
         dashboard-items '((projects . 5)
-	                  (recents . 5))
-	dashboard-banners-directory (concat purplg/config-dir "banners/")
-	dashboard-startup-banner (+ 1 (random 3)))
+                  (recents . 5))
+dashboard-banners-directory (concat purplg/config-dir "banners/")
+dashboard-startup-banner (+ 1 (random 3)))
 
   (dashboard-setup-startup-hook)
 
@@ -397,8 +397,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
   :general
 ;; Minibuffer Evil movement keys
-  (general-define-key
-    :keymaps 'ivy-minibuffer-map
+  (:keymaps 'ivy-minibuffer-map
     "C-S-k" 'ivy-scroll-down-command
     "C-S-j" 'ivy-scroll-up-command
     "C-k" 'ivy-previous-line
@@ -431,7 +430,6 @@ Ivy config just in case I wanna use it for something. Disabled.
     (interactive)
     (counsel-rg (thing-at-point 'symbol)))
 
-  :general
   (purplg/leader-key
     :states 'normal
     "p s" '(counsel-rg :which-key "search")
@@ -451,7 +449,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 (use-package swiper
   :straight t
   :after ivy
-  :general
+  :config
   (purplg/leader-key :states 'normal
     "s b" '(swiper :which-key "buffer")))
 
@@ -484,36 +482,33 @@ Ivy config just in case I wanna use it for something. Disabled.
     (interactive)
     (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
 
-  :general
-  (general-define-key
-    :keymaps 'minibuffer-local-map
-    "C-S-k" 'scroll-down-command
-    "C-S-j" 'scroll-up-command
-    "C-k" 'previous-line
-    "C-j" 'next-line
-    "C-l" 'vertico-insert)
-
   (purplg/leader-key
     :states 'normal
     "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
-    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
+    "p S" '(purplg/project-search-thing-at-point :which-key "search this"))
+
+  :general
+  (:keymaps 'minibuffer-local-map
+    "C-S-k" 'scroll-down-command
+    "C-S-j" 'scroll-up-command
+    "C-k" 'previous-line
+    "C-j" 'next-line
+    "C-l" 'vertico-insert))
 
 (use-package consult
   :straight t
   :after vertico
   :config
-  (recentf-mode 1)
-
-  :general
   (purplg/leader-key
     :states 'normal
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
     "s r" '(consult-ripgrep :which-key "regex")
-    "f r" '(consult-recent-file :which-key "recent")))
+    "f r" '(consult-recent-file :which-key "recent"))
+  (recentf-mode 1))
     
 (use-package consult-lsp
   :straight t
@@ -521,7 +516,7 @@ Ivy config just in case I wanna use it for something. Disabled.
   :config
   (purplg/leader-key
     :states 'normal
-    :keymap 'lsp-mode-map
+    :keymaps 'lsp-mode-map
     "s e" '(consult-lsp-diagnostics :which-key "errors")))
 
 (use-package marginalia
@@ -566,7 +561,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
 (use-package helpful
   :straight t
-  :general
+  :config
   (purplg/leader-key :states 'normal
     "h f" '(helpful-function :which-key "function")
     "h v" '(helpful-variable :which-key "variable")
@@ -633,7 +628,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 (use-package magit
   :straight t
-  :general
+  :config
   (purplg/leader-key :states 'normal
     "g" '(:which-key "git")
     "g g" '(magit-status :which-key "status")))
@@ -677,16 +672,15 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
-  :general
   (purplg/leader-key
     :states 'normal
     "c a" '(lsp-execute-code-action :which-key "execute action")
     "c f" '(lsp-format-buffer :which-key "format")
-    "c r" '(lsp-rename :which-key "rename")))
+    "c r" '(lsp-rename :which-key "rename"))
 
-  (general-define-key
-    :keymaps 'evil-motion-state-map
-    "g D" 'lsp-find-references)
+  :general
+  (:keymaps 'evil-motion-state-map
+    "g D" 'lsp-find-references))
 
 (use-package lsp-ui
   :straight t
@@ -702,8 +696,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
         lsp-ui-sideline-show-hover t)
 
   :general
-  (general-define-key
-    :keymaps 'lsp-ui-peek-mode-map
+  (:keymaps 'lsp-ui-peek-mode-map
     "j" 'lsp-ui-peek--select-next
     "h" 'lsp-ui-peek--select-prev-file
     "l" 'lsp-ui-peek--select-next-file
@@ -723,10 +716,9 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (treemacs-resize-icons 16)
   (treemacs-set-width 30)
   
-  :general
   (purplg/leader-key
-  :states 'normal
-  "o p" 'treemacs))
+    :states 'normal
+    "o p" 'treemacs))
 
 (use-package treemacs-all-the-icons
   :straight t
@@ -742,14 +734,12 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package projectile
   :straight t
   :config
-  (projectile-mode +1)
-
-  :general
   (purplg/leader-key
     :states 'normal
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
-    "p p" '(projectile-switch-project :which-key "open")))
+    "p p" '(projectile-switch-project :which-key "open"))
+  (projectile-mode +1))
 
 #+END_SRC
 
@@ -783,15 +773,14 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     (save-excursion
       (evil-open-fold)))
 
-  (general-define-key
-    :states 'normal
-    "z c" 'evil-close-fold-below
-    "z C" 'evil-close-fold)
-
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold :around 'save-excursion-wrapper)
+  (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-  (add-hook 'prog-mode-hook 'hs-minor-mode))
+  :general
+  (:states 'normal
+    "z c" 'evil-close-fold-below
+    "z C" 'evil-close-fold))
 
 #+END_SRC
 
@@ -830,7 +819,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     
   (add-hook 'rustic-mode-hook (lambda () (electric-indent-mode 1)))
 
-  :general
   (purplg/local-leader-key
     :states  'normal
     :keymaps 'rustic-mode-map
@@ -878,8 +866,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   
   :config
   (add-hook 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
-
-  :general
   (purplg/local-leader-key
     :states 'normal
     :keymaps 'org-mode-map
@@ -911,33 +897,23 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
 
   :config
-  ;; Press Enter to follow link under point
-  (setq org-return-follows-link t
-
-  ;; Stop putting indents everywhere
-        org-adapt-indentation nil
-
-  ;; Fixes src block yasnippet not placing cursor in correct place after expanding
-	org-src-tab-acts-natively nil
-
-  ;; Stop annoying bug with indenting elisp in a code block
-        org-src-preserve-indentation t
-        org-src-content-indentation 0
-  
-  ;; Don't ask for confirmation when executing a codeblock
-        org-confirm-babel-evaluate nil)
-
-  :general
-  ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
-  (general-define-key
-    :states 'normal
-    :keymaps 'org-mode-map
-    "RET" 'org-return)
+  (setq org-return-follows-link t       ;; Press Enter to follow link under point
+        org-adapt-indentation nil       ;; Stop putting indents everywhere
+        org-src-tab-acts-natively nil   ;; Fixes src block yasnippet not placing cursor in correct place after expanding
+        org-src-preserve-indentation t  ;; Stop annoying bug with indenting elisp in a code block
+        org-src-content-indentation 0   ;; "
+        org-confirm-babel-evaluate nil) ;; Don't ask for confirmation when executing a codeblock
 
   (purplg/leader-key
     :states 'normal
     :keymaps 'org-mode-map
-    "t l" '(org-toggle-link-display :which-key "link display")))
+    "t l" '(org-toggle-link-display :which-key "link display"))
+
+  :general
+  ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
+  (:states 'normal
+    :keymaps 'org-mode-map
+    "RET" 'org-return))
 
 #+END_SRC
 
