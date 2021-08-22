@@ -294,7 +294,7 @@ Prevent the scratch buffer from being deleted
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(setq-default display-line-numbesr 'visual
+(setq-default display-line-numbers 'visual
               display-line-numbers-widen t
               display-line-numbers-current-absolute t)
 
