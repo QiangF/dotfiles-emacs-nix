@@ -246,7 +246,8 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 #+RESULTS:
 
 * Interface
-** Font
+** Appearance
+*** Font
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -254,7 +255,72 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 #+END_SRC
 
-** Scratch buffer
+*** Highlight current line
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(add-hook 'text-mode-hook (lambda () (hl-line-mode 1)))
+(add-hook 'prog-mode-hook (lambda () (hl-line-mode 1)))
+
+#+END_SRC
+
+*** Hide extraneous stuff
+  
+Configures and minimalizes the main Emacs frame
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq inhibit-startup-message t)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
+
+#+END_SRC
+
+*** Relative line numbers
+
+A couple functions to enable/disable/toggle line numbers and their hooks.
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(setq-default display-line-numbers 'visual
+              display-line-numbers-widen t
+              display-line-numbers-current-absolute t)
+
+(defun purplg/relative-line-numbers ()
+  (setq-local display-line-numbers 'visual))
+
+(defun purplg/hide-line-numbers ()
+  (setq-local display-line-numbers nil))
+
+(defun purplg/toggle-line-numbers ()
+  (interactive)
+  (if display-line-numbers
+    (purplg/hide-line-numbers)
+    (purplg/relative-line-numbers)))
+
+(add-hook 'text-mode-hook 'purplg/relative-line-numbers)
+(add-hook 'prog-mode-hook 'purplg/relative-line-numbers)
+
+#+END_SRC
+
+*** Theme
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-themes
+  :straight t
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+
+(load-theme 'doom-dracula t)
+
+#+END_SRC
+
+** Features
+*** Scratch buffer
 
 Prevent the scratch buffer from being deleted
 
@@ -264,7 +330,7 @@ Prevent the scratch buffer from being deleted
 
 #+END_SRC
 
-** Dashboard
+*** Dashboard
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -293,57 +359,7 @@ Prevent the scratch buffer from being deleted
 #+RESULTS:
 | (nil Home Assistant Home Assistant (lambda (&rest _) (hass/query-entities))) |
 
-** Highlight current line
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(add-hook 'text-mode-hook (lambda () (hl-line-mode 1)))
-(add-hook 'prog-mode-hook (lambda () (hl-line-mode 1)))
-
-#+END_SRC
-
-** Hide extraneous stuff
-  
-Configures and minimalizes the main Emacs frame
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq inhibit-startup-message t)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(set-fringe-mode 10)
-
-#+END_SRC
-
-** Relative line numbers
-
-A couple functions to enable/disable/toggle line numbers and their hooks.
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(setq-default display-line-numbers 'visual
-              display-line-numbers-widen t
-              display-line-numbers-current-absolute t)
-
-(defun purplg/relative-line-numbers ()
-  (setq-local display-line-numbers 'visual))
-
-(defun purplg/hide-line-numbers ()
-  (setq-local display-line-numbers nil))
-
-(defun purplg/toggle-line-numbers ()
-  (interactive)
-  (if display-line-numbers
-    (purplg/hide-line-numbers)
-    (purplg/relative-line-numbers)))
-
-(add-hook 'text-mode-hook 'purplg/relative-line-numbers)
-(add-hook 'prog-mode-hook 'purplg/relative-line-numbers)
-
-#+END_SRC
-
-** Which-key
+*** Which-key
 
 A handy popup to show keybinds.
 
@@ -357,33 +373,8 @@ A handy popup to show keybinds.
 
 #+END_SRC
 
-** Theme
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-themes
-  :straight t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t))
-
-(load-theme 'doom-dracula t)
-
-#+END_SRC
-
-** Modeline
-
-#+BEGIN_SRC emacs-lisp :results none
-
-(use-package doom-modeline
-  :straight t
-  :config
-  (doom-modeline-mode 1))
-
-#+END_SRC
-
-** Completion framework
-*** Ivy
+*** Completion framework
+**** Ivy
 
 Ivy config just in case I wanna use it for something. Disabled.
 
@@ -465,7 +456,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
 #+END_SRC
 
-*** Vertico
+**** Vertico
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -546,7 +537,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
 #+END_SRC
 
-*** Save histry between sessions
+**** Save histry between sessions
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -554,6 +545,17 @@ Ivy config just in case I wanna use it for something. Disabled.
   :straight t
   :init
   (savehist-mode))
+
+#+END_SRC
+
+*** Modeline
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (doom-modeline-mode 1))
 
 #+END_SRC
 
@@ -605,7 +607,6 @@ Ivy config just in case I wanna use it for something. Disabled.
   (global-undo-fu-session-mode))
 
 #+END_SRC
-
 
 *** Disable tabs
 
