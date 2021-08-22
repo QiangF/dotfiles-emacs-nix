@@ -4,6 +4,7 @@
 - IRC
   Mostly configured but doesn't autojoin channels for some reason
 - Workspaces
+  Mostly configured. Need convenient way to switch between perspectives
 
 * Basic settings
 ** Keep config directory clean
