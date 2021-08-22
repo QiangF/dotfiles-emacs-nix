@@ -528,7 +528,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 (use-package orderless
   :straight t
   :after vertico
-  :init
+  :config
   (setq completion-styles '(orderless partial-completion)))
 
 #+END_SRC
