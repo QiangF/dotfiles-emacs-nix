@@ -268,7 +268,8 @@ Prevent the scratch buffer from being deleted
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(hl-line-mode 1)
+(add-hook 'text-mode-hook (lambda () (hl-line-mode 1)))
+(add-hook 'prog-mode-hook (lambda () (hl-line-mode 1)))
 
 #+END_SRC
 
