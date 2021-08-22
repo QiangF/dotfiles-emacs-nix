@@ -1039,10 +1039,13 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 #+END_SRC
 
 ** Telegram
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :results none
 
 (use-package telega
   :straight t
+  :init
+  (telega)
+
   :config
   (setq telega-use-images t
         telega-emoji-use-images t
@@ -1055,7 +1058,16 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
     :states 'normal
     "o t" '(telega :whick-key "telegram"))
 
-  (telega)
+  (telega-mode-line-mode 1)
+
+  (with-eval-after-load 'alert
+    (require 'telega-alert)
+    (telega-alert-mode 1)
+    (add-hook 'telega-load-hook 'global-telega-squash-message-mode))
+
+  (with-eval-after-load 'dashboard
+    (require 'telega-dashboard "/home/purplg/.emacs.profiles.d/doom/.local/straight/repos/telega.el/contrib/telega-dashboard.el")
+    (add-to-list 'dashboard-items '(telega-chats . 5) t))
 
   :general
   ("C-g" 'telega-chatbuf-cancel-aux))
