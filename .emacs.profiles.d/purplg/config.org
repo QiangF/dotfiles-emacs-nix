@@ -555,6 +555,58 @@ Ivy config just in case I wanna use it for something. Disabled.
 
 #+END_SRC
 
+*** Perspectives
+
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package persp-mode
+  :straight t
+  :config
+  ;; Modified from Doom's `+workspace--tabline
+  (defun persp--format-tab (label active) 
+    (propertize label
+      'face (if active
+        'doom-modeline-panel
+        'doom-modeline-bar-inactive)))
+
+  (defun persp-list () 
+  "Display a list of perspectives"
+    (interactive)
+    (message "%s"
+      (let ((names persp-names-cache)
+            (current-name (safe-persp-name
+                            (get-current-persp
+                              (selected-frame)
+                              (selected-window)))))
+        (mapconcat
+         #'identity
+          (cl-loop for name in names
+                   for i to (length names)
+                   collect
+                   (persp--format-tab
+                     (format " %d:%s " (1+ i) name)
+                     (equal current-name name)))
+         nil))))
+
+  (purplg/leader-key
+    :states 'normal
+    :keymaps 'persp-mode-map
+    "b b" '(persp-switch-to-buffer :which-key "buffer")
+    "TAB" '(:which-key "perspectives")
+    "TAB TAB" '(persp-list :which-key "list")
+    "TAB n" '(persp-next :which-key "next persp")
+    "TAB s" '(persp-switch :which-key "switch")
+    "TAB a" '(persp-add-buffer :which-key "add buffer")
+    "TAB A" '(persp-set-buffer :which-key "set buffer")
+    "TAB x" '(persp-remove-buffer :which-key "remove buffer")
+    "TAB d" '(persp-kill :which-key "kill persp")
+    "TAB r" '(persp-rename :which-key "rename")
+    "TAB p" '(persp-prev :which-key "prev persp")))
+
+  (persp-mode)
+  
+#+END_SRC
+
 * Help!
 
 #+BEGIN_SRC emacs-lisp :results none
