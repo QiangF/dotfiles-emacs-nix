@@ -795,6 +795,23 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
+**** Syntax highlighting
+
+~tree-sitter~ is a faster syntax parsing package
+#+BEGIN_SRC emacs-lisp :results none
+
+(use-package tree-sitter
+  :straight t)
+
+(use-package tree-sitter-langs
+  :straight t
+  :after tree-sitter
+  :config
+  (add-hook 'rustic-mode-hook #'tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+#+END_SRC
+
 *** Lanuages
 **** Rust
 
