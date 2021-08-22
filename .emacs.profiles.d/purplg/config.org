@@ -599,7 +599,6 @@ Ivy config just in case I wanna use it for something. Disabled.
     "TAB n" '(persp-next :which-key "next persp")
     "TAB s" '(persp-switch :which-key "switch")
     "TAB a" '(persp-add-buffer :which-key "add buffer")
-    "TAB A" '(persp-set-buffer :which-key "set buffer")
     "TAB x" '(persp-remove-buffer :which-key "remove buffer")
     "TAB d" '(persp-kill :which-key "kill persp")
     "TAB r" '(persp-rename :which-key "rename")
