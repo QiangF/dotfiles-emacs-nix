@@ -998,7 +998,8 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   "e r" '(eval-region :which-key "region"))
 
 #+END_SRC
-* password-store
+* Apps
+** password-store
 
 #+BEGIN_SRC emacs-lisp
 
@@ -1009,7 +1010,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-* IRC
+** IRC
 
 Automatically pull credentials and autojoin channels from ~pass~.
 Can't figure out why =erc-autojoin-channels-alist= isn't working even when passing a list of strings directly
@@ -1037,7 +1038,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 
 #+END_SRC
 
-* Telegram
+** Telegram
 #+BEGIN_SRC emacs-lisp
 
 (use-package telega
