@@ -811,7 +811,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     (interactive)
     (rustic-run-cargo-command "cargo run"))
     
-  (add-hook 'rustic-mode (lambda () (electric-indent-mode 1)))
+  (add-hook 'rustic-mode-hook (lambda () (electric-indent-mode 1)))
 
   :general
   (purplg/local-leader-key
