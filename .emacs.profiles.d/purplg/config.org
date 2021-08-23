@@ -146,6 +146,7 @@ General.el is really nice for configuring keybinds
 
   "h" '(:which-key "help")
   "h k" '(describe-key :which-key "key")
+  "h p" '(describe-package :which-key "package")
   "h b" '(counsel-descbinds :which-key "binds")
 
   "q" '(:which-key "quit")
