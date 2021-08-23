@@ -1072,7 +1072,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
     (add-hook 'telega-load-hook 'global-telega-squash-message-mode))
 
   (with-eval-after-load 'dashboard
-    (require 'telega-dashboard
+    (require 'telega-dashboard)
     (add-to-list 'dashboard-items '(telega-chats . 5) t)
     (add-hook 'telega-post-message-hook 'dashboard-refresh-buffer-silent))
 
