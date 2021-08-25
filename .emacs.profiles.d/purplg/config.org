@@ -607,6 +607,9 @@ Ivy config just in case I wanna use it for something. Disabled.
                      (equal current-name name)))
          nil))))
 
+  (advice-add 'persp-next :after 'persp-list)
+  (advice-add 'persp-prev :after 'persp-list)
+
   (purplg/leader-key
     :states 'normal
     :keymaps 'persp-mode-map
