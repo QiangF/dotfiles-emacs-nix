@@ -607,6 +607,7 @@ Ivy config just in case I wanna use it for something. Disabled.
                      (equal current-name name)))
          nil))))
 
+  ;; Show list of perspectives after switching
   (advice-add 'persp-next :after 'persp-list)
   (advice-add 'persp-prev :after 'persp-list)
 
