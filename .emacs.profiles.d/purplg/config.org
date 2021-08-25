@@ -891,7 +891,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold :around 'save-excursion-wrapper)
-  (add-hook 'prog-mode-hook 'hs-minor-mode)
+  (add-hook 'prog-mode-hook '(lambda () (hs-minor-mode 1)))
 
   :general
   (:states 'normal
