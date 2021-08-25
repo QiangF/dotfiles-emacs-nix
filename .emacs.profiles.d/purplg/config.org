@@ -485,6 +485,10 @@ Ivy config just in case I wanna use it for something. Disabled.
     (interactive)
     (ido-find-file-in-dir "~"))
   
+  (defun purplg/find-file-in-org-dir ()
+    (interactive)
+    (ido-find-file-in-dir org-directory))
+  
   (defun purplg/find-file-in-root-dir ()
     (interactive)
     (ido-find-file-in-dir "/"))
@@ -495,6 +499,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
   (purplg/leader-key
     :states 'normal
+    "f o" '(purplg/find-file-in-org-dir :which-key "in org")
     "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
