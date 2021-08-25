@@ -660,20 +660,24 @@ Ivy config just in case I wanna use it for something. Disabled.
   (setq org-capture-project-file "project.org")
   (setq org-capture-templates
         '(("w" "Work"
-           entry (file+headline "~/.org/Work.org" "Tasks")
-           "* TODO %?\n %i\n")
+            entry (file+headline "~/.org/Work.org" "Tasks")
+            "* TODO %?\n %i\n")
+
           ("p" "Current project"
-           entry (file+headline (lambda () (expand-file-name org-capture-project-file (projectile-project-root))) "Tasks")
-          "* TODO %?\n%i\n%a" :prepend t)
+            entry (file+headline (lambda () (expand-file-name org-capture-project-file (projectile-project-root))) "Tasks")
+            "* TODO %?\n%i\n%a" :prepend t)
+
           ("s" "Session"
-           entry (file+headline "~/.org/PC.org" "Session")
-          "* TODO %?\n%i" :prepend t)
+            entry (file+headline "~/.org/PC.org" "Session")
+            "* TODO %?\n%i" :prepend t)
+
           ("c" "PC"
-           entry (file "~/.org/PC.org")
-          "* TODO %?\n%i" :prepend t)
+            entry (file "~/.org/PC.org")
+            "* TODO %?\n%i" :prepend t)
+
           ("h" "Home"
-           entry (file+headline "~/.org/Home.org" "Tasks")
-          "* TODO %?\n%i" :prepend t)))
+            entry (file+headline "~/.org/Home.org" "Tasks")
+            "* TODO %?\n%i" :prepend t)))
 
   (purplg/leader-key
     :states 'normal
