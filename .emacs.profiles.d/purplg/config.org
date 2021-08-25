@@ -1082,6 +1082,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
       "t" 'dashboard-jump-to-telega-chats))
 
   :general
-  ("C-g" 'telega-chatbuf-cancel-aux))
+  (:keymaps 'telega-chat-mode-map
+    "C-g" 'telega-chatbuf-cancel-aux))
 
 #+END_SRC
