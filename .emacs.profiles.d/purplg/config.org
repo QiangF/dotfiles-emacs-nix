@@ -624,9 +624,9 @@ Ivy config just in case I wanna use it for something. Disabled.
     "TAB r" '(persp-rename :which-key "rename")
     "TAB n" '(persp-add-new :which-key "new")
     "TAB l" '(persp-next :which-key "next persp")
-    "TAB h" '(persp-prev :which-key "prev persp")))
+    "TAB h" '(persp-prev :which-key "prev persp"))
 
-  (persp-mode)
+  (persp-mode))
   
 #+END_SRC
 
