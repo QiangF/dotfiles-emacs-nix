@@ -758,7 +758,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 
 (hook!
   '(prog-mode-hook org-mode-hook)
-  '(lambda ()
+  (lambda ()
     (indent-tabs-mode 0) ;; Disable tabs
     (purplg/relative-line-numbers)))
 
