@@ -975,7 +975,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (general-define-key 
   :states 'normal
   :keymaps 'prog-mode-map
-  "C-[" 'previous-error)
+  "C-[" 'previous-error
   "C-]" 'next-error)
 
 #+END_SRC
