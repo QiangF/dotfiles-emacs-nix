@@ -814,6 +814,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   (purplg/leader-key
     :states 'normal
+    :keymaps 'lsp-mode-map
     "c a" '(lsp-execute-code-action :which-key "execute action")
     "c f" '(lsp-format-buffer :which-key "format")
     "c r" '(lsp-rename :which-key "rename"))
