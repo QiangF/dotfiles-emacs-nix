@@ -496,6 +496,12 @@ Ivy config just in case I wanna use it for something. Disabled.
     "C-j" 'next-line
     "C-l" 'vertico-insert))
 
+#+END_SRC
+
+Consult offers ~ivy-counsel~ like function for ~Vertico~.
+
+#+BEGIN_SRC emacs-lisp
+
 (use-package consult
   :straight t
   :after vertico
@@ -522,11 +528,25 @@ Ivy config just in case I wanna use it for something. Disabled.
     :keymaps 'lsp-mode-map
     "s e" '(consult-lsp-diagnostics :which-key "errors")))
 
+#+END_SRC
+
+~marginalia~ gives a prettier, more informative minibuffer completion
+
+#+BEGIN_SRC emacs-lisp
+
 (use-package marginalia
   :straight t
   :after vertico
   :init
   (marginalia-mode 1))
+
+#+END_SRC
+
+~orderless~ allows completion chunks (space delimited) to be search out of order. In other words, a
+query for =some function= will return the same results as =function some= with possibly a different
+sort order based on accuracy.
+
+#+BEGIN_SRC emacs-lisp
 
 (use-package orderless
   :straight t
