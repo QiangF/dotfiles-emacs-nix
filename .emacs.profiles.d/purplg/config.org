@@ -369,6 +369,7 @@ A handy popup to show keybinds.
 #+END_SRC
 
 *** Completion framework
+
 **** Ivy
 
 Ivy config just in case I wanna use it for something. Disabled.
@@ -542,6 +543,8 @@ Consult offers ~ivy-counsel~ like function for ~Vertico~.
 
 #+END_SRC
 
+**** Style
+
 ~orderless~ allows completion chunks (space delimited) to be search out of order. In other words, a
 query for =some function= will return the same results as =function some= with possibly a different
 sort order based on accuracy.
@@ -550,7 +553,6 @@ sort order based on accuracy.
 
 (use-package orderless
   :straight t
-  :after vertico
   :config
   (setq completion-styles '(orderless partial-completion)))
 
