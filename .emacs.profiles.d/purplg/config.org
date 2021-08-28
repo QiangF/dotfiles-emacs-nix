@@ -713,6 +713,16 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
     (purplg/relative-line-numbers)))
 
 #+END_SRC
+** Indentation guides
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package highlight-indent-guides
+  :straight t
+  :config
+  (setq highlight-indent-guides-method 'bitmap
+        highlight-indent-guides-responsive 'top)
+  (hook! 'prog-mode-hook 'highlight-indent-guides-mode))
+#+END_SRC
 
 ** Tweaks
 
