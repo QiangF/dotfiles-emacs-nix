@@ -761,8 +761,8 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 ** Development
-*** Tools
-**** Git
+** Tools
+*** Git
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -784,7 +784,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** Text completion
+*** Text completion
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -793,7 +793,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** Flycheck
+*** Flycheck
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package flycheck
@@ -802,7 +802,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (hook! 'lsp-mode-hook 'flycheck-mode))
 #+END_SRC
 
-**** LSP
+*** LSP
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -846,7 +846,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** File tree
+*** File tree
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -869,7 +869,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** Project management
+*** Project management
 #+BEGIN_SRC emacs-lisp :results none
 
 (use-package projectile
@@ -884,7 +884,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** Rest client
+*** Rest client
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -893,7 +893,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   
 #+END_SRC
 
-**** Code Folding
+*** Code Folding
 
 #+BEGIN_SRC emacs-lisp :results none
 
@@ -925,7 +925,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+END_SRC
 
-**** Syntax highlighting
+*** Syntax highlighting
 
 ~tree-sitter~ is a faster syntax parsing package
 #+BEGIN_SRC emacs-lisp :results none
