@@ -500,11 +500,15 @@ Ivy config just in case I wanna use it for something. Disabled.
   :straight t
   :after vertico
   :config
+  
+  (setq consult-project-root-function #'projectile-project-root)
+  
   (purplg/leader-key
     :states 'normal
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
+    "s p" '(consult-line-multi :which-key "project")
     "s r" '(consult-ripgrep :which-key "regex")
     "f r" '(consult-recent-file :which-key "recent"))
   (recentf-mode 1))
