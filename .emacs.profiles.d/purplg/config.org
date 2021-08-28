@@ -629,13 +629,13 @@ Ivy config just in case I wanna use it for something. Disabled.
   :straight t
 
   :config
-  (setq org-return-follows-link t       ;; Press Enter to follow link under point
-        org-adapt-indentation nil       ;; Stop putting indents everywhere
-        org-src-tab-acts-natively nil   ;; Fixes src block yasnippet not placing cursor in correct place after expanding
-        org-src-preserve-indentation t  ;; Stop annoying bug with indenting elisp in a code block
-        org-src-content-indentation 0   ;; "
+  (setq org-return-follows-link t         ;; Press Enter to follow link under point
+        org-adapt-indentation nil         ;; Stop putting indents everywhere
+        org-src-tab-acts-natively nil     ;; Fixes src block yasnippet not placing cursor in correct place after expanding
+        org-src-preserve-indentation t    ;; Stop annoying bug with indenting elisp in a code block
+        org-src-content-indentation 0     ;; ""
         org-confirm-babel-evaluate nil  ;; Don't ask for confirmation when executing a codeblock
-	org-directory "~/.org")
+        org-directory "~/.org")
 
   (setq org-capture-project-file "project.org")
   (setq org-capture-templates
