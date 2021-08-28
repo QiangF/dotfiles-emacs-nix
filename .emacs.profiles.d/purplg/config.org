@@ -369,7 +369,6 @@ A handy popup to show keybinds.
 #+END_SRC
 
 *** Completion framework
-
 **** Ivy
 
 Ivy config just in case I wanna use it for something. Disabled.
