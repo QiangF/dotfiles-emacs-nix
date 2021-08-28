@@ -201,7 +201,8 @@ General.el is really nice for configuring keybinds
     "M-j" 'move-line-down
     "M-k" 'move-line-up
     "C-j" 'evil-forward-section-begin
-    "C-k" 'evil-backward-section-begin))
+    "C-k" 'evil-backward-section-begin
+    "C-<tab>" 'evil-switch-to-windows-last-buffer))
 
 (use-package evil-surround
   :straight t
