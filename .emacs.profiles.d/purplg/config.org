@@ -692,6 +692,8 @@ Ivy config just in case I wanna use it for something. Disabled.
     :states 'normal
     :keymaps 'org-mode-map
     "t l" '(org-toggle-link-display :which-key "link display"))
+    
+  (org-reload)
 
   :general
   ;; Use ~org-return~ in org-mode to enable following links with RET while in Evil 'normal mode
