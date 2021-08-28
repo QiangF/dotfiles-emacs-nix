@@ -107,6 +107,12 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+
+(defalias 'after! 'with-eval-after-load)
+
+#+END_SRC
+
 * Keybinds
 ** general.el for easy keybind configuration
 
@@ -1092,12 +1098,12 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 
   (telega-mode-line-mode 1)
 
-  (with-eval-after-load 'alert
+  (after! 'alert
     (require 'telega-alert)
     (telega-alert-mode 1)
     (hook! 'telega-load-hook 'global-telega-squash-message-mode))
 
-  (with-eval-after-load 'dashboard
+  (after! 'dashboard
     (require 'telega-dashboard)
     (add-to-list 'dashboard-items '(telega-chats . 5) t)
     (hook! 'telega-post-message-hook 'dashboard-refresh-buffer-silent)
