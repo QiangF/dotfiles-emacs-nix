@@ -1094,7 +1094,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 
   (purplg/leader-key
     :states 'normal
-    "o t" '(telega :whick-key "telegram"))
+    "o c" '(telega :whick-key "telegram"))
 
   (telega-mode-line-mode 1)
 
