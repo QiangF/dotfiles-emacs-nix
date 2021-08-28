@@ -114,7 +114,9 @@ General.el is really nice for configuring keybinds
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package general
-  :straight t)
+  :straight t
+  :config
+  (defalias 'hook! 'general-add-hook))
 #+END_SRC
 
 ** Leader keys
@@ -263,8 +265,8 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 #+BEGIN_SRC emacs-lisp :results none
 
-(add-hook 'text-mode-hook (lambda () (hl-line-mode 1)))
-(add-hook 'prog-mode-hook (lambda () (hl-line-mode 1)))
+(hook! 'text-mode-hook (lambda () (hl-line-mode 1)))
+(hook! 'prog-mode-hook (lambda () (hl-line-mode 1)))
 
 #+END_SRC
 
@@ -322,7 +324,7 @@ dashboard-startup-banner (+ 1 (random 3)))
 
   (dashboard-setup-startup-hook)
 
-  (add-hook 'dashboard-after-initialize-hook (lambda ()
+  (hook! 'dashboard-after-initialize-hook (lambda ()
     (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
 
   (defun dashboard-refresh-buffer-silent ()
@@ -713,7 +715,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
-(general-add-hook
+(hook!
   '(prog-mode-hook org-mode-hook)
   '(lambda ()
     (indent-tabs-mode 0) ;; Disable tabs
@@ -778,7 +780,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
 
   :config
-  (add-hook 'prog-mode-hook 'git-gutter-mode))
+  (hook! 'prog-mode-hook 'git-gutter-mode))
 
 #+END_SRC
 
@@ -797,7 +799,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package flycheck
   :straight t
   :config
-  (add-hook 'lsp-mode-hook 'flycheck-mode))
+  (hook! 'lsp-mode-hook 'flycheck-mode))
 #+END_SRC
 
 **** LSP
@@ -913,7 +915,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold :around 'save-excursion-wrapper)
-  (add-hook 'prog-mode-hook '(lambda () (hs-minor-mode 1)))
+  (hook! 'prog-mode-hook '(lambda () (hs-minor-mode 1)))
 
   :general
   (:states 'normal
@@ -934,8 +936,8 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
   :after tree-sitter
   :config
-  (add-hook 'rustic-mode-hook #'tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  (hook! 'rustic-mode-hook #'tree-sitter-mode)
+  (hook! 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 #+END_SRC
 
@@ -988,7 +990,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package rainbow-delimiters
   :straight t
   :config
-  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+  (hook! 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
 
 #+END_SRC
 
@@ -1003,7 +1005,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (setq parinfer-rust-auto-download t)
   
   :config
-  (add-hook 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
+  (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
   (purplg/local-leader-key
     :states 'normal
     :keymaps 'org-mode-map
@@ -1092,12 +1094,12 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   (with-eval-after-load 'alert
     (require 'telega-alert)
     (telega-alert-mode 1)
-    (add-hook 'telega-load-hook 'global-telega-squash-message-mode))
+    (hook! 'telega-load-hook 'global-telega-squash-message-mode))
 
   (with-eval-after-load 'dashboard
     (require 'telega-dashboard)
     (add-to-list 'dashboard-items '(telega-chats . 5) t)
-    (add-hook 'telega-post-message-hook 'dashboard-refresh-buffer-silent)
+    (hook! 'telega-post-message-hook 'dashboard-refresh-buffer-silent)
     (general-define-key
       :states 'normal
       :keymaps 'dashboard-mode-map
