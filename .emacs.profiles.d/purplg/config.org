@@ -132,6 +132,7 @@ General.el is really nice for configuring keybinds
   "f" '(:which-key "file")
   "f f" '(find-file :which-key "find")
   "f s" '(save-buffer :which-key "save")
+  "f ." '(find-file-at-point :which-key "this")
 
   "h" '(:which-key "help")
   "h k" '(describe-key :which-key "key")
