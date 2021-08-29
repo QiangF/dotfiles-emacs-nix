@@ -848,6 +848,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     :states 'normal
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
+    "p d" '(projectile-remove-known-project :which-key "remove")
     "p p" '(projectile-switch-project :which-key "open"))
   (projectile-mode +1))
 #+END_SRC
