@@ -969,14 +969,28 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 #+END_SRC
-***** keybinds
+
+***** Refactoring
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(ignore-errors ;; TODO fix/replace
+  (use-package erefactor
+    :straight t
+    :config
+    (purplg/leader-key
+      :states 'normal
+      :keymaps 'emacs-lisp-mode-map
+      "c r" '(erefactor-rename-symbol-in-buffer :which-key rename))))
+#+END_SRC
+
+***** Keybinds
 #+BEGIN_SRC emacs-lisp :results none
 (purplg/leader-key
   :states 'normal
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
   "e b" '(eval-buffer :which-key "buffer")
-  "e f" '(eval-defun :which-key "function"))
+  "e f" '(eval-defun :which-key "function")
+  "b c" '(emacs-lisp-byte-compile-and-load :which-key "compile and load"))
 
 (purplg/leader-key
   :states 'visual
