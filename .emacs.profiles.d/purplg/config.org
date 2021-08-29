@@ -1095,3 +1095,13 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   :config
   (setq tramp-default-method "ssh"))
 #+END_SRC
+** Terminal
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package vterm
+  :straight t
+  :config
+  (purplg/leader-key
+   :states 'normal
+   "o t" 'vterm))
+#+END_SRC
