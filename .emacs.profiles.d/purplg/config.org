@@ -971,7 +971,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 ***** Refactoring
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp :results none
 (ignore-errors ;; TODO fix/replace
   (use-package erefactor
     :straight t
