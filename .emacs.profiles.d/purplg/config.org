@@ -1046,7 +1046,8 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 (use-package telega
   :straight t
   :init
-  (telega)
+  (when (daemonp)
+    (telega))
 
   :config
   (setq telega-use-images t
@@ -1060,7 +1061,8 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
     :states 'normal
     "o c" '(telega :whick-key "telegram"))
 
-  (telega-mode-line-mode 1)
+  (when (daemonp)
+    (telega-mode-line-mode 1))
 
   (after! 'alert
     (require 'telega-alert)
