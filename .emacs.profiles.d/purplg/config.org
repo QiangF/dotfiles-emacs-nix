@@ -387,7 +387,7 @@ Ivy config just in case I wanna use it for something. Disabled.
     :states 'normal
     "p s" '(counsel-rg :which-key "search")
     "f f" '(counsel-find-file :which-key "in profile")
-    "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
+    "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
     "f r" '(counsel-recentf :which-key "find recent")
@@ -440,7 +440,7 @@ Ivy config just in case I wanna use it for something. Disabled.
   (purplg/leader-key
     :states 'normal
     "f o" '(purplg/find-file-in-org-dir :which-key "in org")
-    "f p" '(purplg/find-file-in-profile-dir :which-key "in profile")
+    "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
     "f /" '(purplg/find-file-in-root-dir :which-key "in root")
     "p S" '(purplg/project-search-thing-at-point :which-key "search this"))
