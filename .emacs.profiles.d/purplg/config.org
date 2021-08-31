@@ -860,31 +860,28 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 **** Code Folding
 
 #+BEGIN_SRC emacs-lisp :results none
-(use-package hideshow
-  :straight t
-  :config
+(defun evil-close-fold-below ()
+  "Close fold on current line instead of enclosing block at point"
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (evil-close-fold)))
 
-  (defun evil-close-fold-below ()
-    "Close fold on current line instead of enclosing block at point"
-    (interactive)
-    (save-excursion
-      (end-of-line)
-      (evil-close-fold)))
+(defun evil-open-fold-save ()
+  "Keep point in place when opening fold"
+  (interactive)
+  (save-excursion
+    (evil-open-fold)))
 
-  (defun evil-open-fold-save ()
-    "Keep point in place when opening fold"
-    (interactive)
-    (save-excursion
-      (evil-open-fold)))
+;; Keep cursor in place when opening a fold
+(advice-add 'evil-open-fold :around 'save-excursion-wrapper)
 
-  ;; Keep cursor in place when opening a fold
-  (advice-add 'evil-open-fold :around 'save-excursion-wrapper)
-  (hook! 'prog-mode-hook '(lambda () (hs-minor-mode 1)))
+(general-define-key
+  :states 'normal
+  "z c" 'evil-close-fold-below
+  "z C" 'evil-close-fold)
 
-  :general
-  (:states 'normal
-    "z c" 'evil-close-fold-below
-    "z C" 'evil-close-fold))
+(hook! 'prog-mode-hook 'hs-minor-mode)
 #+END_SRC
 
 **** Syntax highlighting
