@@ -23,25 +23,25 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 
 
 Save recent files every time a new file is 'found'
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (add-hook! 'find-file-hook #'recentf-save-list)
-#+end_src
+#+END_SRC
 
 Save recent files every 5 minutes
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (run-at-time (current-time) (* 5 60) 'recentf-save-list)
-#+end_src
+#+END_SRC
 
 Force minibuffers to follow the bottom of the output as the compilation (or test) runs. I wanted this functionality for running cargo tests so I could quickly see if a test passed or failed.
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq compilation-scroll-output t)
-#+end_src
+#+END_SRC
 
 Garbage collection
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq gc-cons-threshold 402653184)
 (setq gc-cons-percentage 0.6)
-#+end_src
+#+END_SRC
 
 * Font
 Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -80,7 +80,7 @@ available. You can either set `doom-theme' or manually load a theme with the
 change the background color of the [focused/active] window
 
 There is a problem with this where if you have the same buffer open in multiple windows, both windows will be the inactive color despite one of them being active
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (setq highlighted-window-face '(:background "#1a1c23"))
 (defun highlight-selected-window ()
   "Highlight selected window with a different background color."
@@ -91,7 +91,7 @@ There is a problem with this where if you have the same buffer open in multiple 
                       (buffer-face-set highlighted-window-face)))))
   (buffer-face-set 'default))
 (add-hook! 'buffer-list-update-hook 'highlight-selected-window)
-#+end_src
+#+END_SRC
 
 * Key bindings
 ** Find file
@@ -154,11 +154,11 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
  '+fold/close-all-level-2)
 #+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (map!
  :n "C-M-D"
  'evil-multiedit-match-all)
-#+end_src
+#+END_SRC
 
 ** Journal
 #+BEGIN_SRC emacs-lisp
@@ -195,7 +195,7 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
  :n "a" )
 #+END_SRC
 ** Point registers
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (map! :desc "Point to register"
       :leader
       :n "\""
@@ -205,15 +205,15 @@ Fold all folds at level 2... weird hack for some project I worked on a long time
       :leader
       :n "'"
       'register-to-point)
-#+end_src
+#+END_SRC
 ** git-gutter
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (map! :desc "git hunk diff"
       :leader
       :n "g d"
       'git-gutter:popup-hunk)
-#+end_src
+#+END_SRC
 
 * Packages
 ** persp-mode
@@ -260,7 +260,7 @@ Set the default location of org files
 #+END_SRC
 *** Capture Templates
 
-#+begin_src emacs-lisp :results silent
+#+BEGIN_SRC emacs-lisp :results silent
 (setq +org-capture-todo-file "project.org")
 (setq org-capture-templates
       '(("w" "Work"
@@ -278,7 +278,7 @@ Set the default location of org files
         ("h" "Home"
          entry (file+headline "~/.org/Home.org" "Tasks")
         "* TODO %?\n%i" :prepend t)))
-#+end_src
+#+END_SRC
 
 ** lsp-mode
 *** General
@@ -353,12 +353,12 @@ Also excludes some Unity files from treemacs
 #+END_SRC
 ** undo-fu
 
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
-#+end_src
+#+END_SRC
 ** hl-todo
 Existing =hl-todo-keyword-faces=
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (("TODO" warning bold)
  ("FIXME" error bold)
  ("HACK" font-lock-constant-face bold)
@@ -367,31 +367,31 @@ Existing =hl-todo-keyword-faces=
  ("DEPRECATED" font-lock-doc-face bold)
  ("BUG" error bold)
  ("XXX" font-lock-constant-face bold))
-#+end_src
+#+END_SRC
 
 Append "LEARN" to above
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (after! hl-todo
     :config
     (add-to-list 'hl-todo-keyword-faces '("LEARN" font-lock-keyword-face bold)))
-#+end_src
+#+END_SRC
 ** telega
 
 Keybind to open Telega, a Telegram client
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (map! :desc "Telega"
  :leader
  :n "o c"
  'telega )
-#+end_src
+#+END_SRC
 
 These settings are required to be set manually when running emacs in daemon mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq telega-use-images t)
 (setq telega-emoji-font-family "Noto Color Emoji")
 (setq telega-emoji-use-images t)
 (setq telega-online-status-function t)
-#+end_src
+#+END_SRC
 ** circe (irc)
 
 Dunno why authentication fails when =:sasl_username= uses a similar closure as the =:sasl_secret= closure but for ~user~ instead. Whatever, the important part is the password
@@ -406,16 +406,16 @@ Dunno why authentication fails when =:sasl_username= uses a similar closure as t
 #+END_SRC
 ** rustic-mode
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq-hook! 'rustic-mode-hook fill-column 100)
-#+end_src
+#+END_SRC
 
 *** ron-mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (use-package! ron-mode)
-#+end_src
+#+END_SRC
 ** code folding
 
-#+begin_src emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package! yafolding)
-#+end_src
+#+END_SRC
