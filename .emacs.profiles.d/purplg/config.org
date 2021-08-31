@@ -632,8 +632,8 @@ sort order based on accuracy.
           ("h" "Home"
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))
-  
-  (hook! 'org-mode-hook 'flyspell-mode)
+
+  (hook! 'org-mode-hook '(flyspell-mode org-indent-mode))
 
   (purplg/leader-key
     :states 'normal
