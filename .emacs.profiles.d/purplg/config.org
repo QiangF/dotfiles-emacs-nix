@@ -128,6 +128,7 @@ General.el is really nice for configuring keybinds
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
   "t n" '(purplg/toggle-line-numbers :which-key "line numbers")
+  "t w" '(whitespace-mode :which-key "whitespace")
 
   "f" '(:which-key "file")
   "f f" '(find-file :which-key "find")
