@@ -1,4 +1,9 @@
 #+STARTUP: overview
+#+TITLE: PurplG's Emacs Config
+#+EXPORT_FILE_NAME: export/config.html
+#+OPTIONS: num:1
+#+OPTIONS: toc:nil
+#+OPTIONS: html-postamble:nil
 
 * Basic settings
 ** Keep config directory clean
