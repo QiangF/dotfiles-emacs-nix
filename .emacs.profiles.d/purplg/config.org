@@ -248,8 +248,7 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 *** Highlight current line
 
 #+BEGIN_SRC emacs-lisp :results none
-(hook! 'text-mode-hook (lambda () (hl-line-mode 1)))
-(hook! 'prog-mode-hook (lambda () (hl-line-mode 1)))
+(hook! 'prog-mode-hook 'hl-line-mode)
 #+END_SRC
 
 *** Hide extraneous stuff
