@@ -101,6 +101,11 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 (defalias 'after! 'with-eval-after-load)
 #+END_SRC
 
+** Disable annoying bell
+#+BEGIN_SRC emacs-lisp :results none
+(setq ring-bell-function 'ignore)
+#+END_SRC
+
 * Keybinds
 ** general.el for easy keybind configuration
 
