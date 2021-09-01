@@ -1,4 +1,4 @@
-#+STARTUP: overview
+#+STARTUP: content
 #+TITLE: PurplG's Emacs Config
 #+EXPORT_FILE_NAME: export/config.html
 #+OPTIONS: num:1
