@@ -121,14 +121,19 @@ General.el is really nice for configuring keybinds
 ** Leader keys
 
 #+BEGIN_SRC emacs-lisp :results none
-(general-create-definer purplg/leader-key :prefix "SPC")
-(general-create-definer purplg/local-leader-key :prefix "SPC m")
+(general-create-definer purplg/leader-key
+  :states '(normal visual)
+  :prefix "SPC")
+
+(general-create-definer purplg/local-leader-key
+  :states '(normal visual)
+  :prefix "SPC m")
 #+END_SRC
 
 ** Global keybinds
 
 #+BEGIN_SRC emacs-lisp :results none
-(purplg/leader-key :states 'normal
+(purplg/leader-key
   "m" '(:which-key "local")
   "o" '(:which-key "open")
   "s" '(:which-key "search")
@@ -394,7 +399,6 @@ Ivy config just in case I wanna use it for something. Disabled.
     (counsel-rg (thing-at-point 'symbol)))
 
   (purplg/leader-key
-    :states 'normal
     "p s" '(counsel-rg :which-key "search")
     "f f" '(counsel-find-file :which-key "in profile")
     "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
@@ -413,7 +417,7 @@ Ivy config just in case I wanna use it for something. Disabled.
   :straight t
   :after ivy
   :config
-  (purplg/leader-key :states 'normal
+  (purplg/leader-key
     "s b" '(swiper :which-key "buffer")))
 #+END_SRC
 
@@ -448,7 +452,6 @@ Ivy config just in case I wanna use it for something. Disabled.
     (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
 
   (purplg/leader-key
-    :states 'normal
     "f o" '(purplg/find-file-in-org-dir :which-key "in org")
     "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
     "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
@@ -475,7 +478,6 @@ Consult offers ~ivy-counsel~ like function for ~Vertico~.
   (setq consult-project-root-function #'projectile-project-root)
   
   (purplg/leader-key
-    :states 'normal
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
@@ -489,7 +491,6 @@ Consult offers ~ivy-counsel~ like function for ~Vertico~.
   :after consult lsp
   :config
   (purplg/leader-key
-    :states 'normal
     :keymaps 'lsp-mode-map
     "s e" '(consult-lsp-diagnostics :which-key "errors")))
 #+END_SRC
@@ -573,9 +574,8 @@ sort order based on accuracy.
   ;; Show list of perspectives after switching
   (advice-add 'persp-next :after 'persp-list)
   (advice-add 'persp-prev :after 'persp-list)
-
+  
   (purplg/leader-key
-    :states 'normal
     :keymaps 'persp-mode-map
     "b b" '(persp-switch-to-buffer :which-key "buffer")
     "TAB" '(:which-key "perspectives")
@@ -599,7 +599,7 @@ sort order based on accuracy.
 (use-package helpful
   :straight t
   :config
-  (purplg/leader-key :states 'normal
+  (purplg/leader-key
     "h f" '(helpful-function :which-key "function")
     "h v" '(helpful-variable :which-key "variable")
     "h m" '(helpful-macro :which-key "macro")
@@ -646,11 +646,9 @@ sort order based on accuracy.
   (hook! 'org-mode-hook '(flyspell-mode org-indent-mode))
 
   (purplg/leader-key
-    :states 'normal
     "X" 'org-capture)
 
   (purplg/leader-key
-    :states 'normal
     :keymaps 'org-mode-map
     "t l" '(org-toggle-link-display :which-key "link display"))
     
@@ -755,7 +753,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package magit
   :straight t
   :config
-  (purplg/leader-key :states 'normal
+  (purplg/leader-key
     "g" '(:which-key "git")
     "g g" '(magit-status :which-key "status")))
 #+END_SRC
@@ -794,7 +792,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
   (purplg/leader-key
-    :states 'normal
     :keymaps 'lsp-mode-map
     "c a" '(lsp-execute-code-action :which-key "execute action")
     "c f" '(lsp-format-buffer :which-key "format")
@@ -837,7 +834,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (treemacs-set-width 30)
   
   (purplg/leader-key
-    :states 'normal
     "o p" 'treemacs))
 
 (use-package treemacs-all-the-icons
@@ -853,7 +849,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
   :config
   (purplg/leader-key
-    :states 'normal
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
     "p d" '(projectile-remove-known-project :which-key "remove")
@@ -928,7 +923,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (hook! 'rustic-mode-hook (lambda () (electric-indent-mode 1)))
 
   (purplg/local-leader-key
-    :states  'normal
     :keymaps 'rustic-mode-map
     "c" '(:which-key "cargo")
     "c r" '(rustic-cargo-run-no-args :which-key "run")
@@ -969,7 +963,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :config
   (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
   (purplg/local-leader-key
-    :states 'normal
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 #+END_SRC
@@ -981,7 +974,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     :straight t
     :config
     (purplg/leader-key
-      :states 'normal
       :keymaps 'emacs-lisp-mode-map
       "c r" '(erefactor-rename-symbol-in-buffer :which-key rename))))
 #+END_SRC
@@ -989,7 +981,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 ***** Keybinds
 #+BEGIN_SRC emacs-lisp :results none
 (purplg/leader-key
-  :states 'normal
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
   "e b" '(eval-buffer :which-key "buffer")
@@ -1062,7 +1053,6 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
         telega-emoji-font-family "Noto Color Emoji")
 
   (purplg/leader-key
-    :states 'normal
     "o c" '(telega :whick-key "telegram"))
 
   (when (daemonp)
@@ -1106,6 +1096,5 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   :straight t
   :config
   (purplg/leader-key
-   :states 'normal
    "o t" 'vterm))
 #+END_SRC
