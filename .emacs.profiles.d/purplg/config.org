@@ -515,7 +515,7 @@ sort order based on accuracy.
 (use-package orderless
   :straight t
   :config
-  (setq completion-styles '(orderless partial-completion)))
+  (setq completion-styles '(basic orderless partial-completion)))
 #+END_SRC
 
 **** Save histry between sessions
