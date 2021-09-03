@@ -624,6 +624,7 @@ sort order based on accuracy.
         org-src-preserve-indentation t      ;; Stop annoying bug with indenting elisp in a code block
         org-confirm-babel-evaluate nil      ;; Don't ask for confirmation when executing a codeblock
         org-directory "~/.org"
+        org-agenda-files '("~/.org/PC.org")
         org-capture-project-file "project.org"
         org-capture-templates
         '(("w" "Work"
