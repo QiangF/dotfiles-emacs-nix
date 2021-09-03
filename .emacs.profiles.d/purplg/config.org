@@ -302,11 +302,12 @@ Prevent the scratch buffer from being deleted
   :straight t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
+        dashboard-banners-directory (concat purplg/config-dir "banners/")
+        dashboard-startup-banner (+ 1 (random 3))
+        dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo
         dashboard-items '((projects . 5)
                           (recents . 5)
-                          (agenda . 15))
-   dashboard-banners-directory (concat purplg/config-dir "banners/")
-   dashboard-startup-banner (+ 1 (random 3)))
+                          (agenda . 15)))
 
   (dashboard-setup-startup-hook)
 
