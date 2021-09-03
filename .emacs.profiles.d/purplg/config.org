@@ -640,7 +640,7 @@ sort order based on accuracy.
             "* TODO %?\n%i" :prepend t)
 
           ("c" "PC"
-            entry (file "~/.org/PC.org")
+            entry (file+headline "~/.org/PC.org" "Tasks")
             "* TODO %?\n%i" :prepend t)
 
           ("h" "Home"
