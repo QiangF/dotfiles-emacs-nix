@@ -218,6 +218,7 @@ General.el is really nice for configuring keybinds
   :straight t
   :after evil
   :config
+  (setq evil-collection-outline-bind-tab-p t)
   (evil-collection-init))
 #+END_SRC
 
