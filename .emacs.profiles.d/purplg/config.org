@@ -106,6 +106,10 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 (setq ring-bell-function 'ignore)
 #+END_SRC
 
+** Stop annoying jumping around in Info pages
+#+BEGIN_SRC emacs-lisp :results none
+(setq scroll-conservatively 101)
+#+END_SRC
 * Keybinds
 ** general.el for easy keybind configuration
 
