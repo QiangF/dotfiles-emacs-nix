@@ -285,9 +285,9 @@ Configures and minimalizes the main Emacs frame
   :straight t
   :config
   (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t))
+        doom-themes-enable-italic t)
 
-(load-theme 'doom-dracula t)
+  (load-theme 'doom-dracula t))
 #+END_SRC
 
 ** Features
