@@ -49,13 +49,13 @@ I prefer the additional features of ~use-package~. This lines enables using ~use
 Helper vars and functions to assist with finding config files
 
 #+BEGIN_SRC emacs-lisp :results none
-(defconst purplg/config-dir "~/.emacs.profiles.d/purplg/")
+(defconst pg/config-dir "~/.emacs.profiles.d/purplg/")
 
-(defun purplg/config-file (filename)
-  "returns the full path of a file in the purplg/config-dir
+(defun pg/config-file (filename)
+  "returns the full path of a file in the pg/config-dir
 directory if it exists"
   (unless (string-empty-p filename)
-    (let ((filepath (expand-file-name filename purplg/config-dir)))
+    (let ((filepath (expand-file-name filename pg/config-dir)))
       (if (file-exists-p filepath) filepath nil))))
 #+END_SRC
 
@@ -125,11 +125,11 @@ General.el is really nice for configuring keybinds
 ** Leader keys
 
 #+BEGIN_SRC emacs-lisp :results none
-(general-create-definer purplg/leader-key
+(general-create-definer pg/leader-key
   :states '(normal visual)
   :prefix "SPC")
 
-(general-create-definer purplg/local-leader-key
+(general-create-definer pg/local-leader-key
   :states '(normal visual)
   :prefix "SPC m")
 #+END_SRC
@@ -137,7 +137,7 @@ General.el is really nice for configuring keybinds
 ** Global keybinds
 
 #+BEGIN_SRC emacs-lisp :results none
-(purplg/leader-key
+(pg/leader-key
   "m" '(:which-key "local")
   "o" '(:which-key "open")
   "s" '(:which-key "search")
@@ -146,7 +146,7 @@ General.el is really nice for configuring keybinds
 
   "t" '(:which-key "toggle")
   "t f" '(display-fill-column-indicator-mode :which-key "fill-column")
-  "t n" '(purplg/toggle-line-numbers :which-key "line numbers")
+  "t n" '(pg/toggle-line-numbers :which-key "line numbers")
   "t w" '(whitespace-mode :which-key "whitespace")
 
   "f" '(:which-key "file")
@@ -199,7 +199,7 @@ General.el is really nice for configuring keybinds
   (setq evil-undo-system 'undo-fu)
   (evil-mode 1)
 
-  (purplg/leader-key :states 'normal
+  (pg/leader-key :states 'normal
     "b p" '(evil-prev-buffer :which-key "previous")
     "b n" '(evil-next-buffer :which-key "next")
     "b N" '(evil-buffer-new :which-key "new"))
@@ -306,7 +306,7 @@ Prevent the scratch buffer from being deleted
   :straight t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
-        dashboard-banners-directory (concat purplg/config-dir "banners/")
+        dashboard-banners-directory (concat pg/config-dir "banners/")
         dashboard-startup-banner (+ 1 (random 3))
         dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo
         dashboard-items '((projects . 5)
@@ -327,7 +327,7 @@ Prevent the scratch buffer from being deleted
     "Switch to dashboard buffer"
     (switch-to-buffer dashboard-buffer-name))
   
-  (purplg/leader-key "o d" '(dashboard-switch :which-key "dashboard"))
+  (pg/leader-key "o d" '(dashboard-switch :which-key "dashboard"))
 
   :general
   (:states 'normal
@@ -395,30 +395,30 @@ Ivy config just in case I wanna use it for something. Disabled.
         counsel-describe-function-function 'helpful-function)
 
   ;; Redefine find file functions to counsel variants
-  (defun purplg/find-file-in-profile-dir ()
+  (defun pg/find-file-in-profile-dir ()
     (interactive)
-    (counsel-find-file purplg/config-dir))
+    (counsel-find-file pg/config-dir))
   
-  (defun purplg/find-file-in-home-dir ()
+  (defun pg/find-file-in-home-dir ()
     (interactive)
     (counsel-find-file "~"))
   
-  (defun purplg/find-file-in-root-dir ()
+  (defun pg/find-file-in-root-dir ()
     (interactive)
     (counsel-find-file "/"))
 
-  (defun purplg/project-search-thing-at-point ()
+  (defun pg/project-search-thing-at-point ()
     (interactive)
     (counsel-rg (thing-at-point 'symbol)))
 
-  (purplg/leader-key
+  (pg/leader-key
     "p s" '(counsel-rg :which-key "search")
     "f f" '(counsel-find-file :which-key "in profile")
-    "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
-    "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
-    "f /" '(purplg/find-file-in-root-dir :which-key "in root")
+    "f c" '(pg/find-file-in-profile-dir :which-key "in config")
+    "f ~" '(pg/find-file-in-home-dir :which-key "in home")
+    "f /" '(pg/find-file-in-root-dir :which-key "in root")
     "f r" '(counsel-recentf :which-key "find recent")
-    "p S" '(purplg/project-search-thing-at-point :which-key "search this")))
+    "p S" '(pg/project-search-thing-at-point :which-key "search this")))
 
 (use-package ivy-rich
   :straight t
@@ -430,7 +430,7 @@ Ivy config just in case I wanna use it for something. Disabled.
   :straight t
   :after ivy
   :config
-  (purplg/leader-key
+  (pg/leader-key
     "s b" '(swiper :which-key "buffer")))
 #+END_SRC
 
@@ -444,32 +444,32 @@ Ivy config just in case I wanna use it for something. Disabled.
 
   :config
   ;; Redefine find file functions to support vertico
-  (defun purplg/find-file-in-profile-dir ()
+  (defun pg/find-file-in-profile-dir ()
     (interactive)
-    (ido-find-file-in-dir purplg/config-dir))
+    (ido-find-file-in-dir pg/config-dir))
   
-  (defun purplg/find-file-in-home-dir ()
+  (defun pg/find-file-in-home-dir ()
     (interactive)
     (ido-find-file-in-dir "~"))
   
-  (defun purplg/find-file-in-org-dir ()
+  (defun pg/find-file-in-org-dir ()
     (interactive)
     (ido-find-file-in-dir org-directory))
   
-  (defun purplg/find-file-in-root-dir ()
+  (defun pg/find-file-in-root-dir ()
     (interactive)
     (ido-find-file-in-dir "/"))
 
-  (defun purplg/project-search-thing-at-point ()
+  (defun pg/project-search-thing-at-point ()
     (interactive)
     (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
 
-  (purplg/leader-key
-    "f o" '(purplg/find-file-in-org-dir :which-key "in org")
-    "f c" '(purplg/find-file-in-profile-dir :which-key "in config")
-    "f ~" '(purplg/find-file-in-home-dir :which-key "in home")
-    "f /" '(purplg/find-file-in-root-dir :which-key "in root")
-    "p S" '(purplg/project-search-thing-at-point :which-key "search this"))
+  (pg/leader-key
+    "f o" '(pg/find-file-in-org-dir :which-key "in org")
+    "f c" '(pg/find-file-in-profile-dir :which-key "in config")
+    "f ~" '(pg/find-file-in-home-dir :which-key "in home")
+    "f /" '(pg/find-file-in-root-dir :which-key "in root")
+    "p S" '(pg/project-search-thing-at-point :which-key "search this"))
 
   :general
   (:keymaps 'minibuffer-local-map
@@ -490,7 +490,7 @@ Consult offers ~ivy-counsel~ like function for ~Vertico~.
   
   (setq consult-project-root-function #'projectile-project-root)
   
-  (purplg/leader-key
+  (pg/leader-key
     "b b" '(consult-buffer :which-key "buffer")
     "b o" '(consult-buffer-other-frame :which-key "buffer-other")
     "s b" '(consult-line :which-key "buffer")
@@ -503,7 +503,7 @@ Consult offers ~ivy-counsel~ like function for ~Vertico~.
   :straight t
   :after consult lsp
   :config
-  (purplg/leader-key
+  (pg/leader-key
     :keymaps 'lsp-mode-map
     "s e" '(consult-lsp-diagnostics :which-key "errors")))
 #+END_SRC
@@ -588,7 +588,7 @@ sort order based on accuracy.
   (advice-add 'persp-next :after 'persp-list)
   (advice-add 'persp-prev :after 'persp-list)
   
-  (purplg/leader-key
+  (pg/leader-key
     :keymaps 'persp-mode-map
     "b b" '(persp-switch-to-buffer :which-key "buffer")
     "TAB" '(:which-key "perspectives")
@@ -612,7 +612,7 @@ sort order based on accuracy.
 (use-package helpful
   :straight t
   :config
-  (purplg/leader-key
+  (pg/leader-key
     "h f" '(helpful-function :which-key "function")
     "h v" '(helpful-variable :which-key "variable")
     "h m" '(helpful-macro :which-key "macro")
@@ -659,10 +659,10 @@ sort order based on accuracy.
 
   (hook! 'org-mode-hook '(flyspell-mode org-indent-mode))
 
-  (purplg/leader-key
+  (pg/leader-key
     "X" 'org-capture)
 
-  (purplg/leader-key
+  (pg/leader-key
     :keymaps 'org-mode-map
     "t l" '(org-toggle-link-display :which-key "link display"))
     
@@ -688,19 +688,19 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
               display-line-numbers-widen t
               display-line-numbers-current-absolute t)
 
-(defun purplg/relative-line-numbers ()
+(defun pg/relative-line-numbers ()
   (interactive)
   (setq-local display-line-numbers 'visual))
 
-(defun purplg/hide-line-numbers ()
+(defun pg/hide-line-numbers ()
   (interactive)
   (setq-local display-line-numbers nil))
 
-(defun purplg/toggle-line-numbers ()
+(defun pg/toggle-line-numbers ()
   (interactive)
   (if display-line-numbers
-    (purplg/hide-line-numbers)
-    (purplg/relative-line-numbers)))
+    (pg/hide-line-numbers)
+    (pg/relative-line-numbers)))
 #+END_SRC
 ** Indentation guides
 
@@ -723,7 +723,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
   '(prog-mode-hook org-mode-hook)
   (lambda ()
     (indent-tabs-mode 0) ;; Disable tabs
-    (purplg/relative-line-numbers)))
+    (pg/relative-line-numbers)))
 #+END_SRC
 
 ** Undo
@@ -755,7 +755,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :after yasnippet-snippets
   :straight t
   :config
-  (push (expand-file-name "snippets" purplg/config-dir) yas-snippet-dirs)
+  (push (expand-file-name "snippets" pg/config-dir) yas-snippet-dirs)
   (yas-global-mode 1))
 #+END_SRC
 
@@ -767,7 +767,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package magit
   :straight t
   :config
-  (purplg/leader-key
+  (pg/leader-key
     "g" '(:which-key "git")
     "g g" '(magit-status :which-key "status")))
 #+END_SRC
@@ -805,7 +805,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
-  (purplg/leader-key
+  (pg/leader-key
     :keymaps 'lsp-mode-map
     "c a" '(lsp-execute-code-action :which-key "execute action")
     "c f" '(lsp-format-buffer :which-key "format")
@@ -847,7 +847,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (treemacs-resize-icons 16)
   (treemacs-set-width 30)
   
-  (purplg/leader-key
+  (pg/leader-key
     "o p" 'treemacs))
 
 (use-package treemacs-all-the-icons
@@ -862,7 +862,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package projectile
   :straight t
   :config
-  (purplg/leader-key
+  (pg/leader-key
     "p f" '(projectile-find-file :which-key "file")
     "p a" '(projectile-add-known-project :which-key "add")
     "p d" '(projectile-remove-known-project :which-key "remove")
@@ -936,7 +936,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     
   (hook! 'rustic-mode-hook (lambda () (electric-indent-mode 1)))
 
-  (purplg/local-leader-key
+  (pg/local-leader-key
     :keymaps 'rustic-mode-map
     "c" '(:which-key "cargo")
     "c r" '(rustic-cargo-run-no-args :which-key "run")
@@ -976,7 +976,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   
   :config
   (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
-  (purplg/local-leader-key
+  (pg/local-leader-key
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 #+END_SRC
@@ -987,21 +987,21 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (use-package erefactor
     :straight t
     :config
-    (purplg/leader-key
+    (pg/leader-key
       :keymaps 'emacs-lisp-mode-map
       "c r" '(erefactor-rename-symbol-in-buffer :which-key rename))))
 #+END_SRC
 
 ***** Keybinds
 #+BEGIN_SRC emacs-lisp :results none
-(purplg/leader-key
+(pg/leader-key
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
   "e b" '(eval-buffer :which-key "buffer")
   "e f" '(eval-defun :which-key "function")
   "b c" '(emacs-lisp-byte-compile-and-load :which-key "compile and load"))
 
-(purplg/leader-key
+(pg/leader-key
   :states 'visual
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
@@ -1043,7 +1043,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   :straight t
   :after pass
   :init
-  (defun purplg/connect-to-irc ()
+  (defun pg/connect-to-irc ()
     (interactive)
     (erc-tls :server   "irc.libera.chat"
              :port     "6697"
@@ -1056,7 +1056,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
         erc-kill-server-buffer-on-quit t
         erc-autojoin-channels-alist `(("irc.libera.chat" ,(split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
 
-  (purplg/connect-to-irc))
+  (pg/connect-to-irc))
 #+END_SRC
 
 ** Telegram
@@ -1075,7 +1075,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
         telega-user-show-avatars t
         telega-emoji-font-family "Noto Color Emoji")
 
-  (purplg/leader-key
+  (pg/leader-key
     "o c" '(telega :whick-key "telegram"))
 
   (when (daemonp)
