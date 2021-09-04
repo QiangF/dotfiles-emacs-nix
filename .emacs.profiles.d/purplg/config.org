@@ -1008,6 +1008,15 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   "e r" '(eval-region :which-key "region"))
 #+END_SRC
 
+***** Package lint
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package package-lint
+  :straight t)
+
+(use-package flycheck-package
+  :straight t)
+#+END_SRC
 **** Yaml
 #+BEGIN_SRC emacs-lisp :results none
 (use-package yaml-mode
