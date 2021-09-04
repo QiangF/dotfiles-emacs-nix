@@ -322,11 +322,17 @@ Prevent the scratch buffer from being deleted
     "Refresh buffer in background."
     (interactive)
     (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists)))
+  
+  (defun dashboard-switch ()
+    "Switch to dashboard buffer"
+    (switch-to-buffer dashboard-buffer-name))
+  
+  (purplg/leader-key "o d" '(dashboard-switch :which-key "dashboard"))
 
   :general
   (:states 'normal
-  :keymaps 'dashboard-mode-map
-  "q" nil))
+   :keymaps 'dashboard-mode-map
+   "q" nil))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp :tangle no
