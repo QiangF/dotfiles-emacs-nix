@@ -296,6 +296,16 @@ Configures and minimalizes the main Emacs frame
   (load-theme 'doom-dracula t))
 #+END_SRC
 
+*** Visual page break
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package page-break-lines
+  :defer t
+  :straight t
+  :config
+  (global-page-break-lines-mode))
+#+END_SRC
+
 ** Features
 *** Scratch buffer
 
