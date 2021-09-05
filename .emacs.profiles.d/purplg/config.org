@@ -97,7 +97,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
       (funcall inner)))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :results none
 (defalias 'after! 'with-eval-after-load)
 #+END_SRC
 
