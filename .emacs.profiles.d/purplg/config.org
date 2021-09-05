@@ -997,13 +997,13 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 ***** Refactoring
 #+BEGIN_SRC emacs-lisp :results none
-(ignore-errors ;; TODO fix/replace
-  (use-package erefactor
-    :straight t
-    :config
-    (pg/leader
-      :keymaps 'emacs-lisp-mode-map
-      "c r" '(erefactor-rename-symbol-in-buffer :which-key rename))))
+(use-package erefactor
+  :straight t
+  :defer t
+  :init
+  (pg/leader
+    :keymaps 'emacs-lisp-mode-map
+    "c r" '(erefactor-rename-symbol-in-buffer :which-key rename)))
 #+END_SRC
 
 ***** Keybinds
