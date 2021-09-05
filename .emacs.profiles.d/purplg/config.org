@@ -110,6 +110,10 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 #+BEGIN_SRC emacs-lisp :results none
 (setq scroll-conservatively 101)
 #+END_SRC
+** esup
+#+BEGIN_SRC emacs-lisp :results none
+(setq esup-user-init-file (expand-file-name (concat pg/config-dir "init.el")))
+#+END_SRC
 * Keybinds
 ** general.el for easy keybind configuration
 
