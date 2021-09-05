@@ -112,6 +112,8 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 #+END_SRC
 ** esup
 #+BEGIN_SRC emacs-lisp :results none
+(use-package esup
+  :straight t)
 (setq esup-user-init-file (expand-file-name (concat pg/config-dir "init.el")))
 #+END_SRC
 * Keybinds
