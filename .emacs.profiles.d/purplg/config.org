@@ -11,10 +11,10 @@
 Move all the packages and other generated files into a different directory to keep the configuration
 directory clean
 
- #+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp :results none
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory))
- #+END_SRC
+#+END_SRC
 
 ** Package management with straight.el
 *** Bootstrap copy-pasta
