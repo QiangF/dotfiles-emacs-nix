@@ -269,7 +269,7 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 *** Highlight current line
 
 #+BEGIN_SRC emacs-lisp :results none
-(hook! 'prog-mode-hook 'hl-line-mode)
+(hook! 'prog-mode-hook #'hl-line-mode)
 #+END_SRC
 
 *** Hide extraneous stuff
@@ -321,8 +321,8 @@ Prevent the scratch buffer from being deleted
 
   (dashboard-setup-startup-hook)
 
-  (hook! 'dashboard-after-initialize-hook (lambda ()
-                                           (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+  (hook! 'dashboard-after-initialize-hook #'(lambda ()
+                                              (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
 
   (defun dashboard-refresh-buffer-silent ()
     "Refresh buffer in background."
@@ -663,7 +663,7 @@ sort order based on accuracy.
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))
 
-  (hook! 'org-mode-hook '(flyspell-mode org-indent-mode))
+  (hook! 'org-mode-hook #'(flyspell-mode org-indent-mode))
 
   (pg/leader
     "X" 'org-capture)
@@ -716,7 +716,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
   :config
   (setq highlight-indent-guides-method 'bitmap
         highlight-indent-guides-responsive 'top)
-  (hook! 'prog-mode-hook 'highlight-indent-guides-mode))
+  (hook! 'prog-mode-hook #'highlight-indent-guides-mode))
 #+END_SRC
 
 ** Tweaks
@@ -725,11 +725,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
-(hook!
-  '(prog-mode-hook org-mode-hook)
-  (lambda ()
-    (indent-tabs-mode 0) ;; Disable tabs
-    (pg/relative-line-numbers)))
+(hook! '(prog-mode-hook org-mode-hook) #'(indent-tabs-mode pg/relative-line-numbers))
 #+END_SRC
 
 ** Undo
@@ -783,7 +779,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
 
   :config
-  (hook! 'prog-mode-hook 'git-gutter-mode))
+  (hook! 'prog-mode-hook #'git-gutter-mode))
 #+END_SRC
 
 **** Text completion
@@ -799,7 +795,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package flycheck
   :straight t
   :config
-  (hook! 'lsp-mode-hook 'flycheck-mode))
+  (hook! 'lsp-mode-hook #'flycheck-mode))
 #+END_SRC
 
 **** LSP
@@ -907,7 +903,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   "z c" 'evil-close-fold-below
   "z C" 'evil-close-fold)
 
-(hook! 'prog-mode-hook 'hs-minor-mode)
+(hook! 'prog-mode-hook #'hs-minor-mode)
 #+END_SRC
 
 **** Syntax highlighting
@@ -940,7 +936,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     (interactive)
     (rustic-run-cargo-command "cargo run"))
     
-  (hook! 'rustic-mode-hook (lambda () (electric-indent-mode 1)))
+  (hook! 'rustic-mode-hook #'electric-indent-mode)
 
   (pg/local-leader
     :keymaps 'rustic-mode-map
@@ -968,7 +964,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package rainbow-delimiters
   :straight t
   :config
-  (hook! 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+  (hook! 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 #+END_SRC
 
 ***** Parinfer - for easy elisp paren management
@@ -981,7 +977,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (setq parinfer-rust-auto-download t)
   
   :config
-  (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
+  (hook! 'parinfer-rust-mode-hook #'electric-indent-mode)
   (pg/local-leader
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
@@ -1090,7 +1086,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   (after! 'alert
     (require 'telega-alert)
     (telega-alert-mode 1)
-    (hook! 'telega-load-hook 'global-telega-squash-message-mode))
+    (hook! 'telega-load-hook #'global-telega-squash-message-mode))
 
   (after! 'dashboard
     (require 'telega-dashboard)
