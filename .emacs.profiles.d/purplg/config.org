@@ -853,14 +853,15 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 #+BEGIN_SRC emacs-lisp :results none
 (use-package treemacs
+  :defer t
   :straight t
 
   :config
   (treemacs-resize-icons 16)
-  (treemacs-set-width 30)
+  (treemacs-set-width 30))
   
-  (pg/leader
-    "o p" 'treemacs))
+(pg/leader
+  "o p" 'treemacs)
 
 (use-package treemacs-all-the-icons
   :straight t
