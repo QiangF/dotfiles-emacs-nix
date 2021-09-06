@@ -991,7 +991,6 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (setq parinfer-rust-auto-download t)
   
   :config
-  (hook! 'parinfer-rust-mode-hook #'electric-indent-mode)
   (pg/local-leader
     :keymaps 'org-mode-map
     "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
@@ -1033,6 +1032,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (use-package flycheck-package
   :straight t)
 #+END_SRC
+
 **** Yaml
 #+BEGIN_SRC emacs-lisp :results none
 (use-package yaml-mode
