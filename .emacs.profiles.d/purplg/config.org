@@ -682,8 +682,6 @@ sort order based on accuracy.
     :keymaps 'org-mode-map
     "t l" '(org-toggle-link-display :which-key "link display"))
     
-  (org-reload)
-
   :general
   (:states 'normal
    :keymaps 'org-src-mode-map
