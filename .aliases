@@ -5,6 +5,8 @@ gclonecd() {
 }
 alias clone="cd $HOME/code/git && gclonecd"
 
+alias tmp="cd $(mktemp -d)"
+
 alias l=ls
 alias ll="ls -al"
 
