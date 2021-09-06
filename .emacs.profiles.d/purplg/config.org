@@ -42,6 +42,7 @@ I prefer the additional features of ~use-package~. This lines enables using ~use
 
 #+BEGIN_SRC emacs-lisp :results none
 (straight-use-package 'use-package)
+(setq straight-disable-native-compile nil)
 #+END_SRC
 
 ** config file
