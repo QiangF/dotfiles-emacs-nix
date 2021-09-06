@@ -972,6 +972,13 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 **** Emacs Lisp
+
+Disable tabs in elisp mode
+
+#+BEGIN_SRC emacs-lisp :results none
+(hook! 'emacs-lisp-mode-hook (lambda () (indent-tabs-mode 0)))
+#+END_SRC
+
 ***** Rainbow Delimiters
 
 #+BEGIN_SRC emacs-lisp :results none
