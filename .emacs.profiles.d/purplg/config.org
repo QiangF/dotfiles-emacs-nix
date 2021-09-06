@@ -726,7 +726,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 (use-package highlight-indent-guides
   :straight t
   :config
-  (setq highlight-indent-guides-method 'bitmap
+  (setq highlight-indent-guides-method 'column
         highlight-indent-guides-responsive 'top)
   (hook! 'prog-mode-hook #'highlight-indent-guides-mode))
 #+END_SRC
