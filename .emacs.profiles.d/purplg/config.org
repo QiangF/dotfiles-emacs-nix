@@ -864,7 +864,14 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   :config
   (treemacs-resize-icons 16)
-  (treemacs-set-width 30))
+  (treemacs-set-width 30)
+  :general
+  (:states 'normal
+   :keymaps 'treemacs-mode-map
+   "C-j" 'treemacs-next-neighbour
+   "C-k" 'treemacs-previous-neighbour
+   "M-j" 'treemacs-move-project-down
+   "M-k" 'treemacs-move-project-up))
 
 (use-package treemacs-all-the-icons
   :straight t
