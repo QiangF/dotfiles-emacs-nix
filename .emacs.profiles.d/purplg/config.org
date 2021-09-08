@@ -935,7 +935,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (hook! 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+END_SRC
 
-*** Lanuages
+*** Languages
 **** Rust
 
 #+BEGIN_SRC emacs-lisp :results none
