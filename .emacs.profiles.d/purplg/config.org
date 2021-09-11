@@ -84,6 +84,8 @@ Silence compiler warnings
 #+BEGIN_SRC emacs-lisp :results none
 (when (string= "framework" (system-name))
   (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+(when (string= "desktop" (system-name))
+  (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org"))
 #+END_SRC
 ** Util functions
 
@@ -269,12 +271,6 @@ I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just
 
 * Interface
 ** Appearance
-*** Font
-
-#+BEGIN_SRC emacs-lisp :results none
-(add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
-#+END_SRC
-
 *** Highlight current line
 
 #+BEGIN_SRC emacs-lisp :results none
