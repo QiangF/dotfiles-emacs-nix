@@ -1,2 +1,5 @@
-config.el
+*.el
+!early-init.el
+!init.el
+!erc-sasl.el
 *~
