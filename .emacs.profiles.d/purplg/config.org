@@ -1160,3 +1160,47 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   (pg/leader
    "o t" 'eshell))
 #+END_SRC
+
+** Home Assistant
+
+*** Configuration
+#+BEGIN_SRC emacs-lisp :results none
+(after! 'hass
+  (setq hass-url "http://homeassistant:8123"
+        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")))
+#+END_SRC
+
+*** Sources
+
+GitHub
+#+BEGIN_SRC emacs-lisp :results none
+(use-package hass
+  :straight '(:type git
+              :host github
+              :repo "purplg/hass")
+  :init
+  (hass-mode 1))
+#+END_SRC
+
+GitLab
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(use-package hass
+  :straight '(:type git
+              :host gitlab
+              :repo "purplg/hass")
+  :init
+  (hass-mode 1))
+#+END_SRC
+
+Development
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(straight-use-package
+  '(hass :local-repo "~/code/elisp/hass"))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(use-package hass
+  :straight '(:local-repo "~/code/elisp/hass")
+  :init
+  (hass-mode 1))
+#+END_SRC
