@@ -1155,9 +1155,9 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 ** Terminal
 
 #+BEGIN_SRC emacs-lisp :results none
-(use-package vterm
+(use-package eshell
   :straight t
   :config
   (pg/leader
-   "o t" 'vterm))
+   "o t" 'eshell))
 #+END_SRC
