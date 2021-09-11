@@ -1,0 +1,58 @@
+* Environment
+
+Copy my user enviroment settings into Emacs. Necessary for some things like using Rust Cargo crates
+
+#+BEGIN_SRC emacs-lisp
+(when (daemonp)
+(use-package exec-path-from-shell
+:straight t
+:init
+(exec-path-from-shell-initialize)))
+#+END_SRC
+
+* Native comp
+
+Silence compiler warnings
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq native-comp-async-report-warnings-errors nil)
+#+END_SRC
+
+* Per system settings
+#+BEGIN_SRC emacs-lisp :results none
+(cond ((string= "framework" (system-name))
+    (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+    ((string= "desktop" (system-name))
+    (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))
+#+END_SRC
+* Util functions
+
+A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
+
+#+BEGIN_SRC emacs-lisp :results none
+(defun save-excursion-wrapper (inner &rest args)
+(save-excursion
+    (funcall inner)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
+(defalias 'after! 'with-eval-after-load)
+#+END_SRC
+
+* Frame
+
+Set the title of the Emacs frame
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq frame-title-format "PurplEmacs")
+#+END_SRC
+
+* Disable annoying bell
+#+BEGIN_SRC emacs-lisp :results none
+(setq ring-bell-function 'ignore)
+#+END_SRC
+
+* Stop annoying jumping around in Info pages
+#+BEGIN_SRC emacs-lisp :results none
+(setq scroll-conservatively 101)
+#+END_SRC
