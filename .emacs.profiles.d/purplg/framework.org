@@ -1,4 +1,8 @@
 #+BEGIN_SRC emacs-lisp :results none
+(add-to-list 'default-frame-alist '(font . "Fira Code Retina-12"))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
 (display-battery-mode 1)
 #+END_SRC
 
