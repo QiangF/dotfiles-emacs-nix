@@ -60,14 +60,6 @@ directory if it exists"
       (if (file-exists-p filepath) filepath nil))))
 #+END_SRC
 
-** Frame
-
-Set the title of the Emacs frame
-
-#+BEGIN_SRC emacs-lisp :results none
-(setq frame-title-format "PurplEmacs")
-#+END_SRC
-
 ** Environment
 
 Copy my user enviroment settings into Emacs. Necessary for some things like using Rust Cargo crates
@@ -88,6 +80,11 @@ Silence compiler warnings
 (setq native-comp-async-report-warnings-errors nil)
  #+END_SRC
 
+** Per system settings
+#+BEGIN_SRC emacs-lisp :results none
+(when (string= "framework" (system-name))
+  (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+#+END_SRC
 ** Util functions
 
 A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
@@ -100,6 +97,14 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 #+BEGIN_SRC emacs-lisp :results none
 (defalias 'after! 'with-eval-after-load)
+#+END_SRC
+
+** Frame
+
+Set the title of the Emacs frame
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq frame-title-format "PurplEmacs")
 #+END_SRC
 
 ** Disable annoying bell
