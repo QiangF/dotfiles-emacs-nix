@@ -82,10 +82,10 @@ Silence compiler warnings
 
 ** Per system settings
 #+BEGIN_SRC emacs-lisp :results none
-(when (string= "framework" (system-name))
-  (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
-(when (string= "desktop" (system-name))
-  (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org"))
+(cond ((string= "framework" (system-name))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+      ((string= "desktop" (system-name))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))
 #+END_SRC
 ** Util functions
 
