@@ -311,6 +311,15 @@ Configures and minimalizes the main Emacs frame
 #+END_SRC
 
 ** Features
+*** Auto scroll *Messages* buffer
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(hook! 'post-command-hook
+        (lambda ()
+            (let ((messages (get-buffer "*Messages*")))
+              (unless (eq (current-buffer) messages)
+                (with-current-buffer messages
+                  (goto-char (point-max)))))))
+#+END_SRC
 *** Scratch buffer
 
 Prevent the scratch buffer from being deleted
