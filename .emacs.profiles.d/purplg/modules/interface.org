@@ -223,6 +223,7 @@ Ivy config just in case I wanna use it for something. Disabled.
     "f c" '(pg/find-file-in-profile-dir :which-key "in config")
     "f ~" '(pg/find-file-in-home-dir :which-key "in home")
     "f /" '(pg/find-file-in-root-dir :which-key "in root")
+    "f f" '(find-file :which-key "file")
     "p S" '(pg/project-search-thing-at-point :which-key "search this"))
 
   :general
