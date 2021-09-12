@@ -5,3 +5,17 @@
 #+BEGIN_SRC emacs-lisp :results none
 (display-battery-mode 1)
 #+END_SRC
+
+* Home Assistant
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package hass
+  :straight '(:type git
+              :host github
+              :repo "purplg/hass"
+              :branch "dev")
+  :config
+  (setq hass-url "http://homeassistant:8123"
+        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+  (hass-setup))
+#+END_SRC
