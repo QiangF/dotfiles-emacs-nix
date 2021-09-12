@@ -52,3 +52,8 @@
 (pg/load-module "interface")
 (pg/load-module "editing")
 (pg/load-module "apps")
+
+(cond ((string= "framework" (system-name))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+      ((string= "desktop" (system-name))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))

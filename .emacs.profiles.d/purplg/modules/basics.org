@@ -17,6 +17,7 @@ Silence compiler warnings
 #+BEGIN_SRC emacs-lisp :results none
 (setq native-comp-async-report-warnings-errors nil)
 #+END_SRC
+
 * Util functions
 
 A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
@@ -31,14 +32,6 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 (defalias 'after! 'with-eval-after-load)
 #+END_SRC
 
-
-* Per system settings
-#+BEGIN_SRC emacs-lisp :results none
-(cond ((string= "framework" (system-name))
-       (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
-      ((string= "desktop" (system-name))
-       (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))
-#+END_SRC
 * Frame
 
 Set the title of the Emacs frame
