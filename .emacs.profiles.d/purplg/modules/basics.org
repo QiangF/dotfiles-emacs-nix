@@ -4,10 +4,10 @@ Copy my user enviroment settings into Emacs. Necessary for some things like usin
 
 #+BEGIN_SRC emacs-lisp
 (when (daemonp)
-(use-package exec-path-from-shell
-:straight t
-:init
-(exec-path-from-shell-initialize)))
+  (use-package exec-path-from-shell
+  :straight t
+  :init
+  (exec-path-from-shell-initialize)))
 #+END_SRC
 
 * Native comp
@@ -21,9 +21,9 @@ Silence compiler warnings
 * Per system settings
 #+BEGIN_SRC emacs-lisp :results none
 (cond ((string= "framework" (system-name))
-    (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
-    ((string= "desktop" (system-name))
-    (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/framework.org"))
+      ((string= "desktop" (system-name))
+       (org-babel-load-file "~/.emacs.profiles.d/purplg/desktop.org")))
 #+END_SRC
 * Util functions
 
@@ -31,7 +31,7 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 #+BEGIN_SRC emacs-lisp :results none
 (defun save-excursion-wrapper (inner &rest args)
-(save-excursion
+  (save-excursion
     (funcall inner)))
 #+END_SRC
 
