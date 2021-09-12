@@ -5,25 +5,3 @@
 #+BEGIN_SRC emacs-lisp :results none
 (display-battery-mode 1)
 #+END_SRC
-
-#+BEGIN_SRC emacs-lisp :results none
-(when (daemonp)
-  (use-package exwm
-    :straight t
-    :after general
-    :config
-    (general-create-definer pg/exwm-leader
-      :states '(normal visual)
-      :prefix "s-SPC")
-    (require 'exwm-config)
-    (exwm-config-default)
-    (defun launch-app (command)
-      (interactive (list (read-shell-command "$ ")))
-      (start-process-shell-command command nil command))
-  
-    (defun launch-firefox () (interactive) (launch-app "firefox"))
-  
-    (pg/exwm-leader
-      "f" 'launch-firefox
-      "SPC" 'launch-app)))
-#+END_SRC

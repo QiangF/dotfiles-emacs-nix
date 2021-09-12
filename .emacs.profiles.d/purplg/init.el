@@ -43,6 +43,8 @@
            (load-file (concat module-path ".el")))
           ((message "module `%s' doesn't exist" module-name)))))
 
+(add-to-list 'command-switch-alist
+  '("--exwm" . (lambda (_) (pg/load-module "exwm"))))
 
 ;; Load the config modules
 (pg/load-module "basics")

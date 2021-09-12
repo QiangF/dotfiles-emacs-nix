@@ -1,0 +1,34 @@
+* Package
+#+BEGIN_SRC emacs-lisp :results none
+(use-package exwm :straight t)
+#+END_SRC
+
+* Configuration
+Just load the defaults.
+#+BEGIN_SRC emacs-lisp :results none
+(require 'exwm-config)
+(exwm-config-default)
+#+END_SRC
+
+* Leader Key
+#+BEGIN_SRC emacs-lisp :results none
+(general-create-definer pg/exwm-leader
+  :states '(normal visual)
+  :prefix "s-SPC")
+#+END_SRC
+
+* App Launchers
+#+BEGIN_SRC emacs-lisp :results none
+(defun launch-app (command)
+  (interactive (list (read-shell-command "$ ")))
+  (start-process-shell-command command nil command))
+
+(defun launch-firefox ()
+  (interactive)
+  (launch-app "firefox"))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
+(pg/exwm-leader "SPC" 'launch-app
+                  "f" 'launch-firefox)
+#+END_SRC
