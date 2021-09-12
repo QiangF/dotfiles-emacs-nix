@@ -81,6 +81,7 @@ Prevent the scratch buffer from being deleted
   
   (defun dashboard-switch ()
     "Switch to dashboard buffer"
+    (interactive)
     (switch-to-buffer dashboard-buffer-name))
   
   (pg/leader "o d" '(dashboard-switch :which-key "dashboard"))
