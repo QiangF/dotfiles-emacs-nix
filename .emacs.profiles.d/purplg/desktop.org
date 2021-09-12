@@ -1,5 +1,19 @@
-*** Font
+* Font
 
 #+BEGIN_SRC emacs-lisp :results none
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
+#+END_SRC
+
+* EXWM Screen configuration
+#+BEGIN_SRC emacs-lisp :results none
+(after! 'exwm
+  (require 'exwm-randr)
+  (setq exwm-randr-workspace-output-plist '((1 "DisplayPort-0") (2 "DisplayPort-1")))
+  (hook! 'exwm-randr-screen-change-hook
+    (lambda ()
+      (start-process-shell-command "sh" nil "/home/purplg/sh/displays.sh")))
+  (exwm-randr-enable)
+
+  (require 'exwm-systemtray)
+  (exwm-systemtray-enable))
 #+END_SRC
