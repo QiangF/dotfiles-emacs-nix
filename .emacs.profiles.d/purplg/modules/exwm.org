@@ -26,9 +26,12 @@ Just load the defaults.
 (defun launch-firefox ()
   (interactive)
   (launch-app "firefox"))
-#+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+(defun launch-terminal ()
+  (interactive)
+  (launch-app "alacritty"))
+
 (pg/exwm-leader "SPC" 'launch-app
+                "RET" 'launch-terminal
                   "f" 'launch-firefox)
 #+END_SRC
