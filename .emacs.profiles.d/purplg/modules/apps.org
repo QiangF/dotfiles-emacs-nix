@@ -157,13 +157,14 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 #+BEGIN_SRC emacs-lisp :results none
 (after! 'hass
   (setq hass-url "http://homeassistant:8123"
-        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")))
+        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+  (hass-setup))
 #+END_SRC
 
 ** Sources
 
 GitHub
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp :results none :tangle no
 (use-package hass
   :straight '(:type git
               :host github
@@ -188,9 +189,15 @@ Development
   '(hass :local-repo "~/code/elisp/hass"))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp :results none
 (use-package hass
   :straight '(:local-repo "~/code/elisp/hass")
-  :init
-  (hass-mode 1))
+  :config
+  (setq hass-watch-frequency 5)
+  (setq hass-watch-entities '("input_boolean.hass_mode_test"))
+  ;;(hook! 'hass-entity-state-updated-hook (lambda () (message "entity-state-refreshed: %s" hass--states)))
+  (hook! 'hass-entity-state-updated-functions
+    (lambda (entity-id)
+      (message "The entity %s state has changed to %s." entity-id (hass-state-of entity-id)))))
+  (hass-watch-mode 1)
 #+END_SRC
