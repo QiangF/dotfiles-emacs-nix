@@ -36,12 +36,7 @@
 
 (defun pg/load-module (module-name)
   "Load a module file located in the `pg/module-dir' directory."
-  (let ((module-path (expand-file-name module-name pg/module-dir)))
-    (cond ((f-exists? (concat module-path ".org"))
-           (org-babel-load-file (concat module-path ".org")))
-          ((f-exists? (concat module-path ".el"))
-           (load-file (concat module-path ".el")))
-          ((message "module `%s' doesn't exist" module-name)))))
+  (load (expand-file-name module-name pg/module-dir)))
 
 (add-to-list 'command-switch-alist
   '("--exwm" . (lambda (_) (pg/load-module "exwm"))))
