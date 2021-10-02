@@ -16,23 +16,8 @@
 A couple functions to enable/disable/toggle line numbers and their hooks.
 
 #+BEGIN_SRC emacs-lisp :results none
-(setq-default display-line-numbers 'visual
-              display-line-numbers-widen t
+(setq-default display-line-numbers-type 'visual
               display-line-numbers-current-absolute t)
-
-(defun pg/relative-line-numbers ()
-  (interactive)
-  (setq-local display-line-numbers 'visual))
-
-(defun pg/hide-line-numbers ()
-  (interactive)
-  (setq-local display-line-numbers nil))
-
-(defun pg/toggle-line-numbers ()
-  (interactive)
-  (if display-line-numbers
-    (pg/hide-line-numbers)
-    (pg/relative-line-numbers)))
 #+END_SRC
 
 * Indentation guides
@@ -52,7 +37,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
-(hook! '(prog-mode-hook org-mode-hook) #'pg/relative-line-numbers)
+(hook! '(prog-mode-hook org-mode-hook) #'display-line-numbers-mode)
 #+END_SRC
 
 * Undo

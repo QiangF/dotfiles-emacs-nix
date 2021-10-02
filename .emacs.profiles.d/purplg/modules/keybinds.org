@@ -35,7 +35,7 @@ General.el is really nice for configuring keybinds
 
   "t" '(:which-key "toggle")
   "t f" #'(display-fill-column-indicator-mode :which-key "fill-column")
-  "t n" #'(pg/toggle-line-numbers :which-key "line numbers")
+  "t n" #'(display-line-numbers-mode :which-key "line numbers")
   "t w" #'(whitespace-mode :which-key "whitespace")
 
   "f" '(:which-key "file")
