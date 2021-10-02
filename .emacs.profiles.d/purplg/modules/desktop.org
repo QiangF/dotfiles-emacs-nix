@@ -32,7 +32,8 @@
 ** Configuration
 #+BEGIN_SRC emacs-lisp :results none
 (after! 'hass
-  (setq hass-url "http://homeassistant:8123"
+  (setq hass-host "homeassistant"
+        hass-insecure t
         hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (hass-setup))
 #+END_SRC
@@ -65,15 +66,32 @@ Development
   '(hass :local-repo "~/code/elisp/hass"))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp :results none :tangle no
+(use-package request
+  :straight t)
+(use-package websocket
+  :straight t)
+
 (use-package hass
   :straight '(:local-repo "~/code/elisp/hass")
+  :after websocket
   :config
   (setq hass-watch-frequency 5)
   (setq hass-watch-entities '("input_boolean.hass_mode_test"))
   ;;(hook! 'hass-entity-state-updated-hook (lambda () (message "entity-state-refreshed: %s" hass--states)))
   (hook! 'hass-entity-state-updated-functions
     (lambda (entity-id)
-      (message "The entity %s state has changed to %s." entity-id (hass-state-of entity-id)))))
-  (hass-watch-mode 1)
+      (message "The entity %s state has changed to %s." entity-id (hass-state-of entity-id))))
+  (hass-watch-mode 1))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results none
+(use-package request
+  :straight t)
+(use-package websocket
+  :straight t)
+
+(use-package hass
+  :straight '(:local-repo "~/code/elisp/hass")
+  :after websocket)
 #+END_SRC
