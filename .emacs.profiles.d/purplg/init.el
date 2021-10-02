@@ -22,34 +22,32 @@
 
 (use-package f :straight t)
 
-
 ;; Config management functions
 (defconst pg/config-dir (expand-file-name "~/.emacs.profiles.d/purplg/"))
-
-(defun pg/config-file (filename)
-  "The full path of a file in the `pg/config-dir' directory if it exists"
-  (unless (string-empty-p filename)
-    (let ((filepath (expand-file-name filename pg/config-dir)))
-      (when (file-exists-p filepath) filepath))))
-
-(defconst pg/module-dir (pg/config-file "modules/"))
+(defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
 
 (defun pg/load-module (module-name)
   "Load a module file located in the `pg/module-dir' directory."
   (load (expand-file-name module-name pg/module-dir)))
 
+;; Configuration modules
+(setq pg/modules
+  '("basics"
+    "keybinds"
+    "interface"
+    "editing"
+    "apps"))
+
+;; Load exwm if `--exwm' switch is passed
 (add-to-list 'command-switch-alist
-  '("--exwm" . (lambda (_) (pg/load-module "exwm"))))
+             '("--exwm" . (lambda (_) (add-to-list 'pg/modules "exwm" t))))
 
-;; Load the config modules
-(dolist (module '("basics"
-                  "keybinds"
-                  "interface"
-                  "editing"
-                  "apps"))
-  (pg/load-module module))
-
+;; Load system-specific modules
 (cond ((string= "framework" (system-name))
-       (pg/load-module "framework"))
+       (add-to-list 'pg/modules "framework" t))
       ((string= "desktop" (system-name))
-       (pg/load-module "desktop")))
+       (add-to-list 'pg/modules "desktop" t)))
+
+;; Do the loading
+(dolist (module pg/modules) 
+ (pg/load-module module))

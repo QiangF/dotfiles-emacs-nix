@@ -64,7 +64,7 @@ Prevent the scratch buffer from being deleted
   :straight t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))
-        dashboard-banners-directory (pg/config-file "banners/")
+        dashboard-banners-directory (expand-file-name "banners/" pg/config-dir)
         dashboard-startup-banner (+ 1 (random 3))
         dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo
         dashboard-items '((projects . 5)
