@@ -39,16 +39,16 @@
   (hook! 'org-mode-hook #'(flyspell-mode org-indent-mode))
 
   (pg/leader
-    "X" 'org-capture)
+    "X" #'org-capture)
 
   (pg/leader
     :keymaps 'org-mode-map
-    "t l" '(org-toggle-link-display :which-key "link display"))
+    "t l" #'(org-toggle-link-display :which-key "link display"))
     
   :general
   (:states 'normal
    :keymaps 'org-src-mode-map
-   "C-c C-c" 'org-edit-src-exit))
+   "C-c C-c" #'org-edit-src-exit))
    
 (use-package htmlize
   :straight t
@@ -61,7 +61,7 @@
 (use-package pass
   :straight t
   :config
-  (setq auth-sources '(password-store)))
+  (setq auth-sources #'(password-store)))
 #+END_SRC
 
 * IRC
@@ -107,7 +107,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
         telega-emoji-font-family "Noto Color Emoji")
 
   (pg/leader
-    "o c" '(telega :whick-key "telegram"))
+    "o c" #'(telega :whick-key "telegram"))
 
   (when (daemonp)
     (telega-mode-line-mode 1))
@@ -120,15 +120,15 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   (after! 'dashboard
     (require 'telega-dashboard)
     (add-to-list 'dashboard-items '(telega-chats . 5) t)
-    (hook! 'telega-chat-update-hook #'(lambda (&rest _) (dashboard-refresh-buffer-silent)))
+    (hook! 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
     (general-define-key
       :states 'normal
       :keymaps 'dashboard-mode-map
-      "t" 'dashboard-jump-to-telega-chats))
+      "t" #'dashboard-jump-to-telega-chats))
 
   :general
   (:keymaps 'telega-chat-mode-map
-    "C-g" 'telega-chatbuf-cancel-aux))
+    "C-g" #'telega-chatbuf-cancel-aux))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -142,5 +142,5 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   :straight t
   :config
   (pg/leader
-   "o t" 'eshell))
+   "o t" #'eshell))
 #+END_SRC

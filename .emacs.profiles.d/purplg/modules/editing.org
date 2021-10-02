@@ -98,7 +98,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :config
   (pg/leader
     "g" '(:which-key "git")
-    "g g" '(magit-status :which-key "status")))
+    "g g" #'(magit-status :which-key "status")))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp :results none
@@ -136,13 +136,13 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   (pg/leader
     :keymaps 'lsp-mode-map
-    "c a" '(lsp-execute-code-action :which-key "execute action")
-    "c f" '(lsp-format-buffer :which-key "format")
-    "c r" '(lsp-rename :which-key "rename"))
+    "c a" #'(lsp-execute-code-action :which-key "execute action")
+    "c f" #'(lsp-format-buffer :which-key "format")
+    "c r" #'(lsp-rename :which-key "rename"))
 
   :general
   (:keymaps 'evil-motion-state-map
-    "g D" 'lsp-find-references))
+    "g D" #'lsp-find-references))
 
 (use-package lsp-ui
   :straight t
@@ -159,11 +159,11 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
   :general
   (:keymaps 'lsp-ui-peek-mode-map
-    "j" 'lsp-ui-peek--select-next
-    "h" 'lsp-ui-peek--select-prev-file
-    "l" 'lsp-ui-peek--select-next-file
-    "k" 'lsp-ui-peek--select-prev
-    "C-<return>" 'lsp-ui-peek--goto-xref-other-window))
+    "j" #'lsp-ui-peek--select-next
+    "h" #'lsp-ui-peek--select-prev-file
+    "l" #'lsp-ui-peek--select-next-file
+    "k" #'lsp-ui-peek--select-prev
+    "C-<return>" #'lsp-ui-peek--goto-xref-other-window))
 #+END_SRC
 
 *** File tree
@@ -183,10 +183,10 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :general
   (:states 'normal
    :keymaps 'treemacs-mode-map
-   "C-j" 'treemacs-next-neighbour
-   "C-k" 'treemacs-previous-neighbour
-   "M-j" 'treemacs-move-project-down
-   "M-k" 'treemacs-move-project-up))
+   "C-j" #'treemacs-next-neighbour
+   "C-k" #'treemacs-previous-neighbour
+   "M-j" #'treemacs-move-project-down
+   "M-k" #'treemacs-move-project-up))
 
 (use-package treemacs-all-the-icons
   :straight t
@@ -201,10 +201,10 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :straight t
   :config
   (pg/leader
-    "p f" '(projectile-find-file :which-key "file")
-    "p a" '(projectile-add-known-project :which-key "add")
-    "p d" '(projectile-remove-known-project :which-key "remove")
-    "p p" '(projectile-switch-project :which-key "open"))
+    "p f" #'(projectile-find-file :which-key "file")
+    "p a" #'(projectile-add-known-project :which-key "add")
+    "p d" #'(projectile-remove-known-project :which-key "remove")
+    "p p" #'(projectile-switch-project :which-key "open"))
   (projectile-mode +1))
 #+END_SRC
 
@@ -232,12 +232,12 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     (evil-open-fold)))
 
 ;; Keep cursor in place when opening a fold
-(advice-add 'evil-open-fold :around 'save-excursion-wrapper)
+(advice-add 'evil-open-fold :around #'save-excursion-wrapper)
 
 (general-define-key
   :states 'normal
-  "z c" 'evil-close-fold-below
-  "z C" 'evil-close-fold)
+  "z c" #'evil-close-fold-below
+  "z C" #'evil-close-fold)
 
 (hook! 'prog-mode-hook #'hs-minor-mode)
 #+END_SRC
@@ -277,20 +277,20 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (pg/local-leader
     :keymaps 'rustic-mode-map
     "c" '(:which-key "cargo")
-    "c r" '(rustic-cargo-run-no-args :which-key "run")
-    "c R" '(rustic-cargo-run :which-key "run w/ args")
-    "c a" '(rustic-cargo-add :which-key "add dep")
-    "c x" '(rustic-cargo-rm :which-key "rm dep")
-    "c c" '(rustic-cargo-check :which-key "check")
-    "c t" '(rustic-cargo-test :which-key "test")))
+    "c r" #'(rustic-cargo-run-no-args :which-key "run")
+    "c R" #'(rustic-cargo-run :which-key "run w/ args")
+    "c a" #'(rustic-cargo-add :which-key "add dep")
+    "c x" #'(rustic-cargo-rm :which-key "rm dep")
+    "c c" #'(rustic-cargo-check :which-key "check")
+    "c t" #'(rustic-cargo-test :which-key "test")))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp :results none :tangle no
 (general-define-key 
   :states 'normal
   :keymaps 'prog-mode-map
-  "C-[" 'previous-error
-  "C-]" 'next-error)
+  "C-[" #'previous-error
+  "C-]" #'next-error)
 #+END_SRC
 
 *** Emacs Lisp
@@ -317,7 +317,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
   (pg/local-leader
     :keymaps 'org-mode-map
-    "p" '(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
+    "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
 #+END_SRC
 
 **** Refactoring
@@ -328,7 +328,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
   :init
   (pg/leader
     :keymaps 'emacs-lisp-mode-map
-    "c r" '(erefactor-rename-symbol-in-buffer :which-key rename)))
+    "c r" #'(erefactor-rename-symbol-in-buffer :which-key rename)))
 #+END_SRC
 
 **** Keybinds
@@ -336,15 +336,15 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 (pg/leader
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
-  "e b" '(eval-buffer :which-key "buffer")
-  "e f" '(eval-defun :which-key "function")
-  "b c" '(emacs-lisp-byte-compile-and-load :which-key "compile and load"))
+  "e b" #'(eval-buffer :which-key "buffer")
+  "e f" #'(eval-defun :which-key "function")
+  "b c" #'(emacs-lisp-byte-compile-and-load :which-key "compile and load"))
 
 (pg/leader
   :states 'visual
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
-  "e r" '(eval-region :which-key "region"))
+  "e r" #'(eval-region :which-key "region"))
 #+END_SRC
 
 **** Package lint
