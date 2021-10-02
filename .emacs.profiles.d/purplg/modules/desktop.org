@@ -1,11 +1,5 @@
 #+PROPERTY: header-args :tangle yes
 
-* Font
-
-#+BEGIN_SRC emacs-lisp :results none
-(add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
-#+END_SRC
-
 * Tramp
 
 #+BEGIN_SRC emacs-lisp :results none
