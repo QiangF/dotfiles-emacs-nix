@@ -42,11 +42,12 @@
   '("--exwm" . (lambda (_) (pg/load-module "exwm"))))
 
 ;; Load the config modules
-(pg/load-module "basics")
-(pg/load-module "keybinds")
-(pg/load-module "interface")
-(pg/load-module "editing")
-(pg/load-module "apps")
+(dolist (module '("basics"
+                  "keybinds"
+                  "interface"
+                  "editing"
+                  "apps"))
+  (pg/load-module module))
 
 (cond ((string= "framework" (system-name))
        (pg/load-module "framework"))
