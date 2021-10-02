@@ -21,6 +21,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
     (pg/hide-line-numbers)
     (pg/relative-line-numbers)))
 #+END_SRC
+
 * Indentation guides
 
 #+BEGIN_SRC emacs-lisp :results none
