@@ -24,7 +24,7 @@
 
 
 ;; Config management functions
-(defconst pg/config-dir "~/.emacs.profiles.d/purplg/")
+(defconst pg/config-dir (expand-file-name "~/.emacs.profiles.d/purplg/"))
 
 (defun pg/config-file (filename)
   "The full path of a file in the `pg/config-dir' directory if it exists"

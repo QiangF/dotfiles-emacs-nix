@@ -1,3 +1,5 @@
+#+PROPERTY: header-args :tangle yes
+
 * general.el for easy keybind configuration
 
 General.el is really nice for configuring keybinds

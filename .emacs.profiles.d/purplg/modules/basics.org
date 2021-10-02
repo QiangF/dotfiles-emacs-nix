@@ -1,3 +1,5 @@
+#+PROPERTY: header-args :tangle yes
+
 * Environment
 
 Copy my user enviroment settings into Emacs. Necessary for some things like using Rust Cargo crates

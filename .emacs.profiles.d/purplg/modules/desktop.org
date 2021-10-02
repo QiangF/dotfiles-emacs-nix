@@ -1,3 +1,5 @@
+#+PROPERTY: header-args :tangle yes
+
 * Font
 
 #+BEGIN_SRC emacs-lisp :results none

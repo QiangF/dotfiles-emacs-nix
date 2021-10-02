@@ -1,3 +1,16 @@
+#+PROPERTY: header-args :tangle yes
+
+* Auto-tangle and compile config
+#+BEGIN_SRC emacs-lisp :results none
+(defun pg/auto-tangle-config ()
+  (when (string-equal (file-name-directory (buffer-file-name))
+                      (file-truename pg/module-dir))
+    (org-babel-tangle)
+    (byte-recompile-directory pg/module-dir)))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pg/auto-tangle-config)))
+#+END_SRC
+
 * Relative line numbers
 
 A couple functions to enable/disable/toggle line numbers and their hooks.

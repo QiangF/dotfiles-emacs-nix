@@ -1,3 +1,5 @@
+#+PROPERTY: header-args :tangle yes
+
 #+BEGIN_SRC emacs-lisp :results none
 (hook! 'prog-mode-hook #'hl-line-mode)
 
