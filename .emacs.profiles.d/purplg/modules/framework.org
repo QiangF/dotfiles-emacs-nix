@@ -1,16 +1,16 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-12"))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (display-battery-mode 1)
 #+END_SRC
 
 * Home Assistant
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package hass
   :straight '(:type git
               :host github

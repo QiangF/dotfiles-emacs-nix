@@ -1,8 +1,8 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * Tramp
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package tramp
   :straight t
   :config
@@ -12,7 +12,7 @@
 * Home Assistant
 
 ** Configuration
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (after! 'hass
   (setq hass-host "homeassistant"
         hass-insecure t
@@ -23,7 +23,7 @@
 ** Sources
 
 GitHub
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (use-package hass
   :straight '(:type git
               :host github
@@ -33,7 +33,7 @@ GitHub
 #+END_SRC
 
 GitLab
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (use-package hass
   :straight '(:type git
               :host gitlab
@@ -43,12 +43,12 @@ GitLab
 #+END_SRC
 
 Development
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (straight-use-package
   '(hass :local-repo "~/code/elisp/hass"))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (use-package request
   :straight t)
 (use-package websocket
@@ -67,13 +67,14 @@ Development
   (hass-watch-mode 1))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package request
   :straight t)
 (use-package websocket
   :straight t)
 
 (use-package hass
+  :disabled
   :straight '(:local-repo "~/code/elisp/hass")
   :after websocket)
 #+END_SRC

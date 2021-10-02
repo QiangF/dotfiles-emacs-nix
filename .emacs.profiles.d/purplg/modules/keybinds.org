@@ -1,10 +1,10 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * general.el for easy keybind configuration
 
 General.el is really nice for configuring keybinds
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package general
   :straight t
   :config
@@ -13,7 +13,7 @@ General.el is really nice for configuring keybinds
 
 * Leader keys
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (general-create-definer pg/leader
   :states '(normal visual)
   :prefix "SPC")
@@ -25,7 +25,7 @@ General.el is really nice for configuring keybinds
 
 * Global keybinds
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (pg/leader
   "m" '(:which-key "local")
   "o" '(:which-key "open")
@@ -68,7 +68,7 @@ General.el is really nice for configuring keybinds
 
 * Evil
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
@@ -122,7 +122,7 @@ General.el is really nice for configuring keybinds
 
 Dired takes precendence for the ~SPC~ key. Don't like that
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (general-define-key
   :states 'normal
   :keymaps 'dired-mode-map
@@ -133,7 +133,7 @@ Dired takes precendence for the ~SPC~ key. Don't like that
 
 I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (general-define-key
   :states 'normal
   "C-w C-h" #'evil-window-left

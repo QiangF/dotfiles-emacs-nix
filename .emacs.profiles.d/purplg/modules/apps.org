@@ -1,8 +1,8 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * Org mode
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package org
   :straight t
 
@@ -69,7 +69,7 @@
 Automatically pull credentials and autojoin channels from ~pass~.
 Can't figure out why =erc-autojoin-channels-alist= isn't working even when passing a list of strings directly
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (use-package erc
   :straight t
   :after pass
@@ -91,7 +91,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 #+END_SRC
 
 * Telegram
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package telega
   :straight t
   :init
@@ -137,7 +137,7 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
 #+END_SRC
 * Terminal
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package eshell
   :straight t
   :config

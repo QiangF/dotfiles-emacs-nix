@@ -1,4 +1,4 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * Font
 
@@ -23,7 +23,7 @@ Copy my user enviroment settings into Emacs. Necessary for some things like usin
 
 Silence compiler warnings
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq native-comp-async-report-warnings-errors nil)
 #+END_SRC
 
@@ -31,13 +31,13 @@ Silence compiler warnings
 
 A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (defun save-excursion-wrapper (inner &rest args)
   (save-excursion
     (funcall inner)))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (defalias 'after! 'with-eval-after-load)
 #+END_SRC
 
@@ -45,16 +45,16 @@ A slight hack to add around functions as advice to prevent cursor from jumping a
 
 Set the title of the Emacs frame
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq frame-title-format "PurplEmacs")
 #+END_SRC
 
 * Disable annoying bell
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq ring-bell-function 'ignore)
 #+END_SRC
 
 * Stop annoying jumping around in Info pages
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq scroll-conservatively 101)
 #+END_SRC

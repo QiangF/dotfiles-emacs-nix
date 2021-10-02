@@ -1,6 +1,6 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (hook! 'prog-mode-hook #'hl-line-mode)
 
 ;; Hide extraneous stuff on the main Emacs frame

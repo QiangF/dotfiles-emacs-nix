@@ -1,9 +1,9 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * Appearance
 ** Highlight current line
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (hook! 'prog-mode-hook #'hl-line-mode)
 #+END_SRC
 
@@ -11,7 +11,7 @@
   
 Configures and minimalizes the main Emacs frame
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -21,7 +21,7 @@ Configures and minimalizes the main Emacs frame
 
 ** Theme
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package doom-themes
   :straight t
   :config
@@ -32,7 +32,7 @@ Configures and minimalizes the main Emacs frame
 #+END_SRC
 
 ** Visual page break
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package page-break-lines
   :defer t
   :straight t
@@ -41,7 +41,7 @@ Configures and minimalizes the main Emacs frame
 #+END_SRC
 * Features
 ** Auto scroll *Messages* buffer
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (hook! 'post-command-hook
         (lambda ()
             (let ((messages (get-buffer "*Messages*")))
@@ -59,7 +59,7 @@ Prevent the scratch buffer from being deleted
 
 ** Dashboard
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package dashboard
   :straight t
   :config
@@ -94,7 +94,7 @@ Prevent the scratch buffer from being deleted
    "q" nil))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-navigator t)
 (setq dashboard-navigator-buttons
       `(((nil "Home Assistant" "Home Assistant" (lambda (&rest _) (hass/query-entities))))))
@@ -104,7 +104,7 @@ Prevent the scratch buffer from being deleted
 
 A handy popup to show keybinds.
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package which-key
   :straight t
   :config
@@ -117,7 +117,7 @@ A handy popup to show keybinds.
 
 Ivy config just in case I wanna use it for something. Disabled.
 
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 ;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
 (use-package flx
   :straight t)
@@ -192,7 +192,7 @@ Ivy config just in case I wanna use it for something. Disabled.
 
 *** Vertico
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package vertico
   :straight t
   :init
@@ -290,7 +290,7 @@ sort order based on accuracy.
 
 *** Save histry between sessions
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package savehist
   :straight t
   :init
@@ -299,7 +299,7 @@ sort order based on accuracy.
 
 ** Modeline
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package doom-modeline
   :straight t
   :config
@@ -308,7 +308,7 @@ sort order based on accuracy.
 
 ** Perspectives
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package persp-mode
   :straight t
   :config
@@ -364,7 +364,7 @@ sort order based on accuracy.
 #+END_SRC
 ** Help!
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package helpful
   :straight t
   :config

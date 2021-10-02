@@ -1,7 +1,7 @@
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 
 * Auto-tangle and compile config
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (defun pg/auto-tangle-config ()
   (when (string-equal (file-name-directory (buffer-file-name))
                       (file-truename pg/module-dir))
@@ -15,14 +15,14 @@
 
 A couple functions to enable/disable/toggle line numbers and their hooks.
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq-default display-line-numbers-type 'visual
               display-line-numbers-current-absolute t)
 #+END_SRC
 
 * Indentation guides
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package highlight-indent-guides
   :straight t
   :config
@@ -33,7 +33,7 @@ A couple functions to enable/disable/toggle line numbers and their hooks.
 
 * Tweaks
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
@@ -47,7 +47,7 @@ shouldn't exist anymore and I find it confusing. ~undo-fu~ is a lot more intuiti
 will prevent undo past the beginning of history. Might try undo-tree one day, but seems unnecessary
 with version control. ~undo-fu-session~ persists undo history between Emacs sessions.
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package undo-fu
   :straight t)
 
@@ -61,7 +61,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 * Snippets
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package yasnippet-snippets
   :straight t)
 
@@ -77,7 +77,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 ** Tools
 *** Git
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package magit
   :straight t
   :config
@@ -86,7 +86,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     "g g" #'(magit-status :which-key "status")))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package git-gutter
   :straight t
 
@@ -96,14 +96,14 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 *** Text completion
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package company
   :straight t)
 #+END_SRC
 
 *** Flycheck
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package flycheck
   :straight t
   :config
@@ -112,7 +112,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 *** LSP
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
   :straight t
 
@@ -153,7 +153,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 *** File tree
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package treemacs
   :defer t
   :straight t
@@ -181,7 +181,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 *** Project management
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package projectile
   :straight t
   :config
@@ -195,14 +195,14 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 *** Rest client
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package restclient
   :straight t)
 #+END_SRC
 
 *** Code Folding
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (defun evil-close-fold-below ()
   "Close fold on current line instead of enclosing block at point"
   (interactive)
@@ -230,7 +230,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 *** Syntax highlighting
 
 ~tree-sitter~ is a faster syntax parsing package
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package tree-sitter
   :straight t)
 
@@ -245,7 +245,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 ** Languages
 *** Rust
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package rustic
   :straight t
 
@@ -270,7 +270,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
     "c t" #'(rustic-cargo-test :which-key "test")))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results none :tangle no
+#+BEGIN_SRC emacs-lisp
 (general-define-key 
   :states 'normal
   :keymaps 'prog-mode-map
@@ -282,7 +282,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 **** Rainbow Delimiters
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package rainbow-delimiters
   :straight t
   :config
@@ -291,7 +291,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 **** Parinfer - for easy elisp paren management
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package parinfer-rust-mode
   :straight t
   :hook emacs-lisp-mode
@@ -306,7 +306,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 **** Refactoring
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package erefactor
   :straight t
   :defer t
@@ -317,7 +317,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 **** Keybinds
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (pg/leader
   :keymaps 'emacs-lisp-mode-map
   "e" '(:which-key "eval")
@@ -334,7 +334,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 
 **** Package lint
 
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package package-lint
   :straight t)
 
@@ -343,7 +343,7 @@ with version control. ~undo-fu-session~ persists undo history between Emacs sess
 #+END_SRC
 
 ** Yaml
-#+BEGIN_SRC emacs-lisp :results none
+#+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
   :straight t)
 #+END_SRC
