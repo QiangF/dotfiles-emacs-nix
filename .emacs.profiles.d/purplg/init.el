@@ -28,7 +28,11 @@
 
 (defun pg/load-module (module-name)
   "Load a module file located in the `pg/module-dir' directory."
-  (load (expand-file-name module-name pg/module-dir)))
+  (load (expand-file-name module-name pg/module-dir) t))
+
+(defun pg/add-module (module-name)
+  (message "Loading: %s" module-name)
+  (add-to-list 'pg/modules module-name t))
 
 ;; Configuration modules
 (setq pg/modules
@@ -40,13 +44,10 @@
 
 ;; Load exwm if `--exwm' switch is passed
 (add-to-list 'command-switch-alist
-             '("--exwm" . (lambda (_) (add-to-list 'pg/modules "exwm" t))))
+             '("--exwm" . (lambda (_) (pg/add-module "exwm"))))
 
-;; Load system-specific modules
-(cond ((string= "framework" (system-name))
-       (add-to-list 'pg/modules "framework" t))
-      ((string= "desktop" (system-name))
-       (add-to-list 'pg/modules "desktop" t)))
+;; Load system-specific modules (hostname)
+(pg/add-module (system-name))
 
 ;; Do the loading
 (dolist (module pg/modules) 
