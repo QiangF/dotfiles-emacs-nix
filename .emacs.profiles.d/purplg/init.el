@@ -7,7 +7,6 @@
 (add-to-list 'load-path pg/module-dir)
 
 (require 'pg-basics)
-(require 'pg-daemon)
 (require 'pg-evil)
 (require 'pg-interface)
 (require 'pg-editing)
