@@ -1,4 +1,14 @@
+;; Font
+(set-face-attribute 'default nil :font "Fira Code Retina-10")
+(add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
+
+;; Frame title
+(setq frame-title-format "PurplEmacs")
+
+;; Don't show startup page
 (setq inhibit-startup-message t)
+
+;; Hide extraneous GUI
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
