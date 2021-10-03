@@ -1,6 +1,5 @@
 ;;; pg-editing.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
-(require 'pg-config)
 (require 'pg-basics)
 (require 'pg-keybinds)
 

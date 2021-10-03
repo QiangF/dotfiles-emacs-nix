@@ -2,9 +2,10 @@
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory))
 
-(load-file "~/.emacs.profiles.d/purplg/modules/pg-config.el")
+(defconst pg/config-dir (expand-file-name "~/.emacs.profiles.d/purplg/"))
+(defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
-(require 'pg-config)
+
 (require 'pg-straight)
 (require 'pg-basics)
 (require 'pg-keybinds)
