@@ -76,6 +76,7 @@
   (setq evil-undo-system #'undo-fu)
   (evil-mode 1)
 
+  :config
   (pg/leader :states 'normal
     "b p" #'(evil-prev-buffer :which-key "previous")
     "b n" #'(evil-next-buffer :which-key "next")
