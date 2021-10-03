@@ -68,6 +68,16 @@
   (transpose-lines 1)
   (forward-line -1))
 
+(use-package undo-fu
+  :straight t)
+
+(use-package undo-fu-session
+  :straight t
+  :after undo-fu
+  :config
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+  (global-undo-fu-session-mode))
+
 (use-package evil
   :straight t
   :after undo-fu

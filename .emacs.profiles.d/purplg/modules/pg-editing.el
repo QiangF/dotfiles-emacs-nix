@@ -12,7 +12,6 @@
 (require 'pg-rust)
 (require 'pg-restclient)
 (require 'pg-snippets)
-(require 'pg-undo)
 (require 'pg-yaml)
 
 (setq auto-save-default nil) ;; No autosave
