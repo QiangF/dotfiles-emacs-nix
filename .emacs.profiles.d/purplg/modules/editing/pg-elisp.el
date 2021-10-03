@@ -13,7 +13,10 @@
   (setq parinfer-rust-auto-download t)
   
   :config
-  (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
+  (hook! 'parinfer-rust-mode-hook
+    (lambda ()
+      (electric-indent-mode 0)
+      (indent-tabs-mode 0)))
   (pg/local-leader
    :keymaps 'emacs-lisp-mode-map
    "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer-toggle")))
