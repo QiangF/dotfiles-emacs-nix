@@ -1,6 +1,2 @@
-*.el
 *.elc
-!early-init.el
-!init.el
-!erc-sasl.el
 *~
