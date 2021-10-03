@@ -35,8 +35,4 @@
    :keymaps 'dashboard-mode-map
    "q" nil))
 
-(setq dashboard-set-navigator t)
-(setq dashboard-navigator-buttons
-      `(((nil "Home Assistant" "Home Assistant" (lambda (&rest _) (hass/query-entities))))))
-
 (provide 'pg-dashboard)
