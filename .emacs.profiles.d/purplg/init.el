@@ -6,10 +6,6 @@
 (defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
 
-(setq native-comp-async-report-warnings-errors nil)
-(setq ring-bell-function 'ignore)
-(setq scroll-conservatively 101)
-
 (require 'pg-perf)
 (require 'pg-basics)
 (require 'pg-evil)

@@ -2,6 +2,10 @@
 
 (defalias 'after! 'with-eval-after-load)
 
+(setq native-comp-async-report-warnings-errors nil)
+(setq ring-bell-function 'ignore)
+(setq scroll-conservatively 101)
+
 (defun pg/compile-modules ()
   (interactive)
   (dolist (file (directory-files-recursively pg/module-dir ".el$" nil))
