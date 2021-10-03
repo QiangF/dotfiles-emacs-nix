@@ -1,4 +1,3 @@
-;;; pg-pass.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (use-package pass

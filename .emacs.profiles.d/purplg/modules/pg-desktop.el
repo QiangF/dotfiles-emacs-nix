@@ -1,4 +1,3 @@
-;;; pg-desktop.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (use-package tramp

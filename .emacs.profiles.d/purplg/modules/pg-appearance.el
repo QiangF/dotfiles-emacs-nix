@@ -1,4 +1,3 @@
-;;; pg-appearance.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (hook! 'prog-mode-hook #'hl-line-mode)

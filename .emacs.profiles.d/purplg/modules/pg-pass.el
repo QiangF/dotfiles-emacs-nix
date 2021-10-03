@@ -1,4 +1,3 @@
-;;; pg-irc.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 (require 'pg-pass)
 

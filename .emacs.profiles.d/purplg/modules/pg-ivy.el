@@ -1,7 +1,3 @@
-;;; pg-ivy.el --- -*- lexical-binding: t; -*-
-
-;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
-
 ;; Better fuzzy search. Unintuitively intercepts `ivy--regex-fuzzy` below
 (use-package flx
   :straight t)

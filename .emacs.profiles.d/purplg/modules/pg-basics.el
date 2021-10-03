@@ -1,4 +1,3 @@
-;;; pg-basics.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (set-face-attribute 'default nil :font "Fira Code Retina-10")

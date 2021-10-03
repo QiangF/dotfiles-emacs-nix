@@ -1,5 +1,3 @@
-;;; pg-vertico.el --- -*- lexical-binding: t; -*-
-
 (require 'pg-straight)
 (require 'pg-keybinds)
 

@@ -1,4 +1,3 @@
-;;; pg-interface.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 (require 'pg-basics)
 (require 'pg-keybinds)

@@ -1,4 +1,3 @@
-;;; pg-framework.el --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-12"))
