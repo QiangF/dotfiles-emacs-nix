@@ -12,28 +12,27 @@
   ;; Modified from Doom's `+workspace--tabline`
   (defun persp--format-tab (label active) 
     (propertize label
-      'face (if active)
-        'doom-modeline-panel
-        'doom-modeline-bar-inactive))
+      'face (if active
+                'doom-modeline-panel
+                'doom-modeline-bar-inactive)))
 
-  (defun persp-list ()) 
-  "Display a list of perspectives"
-  (interactive)
-  (message "%s"
-    (let ((names persp-names-cache)
-          (current-name (safe-persp-name
-                          (get-current-persp
-                            (selected-frame)
-                            (selected-window)))))
-      (mapconcat
-       #'identity
-        (cl-loop for name in names
-                 for i to (length names)
-                 collect
-                 (persp--format-tab
-                   (format " %d:%s " (1+ i) name)
-                   (equal current-name name)))
-       nil)))
+  (defun persp-list () 
+    "Display a list of perspectives"
+    (interactive)
+    (message "%s"
+      (let ((names persp-names-cache)
+            (current-name (safe-persp-name (get-current-persp
+                                             (selected-frame)
+                                             (selected-window)))))
+        (mapconcat
+           #'identity
+           (cl-loop for name in names
+                    for i to (length names)
+                    collect
+                    (persp--format-tab
+                      (format " %d:%s " (1+ i) name)
+                      (equal current-name name)))
+           nil))))
 
   ;; Show list of perspectives after switching
   (advice-add 'persp-next :after #'persp-list)
