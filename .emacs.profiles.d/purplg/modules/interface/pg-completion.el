@@ -73,4 +73,18 @@
   :init
   (marginalia-mode 1))
 
-(provide 'pg-vertico)
+;; ~orderless~ allows completion chunks (space delimited) to be search out of order. In other words, a
+;; query for =some function= will return the same results as =function some= with possibly a different
+;; sort order based on accuracy.
+
+(use-package orderless
+  :straight t
+  :config
+  (setq completion-styles '(basic orderless partial-completion)))
+
+(use-package savehist
+  :straight t
+  :init
+  (savehist-mode))
+
+(provide 'pg-completion)
