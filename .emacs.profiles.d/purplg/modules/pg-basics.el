@@ -11,9 +11,9 @@
 
 (defun pg/compile-modules ()
   (interactive)
-  (let ((files (directory-files pg/module-dir t ".el$")))
-    (dolist (file files)
-      (byte-compile-file file))))
+  (dolist (file (directory-files-recursively pg/module-dir ".el$" nil))
+    (message "comp: %s" file)
+    (byte-compile-file file)))
 
 (defun pg/open-module (module-name)
   (interactive 
