@@ -39,7 +39,7 @@
     "Keep point in place when opening fold"
     (interactive)
     (save-excursion
-        (evil-open-fold)))
+      (evil-open-fold)))
   
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold
