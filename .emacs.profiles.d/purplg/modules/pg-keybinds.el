@@ -39,7 +39,6 @@
   "h" '(:which-key "help")
   "h k" #'(describe-key :which-key "key")
   "h p" #'(describe-package :which-key "package")
-  "h b" #'(counsel-descbinds :which-key "binds")
 
   "q" '(:which-key "quit")
   "q w" #'(delete-window :which-key "window")
