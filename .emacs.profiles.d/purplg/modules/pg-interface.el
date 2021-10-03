@@ -5,7 +5,6 @@
 (require 'pg-frame)
 (require 'pg-theme)
 (require 'pg-visual-page-breaks)
-(require 'pg-whichkey)
 (require 'pg-workspaces)
 
 ;; Highlight line of point
