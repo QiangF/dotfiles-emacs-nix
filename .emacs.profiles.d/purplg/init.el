@@ -12,12 +12,7 @@
 (require 'pg-interface)
 (require 'pg-editing)
 (require 'pg-apps)
-
-;; Load system-specific modules (hostname)
-(cond ((string= "desktop" (system-name))
-       (require 'pg-desktop))
-      ((string= "framework" (system-name))
-       (require 'pg-framework)))
+(require 'pg-system-specific)
 
 (defun pg/compile-modules ()
   (interactive)
