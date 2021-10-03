@@ -22,4 +22,10 @@
 
 (setq scroll-conservatively 101)
 
+(defun pg/compile-modules ()
+  (interactive)
+  (let ((files (directory-files pg/module-dir t ".el$")))
+    (dolist (file files)
+      (byte-compile-file file))))
+
 (provide 'pg-basics)
