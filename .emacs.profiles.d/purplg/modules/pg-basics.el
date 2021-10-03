@@ -20,7 +20,7 @@
                 (file-name-base file))
               (directory-files-recursively pg/module-dir ".el$" nil)) nil t)))
 
-  (let ((matches (-filter
+  (let ((matches (seq-filter
                   (lambda (file) (string-match (concat module-name ".el$") file))
                   (directory-files-recursively pg/module-dir ".el$" nil))))
     (if (= 1 (length matches))
