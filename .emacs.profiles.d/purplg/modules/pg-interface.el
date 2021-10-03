@@ -2,6 +2,7 @@
 
 (require 'pg-completion)
 (require 'pg-dashboard)
+(require 'pg-help)
 (require 'pg-frame)
 (require 'pg-theme)
 (require 'pg-visual-page-breaks)
