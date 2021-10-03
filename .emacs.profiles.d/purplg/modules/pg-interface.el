@@ -8,8 +8,6 @@
 (require 'pg-whichkey)
 (require 'pg-workspaces)
 
-(require 'pg-straight)
-
 ;; Highlight line of point
 (hook! 'prog-mode-hook #'hl-line-mode)
 
