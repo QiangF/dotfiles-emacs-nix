@@ -1,6 +1,11 @@
 #+PROPERTY: header-args :tangle yes :results none
 
 #+BEGIN_SRC emacs-lisp
+;;; pg-framework.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
 (add-to-list 'default-frame-alist '(font . "Fira Code Retina-12"))
 #+END_SRC
 
@@ -12,12 +17,14 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package hass
-  :straight '(:type git
-              :host github
-              :repo "purplg/hass"
-              :branch "dev")
-  :config
+  :straight t
+  :init
   (setq hass-url "http://homeassistant:8123"
         hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (hass-setup))
+#+END_SRC
+
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-framework)
 #+END_SRC

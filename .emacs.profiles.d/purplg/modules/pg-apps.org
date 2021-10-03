@@ -1,5 +1,11 @@
 #+PROPERTY: header-args :tangle yes :results none
 
+#+BEGIN_SRC emacs-lisp
+;;; pg-apps.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+(require 'pg-keybinds)
+#+END_SRC
+
 * Org mode
 
 #+BEGIN_SRC emacs-lisp
@@ -69,7 +75,7 @@
 Automatically pull credentials and autojoin channels from ~pass~.
 Can't figure out why =erc-autojoin-channels-alist= isn't working even when passing a list of strings directly
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package erc
   :straight t
   :after pass
@@ -112,8 +118,9 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   (when (daemonp)
     (telega-mode-line-mode 1))
 
-  (after! 'alert
-    (require 'telega-alert)
+  (use-package telega-alert
+    :after alert
+    :config
     (telega-alert-mode 1)
     (hook! 'telega-load-hook #'global-telega-squash-message-mode))
 
@@ -143,4 +150,9 @@ Can't figure out why =erc-autojoin-channels-alist= isn't working even when passi
   :config
   (pg/leader
    "o t" #'eshell))
+#+END_SRC
+
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-apps)
 #+END_SRC

@@ -1,5 +1,13 @@
 #+PROPERTY: header-args :tangle yes :results none
 
+#+BEGIN_SRC emacs-lisp
+;;; pg-interface.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+(require 'pg-basics)
+(require 'pg-config)
+(require 'pg-keybinds)
+#+END_SRC
+
 * Appearance
 ** Highlight current line
 
@@ -311,6 +319,7 @@ sort order based on accuracy.
 #+BEGIN_SRC emacs-lisp
 (use-package persp-mode
   :straight t
+  :after doom-modeline
   :config
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
@@ -377,3 +386,7 @@ sort order based on accuracy.
     "h k" #'(helpful-key :which-key "key")))
 #+END_SRC
 
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-interface)
+#+END_SRC

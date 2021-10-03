@@ -1,5 +1,10 @@
 #+PROPERTY: header-args :tangle yes :results none
 
+#+BEGIN_SRC emacs-lisp
+;;; pg-desktop.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+#+END_SRC
+
 * Tramp
 
 #+BEGIN_SRC emacs-lisp
@@ -15,9 +20,6 @@
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package hass
   :straight t
-  :defines hass-url
-  :defines hass-apikey
-  :functions hass-setup
   :init
   (setq hass-url "http://homeassistant:8123"
         hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
@@ -34,5 +36,13 @@
 (use-package hass
   :disabled
   :straight '(:local-repo "~/code/elisp/hass")
-  :after websocket)
+  :init
+  (setq hass-host "homeassistant"
+        hass-insecure t
+        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")))
+#+END_SRC
+
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-desktop)
 #+END_SRC

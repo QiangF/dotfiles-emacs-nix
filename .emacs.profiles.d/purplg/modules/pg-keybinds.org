@@ -1,8 +1,12 @@
 #+PROPERTY: header-args :tangle yes :results none
 
-* general.el for easy keybind configuration
+#+BEGIN_SRC emacs-lisp
+;;; pg-keybinds.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+#+END_SRC
 
-General.el is really nice for configuring keybinds
+
+* general.el for easy keybind configuration
 
 #+BEGIN_SRC emacs-lisp
 (use-package general
@@ -101,8 +105,21 @@ General.el is really nice for configuring keybinds
     "M-j" #'move-line-down
     "M-k" #'move-line-up
     "C-j" #'evil-forward-section-begin
-    "C-k" #'evil-backward-section-begin
-    "C-<tab>" #'evil-switch-to-windows-last-buffer))
+    "C-k" #'evil-backward-section-begin)
+
+  ;; Unbind SPC in Dired mode
+  ;; Dired takes precendence for the ~SPC~ key. Don't like that
+  (:states 'normal
+    :keymaps 'dired-mode-map
+    "SPC" nil)
+    
+  ;; I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
+  (:states 'normal
+    "C-w C-h" #'evil-window-left
+    "C-w C-j" #'evil-window-down
+    "C-w C-k" #'evil-window-up
+    "C-w C-l" #'evil-window-right
+      "C-<tab>" #'evil-switch-to-windows-last-buffer))
 
 (use-package evil-surround
   :straight t
@@ -118,26 +135,7 @@ General.el is really nice for configuring keybinds
   (evil-collection-init))
 #+END_SRC
 
-* Unbind SPC in Dired mode
-
-Dired takes precendence for the ~SPC~ key. Don't like that
-
+* Package
 #+BEGIN_SRC emacs-lisp
-(general-define-key
-  :states 'normal
-  :keymaps 'dired-mode-map
-  "SPC" nil)
-#+END_SRC
-
-* Window switch fix
-
-I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
-
-#+BEGIN_SRC emacs-lisp
-(general-define-key
-  :states 'normal
-  "C-w C-h" #'evil-window-left
-  "C-w C-j" #'evil-window-down
-  "C-w C-k" #'evil-window-up
-  "C-w C-l" #'evil-window-right)
+(provide 'pg-keybinds)
 #+END_SRC

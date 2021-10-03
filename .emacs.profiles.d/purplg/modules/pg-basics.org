@@ -1,5 +1,10 @@
 #+PROPERTY: header-args :tangle yes :results none
 
+#+BEGIN_SRC emacs-lisp
+;;; pg-basics.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+#+END_SRC
+
 * Font
 
 #+BEGIN_SRC emacs-lisp
@@ -14,9 +19,9 @@ Copy my user enviroment settings into Emacs. Necessary for some things like usin
 #+BEGIN_SRC emacs-lisp
 (when (daemonp)
   (use-package exec-path-from-shell
-  :straight t
-  :init
-  (exec-path-from-shell-initialize)))
+    :straight t
+    :init
+    (exec-path-from-shell-initialize)))
 #+END_SRC
 
 * Native comp
@@ -32,7 +37,7 @@ Silence compiler warnings
 A slight hack to add around functions as advice to prevent cursor from jumping around with some actions
 
 #+BEGIN_SRC emacs-lisp
-(defun save-excursion-wrapper (inner &rest args)
+(defun save-excursion-wrapper (inner &rest _args)
   (save-excursion
     (funcall inner)))
 #+END_SRC
@@ -57,4 +62,9 @@ Set the title of the Emacs frame
 * Stop annoying jumping around in Info pages
 #+BEGIN_SRC emacs-lisp
 (setq scroll-conservatively 101)
+#+END_SRC
+
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-basics)
 #+END_SRC

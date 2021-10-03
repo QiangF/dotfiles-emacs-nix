@@ -2,53 +2,24 @@
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
       url-history-file (expand-file-name "url/history" user-emacs-directory))
 
-
-;; Straight.el bootstrap for package management
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-(straight-use-package 'use-package)
-(setq straight-disable-native-compile nil)
-
-(use-package f :straight t)
-
-;; Config management functions
-(defconst pg/config-dir (expand-file-name "~/.emacs.profiles.d/purplg/"))
-(defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
-
-(defun pg/load-module (module-name)
-  "Load a module file located in the `pg/module-dir' directory."
-  (load (expand-file-name module-name pg/module-dir) t))
-
-(defun pg/add-module (module-name)
-  (message "Loading: %s" module-name)
-  (add-to-list 'pg/modules module-name t))
-
-;; Configuration modules
-(setq pg/modules
-  '("basics"
-    "keybinds"
-    "interface"
-    "editing"
-    "apps"))
-
-;; Load exwm if `--exwm' switch is passed
-(add-to-list 'command-switch-alist
-             '("--exwm" . (lambda (_) (pg/add-module "exwm"))))
+(load-file "~/.emacs.profiles.d/purplg/modules/pg-config.el")
+(add-to-list 'load-path pg/module-dir)
+(require 'pg-config)
+(require 'pg-straight)
+(require 'pg-basics)
+(require 'pg-keybinds)
+(require 'pg-interface)
+(require 'pg-editing)
+(require 'pg-apps)
 
 ;; Load system-specific modules (hostname)
-(pg/add-module (system-name))
+(cond ((string= "desktop" (system-name))
+       (require 'pg-desktop))
+      ((string= "framework" (system-name))
+       (require 'pg-framework)))
 
-;; Do the loading
-(dolist (module pg/modules) 
-  (pg/load-module module))
+(defun pg/compile-modules ()
+  (interactive)
+  (let ((files (directory-files pg/module-dir t ".el$")))
+    (dolist (file files)
+      (byte-compile-file file))))

@@ -1,6 +1,11 @@
 #+PROPERTY: header-args :tangle yes :results none
 
 #+BEGIN_SRC emacs-lisp
+;;; pg-appearance.el --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
 (hook! 'prog-mode-hook #'hl-line-mode)
 
 ;; Hide extraneous stuff on the main Emacs frame
@@ -23,4 +28,9 @@
   :straight t
   :config
   (global-page-break-lines-mode))
+#+END_SRC
+
+* Package
+#+BEGIN_SRC emacs-lisp
+(provide 'pg-appearance)
 #+END_SRC
