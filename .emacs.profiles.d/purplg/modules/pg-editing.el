@@ -13,8 +13,6 @@
 (require 'pg-yaml)
 
 (require 'pg-straight)
-(require 'pg-basics)
-(require 'pg-keybinds)
 
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
