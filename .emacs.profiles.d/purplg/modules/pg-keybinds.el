@@ -20,42 +20,42 @@
   :prefix "SPC m")
 
 (pg/leader
-  "m" '(:which-key "local")
-  "o" '(:which-key "open")
-  "s" '(:which-key "search")
-  "c" '(:which-key "code")
-  "p" '(:which-key "project")
+ "m" '(:which-key "local")
+ "o" '(:which-key "open")
+ "s" '(:which-key "search")
+ "c" '(:which-key "code")
+ "p" '(:which-key "project")
 
-  "t" '(:which-key "toggle")
-  "t f" #'(display-fill-column-indicator-mode :which-key "fill-column")
-  "t n" #'(display-line-numbers-mode :which-key "line numbers")
-  "t w" #'(whitespace-mode :which-key "whitespace")
+ "t" '(:which-key "toggle")
+ "t f" #'(display-fill-column-indicator-mode :which-key "fill-column")
+ "t n" #'(display-line-numbers-mode :which-key "line numbers")
+ "t w" #'(whitespace-mode :which-key "whitespace")
 
-  "f" '(:which-key "file")
-  "f f" #'(find-file :which-key "find")
-  "f s" #'(save-buffer :which-key "save")
-  "f ." #'(find-file-at-point :which-key "this")
+ "f" '(:which-key "file")
+ "f f" #'(find-file :which-key "find")
+ "f s" #'(save-buffer :which-key "save")
+ "f ." #'(find-file-at-point :which-key "this")
 
-  "h" '(:which-key "help")
-  "h k" #'(describe-key :which-key "key")
-  "h p" #'(describe-package :which-key "package")
+ "h" '(:which-key "help")
+ "h k" #'(describe-key :which-key "key")
+ "h p" #'(describe-package :which-key "package")
 
-  "q" '(:which-key "quit")
-  "q w" #'(delete-window :which-key "window")
-  "q b" #'(kill-this-buffer :which-key "buffer")
-  "q q" #'(save-buffers-kill-terminal :which-key "really quit?")
+ "q" '(:which-key "quit")
+ "q w" #'(delete-window :which-key "window")
+ "q b" #'(kill-this-buffer :which-key "buffer")
+ "q q" #'(save-buffers-kill-terminal :which-key "really quit?")
 
-  "w" '(:which-key "window")
-  "w d" #'delete-window
-  "w s" #'split-window-below
-  "w v" #'split-window-right
+ "w" '(:which-key "window")
+ "w d" #'delete-window
+ "w s" #'split-window-below
+ "w v" #'split-window-right
 
-  "b" '(:which-key "buffer")
-  "b b" #'(project-switch-to-buffer :which-key open)
-  "b d" #'kill-this-buffer
-  "b r" #'revert-buffer
+ "b" '(:which-key "buffer")
+ "b b" #'(project-switch-to-buffer :which-key open)
+ "b d" #'kill-this-buffer
+ "b r" #'revert-buffer
 
-  ";" #'eval-expression)
+ ";" #'eval-expression)
 
 (defun move-line-up ()
   (interactive)

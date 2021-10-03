@@ -27,7 +27,8 @@
     (interactive)
     (switch-to-buffer dashboard-buffer-name))
   
-  (pg/leader "o d" #'(dashboard-switch :which-key "dashboard"))
+  (pg/leader
+   "o d" #'(dashboard-switch :which-key "dashboard"))
 
   :general
   (:states 'normal

@@ -6,7 +6,7 @@
   :straight t
   :init
   (pg/leader
-    "o p" 'treemacs)
+   "o p" 'treemacs)
 
   :config
   (treemacs-resize-icons 16)
@@ -29,10 +29,10 @@
   :straight t
   :config
   (pg/leader
-    "p f" #'(projectile-find-file :which-key "file")
-    "p a" #'(projectile-add-known-project :which-key "add")
-    "p d" #'(projectile-remove-known-project :which-key "remove")
-    "p p" #'(projectile-switch-project :which-key "open"))
+   "p f" #'(projectile-find-file :which-key "file")
+   "p a" #'(projectile-add-known-project :which-key "add")
+   "p d" #'(projectile-remove-known-project :which-key "remove")
+   "p p" #'(projectile-switch-project :which-key "open"))
   (projectile-mode +1))
 
 (provide 'pg-projects)

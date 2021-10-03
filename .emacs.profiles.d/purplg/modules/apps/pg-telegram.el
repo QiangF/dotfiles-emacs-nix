@@ -20,7 +20,7 @@
         telega-emoji-font-family "Noto Color Emoji")
 
   (pg/leader
-    "o c" #'(telega :whick-key "telegram"))
+   "o c" #'(telega :whick-key "telegram"))
 
   (use-package telega-alert
     :after alert
@@ -33,12 +33,12 @@
     (add-to-list 'dashboard-items '(telega-chats . 5) t)
     (hook! 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
     (general-define-key
-      :states 'normal
-      :keymaps 'dashboard-mode-map
-      "t" #'dashboard-jump-to-telega-chats))
+     :states 'normal
+     :keymaps 'dashboard-mode-map
+     "t" #'dashboard-jump-to-telega-chats))
 
   :general
   (:keymaps 'telega-chat-mode-map
-    "C-g" #'telega-chatbuf-cancel-aux))
+   "C-g" #'telega-chatbuf-cancel-aux))
 
 (provide 'pg-telegram)

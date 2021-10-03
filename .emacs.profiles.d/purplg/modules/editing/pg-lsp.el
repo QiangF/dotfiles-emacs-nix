@@ -7,14 +7,14 @@
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
   (pg/leader
-    :keymaps 'lsp-mode-map
-    "c a" #'(lsp-execute-code-action :which-key "execute action")
-    "c f" #'(lsp-format-buffer :which-key "format")
-    "c r" #'(lsp-rename :which-key "rename"))
+   :keymaps 'lsp-mode-map
+   "c a" #'(lsp-execute-code-action :which-key "execute action")
+   "c f" #'(lsp-format-buffer :which-key "format")
+   "c r" #'(lsp-rename :which-key "rename"))
 
   :general
   (:keymaps 'evil-motion-state-map
-    "g D" #'lsp-find-references))
+   "g D" #'lsp-find-references))
 
 (use-package lsp-ui
   :straight t
@@ -30,10 +30,10 @@
 
   :general
   (:keymaps 'lsp-ui-peek-mode-map
-    "j" #'lsp-ui-peek--select-next
-    "h" #'lsp-ui-peek--select-prev-file
-    "l" #'lsp-ui-peek--select-next-file
-    "k" #'lsp-ui-peek--select-prev
-    "C-<return>" #'lsp-ui-peek--goto-xref-other-window))
+   "j" #'lsp-ui-peek--select-next
+   "h" #'lsp-ui-peek--select-prev-file
+   "l" #'lsp-ui-peek--select-next-file
+   "k" #'lsp-ui-peek--select-prev
+   "C-<return>" #'lsp-ui-peek--goto-xref-other-window))
 
 (provide 'pg-lsp)

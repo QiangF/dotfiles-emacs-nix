@@ -4,8 +4,8 @@
   :straight t
   :config
   (pg/leader
-    "g" '(:which-key "git")
-    "g g" #'(magit-status :which-key "status")))
+   "g" '(:which-key "git")
+   "g g" #'(magit-status :which-key "status")))
 
 (use-package git-gutter
   :straight t

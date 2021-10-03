@@ -37,11 +37,11 @@
   (hook! 'org-mode-hook #'(flyspell-mode org-indent-mode))
 
   (pg/leader
-    "X" #'org-capture)
+   "X" #'org-capture)
 
   (pg/leader
-    :keymaps 'org-mode-map
-    "t l" #'(org-toggle-link-display :which-key "link display"))
+   :keymaps 'org-mode-map
+   "t l" #'(org-toggle-link-display :which-key "link display"))
     
   :general
   (:states 'normal
