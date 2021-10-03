@@ -6,6 +6,11 @@
 
 (use-package telega
   :straight t
+  :init   
+  (when (daemonp)
+    (telega)
+    (telega-mode-line-mode 1))
+
   :config
   (setq telega-use-images t
         telega-emoji-use-images t
@@ -16,10 +21,6 @@
 
   (pg/leader
     "o c" #'(telega :whick-key "telegram"))
-
-  (when (daemonp)
-    (telega)
-    (telega-mode-line-mode 1))
 
   (use-package telega-alert
     :after alert
