@@ -43,9 +43,10 @@
   
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold
-              :around
-              (lambda ()
-                (save-excursion (funcall inner))))
+    :around
+    (lambda (inner &rest _)  
+      (save-excursion
+        (funcall inner))))
   
   :general
   (:states 'normal
