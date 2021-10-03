@@ -104,18 +104,11 @@
     (lambda ()
       (save-excursion (funcall inner))))
   
-  (general-define-key
-      :states 'normal
-      "z c" #'evil-close-fold-below
-      "z C" #'evil-close-fold)
-  
-  (general-define-key 
-      :states 'normal
-      :keymaps 'prog-mode-map
-      "C-[" #'previous-error
-      "C-]" #'next-error)
-  
   :general
+  (:states 'normal
+   "z c" #'evil-close-fold-below
+   "z C" #'evil-close-fold)
+  
   (:states 'normal
     "M-j" #'move-line-down
     "M-k" #'move-line-up
