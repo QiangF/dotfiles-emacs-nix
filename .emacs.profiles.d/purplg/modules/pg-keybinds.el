@@ -1,4 +1,5 @@
 (require 'pg-straight)
+(require 'pg-basics)
 
 (use-package which-key
   :straight t
@@ -85,6 +86,33 @@
   (advice-add 'evil-forward-section-begin :after #'evil-scroll-line-to-center)
   (advice-add 'evil-backward-section-begin :after #'evil-scroll-line-to-center)
 
+  (defun evil-close-fold-below ()
+      "Close fold on current line instead of enclosing block at point"
+      (interactive)
+      (save-excursion
+          (end-of-line)
+          (evil-close-fold)))
+  
+  (defun evil-open-fold-save ()
+      "Keep point in place when opening fold"
+      (interactive)
+      (save-excursion
+          (evil-open-fold)))
+  
+  ;; Keep cursor in place when opening a fold
+  (advice-add 'evil-open-fold :around #'save-excursion-wrapper)
+  
+  (general-define-key
+      :states 'normal
+      "z c" #'evil-close-fold-below
+      "z C" #'evil-close-fold)
+  
+  (general-define-key 
+      :states 'normal
+      :keymaps 'prog-mode-map
+      "C-[" #'previous-error
+      "C-]" #'next-error)
+  
   :general
   (:states 'normal
     "M-j" #'move-line-down
