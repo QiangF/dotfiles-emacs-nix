@@ -1,5 +1,4 @@
 (require 'pg-straight)
-(require 'pg-basics)
 
 (use-package which-key
   :straight t
@@ -100,7 +99,10 @@
           (evil-open-fold)))
   
   ;; Keep cursor in place when opening a fold
-  (advice-add 'evil-open-fold :around #'save-excursion-wrapper)
+  (advice-add 'evil-open-fold
+    :around
+    (lambda ()
+      (save-excursion (funcall inner))))
   
   (general-define-key
       :states 'normal
