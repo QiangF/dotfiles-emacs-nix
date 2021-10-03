@@ -1,12 +1,14 @@
 ;;; pg-vertico.el --- -*- lexical-binding: t; -*-
 
+(require 'pg-straight)
+(require 'pg-keybinds)
+
 (use-package vertico
   :straight t
   :init
   (vertico-mode 1)
 
   :config
-  ;; Redefine find file functions to support vertico
   (defun pg/find-file-in-profile-dir ()
     (interactive)
     (ido-find-file-in-dir pg/config-dir))
