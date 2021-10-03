@@ -4,14 +4,6 @@
 (require 'pg-basics)
 (require 'pg-keybinds)
 
-(defun pg/auto-tangle-config ()
-  (when (string-equal (file-name-directory (buffer-file-name))
-                      (file-truename pg/module-dir))
-    (org-babel-tangle)
-    (pg/compile-modules)))
-
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'pg/auto-tangle-config)))
-
 (setq-default display-line-numbers-type 'visual
               display-line-numbers-current-absolute t)
 
