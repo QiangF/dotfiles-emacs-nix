@@ -10,6 +10,7 @@
 (setq ring-bell-function 'ignore)
 (setq scroll-conservatively 101)
 
+(require 'pg-perf)
 (require 'pg-basics)
 (require 'pg-evil)
 (require 'pg-interface)
