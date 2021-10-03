@@ -15,8 +15,8 @@
   :config
   (hook! 'parinfer-rust-mode-hook (lambda () (electric-indent-mode 0)))
   (pg/local-leader
-   :keymaps 'org-mode-map
-   "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer")))
+   :keymaps 'emacs-lisp-mode-map
+   "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer-toggle")))
 
 (use-package erefactor
   :straight t
