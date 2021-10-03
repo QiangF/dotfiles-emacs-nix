@@ -1,4 +1,5 @@
 (require 'pg-straight)
+(require 'pg-basics)
 
 (use-package which-key
   :straight t
@@ -35,6 +36,7 @@
  "f f" #'(find-file :which-key "find")
  "f s" #'(save-buffer :which-key "save")
  "f ." #'(find-file-at-point :which-key "this")
+ "f m" #'(pg/open-module :which-key "module")
 
  "h" '(:which-key "help")
  "h k" #'(describe-key :which-key "key")
