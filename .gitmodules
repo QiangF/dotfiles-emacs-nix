@@ -1,3 +1,6 @@
 [submodule "wofi-pass"]
 	path = wofi-pass
 	url = git@github.com:purplg/wofi-pass.git
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
