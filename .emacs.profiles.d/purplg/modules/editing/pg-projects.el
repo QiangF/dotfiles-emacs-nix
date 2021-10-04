@@ -6,11 +6,12 @@
   :straight t
   :init
   (pg/leader
-   "o p" 'treemacs)
+   "o p" #'treemacs)
 
   :config
   (treemacs-resize-icons 16)
   (treemacs-set-width 30)
+
   :general
   (:states 'normal
    :keymaps 'treemacs-mode-map
@@ -33,6 +34,6 @@
    "p a" #'(projectile-add-known-project :which-key "add")
    "p d" #'(projectile-remove-known-project :which-key "remove")
    "p p" #'(projectile-switch-project :which-key "open"))
-  (projectile-mode +1))
+  (projectile-mode 1))
 
 (provide 'pg-projects)

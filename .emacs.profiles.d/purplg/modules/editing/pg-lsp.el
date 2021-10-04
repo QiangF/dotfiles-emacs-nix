@@ -20,9 +20,8 @@
   :straight t
   :after lsp-mode
   :config
-  ;; recommended performance tweaks
-  (setq gc-cons-threshold 100000000
-        read-process-output-max (* 1024 1024))
+  ;; recommended performance tweak
+  (setq read-process-output-max (* 1024 1024))
   
   ;; Disable because it causes input lag
   (setq lsp-ui-doc-enable nil

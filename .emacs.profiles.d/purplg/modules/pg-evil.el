@@ -14,6 +14,7 @@
 (use-package evil
   :straight t
   :after undo-fu
+  :functions undo-fu
   :init
   (setq evil-want-keybinding nil)
   (setq evil-undo-system #'undo-fu)
@@ -25,8 +26,10 @@
    "b n" #'(evil-next-buffer :which-key "next")
    "b N" #'(evil-buffer-new :which-key "new"))
 
-  (advice-add 'evil-forward-section-begin :after #'evil-scroll-line-to-center)
-  (advice-add 'evil-backward-section-begin :after #'evil-scroll-line-to-center)
+  (advice-add 'evil-forward-section-begin
+              :after #'evil-scroll-line-to-center)
+  (advice-add 'evil-backward-section-begin
+              :after #'evil-scroll-line-to-center)
 
   (defun evil-close-fold-below ()
     "Close fold on current line instead of enclosing block at point"
@@ -43,10 +46,8 @@
   
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold
-    :around
-    (lambda (inner &rest _)  
-      (save-excursion
-        (funcall inner))))
+              :around (lambda (inner &rest _)  
+                        (save-excursion (funcall inner))))
   
   :general
   (:states 'normal

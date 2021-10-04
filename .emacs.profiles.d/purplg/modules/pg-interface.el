@@ -14,9 +14,9 @@
 ;; Scroll message buffer to bottom on update
 (hook! 'post-command-hook
   (lambda ()
-    (let ((messages (get-buffer "*Messages*")))
-      (unless (eq (current-buffer) messages)
-        (with-current-buffer messages
+    (let ((messages-buffer (get-buffer "*Messages*")))
+      (unless (eq (current-buffer) messages-buffer)
+        (with-current-buffer messages-buffer
           (goto-char (point-max)))))))
 
 ;; Prevent the scratch buffer from being deleted

@@ -17,19 +17,15 @@
         '(("w" "Work"
             entry (file+headline "~/.org/Work.org" "Tasks")
             "* TODO %?\n %i\n")
-
           ("p" "Current project"
             entry (file+headline (lambda () (expand-file-name org-capture-project-file (projectile-project-root))) "Tasks")
             "* TODO %?\n%i\n%a" :prepend t)
-
           ("s" "Session"
             entry (file+headline "~/.org/PC.org" "Session")
             "* TODO %?\n%i" :prepend t)
-
           ("c" "PC"
             entry (file+headline "~/.org/PC.org" "Tasks")
             "* TODO %?\n%i" :prepend t)
-
           ("h" "Home"
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))

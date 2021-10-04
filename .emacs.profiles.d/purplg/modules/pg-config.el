@@ -14,19 +14,19 @@
   "Open a configuration module."
   (interactive 
     (list (completing-read "Module: "
-            (mapcar
-              (lambda (file)
-                (file-name-base file))
-              (directory-files-recursively pg/module-dir ".el$" nil)) nil t)))
+            (mapcar #'file-name-base
+                    (directory-files-recursively pg/module-dir ".el$" nil))
+            nil t)))
 
   (let ((matches (seq-filter
                   (lambda (file) (string-match (concat module-name ".el$") file))
                   (directory-files-recursively pg/module-dir ".el$" nil))))
     (if (= 1 (length matches))
         (find-file (car matches))
-        (message "module not found: %s" module-name))))
+        (user-error "module not found: %s" module-name))))
 
 ;; Byte compile the file on every save
-(add-hook 'after-save-hook (lambda () (byte-compile-file (buffer-file-name))))
+(add-hook 'after-save-hook
+          (lambda () (byte-compile-file (buffer-file-name))))
 
 (provide 'pg-config)

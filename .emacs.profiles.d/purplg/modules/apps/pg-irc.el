@@ -10,10 +10,11 @@
   :init
   (defun pg/connect-to-irc ()
     (interactive)
-    (erc-tls :server   "irc.libera.chat"
-             :port     "6697"
-             :nick     (auth-source-pass-get "nick" "irc.libera.chat")
-             :password (auth-source-pass-get 'secret "irc.libera.chat")))
+    (erc-tls
+     :server "irc.libera.chat"
+     :port "6697"
+     :nick (auth-source-pass-get "nick" "irc.libera.chat")
+     :password (auth-source-pass-get 'secret "irc.libera.chat")))
 
   :config
   (setq erc-prompt-for-password nil

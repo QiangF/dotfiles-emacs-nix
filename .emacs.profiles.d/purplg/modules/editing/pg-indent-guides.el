@@ -5,6 +5,6 @@
   :config
   (setq highlight-indent-guides-method 'column
         highlight-indent-guides-responsive 'top)
-  (hook! 'prog-mode-hook #'highlight-indent-guides-mode))
+  (hook! 'prog-mode-hookd #'highlight-indent-guides-mode))
 
 (provide 'pg-indent-guides)

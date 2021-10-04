@@ -14,8 +14,9 @@
 
   (dashboard-setup-startup-hook)
 
-  (hook! 'dashboard-after-initialize-hook #'(lambda ()
-                                              (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+  (hook! 'dashboard-after-initialize-hook
+         #'(lambda ()
+             (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
 
   (defun dashboard-refresh-buffer-silent ()
     "Refresh buffer in background."
