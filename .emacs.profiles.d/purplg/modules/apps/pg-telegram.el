@@ -22,23 +22,24 @@
   (pg/leader
    "o c" #'(telega :whick-key "telegram"))
 
-  (use-package telega-alert
-    :after alert
-    :config
-    (telega-alert-mode 1)
-    (hook! 'telega-load-hook #'global-telega-squash-message-mode))
-
-  (after! 'dashboard
-    (require 'telega-dashboard)
-    (add-to-list 'dashboard-items '(telega-chats . 5) t)
-    (hook! 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
-    (general-define-key
-     :states 'normal
-     :keymaps 'dashboard-mode-map
-     "t" #'dashboard-jump-to-telega-chats))
-
   :general
   (:keymaps 'telega-chat-mode-map
    "C-g" #'telega-chatbuf-cancel-aux))
 
+(use-package telega-alert
+  :after telega alert
+  :config
+  (telega-alert-mode 1)
+  (hook! 'telega-load-hook #'global-telega-squash-message-mode))
+
+(use-package telega-dashboard
+  :after telega dashboard
+  :config
+  (add-to-list 'dashboard-items '(telega-chats . 5) t)
+  (hook! 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
+  (general-define-key
+   :states 'normal
+   :keymaps 'dashboard-mode-map
+   "t" #'dashboard-jump-to-telega-chats))
+  
 (provide 'pg-telegram)
