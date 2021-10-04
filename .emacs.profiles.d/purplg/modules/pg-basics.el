@@ -2,8 +2,8 @@
 
 (defalias 'after! 'with-eval-after-load)
 
-(setq native-comp-async-report-warnings-errors nil)
-(setq ring-bell-function 'ignore)
-(setq scroll-conservatively 101)
+(setq native-comp-async-report-warnings-errors nil
+      ring-bell-function 'ignore
+      scroll-conservatively 101)
 
 (provide 'pg-basics)
