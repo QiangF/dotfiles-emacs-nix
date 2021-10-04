@@ -1,6 +1,9 @@
+(require 'pg-system-specific)
+
 ;; Font
-(set-face-attribute 'default nil :font "Fira Code Retina-10")
-(add-to-list 'default-frame-alist '(font . "Fira Code Retina-10"))
+(defvar font-face "Fira Code Retina-10")
+(set-face-attribute 'default nil :font font-face) 
+(add-to-list 'default-frame-alist '(font . font-face))
 
 ;; Frame title
 (setq frame-title-format "PurplEmacs")

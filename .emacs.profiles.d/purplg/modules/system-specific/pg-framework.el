@@ -1,6 +1,6 @@
 (require 'pg-straight)
 
-(add-to-list 'default-frame-alist '(font . "Fira Code Retina-12"))
+(setq font-face "Fira Code Retina-12")
 
 (display-battery-mode 1)
 
