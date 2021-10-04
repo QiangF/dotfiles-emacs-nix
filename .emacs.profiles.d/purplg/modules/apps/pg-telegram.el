@@ -6,10 +6,10 @@
 
 (use-package telega
   :straight t
-  :init   
-  (when (daemonp)
-    (telega)
-    (telega-mode-line-mode 1))
+  :if (daemonp)
+  :init
+  (telega)
+  (telega-mode-line-mode 1)
 
   :config
   (setq telega-use-images t
