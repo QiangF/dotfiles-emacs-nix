@@ -11,13 +11,16 @@
   (telega)
   (telega-mode-line-mode 1)
 
+  :custom
+  (telega-emoji-use-images t)
+  (telega-chat-show-avatars t)
+  (telega-root-show-avatars t)
+  (telega-user-show-avatars t)
+  (telega-emoji-font-family "Noto Color Emoji")
+
   :config
-  (setq telega-use-images t
-        telega-emoji-use-images t
-        telega-chat-show-avatars t
-        telega-root-show-avatars t
-        telega-user-show-avatars t
-        telega-emoji-font-family "Noto Color Emoji")
+  ;; Cannot set this with `:custom' in daemon mode for some reason
+  (setq telega-use-images t)
 
   (pg/leader
    "o c" #'(telega :whick-key "telegram"))
