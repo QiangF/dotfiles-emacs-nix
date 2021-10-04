@@ -6,6 +6,7 @@
 (defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
 
+(require 'pg-config)
 (require 'pg-perf)
 (require 'pg-basics)
 (require 'pg-evil)
