@@ -25,8 +25,15 @@
         (find-file (car matches))
         (user-error "module not found: %s" module-name))))
 
-;; Byte compile the file on every save
-(add-hook 'after-save-hook
-          (lambda () (byte-compile-file (buffer-file-name))))
+;; If in the Emacs config directory, automatically byte compile files on save
+(add-hook 'emacs-lisp-mode-hook
+  (lambda ()
+    (when (and (buffer-file-name)
+               (string-match (file-truename pg/module-dir)
+                             (buffer-file-name)))
+      (add-hook
+       'after-save-hook
+       (lambda () (byte-compile-file (buffer-file-name)))
+       0 t))))
 
 (provide 'pg-config)
