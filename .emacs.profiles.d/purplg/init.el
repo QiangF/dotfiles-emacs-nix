@@ -9,7 +9,7 @@
 (require 'pg-config)
 (require 'pg-perf)
 (require 'pg-basics)
-(require 'pg-evil)
+(require 'pg-keybinds)
 (require 'pg-interface)
 (require 'pg-editing)
 (require 'pg-apps)
