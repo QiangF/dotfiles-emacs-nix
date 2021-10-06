@@ -37,7 +37,7 @@
 
   (pg/leader
    :keymaps 'org-mode-map
-   "t l" #'(org-toggle-link-display :which-key "link display"))
+   "t l" #'(org-toggle-link-display :wk "link display"))
     
   :general
   (:states 'normal

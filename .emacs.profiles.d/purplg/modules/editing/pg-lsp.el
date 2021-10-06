@@ -8,9 +8,9 @@
 
   (pg/leader
    :keymaps 'lsp-mode-map
-   "c a" #'(lsp-execute-code-action :which-key "execute action")
-   "c f" #'(lsp-format-buffer :which-key "format")
-   "c r" #'(lsp-rename :which-key "rename"))
+   "c a" #'(lsp-execute-code-action :wk "execute action")
+   "c f" #'(lsp-format-buffer :wk "format")
+   "c r" #'(lsp-rename :wk "rename"))
 
   :general
   (:keymaps 'evil-motion-state-map

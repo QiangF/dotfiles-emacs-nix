@@ -29,7 +29,7 @@
     (switch-to-buffer dashboard-buffer-name))
   
   (pg/leader
-   "o d" #'(dashboard-switch :which-key "dashboard"))
+   "o d" #'(dashboard-switch :wk "dashboard"))
 
   :general
   (:states 'normal

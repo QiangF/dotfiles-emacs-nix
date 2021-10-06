@@ -36,41 +36,41 @@
    :prefix "SPC m")
   
   (pg/leader
-   "m" '(:which-key "local")
-   "s" '(:which-key "search")
-   "c" '(:which-key "code")
-   "p" '(:which-key "project")
+   "m" '(:wk "local")
+   "s" '(:wk "search")
+   "c" '(:wk "code")
+   "p" '(:wk "project")
   
-   "o" '(:which-key "open")
-   "o s" #'(open-scratch-buffer :which-key "scratch")
+   "o" '(:wk "open")
+   "o s" #'(open-scratch-buffer :wk "scratch")
   
-   "t" '(:which-key "toggle")
-   "t f" #'(display-fill-column-indicator-mode :which-key "fill-column")
-   "t n" #'(display-line-numbers-mode :which-key "line numbers")
-   "t w" #'(whitespace-mode :which-key "whitespace")
+   "t" '(:wk "toggle")
+   "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
+   "t n" #'(display-line-numbers-mode :wk "line numbers")
+   "t w" #'(whitespace-mode :wk "whitespace")
   
-   "f" '(:which-key "file")
-   "f f" #'(find-file :which-key "find")
-   "f s" #'(save-buffer :which-key "save")
-   "f ." #'(find-file-at-point :which-key "this")
-   "f m" #'(pg/open-module :which-key "module")
+   "f" '(:wk "file")
+   "f f" #'(find-file :wk "find")
+   "f s" #'(save-buffer :wk "save")
+   "f ." #'(find-file-at-point :wk "this")
+   "f m" #'(pg/open-module :wk "module")
   
-   "h" '(:which-key "help")
-   "h k" #'(describe-key :which-key "key")
-   "h p" #'(describe-package :which-key "package")
+   "h" '(:wk "help")
+   "h k" #'(describe-key :wk "key")
+   "h p" #'(describe-package :wk "package")
   
-   "q" '(:which-key "quit")
-   "q w" #'(delete-window :which-key "window")
-   "q b" #'(kill-this-buffer :which-key "buffer")
-   "q q" #'(save-buffers-kill-terminal :which-key "really quit?")
+   "q" '(:wk "quit")
+   "q w" #'(delete-window :wk "window")
+   "q b" #'(kill-this-buffer :wk "buffer")
+   "q q" #'(save-buffers-kill-terminal :wk "really quit?")
   
-   "w" '(:which-key "window")
+   "w" '(:wk "window")
    "w d" #'delete-window
    "w s" #'split-window-below
    "w v" #'split-window-right
   
-   "b" '(:which-key "buffer")
-   "b b" #'(project-switch-to-buffer :which-key open)
+   "b" '(:wk "buffer")
+   "b b" #'(project-switch-to-buffer :wk open)
    "b d" #'kill-this-buffer
    "b r" #'revert-buffer
   
@@ -116,9 +116,9 @@
 
   (pg/leader
    :states 'normal
-   "b p" #'(evil-prev-buffer :which-key "previous")
-   "b n" #'(evil-next-buffer :which-key "next")
-   "b N" #'(evil-buffer-new :which-key "new"))
+   "b p" #'(evil-prev-buffer :wk "previous")
+   "b n" #'(evil-next-buffer :wk "next")
+   "b N" #'(evil-buffer-new :wk "new"))
 
   (defun evil-close-fold-below ()
     "Close fold on current line instead of enclosing block at point"

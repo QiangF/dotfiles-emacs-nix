@@ -40,17 +40,17 @@
   
   (pg/leader
    :keymaps 'persp-mode-map
-   "b b" #'(persp-switch-to-buffer :which-key "buffer")
-   "TAB" #'(:which-key "perspectives")
-   "TAB TAB" #'(persp-list :which-key "list")
-   "TAB s" #'(persp-switch :which-key "switch")
-   "TAB a" #'(persp-add-buffer :which-key "add buffer")
-   "TAB x" #'(persp-remove-buffer :which-key "remove buffer")
-   "TAB d" #'(persp-kill :which-key "kill persp")
-   "TAB r" #'(persp-rename :which-key "rename")
-   "TAB n" #'(persp-add-new :which-key "new")
-   "TAB l" #'(persp-next :which-key "next persp")
-   "TAB h" #'(persp-prev :which-key "prev persp"))
+   "b b" #'(persp-switch-to-buffer :wk "buffer")
+   "TAB" #'(:wk "perspectives")
+   "TAB TAB" #'(persp-list :wk "list")
+   "TAB s" #'(persp-switch :wk "switch")
+   "TAB a" #'(persp-add-buffer :wk "add buffer")
+   "TAB x" #'(persp-remove-buffer :wk "remove buffer")
+   "TAB d" #'(persp-kill :wk "kill persp")
+   "TAB r" #'(persp-rename :wk "rename")
+   "TAB n" #'(persp-add-new :wk "new")
+   "TAB l" #'(persp-next :wk "next persp")
+   "TAB h" #'(persp-prev :wk "prev persp"))
 
   (persp-mode))
 

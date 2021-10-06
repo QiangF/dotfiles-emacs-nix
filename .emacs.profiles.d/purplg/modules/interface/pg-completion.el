@@ -28,12 +28,12 @@
     (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
 
   (pg/leader
-   "f o" #'(pg/find-file-in-org-dir :which-key "in org")
-   "f c" #'(pg/find-file-in-profile-dir :which-key "in config")
-   "f ~" #'(pg/find-file-in-home-dir :which-key "in home")
-   "f /" #'(pg/find-file-in-root-dir :which-key "in root")
-   "f f" #'(find-file :which-key "file")
-   "p S" #'(pg/project-search-thing-at-point :which-key "search this"))
+   "f o" #'(pg/find-file-in-org-dir :wk "in org")
+   "f c" #'(pg/find-file-in-profile-dir :wk "in config")
+   "f ~" #'(pg/find-file-in-home-dir :wk "in home")
+   "f /" #'(pg/find-file-in-root-dir :wk "in root")
+   "f f" #'(find-file :wk "file")
+   "p S" #'(pg/project-search-thing-at-point :wk "search this"))
 
   :general
   (:keymaps 'minibuffer-local-map
@@ -51,12 +51,12 @@
   (setq consult-project-root-function #'projectile-project-root)
   
   (pg/leader
-   "b b" #'(consult-buffer :which-key "buffer")
-   "b o" #'(consult-buffer-other-frame :which-key "buffer-other")
-   "s b" #'(consult-line :which-key "buffer")
-   "s p" #'(consult-line-multi :which-key "project")
-   "s r" #'(consult-ripgrep :which-key "regex")
-   "f r" #'(consult-recent-file :which-key "recent"))
+   "b b" #'(consult-buffer :wk "buffer")
+   "b o" #'(consult-buffer-other-frame :wk "buffer-other")
+   "s b" #'(consult-line :wk "buffer")
+   "s p" #'(consult-line-multi :wk "project")
+   "s r" #'(consult-ripgrep :wk "regex")
+   "f r" #'(consult-recent-file :wk "recent"))
   (recentf-mode 1))
     
 (use-package consult-lsp
@@ -65,7 +65,7 @@
   :config
   (pg/leader
    :keymaps 'lsp-mode-map
-   "s e" #'(consult-lsp-diagnostics :which-key "errors")))
+   "s e" #'(consult-lsp-diagnostics :wk "errors")))
 
 (use-package marginalia
   :straight t

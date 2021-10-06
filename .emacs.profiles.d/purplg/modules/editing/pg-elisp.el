@@ -20,7 +20,7 @@
 
   (pg/local-leader
    :keymaps 'emacs-lisp-mode-map
-   "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer-toggle")))
+   "p" #'(parinfer-rust-toggle-paren-mode :wk "parinfer-toggle")))
 
 ;; Emacs refactor
 (use-package emr
@@ -28,20 +28,20 @@
   :config
   (pg/leader
    :keymaps 'emacs-lisp-mode-map
-   "c c" #'(emr-show-refactor-menu :which-key "refactor menu")))
+   "c c" #'(emr-show-refactor-menu :wk "refactor menu")))
 
 (pg/leader
  :keymaps 'emacs-lisp-mode-map
- "e" '(:which-key "eval")
- "e b" #'(eval-buffer :which-key "buffer")
- "e f" #'(eval-defun :which-key "function")
- "b c" #'(emacs-lisp-byte-compile-and-load :which-key "compile and load"))
+ "e" '(:wk "eval")
+ "e b" #'(eval-buffer :wk "buffer")
+ "e f" #'(eval-defun :wk "function")
+ "b c" #'(emacs-lisp-byte-compile-and-load :wk "compile and load"))
 
 (pg/leader
  :states 'visual
  :keymaps 'emacs-lisp-mode-map
- "e" '(:which-key "eval")
- "e r" #'(eval-region :which-key "region"))
+ "e" '(:wk "eval")
+ "e r" #'(eval-region :wk "region"))
 
 (use-package package-lint
   :straight t)

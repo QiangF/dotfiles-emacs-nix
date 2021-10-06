@@ -17,12 +17,12 @@
 
   (pg/local-leader
    :keymaps 'rustic-mode-map
-   "c" '(:which-key "cargo")
-   "c r" #'(rustic-cargo-run-no-args :which-key "run")
-   "c R" #'(rustic-cargo-run :which-key "run w/ args")
-   "c a" #'(rustic-cargo-add :which-key "add dep")
-   "c x" #'(rustic-cargo-rm :which-key "rm dep")
-   "c c" #'(rustic-cargo-check :which-key "check")
-   "c t" #'(rustic-cargo-test :which-key "test")))
+   "c" '(:wk "cargo")
+   "c r" #'(rustic-cargo-run-no-args :wk "run")
+   "c R" #'(rustic-cargo-run :wk "run w/ args")
+   "c a" #'(rustic-cargo-add :wk "add dep")
+   "c x" #'(rustic-cargo-rm :wk "rm dep")
+   "c c" #'(rustic-cargo-check :wk "check")
+   "c t" #'(rustic-cargo-test :wk "test")))
 
 (provide 'pg-rust)

@@ -30,10 +30,10 @@
   :straight t
   :config
   (pg/leader
-   "p f" #'(projectile-find-file :which-key "file")
-   "p a" #'(projectile-add-known-project :which-key "add")
-   "p d" #'(projectile-remove-known-project :which-key "remove")
-   "p p" #'(projectile-switch-project :which-key "open"))
+   "p f" #'(projectile-find-file :wk "file")
+   "p a" #'(projectile-add-known-project :wk "add")
+   "p d" #'(projectile-remove-known-project :wk "remove")
+   "p p" #'(projectile-switch-project :wk "open"))
   (projectile-mode 1))
 
 (provide 'pg-projects)
