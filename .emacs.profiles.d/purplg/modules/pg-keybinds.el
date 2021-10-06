@@ -2,6 +2,13 @@
 (require 'pg-config)
 (require 'pg-straight)
 
+(defun evil-close-fold-below ()
+  "Close fold on current line instead of enclosing block at point"
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (evil-close-fold)))
+
 (defun move-line-up ()
     (interactive)
     (transpose-lines 1)
@@ -119,13 +126,6 @@
    "b p" #'(evil-prev-buffer :wk "previous")
    "b n" #'(evil-next-buffer :wk "next")
    "b N" #'(evil-buffer-new :wk "new"))
-
-  (defun evil-close-fold-below ()
-    "Close fold on current line instead of enclosing block at point"
-    (interactive)
-    (save-excursion
-      (end-of-line)
-      (evil-close-fold)))
 
   (general-define-key
    :states 'normal
