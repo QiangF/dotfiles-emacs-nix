@@ -58,13 +58,6 @@
    "M-k" #'move-line-up
    "C-j" #'evil-forward-section-begin
    "C-k" #'evil-backward-section-begin)
-
-  ;; Unbind SPC in Dired mode
-  ;; Dired takes precendence for the ~SPC~ key. Don't like that
-  (general-define-key
-   :states 'normal
-   :keymaps 'dired-mode-map
-   "SPC" nil)
     
   ;; I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
   (general-define-key

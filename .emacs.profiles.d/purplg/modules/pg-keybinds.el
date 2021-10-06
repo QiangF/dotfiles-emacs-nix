@@ -76,4 +76,11 @@
   (transpose-lines 1)
   (forward-line -1))
 
+;; Unbind SPC in Dired mode
+;; Dired takes precendence for the ~SPC~ key. Don't like that
+(general-define-key
+ :states 'normal
+ :keymaps 'dired-mode-map
+ "SPC" nil)
+
 (provide 'pg-keybinds)
