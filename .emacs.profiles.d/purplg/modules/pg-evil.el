@@ -17,14 +17,11 @@
   :functions undo-fu
   :init
   (setq evil-want-keybinding nil)
-  (evil-mode 1)
+  (setq evil-want-integration t)
   (setq evil-undo-system 'undo-fu)
 
   :config
-  (pg/leader :states 'normal
-   "b p" #'(evil-prev-buffer :which-key "previous")
-   "b n" #'(evil-next-buffer :which-key "next")
-   "b N" #'(evil-buffer-new :which-key "new"))
+  (evil-mode 1)
 
   (advice-add 'evil-forward-section-begin
               :after #'evil-scroll-line-to-center)
@@ -48,13 +45,19 @@
   (advice-add 'evil-open-fold
               :around (lambda (inner &rest _)  
                         (save-excursion (funcall inner))))
-  
-  :general
-  (:states 'normal
+  (pg/leader
+   :states 'normal
+   "b p" #'(evil-prev-buffer :which-key "previous")
+   "b n" #'(evil-next-buffer :which-key "next")
+   "b N" #'(evil-buffer-new :which-key "new"))
+
+  (general-define-key
+   :states 'normal
    "z c" #'evil-close-fold-below
    "z C" #'evil-close-fold)
   
-  (:states 'normal
+  (general-define-key
+   :states 'normal
    "M-j" #'move-line-down
    "M-k" #'move-line-up
    "C-j" #'evil-forward-section-begin
@@ -62,12 +65,14 @@
 
   ;; Unbind SPC in Dired mode
   ;; Dired takes precendence for the ~SPC~ key. Don't like that
-  (:states 'normal
+  (general-define-key
+   :states 'normal
    :keymaps 'dired-mode-map
    "SPC" nil)
     
   ;; I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
-  (:states 'normal
+  (general-define-key
+   :states 'normal
    "C-w C-h" #'evil-window-left
    "C-w C-j" #'evil-window-down
    "C-w C-k" #'evil-window-up
