@@ -27,13 +27,6 @@
               :after #'evil-scroll-line-to-center)
   (advice-add 'evil-backward-section-begin
               :after #'evil-scroll-line-to-center)
-
-  (defun evil-close-fold-below ()
-    "Close fold on current line instead of enclosing block at point"
-    (interactive)
-    (save-excursion
-      (end-of-line)
-      (evil-close-fold)))
   
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold
@@ -44,6 +37,13 @@
    "b p" #'(evil-prev-buffer :which-key "previous")
    "b n" #'(evil-next-buffer :which-key "next")
    "b N" #'(evil-buffer-new :which-key "new"))
+
+  (defun evil-close-fold-below ()
+    "Close fold on current line instead of enclosing block at point"
+    (interactive)
+    (save-excursion
+      (end-of-line)
+      (evil-close-fold)))
 
   (general-define-key
    :states 'normal
