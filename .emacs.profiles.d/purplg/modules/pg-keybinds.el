@@ -20,12 +20,18 @@
   :states '(normal visual)
   :prefix "SPC m")
 
+(defun open-scratch-buffer ()
+  (interactive)
+  (switch-to-buffer "*scratch*"))
+
 (pg/leader
  "m" '(:which-key "local")
- "o" '(:which-key "open")
  "s" '(:which-key "search")
  "c" '(:which-key "code")
  "p" '(:which-key "project")
+
+ "o" '(:which-key "open")
+ "o s" #'(open-scratch-buffer :which-key "scratch")
 
  "t" '(:which-key "toggle")
  "t f" #'(display-fill-column-indicator-mode :which-key "fill-column")
