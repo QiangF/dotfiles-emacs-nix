@@ -17,8 +17,8 @@
   :functions undo-fu
   :init
   (setq evil-want-keybinding nil)
-  (setq evil-undo-system #'undo-fu)
   (evil-mode 1)
+  (setq evil-undo-system 'undo-fu)
 
   :config
   (pg/leader :states 'normal
