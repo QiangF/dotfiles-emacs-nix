@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-config)
 (require 'pg-straight)
 (require 'pg-keybinds)
 

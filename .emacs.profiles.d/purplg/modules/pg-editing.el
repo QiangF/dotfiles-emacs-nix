@@ -1,4 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-config)
+
 (add-to-list 'load-path (expand-file-name "editing/" pg/module-dir))
 
 (require 'pg-company)

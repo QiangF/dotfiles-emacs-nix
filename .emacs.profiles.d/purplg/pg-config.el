@@ -1,4 +1,14 @@
+;;; --- -*- lexical-binding: t; -*-
+
 ;; Configuration management
+
+(defconst pg/config-dir (expand-file-name "~/.emacs.profiles.d/purplg/"))
+(defconst pg/module-dir (expand-file-name "modules/" pg/config-dir))
+(add-to-list 'load-path pg/module-dir)
+
+;; Keep config directory clean
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
+      url-history-file (expand-file-name "url/history" user-emacs-directory))
 
 ;; What warnings/errors to show when compiling elisp files.
 (setq byte-compile-warnings t)

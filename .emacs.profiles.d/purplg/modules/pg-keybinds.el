@@ -1,6 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-config)
 (require 'pg-straight)
-(require 'pg-basics)
 
 (defun move-line-up ()
     (interactive)
