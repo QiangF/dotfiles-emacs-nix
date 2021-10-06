@@ -22,13 +22,13 @@
    :keymaps 'emacs-lisp-mode-map
    "p" #'(parinfer-rust-toggle-paren-mode :which-key "parinfer-toggle")))
 
-(use-package erefactor
+;; Emacs refactor
+(use-package emr
   :straight t
-  :defer t
-  :init
+  :config
   (pg/leader
    :keymaps 'emacs-lisp-mode-map
-   "c r" #'(erefactor-rename-symbol-in-buffer :which-key rename)))
+   "c c" #'(emr-show-refactor-menu :which-key "refactor menu")))
 
 (pg/leader
  :keymaps 'emacs-lisp-mode-map
