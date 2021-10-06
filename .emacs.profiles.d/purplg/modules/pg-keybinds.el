@@ -36,40 +36,39 @@
    :prefix "SPC m")
   
   (pg/leader
-   "m" '(:wk "local")
-   "s" '(:wk "search")
-   "c" '(:wk "code")
-   "p" '(:wk "project")
-  
-   "o" '(:wk "open")
+   "m" '(:ignore t :wk "local")
+   "s" '(:ignore t :wk "search")
+   "c" '(:ignore t :wk "code")
+   "p" '(:ignore t :wk "project")
+   "o" '(:ignore t :wk "open")
+   "t" '(:ignore t :wk "toggle")
+   "f" '(:ignore t :wk "file")
+   "h" '(:ignore t :wk "help")
+   "q" '(:ignore t :wk "quit")
+   "w" '(:ignore t :wk "window")
+   "b" '(:ignore t :wk "buffer")
+
    "o s" #'(open-scratch-buffer :wk "scratch")
-  
-   "t" '(:wk "toggle")
    "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
    "t n" #'(display-line-numbers-mode :wk "line numbers")
    "t w" #'(whitespace-mode :wk "whitespace")
   
-   "f" '(:wk "file")
    "f f" #'(find-file :wk "find")
    "f s" #'(save-buffer :wk "save")
    "f ." #'(find-file-at-point :wk "this")
    "f m" #'(pg/open-module :wk "module")
   
-   "h" '(:wk "help")
    "h k" #'(describe-key :wk "key")
    "h p" #'(describe-package :wk "package")
   
-   "q" '(:wk "quit")
    "q w" #'(delete-window :wk "window")
    "q b" #'(kill-this-buffer :wk "buffer")
    "q q" #'(save-buffers-kill-terminal :wk "really quit?")
   
-   "w" '(:wk "window")
    "w d" #'delete-window
    "w s" #'split-window-below
    "w v" #'split-window-right
   
-   "b" '(:wk "buffer")
    "b b" #'(project-switch-to-buffer :wk open)
    "b d" #'kill-this-buffer
    "b r" #'revert-buffer
