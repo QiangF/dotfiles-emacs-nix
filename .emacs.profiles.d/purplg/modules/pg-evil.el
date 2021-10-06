@@ -23,6 +23,7 @@
   :config
   (evil-mode 1)
 
+  ;; Center buffer on point when jumping between sections
   (advice-add 'evil-forward-section-begin
               :after #'evil-scroll-line-to-center)
   (advice-add 'evil-backward-section-begin
