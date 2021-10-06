@@ -5,6 +5,7 @@
 ;;(require 'pg-irc)
 (require 'pg-telegram)
 (require 'pg-term)
+(require 'pg-rss)
 (require 'pg-epub)
 
 (provide 'pg-apps)
