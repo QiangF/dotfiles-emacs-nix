@@ -35,12 +35,6 @@
       (end-of-line)
       (evil-close-fold)))
   
-  (defun evil-open-fold-save ()
-    "Keep point in place when opening fold"
-    (interactive)
-    (save-excursion
-      (evil-open-fold)))
-  
   ;; Keep cursor in place when opening a fold
   (advice-add 'evil-open-fold
               :around (lambda (inner &rest _)  
