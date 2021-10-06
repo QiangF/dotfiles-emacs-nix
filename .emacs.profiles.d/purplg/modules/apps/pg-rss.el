@@ -1,5 +1,5 @@
-(require 'straight)
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-straight)
 
 (use-package elfeed
   :straight t
