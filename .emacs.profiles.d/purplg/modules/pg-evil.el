@@ -32,6 +32,7 @@
   (advice-add 'evil-open-fold
               :around (lambda (inner &rest _)  
                         (save-excursion (funcall inner))))
+
   (pg/leader
    :states 'normal
    "b p" #'(evil-prev-buffer :which-key "previous")
