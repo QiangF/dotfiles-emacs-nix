@@ -1,3 +1,4 @@
+;;; --- -*- lexical-binding: t; -*-
 (add-to-list 'load-path (expand-file-name "system-specific/" pg/module-dir))
 
 (when (daemonp) (require 'pg-daemon))

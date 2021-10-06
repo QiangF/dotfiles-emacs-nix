@@ -1,3 +1,4 @@
+;;; --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 (setq font-face "Fira Code Retina-12")

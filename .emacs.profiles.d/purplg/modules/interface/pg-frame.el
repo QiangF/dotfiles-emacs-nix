@@ -1,3 +1,4 @@
+;;; --- -*- lexical-binding: t; -*-
 (require 'pg-system-specific)
 
 ;; Font

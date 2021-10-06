@@ -1,3 +1,4 @@
+;;; --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
 ;; Copy my user enviroment settings into Emacs. Necessary for some things like using Rust Cargo crates

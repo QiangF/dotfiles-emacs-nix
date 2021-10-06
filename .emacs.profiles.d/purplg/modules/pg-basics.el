@@ -1,4 +1,5 @@
 (require 'pg-straight)
+;;; --- -*- lexical-binding: t; -*-
 
 (defalias 'after! 'with-eval-after-load)
 

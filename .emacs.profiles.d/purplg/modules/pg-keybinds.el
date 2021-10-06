@@ -1,3 +1,4 @@
+;;; --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 (require 'pg-basics)
 

@@ -1,4 +1,5 @@
 (require 'straight)
+;;; --- -*- lexical-binding: t; -*-
 
 (use-package elfeed
   :straight t
