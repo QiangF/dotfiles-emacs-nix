@@ -1,6 +1,17 @@
 (require 'pg-straight)
 (require 'pg-basics)
 
+(defun move-line-up ()
+    (interactive)
+    (transpose-lines 1)
+    (forward-line -2))
+  
+(defun move-line-down ()
+    (interactive)
+    (forward-line 1)
+    (transpose-lines 1)
+    (forward-line -1))
+
 (use-package which-key
   :straight t
   :config
@@ -64,17 +75,6 @@
      "b r" #'revert-buffer
   
      ";" #'eval-expression)
-  
-  (defun move-line-up ()
-      (interactive)
-      (transpose-lines 1)
-      (forward-line -2))
-  
-  (defun move-line-down ()
-      (interactive)
-      (forward-line 1)
-      (transpose-lines 1)
-      (forward-line -1))
   
   ;; Unbind SPC in Dired mode
   ;; Dired takes precendence for the ~SPC~ key. Don't like that
