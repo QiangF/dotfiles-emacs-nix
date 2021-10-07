@@ -23,6 +23,10 @@
 (defun open-scratch-buffer ()
   (interactive)
   (switch-to-buffer "*scratch*"))
+
+(defun open-messages-buffer ()
+  (interactive)
+  (switch-to-buffer (messages-buffer)))
   
 (use-package which-key
   :straight t
@@ -57,6 +61,8 @@
    "b" '(:ignore t :wk "buffer")
 
    "o s" #'(open-scratch-buffer :wk "scratch")
+   "o m" #'(open-messages-buffer :wk "messages")
+
    "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
    "t n" #'(display-line-numbers-mode :wk "line numbers")
    "t w" #'(whitespace-mode :wk "whitespace")
