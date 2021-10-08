@@ -2,7 +2,7 @@
 
 ;; Configuration management
 
-(defconst pg/config-dir (expand-file-name user-emacs-directory))
+(defconst pg/config-dir (file-truename (expand-file-name user-emacs-directory)))
 (defconst pg/module-dir (expand-file-name "modules" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
 

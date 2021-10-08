@@ -1,4 +1,4 @@
-(load-file (expand-file-name "pg-config.el" user-emacs-directory))
+(load-file (file-truename (expand-file-name "pg-config.el" user-emacs-directory)))
 
 (require 'pg-perf)
 (require 'pg-keybinds)
