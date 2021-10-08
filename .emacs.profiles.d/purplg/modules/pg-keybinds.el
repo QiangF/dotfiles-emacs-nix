@@ -83,7 +83,8 @@
    "w s" #'split-window-below
    "w v" #'split-window-right
   
-   "b b" #'(project-switch-to-buffer :wk open)
+   "b b" #'(switch-to-buffer :wk open)
+   "b B" #'(switch-to-buffer :wk open)
    "b d" #'kill-this-buffer
    "b r" #'revert-buffer
   
