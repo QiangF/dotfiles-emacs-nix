@@ -13,13 +13,6 @@
 ;; What warnings/errors to show when compiling elisp files.
 (setq byte-compile-warnings t)
 
-(defun pg/compile-modules ()
-  "Compile all modules in config directory."
-  (interactive)
-  (dolist (file (directory-files-recursively pg/module-dir ".el$" nil))
-    (message "comp: %s" file)
-    (byte-compile-file file)))
-
 (defun pg/open-module (module-name)
   "Open a configuration module."
   (interactive 
