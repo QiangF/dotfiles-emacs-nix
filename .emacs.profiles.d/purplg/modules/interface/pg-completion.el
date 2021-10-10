@@ -27,7 +27,7 @@
 
   (defun pg/project-search-thing-at-point ()
     (interactive)
-    (consult-ripgrep projectile-project-root (thing-at-point 'symbol)))
+    (consult-ripgrep (consult--project-root) (thing-at-point 'symbol)))
 
   (pg/leader
    "f o" #'(pg/find-file-in-org-dir :wk "in org")
@@ -50,7 +50,7 @@
   :after vertico
   :config
   
-  (setq consult-project-root-function #'projectile-project-root)
+  (setq consult-project-root-function #'vc-root-dir)
   
   (pg/leader
    "b b" #'(consult-buffer :wk "buffer")

@@ -19,7 +19,7 @@
             entry (file+headline "~/.org/Work.org" "Tasks")
             "* TODO %?\n %i\n")
           ("p" "Current project"
-            entry (file+headline (lambda () (expand-file-name org-capture-project-file (projectile-project-root))) "Tasks")
+            entry (file+headline (lambda () (expand-file-name org-capture-project-file (vc-root-dir))) "Tasks")
             "* TODO %?\n%i\n%a" :prepend t)
           ("s" "Session"
             entry (file+headline "~/.org/PC.org" "Session")
