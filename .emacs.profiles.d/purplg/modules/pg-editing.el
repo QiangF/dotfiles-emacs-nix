@@ -3,6 +3,9 @@
 
 (add-to-list 'load-path (expand-file-name "editing/" pg/module-dir))
 
+(setq auto-save-default nil) ;; No autosave
+(setq-default fill-column 100) ;; Wrap text at 100 characters
+
 (require 'pg-company)
 (require 'pg-elisp)
 (require 'pg-flycheck)
@@ -16,8 +19,5 @@
 (require 'pg-restclient)
 (require 'pg-snippets)
 (require 'pg-yaml)
-
-(setq auto-save-default nil) ;; No autosave
-(setq-default fill-column 100) ;; Wrap text at 100 characters
 
 (provide 'pg-editing)
