@@ -3,7 +3,8 @@
 
 (add-to-list 'load-path (expand-file-name "editing/" pg/module-dir))
 
-(setq initial-major-mode 'emacs-lisp-mode)
+(setq initial-major-mode 'emacs-lisp-mode
+      initial-scratch-message nil)
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
