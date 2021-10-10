@@ -28,14 +28,11 @@
   :config
   (treemacs-load-theme "all-the-icons"))
 
-(use-package projectile
-  :straight t
+(use-package project
+  :straight (:type built-in)
   :config
   (pg/leader
-   "p f" #'(projectile-find-file :wk "file")
-   "p a" #'(projectile-add-known-project :wk "add")
-   "p d" #'(projectile-remove-known-project :wk "remove")
-   "p p" #'(projectile-switch-project :wk "open"))
-  (projectile-mode 1))
+   "p f" #'(project-find-file :wk "file")
+   "p p" #'(project-switch-project :wk "open")))
 
 (provide 'pg-projects)
