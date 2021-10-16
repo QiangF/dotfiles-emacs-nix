@@ -10,6 +10,7 @@
         dashboard-banners-directory (expand-file-name "banners/" pg/config-dir)
         dashboard-startup-banner (+ 1 (random 3))
         dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo
+        dashboard-footer-messages nil
         dashboard-items '((projects . 5)
                           (recents . 10)
                           (agenda . 15)))
