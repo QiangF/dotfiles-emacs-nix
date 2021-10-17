@@ -4,6 +4,7 @@
 (add-to-list 'load-path (expand-file-name "interface/" pg/module-dir))
 
 (require 'pg-completion)
+(require 'pg-embark)
 (require 'pg-dashboard)
 (require 'pg-help)
 (require 'pg-frame)
