@@ -86,6 +86,7 @@
    "b b" #'(switch-to-buffer :wk open)
    "b B" #'(switch-to-buffer :wk open)
    "b d" #'kill-this-buffer
+   "b D" #'kill-buffer-and-window
    "b r" #'revert-buffer
   
    ";" #'eval-expression)
