@@ -80,6 +80,7 @@
    "q q" #'(save-buffers-kill-terminal :wk "really quit?")
   
    "w d" #'delete-window
+   "w D" #'kill-buffer-and-window
    "w s" #'split-window-below
    "w v" #'split-window-right
   
