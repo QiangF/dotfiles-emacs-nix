@@ -60,9 +60,6 @@
    "w" '(:ignore t :wk "window")
    "b" '(:ignore t :wk "buffer")
 
-   "o s" #'(open-scratch-buffer :wk "scratch")
-   "o m" #'(open-messages-buffer :wk "messages")
-
    "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
    "t n" #'(display-line-numbers-mode :wk "line numbers")
    "t w" #'(whitespace-mode :wk "whitespace")
@@ -89,6 +86,8 @@
    "b d" #'kill-this-buffer
    "b D" #'kill-buffer-and-window
    "b r" #'revert-buffer
+   "b s" #'(open-scratch-buffer :wk "scratch")
+   "b m" #'(open-messages-buffer :wk "messages")
   
    ";" #'eval-expression)
   
