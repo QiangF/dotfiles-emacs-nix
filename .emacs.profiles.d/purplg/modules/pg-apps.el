@@ -7,6 +7,7 @@
 (require 'pg-pass)
 ;;(require 'pg-irc)
 (require 'pg-telegram)
+(require 'pg-matrix)
 (require 'pg-term)
 (require 'pg-rss)
 (require 'pg-epub)
