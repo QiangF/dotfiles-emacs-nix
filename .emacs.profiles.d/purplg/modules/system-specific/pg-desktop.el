@@ -6,17 +6,22 @@
   :config
   (setq tramp-default-method "ssh"))
 
-(use-package request
-  :straight t)
-(use-package websocket
-  :straight t)
+;; Dev
+(use-package hass
+  :straight '(:local-repo "~/code/elisp/hass")
+  :init (use-package request :straight t)
+        (use-package websocket :straight t)
+        (setq hass-host "homeassistant")
+        (setq hass-insecure t)
+        (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+        (hass-setup))
 
+;; Prod
 (use-package hass
   :disabled
-  :straight '(:local-repo "~/code/elisp/hass")
-  :init
-  (setq hass-host "homeassistant"
-        hass-insecure t
-        hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")))
+  :straight t
+  :init (setq hass-url "http://homeassistant:8123")
+        (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+        (hass-setup))
 
 (provide 'pg-desktop)
