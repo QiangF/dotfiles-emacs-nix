@@ -76,16 +76,16 @@
    "q b" #'(kill-this-buffer :wk "buffer")
    "q q" #'(save-buffers-kill-terminal :wk "really quit?")
   
-   "w d" #'delete-window
-   "w D" #'kill-buffer-and-window
-   "w s" #'split-window-below
-   "w v" #'split-window-right
+   "w d" #'(delete-window :wk "Delete")
+   "w D" #'(kill-buffer-and-window :wk "Delete with buffer")
+   "w s" #'(split-window-below :wk "Split below")
+   "w v" #'(split-window-right :wk "Split right")
   
-   "b b" #'(switch-to-buffer :wk open)
-   "b B" #'(switch-to-buffer :wk open)
-   "b d" #'kill-this-buffer
-   "b D" #'kill-buffer-and-window
-   "b r" #'revert-buffer
+   "b b" #'(switch-to-buffer :wk "Open")
+   "b B" #'(switch-to-buffer :wk "Open")
+   "b d" #'(kill-this-buffer :wk "Delete")
+   "b D" #'(kill-buffer-and-window :wk "Delete with window")
+   "b r" #'(revert-buffer :wk "Revert")
    "b s" #'(open-scratch-buffer :wk "scratch")
    "b m" #'(open-messages-buffer :wk "messages")
   
