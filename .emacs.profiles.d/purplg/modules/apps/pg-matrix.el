@@ -29,9 +29,20 @@
    'ement-list-rooms
    :before (lambda () (unless ement-sessions (pg/ement-connect))))
   
-  ;; Keybinds
+  ;; Global Keybinds
   (pg/leader
    :states 'normal
-   "o m" #'(ement-list-rooms :wk "Matrix")))
+   "o m" #'(ement-list-rooms :wk "Matrix"))
+
+  ;; Ement.el Keybinds
+  (general-define-key
+   :states '(normal insert visual)
+   :keymaps 'ement-room-mode-map
+   "<return>" #'ement-room-send-message
+   "e"        #'ement-room-send-emote
+   "r"        #'ement-room-send-reply
+   "d"        #'ement-room-delete-message)
+ ())
+ 
   
 (provide 'pg-matrix)
