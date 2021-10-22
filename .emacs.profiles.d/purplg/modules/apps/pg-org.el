@@ -6,11 +6,12 @@
   :straight t
 
   :config
-  (setq org-return-follows-link t           ;; Press Enter to follow link under point
-        org-adapt-indentation nil           ;; Stop putting indents everywhere
-        org-edit-src-content-indentation 0  ;; Fixes indenting entire src block on enter
-        org-src-preserve-indentation t      ;; Stop annoying bug with indenting elisp in a code block
-        org-confirm-babel-evaluate nil      ;; Don't ask for confirmation when executing a codeblock
+  (setq org-return-follows-link t                ;; Press Enter to follow link under point
+        org-adapt-indentation nil                ;; Stop putting indents everywhere
+        org-edit-src-content-indentation 0       ;; Fixes indenting entire src block on enter
+        org-src-preserve-indentation t           ;; Stop annoying bug with indenting elisp in a code block
+        org-confirm-babel-evaluate nil           ;; Don't ask for confirmation when executing a codeblock
+        org-src-window-setup 'split-window-below ;; Don't hide other windows when using `org-edit-special'
         org-directory "~/.org"
         org-agenda-files '("~/.org/PC.org")
         org-capture-project-file "project.org"
