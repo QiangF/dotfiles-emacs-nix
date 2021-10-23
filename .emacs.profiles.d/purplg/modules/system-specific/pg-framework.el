@@ -1,7 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
 
-(setq font-face "Fira Code Retina-12")
+(setq font-face "FiraCode Nerd Font Mono")
 
 (display-battery-mode 1)
 
