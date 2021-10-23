@@ -4,7 +4,6 @@
 (require 'pg-keybinds)
 
 (use-package treemacs
-  :demand t
   :straight t
   :init
   (pg/leader
