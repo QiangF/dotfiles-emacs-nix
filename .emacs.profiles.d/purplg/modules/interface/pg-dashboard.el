@@ -6,12 +6,12 @@
 (use-package dashboard
   :straight t
   :config
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))
-        dashboard-banners-directory (expand-file-name "banners/" pg/config-dir)
-        dashboard-startup-banner (+ 1 (random 3))
-        dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo
-        dashboard-footer-messages nil
-        dashboard-items '((projects . 5)
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq dashboard-banners-directory (expand-file-name "banners/" pg/config-dir))
+  (setq dashboard-startup-banner (+ 1 (random 3)))
+  (setq dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo)
+  (setq dashboard-footer-messages nil)
+  (setq dashboard-items '((projects . 5)
                           (recents . 10)
                           (agenda . 15)))
 

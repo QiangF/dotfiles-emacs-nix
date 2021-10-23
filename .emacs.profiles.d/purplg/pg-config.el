@@ -7,8 +7,8 @@
 (add-to-list 'load-path pg/module-dir)
 
 ;; Keep config directory clean
-(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
-      url-history-file (expand-file-name "url/history" user-emacs-directory))
+(setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
+(setq url-history-file (expand-file-name "url/history" user-emacs-directory))
 
 ;; What warnings/errors to show when compiling elisp files.
 (setq byte-compile-warnings t)

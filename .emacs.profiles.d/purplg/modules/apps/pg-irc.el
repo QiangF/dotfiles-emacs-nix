@@ -18,10 +18,10 @@
      :password (auth-source-pass-get 'secret "irc.libera.chat")))
 
   :config
-  (setq erc-prompt-for-password nil
-        erc-kill-buffer-on-part t
-        erc-kill-server-buffer-on-quit t
-        erc-autojoin-channels-alist `(("irc.libera.chat" ,(split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
+  (setq erc-prompt-for-password nil)
+  (setq erc-kill-buffer-on-part t)
+  (setq erc-kill-server-buffer-on-quit t)
+  (setq erc-autojoin-channels-alist `(("irc.libera.chat" ,(split-string (auth-source-pass-get "libera-channels" "irc.libera.chat")))))
 
   (pg/connect-to-irc))
 
