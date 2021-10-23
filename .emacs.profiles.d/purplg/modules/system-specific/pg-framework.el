@@ -12,4 +12,7 @@
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (hass-setup))
 
+(use-package nix-mode
+  :straight t)
+
 (provide 'pg-framework)
