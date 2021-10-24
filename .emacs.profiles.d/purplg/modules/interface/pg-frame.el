@@ -1,10 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-system-specific)
 
-;; Font
-(defvar font-face "Fira Code Retina-10")
-(set-face-attribute 'default nil :font font-face) 
-(add-to-list 'default-frame-alist `(font . ,font-face))
+(require 'pg-font)
 
 ;; Frame title
 (setq frame-title-format "PurplEmacs")
