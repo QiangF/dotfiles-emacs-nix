@@ -17,6 +17,8 @@
     :insecure t
     :apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")
     :watch '("switch.bedroom_light"))
+  
+  (setq pg/hass-original-theme current-theme)
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
@@ -24,8 +26,8 @@
     (lambda (entity-id)
       (cond ((string= entity-id "switch.bedroom_light")
              (if (hass-switch-p entity-id)
-                 (load-theme 'doom-one-light t)
-                 (load-theme 'doom-dracula t))))))
+                 (set-theme 'doom-one-light)
+                 (set-theme pg/hass-original-theme))))))
   (hass-realtime-mode t))
 
 ;; Prod
