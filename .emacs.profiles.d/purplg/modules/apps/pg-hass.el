@@ -12,11 +12,11 @@
 
   :config
   ;; Initial config
-  (setq hass-host "10.0.2.3")
-  (setq hass-insecure t)
-  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
-  (add-to-list 'hass-watched-entities "switch.bedroom_light")
-  (hass-setup)
+  (hass-setup
+    :host "10.0.2.3"
+    :insecure t
+    :apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")
+    :watch '("switch.bedroom_light"))
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
