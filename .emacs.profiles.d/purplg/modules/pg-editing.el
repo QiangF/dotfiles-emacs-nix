@@ -13,7 +13,8 @@
   :config
   (general-define-key
    :states 'visual
-   "v" #'er/expand-region))
+   "v" #'er/expand-region
+   "V" (lambda () (interactive) (er/expand-region 2))))
 
 (require 'pg-company)
 (require 'pg-elisp)
