@@ -8,6 +8,13 @@
 (setq auto-save-default nil) ;; No autosave
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
+(use-package expand-region
+  :straight t
+  :config
+  (general-define-key
+   :states 'visual
+   "v" #'er/expand-region))
+
 (require 'pg-company)
 (require 'pg-elisp)
 (require 'pg-flycheck)
