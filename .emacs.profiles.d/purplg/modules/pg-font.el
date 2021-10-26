@@ -7,6 +7,4 @@
   (set-face-attribute 'default nil :font font) 
   (add-to-list 'default-frame-alist `(font . ,font)))
 
-(set-font-face "Fira Code Retina-10")
-
 (provide 'pg-font)
