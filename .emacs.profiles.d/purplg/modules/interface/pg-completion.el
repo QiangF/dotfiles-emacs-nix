@@ -82,7 +82,7 @@
 (use-package orderless
   :straight t
   :config
-  (setq completion-styles '(basic orderless partial-completion)))
+  (setq completion-styles '(orderless partial-completion)))
 
 (use-package savehist
   :straight t
