@@ -10,8 +10,8 @@
 (setq idle-update-delay 1.0)
 (setq redisplay-skip-fontification-on-input t)
 (setq frame-inhibit-implied-resize t)
-(setq-default bidi-display-reordering 'left-to-right
-              bidi-paragraph-direction 'left-to-right
-              cursor-in-non-selected-windows nil)
+(setq-default bidi-display-reordering 'left-to-right)
+(setq-default bidi-paragraph-direction 'left-to-right)
+(setq-default cursor-in-non-selected-windows nil)
 
 (provide 'pg-perf)
