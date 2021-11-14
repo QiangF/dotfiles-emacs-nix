@@ -1,6 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-straight)
-(require 'pg-config)
 
 (use-package yasnippet-snippets
   :straight t)

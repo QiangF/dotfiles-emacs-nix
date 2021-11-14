@@ -1,5 +1,4 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-config)
 (require 'pg-straight)
 
 (defun evil-close-fold-below ()
@@ -23,10 +22,6 @@
 (defun open-scratch-buffer ()
   (interactive)
   (switch-to-buffer "*scratch*"))
-
-(defun open-messages-buffer ()
-  (interactive)
-  (switch-to-buffer (messages-buffer)))
   
 (use-package which-key
   :straight t
@@ -87,7 +82,7 @@
    "b D" #'(kill-buffer-and-window :wk "Delete with window")
    "b r" #'(revert-buffer :wk "Revert")
    "b s" #'(open-scratch-buffer :wk "scratch")
-   "b m" #'(open-messages-buffer :wk "messages")
+   "b m" #'(view-echo-area-messages :wk "messages")
   
    ";" #'eval-expression)
   

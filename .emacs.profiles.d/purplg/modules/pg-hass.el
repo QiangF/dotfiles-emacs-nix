@@ -12,11 +12,11 @@
 
   :config
   ;; Initial config
-  (hass-setup
-    :host "10.0.2.3"
-    :insecure t
-    :apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey")
-    :watch '("switch.bedroom_light"))
+  (setq hass-host "10.0.2.3")
+  (setq hass-insecure t)
+  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+  (setq hass-watched-entities '("switch.bedroom_light"))
+  (hass-setup)
   
   (setq pg/hass-original-theme current-theme)
 

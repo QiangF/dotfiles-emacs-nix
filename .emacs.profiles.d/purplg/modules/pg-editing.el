@@ -1,11 +1,9 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-config)
-
-(add-to-list 'load-path (expand-file-name "editing/" pg/module-dir))
 
 (setq initial-major-mode 'emacs-lisp-mode)
 (setq initial-scratch-message nil)
 (setq auto-save-default nil) ;; No autosave
+(setq vc-follow-symlinks t)
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
 (use-package expand-region
