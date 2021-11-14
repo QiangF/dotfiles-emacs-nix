@@ -1,4 +1,5 @@
-(setq byte-compile-warnings t)
+(setq byte-compile-warnings nil)
+(setq native-comp-async-report-warnings-errors nil)
 
 ; Config directories
 (defconst pg/config-dir (file-truename (expand-file-name user-emacs-directory)))
