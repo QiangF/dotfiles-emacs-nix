@@ -3,6 +3,8 @@
 (require 'pg-straight)
 
 (use-package outshine
-  :straight t)
+  :straight t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'outshine-mode))
 
 (provide 'pg-outshine)
