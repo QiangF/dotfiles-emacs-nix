@@ -1,4 +1,4 @@
-(require 'pg-straight)
+;;; --- -*- lexical-binding: t; -*-
 
 (use-package tree-sitter
   :straight t)

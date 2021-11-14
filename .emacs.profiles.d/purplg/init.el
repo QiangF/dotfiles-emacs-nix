@@ -1,7 +1,7 @@
 (setq byte-compile-warnings nil)
 (setq native-comp-async-report-warnings-errors nil)
 
-; Config directories
+;;; * Config config
 (defconst pg/config-dir (file-truename (expand-file-name user-emacs-directory)))
 (defconst pg/module-dir (expand-file-name "modules" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
@@ -36,6 +36,10 @@
        (lambda () (byte-compile-file (buffer-file-name)))
        0 t))))
 
+;;; * Pull packages
+(require 'pg-packages)
+
+;;; * Emacs config
 (require 'pg-perf)
 (require 'pg-keybinds)
 (require 'pg-interface)

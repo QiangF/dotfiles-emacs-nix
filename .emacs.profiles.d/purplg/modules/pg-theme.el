@@ -1,5 +1,4 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 
 (defvar current-theme nil)
 
@@ -8,7 +7,6 @@
   (load-theme current-theme t))
 
 (use-package doom-themes
-  :straight t
   :config
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)

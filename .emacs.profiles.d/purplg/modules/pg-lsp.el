@@ -1,10 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
-
-(require 'pg-straight)
 (require 'pg-keybinds)
 
 (use-package lsp-mode
-  :straight t
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
@@ -19,7 +16,6 @@
    "g D" #'lsp-find-references))
 
 (use-package lsp-ui
-  :straight t
   :after lsp-mode
   :config
   ;; recommended performance tweak

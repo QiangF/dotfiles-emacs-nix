@@ -1,8 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 
 (use-package elfeed
-  :straight t
   :config
   (setq elfeed-feeds
         '(("https://planet.emacslife.com/atom.xml")

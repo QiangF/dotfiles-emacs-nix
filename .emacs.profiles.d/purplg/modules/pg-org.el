@@ -1,10 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 (require 'pg-keybinds)
 
 (use-package org
-  :straight t
-
   :config
   (setq org-return-follows-link t)                ;; Press Enter to follow link under point
   (setq org-adapt-indentation nil)                ;; Stop putting indents everywhere

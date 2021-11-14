@@ -1,10 +1,8 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 (require 'pg-keybinds)
 (require 'pg-treesitter)
 
 (use-package rustic
-  :straight t
   :config
   (setq rustic-format-on-save nil
         rustic-lsp-format nil)

@@ -1,14 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 
 ;; Dev
 (use-package hass
-  :straight '(:local-repo "~/code/elisp/hass")
-
   :init
   ;; Dev packages aren't resolved automatically
-  (use-package request :straight t)
-  (use-package websocket :straight t)
+  (straight-use-package 'request)
+  (straight-use-package 'websocket)
 
   :config
   ;; Initial config
@@ -32,8 +29,6 @@
 
 ;; Prod
 (use-package hass
-  :disabled
-  :straight t
   :init (setq hass-url "http://homeassistant:8123")
         (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
         (hass-setup))

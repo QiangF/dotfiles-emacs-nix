@@ -1,4 +1,4 @@
-(require 'pg-straight)
+;;; --- -*- lexical-binding: t; -*-
 
 (use-package doom-modeline
   :straight t

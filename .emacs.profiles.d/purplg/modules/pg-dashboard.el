@@ -1,9 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 (require 'pg-keybinds)
 
 (use-package dashboard
-  :straight t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   (setq dashboard-banners-directory (expand-file-name "banners/" pg/config-dir))

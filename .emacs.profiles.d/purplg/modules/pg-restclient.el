@@ -1,8 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(require 'pg-straight)
-
-(use-package restclient
-  :straight t)
+(use-package restclient)
 
 (provide 'pg-restclient)

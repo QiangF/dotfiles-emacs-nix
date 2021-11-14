@@ -1,8 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(require 'pg-straight)
-
-(use-package company
-  :straight t)
+(use-package company)
 
 (provide 'pg-company)

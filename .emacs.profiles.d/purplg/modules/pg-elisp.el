@@ -1,15 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
-
-(require 'pg-straight)
 (require 'pg-keybinds)
 
 (use-package rainbow-delimiters
-  :straight t
   :config
   (hook! 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
 (use-package parinfer-rust-mode
-  :straight t
   :hook emacs-lisp-mode
   :init
   (setq parinfer-rust-auto-download t)
@@ -26,7 +22,6 @@
 
 ;; Emacs refactor
 (use-package emr
-  :straight t
   :config
   (pg/leader
    :keymaps 'emacs-lisp-mode-map
@@ -48,7 +43,6 @@
 (use-package package-lint
   :straight t)
 
-(use-package flycheck-package
-  :straight t)
+(use-package flycheck-package)
 
 (provide 'pg-elisp)

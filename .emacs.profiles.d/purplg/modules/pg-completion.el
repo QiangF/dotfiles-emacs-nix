@@ -1,9 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-straight)
 (require 'pg-keybinds)
 
 (use-package vertico
-  :straight t
   :init
   (vertico-mode 1)
 
@@ -45,7 +43,6 @@
    "C-l" #'vertico-insert))
 
 (use-package consult
-  :straight t
   :after vertico
   :config
   
@@ -61,7 +58,6 @@
   (recentf-mode 1))
     
 (use-package consult-lsp
-  :straight t
   :after consult lsp
   :config
   (pg/leader
@@ -69,7 +65,6 @@
    "s e" #'(consult-lsp-diagnostics :wk "errors")))
 
 (use-package marginalia
-  :straight t
   :after vertico
   :init
   (marginalia-mode 1))
@@ -79,12 +74,10 @@
 ;; sort order based on accuracy.
 
 (use-package orderless
-  :straight t
   :config
   (setq completion-styles '(orderless partial-completion)))
 
 (use-package savehist
-  :straight t
   :init
   (savehist-mode))
 
