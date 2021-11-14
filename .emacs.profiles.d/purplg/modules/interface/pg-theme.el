@@ -7,9 +7,6 @@
   (setq current-theme theme-name)
   (load-theme current-theme t))
 
-;; Default theme
-(set-theme 'wombat)
-
 (use-package doom-themes
   :straight t
   :config
