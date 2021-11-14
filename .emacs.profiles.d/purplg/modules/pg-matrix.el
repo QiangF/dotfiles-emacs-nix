@@ -1,18 +1,9 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
-(use-package plz
-  :straight (plz :type git
-                 :host github
-                 :repo "alphapapa/plz.el"))
-
 (use-package ement
   :after plz
-  :straight (ement :type git
-                   :host github
-                   :repo "alphapapa/ement.el")
   :config
-
   ;; Don't open room list automatically
   (setq ement-after-initial-sync-hook nil)
   
@@ -40,8 +31,7 @@
    "<return>" #'ement-room-send-message
    "e"        #'ement-room-send-emote
    "r"        #'ement-room-send-reply
-   "d"        #'ement-room-delete-message)
- ())
+   "d"        #'ement-room-delete-message))
  
   
 (provide 'pg-matrix)

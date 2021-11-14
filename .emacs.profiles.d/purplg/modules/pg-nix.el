@@ -1,6 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(use-package nix-mode
-  :straight t)
+(use-package nix-mode)
 
 (provide 'pg-nix)

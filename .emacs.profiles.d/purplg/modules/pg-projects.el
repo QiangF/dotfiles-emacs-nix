@@ -24,7 +24,6 @@
   (treemacs-load-theme "all-the-icons"))
 
 (use-package project
-  :straight (:type built-in)
   :config
   (pg/leader
    "p f" #'(project-find-file :wk "file")

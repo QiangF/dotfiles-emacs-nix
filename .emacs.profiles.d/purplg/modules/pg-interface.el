@@ -1,5 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-modeline)
 (require 'pg-completion)
 (require 'pg-embark)
 (require 'pg-dashboard)

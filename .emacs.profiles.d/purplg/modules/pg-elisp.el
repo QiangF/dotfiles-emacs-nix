@@ -40,8 +40,7 @@
  "e" '(:wk "eval")
  "e r" #'(eval-region :wk "region"))
 
-(use-package package-lint
-  :straight t)
+(use-package package-lint)
 
 (use-package flycheck-package)
 

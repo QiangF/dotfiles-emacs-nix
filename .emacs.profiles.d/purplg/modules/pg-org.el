@@ -44,7 +44,6 @@
    "C-c C-c" #'org-edit-src-exit))
    
 (use-package htmlize
-  :straight t
   :after org)
 
 (provide 'pg-org)
