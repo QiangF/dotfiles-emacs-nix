@@ -58,6 +58,7 @@
 (straight-use-package 'tree-sitter-langs)
 (straight-use-package 'rustic)
 (straight-use-package 'restclient)
+(straight-use-package 'ob-restclient)
 (straight-use-package 'yasnippet-snippets)
 (straight-use-package 'yasnippet)
 (straight-use-package 'yaml-mode)
