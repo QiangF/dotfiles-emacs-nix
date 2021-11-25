@@ -22,8 +22,9 @@
   (setq read-process-output-max (* 1024 1024))
   
   ;; Disable because it causes input lag
-  (setq lsp-ui-doc-enable nil
-        lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-sideline-delay 1.0)
 
   :general
   (:keymaps 'lsp-ui-peek-mode-map
