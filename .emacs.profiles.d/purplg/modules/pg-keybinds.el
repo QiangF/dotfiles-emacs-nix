@@ -21,6 +21,10 @@
 (defun open-scratch-buffer ()
   (interactive)
   (switch-to-buffer "*scratch*"))
+
+(defun save-all-buffers ()
+  (interactive)
+  (save-some-buffers t))
   
 (use-package which-key
   :config
@@ -58,6 +62,7 @@
   
    "f f" #'(find-file :wk "find")
    "f s" #'(save-buffer :wk "save")
+   "f S" #'(save-all-buffers :wk "save all")
    "f ." #'(find-file-at-point :wk "this")
    "f m" #'(pg/open-module :wk "module")
   
