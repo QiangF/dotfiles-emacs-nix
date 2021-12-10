@@ -13,6 +13,8 @@
    "v" #'er/expand-region
    "V" (lambda () (interactive) (er/expand-region 2))))
 
+(setq compilation-scroll-output t)
+
 (require 'pg-company)
 (require 'pg-elisp)
 (require 'pg-flycheck)
