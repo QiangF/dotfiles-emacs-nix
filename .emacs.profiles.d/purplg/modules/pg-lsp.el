@@ -1,7 +1,15 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package eglot
+  :config
+  (pg/leader
+     :keymaps 'eglot-mode-map
+     "c a" #'(eglot-code-actions :wk "execute action")
+     "c r" #'(eglot-rename :wk "rename")))
+
 (use-package lsp-mode
+  :disabled
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 

@@ -58,6 +58,7 @@
   (recentf-mode 1))
     
 (use-package consult-lsp
+  :disabled
   :after consult lsp
   :config
   (pg/leader

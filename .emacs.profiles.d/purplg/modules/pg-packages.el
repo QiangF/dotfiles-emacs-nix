@@ -48,6 +48,7 @@
 (straight-use-package 'nix-mode)
 (straight-use-package 'git-gutter)
 (straight-use-package 'highlight-indent-guides)
+(straight-use-package 'eglot)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'outshine)

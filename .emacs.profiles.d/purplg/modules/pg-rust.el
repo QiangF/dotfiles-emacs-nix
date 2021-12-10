@@ -11,8 +11,7 @@
     (interactive)
     (rustic-run-cargo-command "cargo run"))
     
-  (hook! 'rustic-mode-hook #'electric-indent-mode)
-  (hook! 'rustic-mode-hook #'tree-sitter-mode)
+  (hook! 'rustic-mode-hook #'(electric-indent-mode tree-sitter-mode company-mode))
 
   (pg/local-leader
    :keymaps 'rustic-mode-map
@@ -23,5 +22,14 @@
    "c x" #'(rustic-cargo-rm :wk "rm dep")
    "c c" #'(rustic-cargo-check :wk "check")
    "c t" #'(rustic-cargo-test :wk "test")))
+
+(use-package rustic
+  :after eglot
+  :config
+  (setq rustic-lsp-client 'eglot)
+
+  (pg/leader
+   :keymaps 'eglot-mode-map
+   "c f" #'(rustic-format-file :wk "format")))
 
 (provide 'pg-rust)
