@@ -27,10 +27,4 @@
                  (set-theme pg/hass-original-theme))))))
   (hass-realtime-mode t))
 
-;; Prod
-(use-package hass
-  :init (setq hass-url "http://homeassistant:8123")
-        (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
-        (hass-setup))
-
 (provide 'pg-hass)
