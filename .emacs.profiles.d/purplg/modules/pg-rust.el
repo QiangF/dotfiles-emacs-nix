@@ -11,7 +11,7 @@
     (interactive)
     (rustic-run-cargo-command "cargo run"))
     
-  (hook! 'rustic-mode-hook #'(electric-indent-mode tree-sitter-mode company-mode))
+  (hook! 'rustic-mode-hook #'(electric-indent-mode tree-sitter-mode corfu-mode))
 
   (pg/local-leader
    :keymaps 'rustic-mode-map

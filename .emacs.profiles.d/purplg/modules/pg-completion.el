@@ -1,6 +1,26 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package corfu
+  :config
+  (setq corfu-auto t)
+  (setq corfu-auto-delay 0.0) 
+  :general
+  ; Clear conflicting C-k keybind
+  (:keymaps 'evil-insert-state-map
+   "C-k" nil)
+  (:keymaps 'corfu-map
+   "C-j" #'corfu-next
+   "C-k" #'corfu-previous
+   "C-S-j" #'corfu-scroll-up
+   "C-S-k" #'corfu-scroll-down))
+
+(use-package kind-icon
+  :after corfu
+  :config
+  (setq kind-icon-default-face 'corfu-default)
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
 (use-package vertico
   :init
   (vertico-mode 1)

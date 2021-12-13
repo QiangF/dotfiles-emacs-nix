@@ -15,7 +15,6 @@
 
 (setq compilation-scroll-output t)
 
-(require 'pg-company)
 (require 'pg-elisp)
 (require 'pg-flycheck)
 (require 'pg-folding)
