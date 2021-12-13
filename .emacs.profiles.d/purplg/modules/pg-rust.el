@@ -26,6 +26,7 @@
   :after eglot
   :config
   (setq rustic-lsp-client 'eglot)
+  (setq eglot-ignored-server-capabilities nil)
 
   (pg/leader
    :keymaps 'eglot-mode-map
