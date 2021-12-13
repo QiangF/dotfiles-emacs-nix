@@ -9,6 +9,7 @@
 (require 'pg-theme)
 (require 'pg-visual-page-breaks)
 (require 'pg-workspaces)
+(require 'pg-popper)
 
 ;; Highlight line of point
 (hook! 'prog-mode-hook #'hl-line-mode)

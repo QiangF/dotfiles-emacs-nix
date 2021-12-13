@@ -73,6 +73,7 @@
 (straight-use-package 'exec-path-from-shell)
 (straight-use-package 'alert)
 (straight-use-package 'telega)
+(straight-use-package 'popper)
 (straight-use-package 'tramp)
 (straight-use-package `(hass :local-repo "~/code/elisp/hass"))
 
