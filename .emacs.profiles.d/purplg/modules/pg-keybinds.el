@@ -100,6 +100,9 @@
 (use-package undo-fu-session
   :config
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+  (setq undo-fu-session-file-limit 10)
+  (setq undo-fu-session-compression t)
+  (setq undo-fu-session-linear t)
   (global-undo-fu-session-mode))
 
 (use-package evil
