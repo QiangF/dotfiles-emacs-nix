@@ -41,7 +41,6 @@
 (straight-use-package 'kind-icon)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'parinfer-rust-mode)
-(straight-use-package 'emr)
 (straight-use-package 'package-lint)
 (straight-use-package 'flycheck-package)
 (straight-use-package 'flycheck)

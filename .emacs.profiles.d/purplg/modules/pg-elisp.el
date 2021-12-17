@@ -20,13 +20,6 @@
    :keymaps 'emacs-lisp-mode-map
    "p" #'(parinfer-rust-toggle-paren-mode :wk "parinfer-toggle")))
 
-;; Emacs refactor
-(use-package emr
-  :config
-  (pg/leader
-   :keymaps 'emacs-lisp-mode-map
-   "c c" #'(emr-show-refactor-menu :wk "refactor menu")))
-
 (pg/leader
  :keymaps 'emacs-lisp-mode-map
  "e" '(:wk "eval")
