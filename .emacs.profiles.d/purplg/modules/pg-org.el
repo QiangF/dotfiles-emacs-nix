@@ -39,9 +39,10 @@
    "t l" #'(org-toggle-link-display :wk "link display"))
     
   :general
-  (:states 'normal
-   :keymaps 'org-src-mode-map
-   "C-c C-c" #'org-edit-src-exit))
+  (:states 'normal :keymaps 'org-src-mode-map
+   "C-c C-c" #'org-edit-src-exit)
+  (:states 'normal :keymaps 'org-mode-map
+   "RET" #'org-return))
    
 (use-package htmlize
   :after org)
