@@ -2,6 +2,12 @@
 (require 'pg-keybinds)
 (require 'pg-modeline)
 
+(defun persp-switch-to-new ()
+  (interactive)
+  (persp-switch
+    (persp-name
+      (call-interactively #'persp-add-new))))
+
 (use-package persp-mode
   :after doom-modeline
   :config
@@ -47,7 +53,8 @@
    "TAB x" #'(persp-remove-buffer :wk "remove buffer")
    "TAB d" #'(persp-kill :wk "kill persp")
    "TAB r" #'(persp-rename :wk "rename")
-   "TAB n" #'(persp-add-new :wk "new")
+   "TAB n" #'(persp-switch-to-new :wk "new and switch")
+   "TAB N" #'(persp-add-new :wk "new")
    "TAB l" #'(persp-next :wk "next persp")
    "TAB h" #'(persp-prev :wk "prev persp"))
 
