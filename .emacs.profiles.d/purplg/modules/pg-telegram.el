@@ -12,7 +12,9 @@
   (setq telega-emoji-font-family "Noto Color Emoji")
   (setq telega-use-images t)
 
-  (telega)
+  ;; Issues with colors while in daemon mode is causing it to fail on load. So load telega after a
+  ;; frame is created
+  (add-hook 'server-after-make-frame-hook (lambda () (telega 0)))
 
   :config
   (telega-mode-line-mode 1)
