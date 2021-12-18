@@ -2,17 +2,17 @@
 (require 'pg-keybinds)
 (require 'pg-modeline)
 
-(defun persp-switch-to-new ()
-  (interactive)
-  (persp-switch
-    (persp-name
-      (call-interactively #'persp-add-new))))
-
 (use-package persp-mode
   :after doom-modeline
   :config
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
+
+  (defun persp-switch-to-new ()
+    (interactive)
+    (persp-switch
+      (persp-name
+        (call-interactively #'persp-add-new))))
 
   ;; Modified from Doom's `+workspace--tabline`
   (defun persp--format-tab (label active) 
