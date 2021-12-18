@@ -5,8 +5,6 @@ promptinit
 ####################
 # Zsh preferences
 
-# Vi-mode
-set -o vi
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
