@@ -27,8 +27,11 @@
   :config
   (pg/leader
    "p f" #'(project-find-file :wk "file")
-   "p p" #'(project-switch-project :wk "open"))
-  (with-eval-after-load 'dashboard
-    (setq dashboard-projects-backend 'project-el)))
+   "p p" #'(project-switch-project :wk "open")))
+
+(use-package project
+  :after dashboard
+  :config
+  (setq dashboard-projects-backend 'project-el))
 
 (provide 'pg-projects)
