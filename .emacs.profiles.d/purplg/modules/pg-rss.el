@@ -1,6 +1,9 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package elfeed
+  :init
+  (add-to-list 'recentf-exclude "/home/purplg/.elfeed/index" t)
+
   :config
   (setq elfeed-feeds
         '(("https://planet.emacslife.com/atom.xml")

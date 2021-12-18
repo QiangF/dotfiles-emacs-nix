@@ -11,6 +11,8 @@
 (require 'pg-workspaces)
 (require 'pg-popper)
 
+(add-to-list 'recentf-exclude (concat user-emacs-directory "bookmarks") t)
+
 ;; Highlight line of point
 (hook! 'prog-mode-hook #'hl-line-mode)
 
