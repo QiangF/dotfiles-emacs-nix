@@ -12,7 +12,7 @@
     (rustic-run-cargo-command "cargo run"))
 
   (pg/local-leader
-   :keymaps 'rustic-mode-map
+   :keymaps '(rustic-mode-map rustic-compilation-mode-map)
    "r" #'(rustic-cargo-run-no-args :wk "run")
    "R" #'(rustic-cargo-run :wk "run w/ args")
    "a" #'(rustic-cargo-add :wk "add dep")
