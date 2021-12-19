@@ -13,6 +13,8 @@
                                     compilation-mode
                                     rustic-compilation-mode
                                     flymake-diagnostics-buffer-mode
+                                    telega-root-mode
+                                    telega-chat-mode
                                     flymake-project-diagnostics-mode))
 
   (defun popper-popup-at-bottom (buffer &optional _alist)
