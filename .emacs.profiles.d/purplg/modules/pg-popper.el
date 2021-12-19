@@ -14,6 +14,17 @@
                                     rustic-compilation-mode
                                     flymake-diagnostics-buffer-mode
                                     flymake-project-diagnostics-mode))
+
+  (defun popper-popup-at-bottom (buffer &optional _alist)
+    "Display popup-buffer BUFFER at the bottom of the screen."
+    (display-buffer-in-side-window
+     buffer
+     `((window-height . ,popper-window-height)
+       (side . bottom)
+       (slot . 1))))
+
+  (setq popper-display-function #'popper-popup-at-bottom)
+
   :config
   (popper-mode +1))
   
