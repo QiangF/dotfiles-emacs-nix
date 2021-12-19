@@ -7,9 +7,10 @@
  ("C-M-`" #'popper-toggle-type)
  :init
  (setq popper-reference-buffers '("\\*Messages\\*"
+                                  "^\\*helpful.*\\*$"
                                   compilation-mode
                                   rustic-compilation-mode
-                                  "^\\*helpful.*\\*$"))
+                                  flymake-diagnostics-buffer-mode))
  :config
  (popper-mode +1))
   
