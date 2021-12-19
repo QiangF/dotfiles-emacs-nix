@@ -8,9 +8,12 @@
  :init
  (setq popper-reference-buffers '("\\*Messages\\*"
                                   "^\\*helpful.*\\*$"
+                                  "^\\*eldoc.*\\*$"
+                                  flycheck-error-list-mode
                                   compilation-mode
                                   rustic-compilation-mode
-                                  flymake-diagnostics-buffer-mode))
+                                  flymake-diagnostics-buffer-mode
+                                  flymake-project-diagnostics-mode))
  :config
  (popper-mode +1))
   
