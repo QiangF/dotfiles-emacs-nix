@@ -4,8 +4,8 @@
 
 (use-package rustic
   :config
-  (setq rustic-format-on-save nil
-        rustic-lsp-format nil)
+  (setq rustic-format-on-save nil)
+  (setq rustic-lsp-format nil)
 
   (defun rustic-cargo-run-no-args () 
     (interactive)
