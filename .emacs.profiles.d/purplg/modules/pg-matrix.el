@@ -3,15 +3,17 @@
 
 (use-package ement
   :after plz
-  :config
-  ;; Don't open room list automatically
-  (setq ement-after-initial-sync-hook nil)
-  
+  :init
   ;; Connection wrapper
   (defun pg/ement-connect ()
+    (interactive)
     (ement-connect
       :user-id (concat "@" (auth-source-pass-get "username" "matrix.org") ":matrix.org")
       :password (auth-source-pass-get 'secret "matrix.org")))
+
+  :config
+  ;; Don't open room list automatically
+  (setq ement-after-initial-sync-hook nil)
   (pg/ement-connect)
   
   ;; Connect to Matrix if not connected.
