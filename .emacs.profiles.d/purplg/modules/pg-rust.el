@@ -29,8 +29,8 @@
   (setq rustic-lsp-client 'eglot)
   (setq eglot-ignored-server-capabilities nil)
 
-  (pg/leader
+  (pg/local-leader
    :keymaps 'eglot-mode-map
-   "c f" #'(eglot-format :wk "format")))
+   "f" #'(eglot-format :wk "format")))
 
 (provide 'pg-rust)
