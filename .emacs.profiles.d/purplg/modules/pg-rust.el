@@ -31,7 +31,6 @@
 
   (pg/leader
    :keymaps 'eglot-mode-map
-   :states '(normal visual)
    "c f" #'(eglot-format :wk "format")))
 
 (provide 'pg-rust)
