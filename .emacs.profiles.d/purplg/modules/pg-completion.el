@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package corfu
+  :demand t
   :config
   (setq corfu-auto t)
   (setq corfu-auto-delay 0.0) 
