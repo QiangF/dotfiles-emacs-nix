@@ -19,7 +19,7 @@
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
-  (setq hass-watched-entities '("switch.bedroom_light"))
+  (setq hass-tracked-entities '("switch.bedroom_light"))
   (setq pg/hass-original-theme current-theme)
   (add-hook 'hass-entity-state-updated-functions
     (lambda (entity-id)
