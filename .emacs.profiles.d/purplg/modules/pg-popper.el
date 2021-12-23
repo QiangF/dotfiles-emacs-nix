@@ -9,6 +9,7 @@
   (setq popper-reference-buffers '("\\*Messages\\*"
                                     "^\\*helpful.*\\*$"
                                     "^\\*eldoc.*\\*$"
+                                    "^\\*xref.*\\*$"
                                     flycheck-error-list-mode
                                     compilation-mode
                                     rustic-compilation-mode
