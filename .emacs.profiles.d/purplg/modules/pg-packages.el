@@ -75,7 +75,7 @@
 (straight-use-package 'telega)
 (straight-use-package 'popper)
 (straight-use-package 'tramp)
-(straight-use-package `(hass :type git :host github :repo "purplg/hass" :branch "2.0"))
+(straight-use-package 'hass)
 (straight-use-package `(hass-websockets :type git :host github :repo "purplg/hass-websockets"))
 
 (provide 'pg-packages)
