@@ -65,6 +65,7 @@
 (straight-use-package 'yaml-mode)
 (straight-use-package 'htmlize)
 (straight-use-package 'pass)
+(straight-use-package 'keychain-environment)
 (straight-use-package 'eshell)
 (straight-use-package 'elfeed)
 (straight-use-package 'nov)
