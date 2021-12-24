@@ -8,6 +8,7 @@
   (setq dashboard-startup-banner (+ 1 (random 3)))
   (setq dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo)
   (setq dashboard-footer-messages nil)
+  (setq dashboard-agenda-release-buffers t)
   (setq dashboard-items '((projects . 5)
                           (recents . 10)
                           (agenda . 15)))
