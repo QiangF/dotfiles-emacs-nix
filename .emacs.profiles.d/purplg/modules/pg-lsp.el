@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package eglot
+  :straight t
   :config
   (pg/leader
      :keymaps 'eglot-mode-map
@@ -9,6 +10,7 @@
      "c r" #'(eglot-rename :wk "rename")))
 
 (use-package lsp-mode
+  :straight t
   :disabled
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
@@ -24,6 +26,7 @@
    "g D" #'lsp-find-references))
 
 (use-package lsp-ui
+  :straight t
   :after lsp-mode
   :config
   ;; recommended performance tweak

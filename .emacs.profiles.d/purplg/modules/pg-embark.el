@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package embark
+  :straight t
   :config
   (general-define-key
    :states '(normal visual insert)

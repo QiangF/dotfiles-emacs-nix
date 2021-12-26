@@ -7,6 +7,7 @@
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
 (use-package expand-region
+  :straight t
   :config
   (general-define-key
    :states 'visual

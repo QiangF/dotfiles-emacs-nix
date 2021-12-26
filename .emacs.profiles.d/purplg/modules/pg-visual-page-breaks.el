@@ -1,8 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package page-break-lines
-  :defer t
-  :config
-  (global-page-break-lines-mode))
+  :straight t)
 
 (provide 'pg-visual-page-breaks)

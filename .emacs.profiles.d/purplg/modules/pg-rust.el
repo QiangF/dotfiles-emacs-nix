@@ -3,6 +3,7 @@
 (require 'pg-treesitter)
 
 (use-package rustic
+  :straight t
   :config
   (setq rustic-format-on-save nil)
   (setq rustic-lsp-format nil)

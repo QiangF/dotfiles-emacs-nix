@@ -1,6 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package elfeed
+  :straight t
   :init
   (add-to-list 'recentf-exclude "/home/purplg/.elfeed/index" t)
 

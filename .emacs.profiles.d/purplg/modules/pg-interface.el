@@ -14,10 +14,10 @@
 (add-to-list 'recentf-exclude (concat user-emacs-directory "bookmarks") t)
 
 ;; Highlight line of point
-(hook! 'prog-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook #'hl-line-mode)
 
 ;; Scroll message buffer to bottom on update
-(hook! 'post-command-hook
+(add-hook 'post-command-hook
   (lambda ()
     (let ((messages-buffer (get-buffer "*Messages*")))
       (unless (eq (current-buffer) messages-buffer)

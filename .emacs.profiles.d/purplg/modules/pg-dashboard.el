@@ -2,8 +2,10 @@
 (require 'pg-keybinds)
 
 (use-package dashboard
-  :config
+  :straight t
+  :init
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq dashboard-projects-backend 'project-el)
   (setq dashboard-banners-directory (expand-file-name "banners/" pg/config-dir))
   (setq dashboard-startup-banner (+ 1 (random 3)))
   (setq dashboard-filter-agenda-entry #'dashboard-filter-agenda-by-todo)
@@ -14,10 +16,11 @@
                           (agenda . 15)))
 
   (dashboard-setup-startup-hook)
-
-  (hook! 'dashboard-after-initialize-hook
-         #'(lambda ()
-             (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+  
+  :config
+  (add-hook 'dashboard-after-initialize-hook
+    (lambda ()
+      (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
 
   (defun dashboard-refresh-buffer-silent ()
     "Refresh buffer in background."

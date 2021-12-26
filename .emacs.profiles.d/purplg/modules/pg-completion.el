@@ -2,7 +2,8 @@
 (require 'pg-keybinds)
 
 (use-package corfu
-  :demand t
+  :defer t
+  :straight t
   :config
   (setq corfu-auto t)
   (setq corfu-auto-delay 0.0) 
@@ -17,12 +18,14 @@
    "C-S-k" #'corfu-scroll-down))
 
 (use-package kind-icon
+  :straight t
   :after corfu
   :config
   (setq kind-icon-default-face 'corfu-default)
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package vertico
+  :straight t
   :init
   (vertico-mode 1)
 
@@ -64,6 +67,7 @@
    "C-l" #'vertico-insert))
 
 (use-package consult
+  :straight t
   :after vertico
   :config
   
@@ -80,6 +84,7 @@
     
 (use-package consult-lsp
   :disabled
+  :straight t
   :after consult lsp
   :config
   (pg/leader
@@ -87,6 +92,7 @@
    "s e" #'(consult-lsp-diagnostics :wk "errors")))
 
 (use-package marginalia
+  :straight t
   :after vertico
   :init
   (marginalia-mode 1))
@@ -96,10 +102,12 @@
 ;; sort order based on accuracy.
 
 (use-package orderless
+  :straight t
   :config
   (setq completion-styles '(orderless partial-completion)))
 
 (use-package savehist
+  :straight t
   :init
   (savehist-mode))
 

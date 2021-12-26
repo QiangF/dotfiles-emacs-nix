@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(hook! 'prog-mode-hook #'hs-minor-mode)
+(use-package hideshow
+  :init
+  (add-hook 'prog-mode-hook #'hs-minor-mode))
 
 (provide 'pg-folding)

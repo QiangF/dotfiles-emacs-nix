@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package treemacs
+  :straight t
   :init
   (pg/leader
    "o p" #'treemacs)
@@ -19,6 +20,7 @@
    "M-k" #'treemacs-move-project-up))
 
 (use-package treemacs-all-the-icons
+  :straight t
   :after treemacs
   :config
   (treemacs-load-theme "all-the-icons"))

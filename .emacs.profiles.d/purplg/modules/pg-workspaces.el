@@ -3,6 +3,7 @@
 (require 'pg-modeline)
 
 (use-package persp-mode
+  :straight t
   :after doom-modeline
   :config
   (setq persp-auto-resume-time -1)

@@ -1,9 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
-(use-package alert)
+(use-package alert
+  :straight t)
 
 (use-package telega
+  :straight t
   :init
   (setq telega-emoji-use-images t)
   (setq telega-chat-show-avatars t)

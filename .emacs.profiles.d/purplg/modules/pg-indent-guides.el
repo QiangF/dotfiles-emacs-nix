@@ -1,6 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package highlight-indent-guides
+  :straight t
   :config
   (setq highlight-indent-guides-method 'column
         highlight-indent-guides-responsive 'top)

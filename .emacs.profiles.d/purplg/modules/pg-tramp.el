@@ -1,6 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package tramp
+  :straight t
   :config
   (setq tramp-default-method "sshx")
 

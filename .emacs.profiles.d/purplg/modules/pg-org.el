@@ -45,6 +45,7 @@
    "RET" #'org-return))
    
 (use-package htmlize
+  :straight t
   :after org)
 
 (provide 'pg-org)

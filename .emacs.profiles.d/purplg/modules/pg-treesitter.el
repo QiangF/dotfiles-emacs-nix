@@ -1,8 +1,10 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(use-package tree-sitter)
+(use-package tree-sitter
+  :straight t)
 
 (use-package tree-sitter-langs
+  :straight t
   :after tree-sitter
   :config
   (hook! 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))

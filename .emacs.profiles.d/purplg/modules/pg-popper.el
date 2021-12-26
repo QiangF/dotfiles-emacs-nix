@@ -1,6 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package popper
+  :straight t
   :general
   ("C-`" #'popper-toggle-latest)
   ("M-`" #'popper-cycle)

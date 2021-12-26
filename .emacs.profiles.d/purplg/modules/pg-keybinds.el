@@ -27,11 +27,13 @@
   (save-some-buffers t))
   
 (use-package which-key
+  :straight t
   :config
   (setq which-key-idle-delay 1)
   (which-key-mode 1))
 
 (use-package general
+  :straight t
   :config
   (defalias 'hook! 'general-add-hook)
 
@@ -95,9 +97,11 @@
    :keymaps 'dired-mode-map
    "SPC" nil))
 
-(use-package undo-fu)
+(use-package undo-fu
+  :straight t)
 
 (use-package undo-fu-session
+  :straight t
   :config
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   (setq undo-fu-session-file-limit 10)
@@ -106,6 +110,7 @@
   (global-undo-fu-session-mode))
 
 (use-package evil
+  :straight t
   :functions undo-fu
   :init
   (setq evil-want-keybinding nil)
@@ -154,11 +159,13 @@
    "C-<tab>" #'evil-switch-to-windows-last-buffer))
 
 (use-package evil-surround
+  :straight t
   :after evil
   :config
   (global-evil-surround-mode 1))
 
 (use-package evil-collection
+  :straight t
   :after evil
   :config
   (setq evil-collection-outline-bind-tab-p t)

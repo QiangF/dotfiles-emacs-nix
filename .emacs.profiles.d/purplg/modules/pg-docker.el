@@ -1,5 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(use-package dockerfile-mode)
+(use-package dockerfile-mode
+  :straight t)
 
 (provide 'pg-docker)

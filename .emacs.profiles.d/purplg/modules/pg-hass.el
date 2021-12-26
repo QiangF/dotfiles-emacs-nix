@@ -2,6 +2,8 @@
 
 ;; Dev
 (use-package hass
+  :straight t
+  ;; :straight (:local-repo "~/code/elisp/hass")
   :init
   ;; Dev packages aren't resolved automatically
   (straight-use-package 'request)
@@ -12,6 +14,8 @@
   (hass-setup))
 
 (use-package hass-websockets
+  ;; :straight (:type git :host github :repo "purplg/hass-websockets")
+  :straight (:local-repo "~/code/elisp/hass-websockets")
   :after hass
   :init
   ;; Dev packages aren't resolved automatically
