@@ -77,6 +77,7 @@
 (straight-use-package 'popper)
 (straight-use-package 'tramp)
 (straight-use-package 'hass)
+(straight-use-package 'dockerfile-mode)
 ;; (straight-use-package `(hass :local-repo "~/code/elisp/hass"))
 (straight-use-package `(hass-websockets :type git :host github :repo "purplg/hass-websockets"))
 ;; (straight-use-package `(hass-websockets :local-repo "~/code/elisp/hass-websockets"))

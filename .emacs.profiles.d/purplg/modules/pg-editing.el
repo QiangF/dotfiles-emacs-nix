@@ -15,6 +15,7 @@
 
 (setq compilation-scroll-output t)
 
+(require 'pg-docker)
 (require 'pg-elisp)
 (require 'pg-flycheck)
 (require 'pg-folding)
