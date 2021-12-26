@@ -76,6 +76,8 @@
 (straight-use-package 'telega)
 (straight-use-package 'popper)
 (straight-use-package 'tramp)
+(straight-use-package 'buttercup)
+(straight-use-package 'cask-mode)
 (straight-use-package 'hass)
 (straight-use-package 'dockerfile-mode)
 ;; (straight-use-package `(hass :local-repo "~/code/elisp/hass"))

@@ -42,4 +42,8 @@
 
 (use-package flycheck-package)
 
+(use-package buttercup)
+
+(use-package cask-mode :after emacs-lisp-mode)
+
 (provide 'pg-elisp)
