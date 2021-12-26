@@ -1,6 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package elisp-mode
+   :after corfu
+   :init
+   (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
+
 (use-package rainbow-delimiters
   :config
   (hook! 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
