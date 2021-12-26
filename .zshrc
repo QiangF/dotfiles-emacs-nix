@@ -47,5 +47,7 @@ export PATH=$PATH:$PYENV_ROOT/bin
 # Aliases
 source $HOME/.aliases
 
+eval $(keychain --eval --quiet)
+
 # Starship prompt
 eval "$(starship init zsh)"
