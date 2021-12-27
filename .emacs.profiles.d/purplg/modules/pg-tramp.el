@@ -20,8 +20,8 @@
             (unless tramp-hosts (user-error "No tramp hosts configured."))
             (let* ((host (completing-read "Remote host:" tramp-hosts nil t))
                    (path (cdr (assoc-string host tramp-hosts))))
-              (read-file-name "Find remote file:" (format "/%s:%s:" tramp-default-method path))))))
-    (find-file host)))
+              (read-file-name "Find remote file:" (format "/%s:" path))))))
+    (find-file host))
 
   (pg/leader
    "f R" #'(find-remote-file :wk "remote file")))
