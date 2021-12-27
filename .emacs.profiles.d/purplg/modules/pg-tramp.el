@@ -23,4 +23,7 @@
               (read-file-name "Find remote file:" (format "/%s:%s:" tramp-default-method path))))))
     (find-file host)))
 
+  (pg/leader
+   "f R" #'(find-remote-file :wk "remote file")))
+
 (provide 'pg-tramp)
