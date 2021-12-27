@@ -2,8 +2,9 @@
 (require 'pg-keybinds)
 
 (use-package eshell
+  :defer t
   :straight t
-  :config
+  :init
   (pg/leader
    "o t" #'eshell))
 
