@@ -48,4 +48,9 @@
   :straight t
   :after org)
 
+(use-package org-auto-tangle
+  :straight t
+  :after org
+  :hook (org-mode . org-auto-tangle-mode))
+
 (provide 'pg-org)
