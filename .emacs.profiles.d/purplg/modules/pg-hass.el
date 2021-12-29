@@ -14,8 +14,8 @@
   (hass-setup))
 
 (use-package hass-websockets
-  ;; :straight (:type git :host github :repo "purplg/hass-websockets")
-  :straight (:local-repo "~/code/elisp/hass-websockets")
+  :straight (:type git :host github :repo "purplg/hass-websockets")
+  ;; :straight (:local-repo "~/code/elisp/hass-websockets")
   :after hass
   :init
   ;; Dev packages aren't resolved automatically
