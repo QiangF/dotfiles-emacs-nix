@@ -4,6 +4,9 @@
 (use-package dashboard
   :straight t
   :init
+  (dashboard-setup-startup-hook)
+
+  :config
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-banners-directory (expand-file-name "banners/" pg/config-dir))
@@ -15,9 +18,6 @@
                           (recents . 10)
                           (agenda . 15)))
 
-  (dashboard-setup-startup-hook)
-  
-  :config
   (add-hook 'dashboard-after-initialize-hook
     (lambda ()
       (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
