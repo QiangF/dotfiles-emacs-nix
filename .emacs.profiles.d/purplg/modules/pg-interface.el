@@ -11,6 +11,9 @@
 (require 'pg-workspaces)
 (require 'pg-popper)
 
+;; Fix scrolling so that it doesn't jump by pages
+(setq scroll-conservatively 101)
+
 (add-to-list 'recentf-exclude (concat user-emacs-directory "bookmarks") t)
 
 ;; Highlight line of point
