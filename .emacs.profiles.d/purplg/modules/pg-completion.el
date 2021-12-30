@@ -81,6 +81,20 @@
    "s r" #'(consult-ripgrep :wk "regex")
    "f r" #'(consult-recent-file :wk "recent"))
   (recentf-mode 1))
+
+(use-package consult-eglot
+  :straight t
+  :after consult eglot
+  :config
+  (pg/leader
+   :keymaps 'eglot-mode-map
+   :states 'normal
+   "s s" #'(consult-eglot-symbols :wk "Symbol")))
+
+(use-package all-the-icons-completion
+  :straight t
+  :init
+  (all-the-icons-completion-mode))
     
 (use-package consult-lsp
   :disabled
