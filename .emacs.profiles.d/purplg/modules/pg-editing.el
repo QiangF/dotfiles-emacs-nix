@@ -1,5 +1,12 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+;; Disable global eldoc mode. I prefer an explicit keypress
+(global-eldoc-mode -1)
+(general-define-key
+  :states '(normal insert visual)
+  :keymaps 'prog-mode-map
+  "S-k" #'eldoc)
+
 (setq initial-major-mode 'emacs-lisp-mode)
 (setq initial-scratch-message nil)
 (setq auto-save-default nil) ;; No autosave
