@@ -12,6 +12,5 @@
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
 
-  (set-theme 'doom-dracula))
-
+  (set-theme 'doom-molokai))
 (provide 'pg-theme)
