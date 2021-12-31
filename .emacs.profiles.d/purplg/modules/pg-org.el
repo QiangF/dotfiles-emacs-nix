@@ -29,7 +29,8 @@
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))
 
-  (hook! 'org-mode-hook #'(flyspell-mode org-indent-mode))
+  (add-hook 'org-mode-hook #'flyspell-mode)
+  (add-hook 'org-mode-hook #'org-indent-mode)
 
   (pg/leader
    "X" #'org-capture)
