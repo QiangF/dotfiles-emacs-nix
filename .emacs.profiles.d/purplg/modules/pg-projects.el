@@ -31,6 +31,7 @@
   :config
   (pg/leader
    "p f" #'(project-find-file :wk "file")
+   "f p" #'(project-find-file :wk "file")
    "p p" #'(project-switch-project :wk "open")))
 
 (use-package project
