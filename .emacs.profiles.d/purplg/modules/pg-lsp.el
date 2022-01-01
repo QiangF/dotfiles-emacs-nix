@@ -9,6 +9,11 @@
      "c a" #'(eglot-code-actions :wk "execute action")
      "c r" #'(eglot-rename :wk "rename")))
 
+(use-package eglot
+  :after rustic
+  :init
+  (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))
+
 (use-package lsp-mode
   :straight t
   :disabled

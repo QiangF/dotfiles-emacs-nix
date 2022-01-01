@@ -116,6 +116,7 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
   (setq evil-undo-system 'undo-fu)
+  (setq evil-lookup-func #'eldoc)
 
   :config
   (evil-mode 1)
