@@ -34,6 +34,11 @@
   :config
   (hass-setup))
 
+(use-package hass
+  :after popper
+  :init
+  (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
+  (add-to-list 'popper-reference-buffers 'hass-dash-mode))
 (use-package hass-websockets
   :straight (:type git :host github :repo "purplg/hass-websockets")
   ;; :straight (:local-repo "~/code/elisp/hass-websockets")
