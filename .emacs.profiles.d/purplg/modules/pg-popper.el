@@ -11,6 +11,8 @@
                                     "^\\*helpful.*\\*$"
                                     "^\\*eldoc.*\\*$"
                                     "^\\*xref.*\\*$"
+                                    "^\\*eshell.*\\*$" eshell-mode
+                                    "^\\*vterm.*\\*$" vterm-mode
                                     flycheck-error-list-mode
                                     compilation-mode
                                     rustic-compilation-mode
@@ -21,7 +23,6 @@
 
   (setq popper-display-function #'popper-display-popup-at-bottom)
 
-  :config
   (popper-mode +1))
   
 (provide 'pg-popper)
