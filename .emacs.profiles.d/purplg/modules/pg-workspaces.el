@@ -9,6 +9,11 @@
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
 
+  (defun project-switch-with-workspace ()
+    (interactive)
+    (call-interactively #'persp-switch-to-new)
+    (call-interactively #'project-switch-project))
+
   (defun persp-switch-to-new ()
     (interactive)
     (persp-switch
@@ -56,6 +61,7 @@
    "TAB r" #'(persp-rename :wk "rename")
    "TAB n" #'(persp-switch-to-new :wk "new and switch")
    "TAB N" #'(persp-add-new :wk "new")
+   "TAB p" #'(project-switch-with-workspace :wk "new with project")
    "TAB l" #'(persp-next :wk "next persp")
    "TAB h" #'(persp-prev :wk "prev persp"))
 
