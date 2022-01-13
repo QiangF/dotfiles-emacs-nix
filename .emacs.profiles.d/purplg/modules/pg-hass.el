@@ -10,6 +10,11 @@
   (setq hass-host "10.0.2.3")
   (setq hass-insecure t)
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+  (pg/leader
+   :states 'normal
+   "a" #'(:ignore t :wk "Automation")
+   "a d" #'(hass-dash-open :wk "Dashboard")
+   "a c" #'(hass-call-service :wk "Call service"))
   :config
   (hass-setup))
 
