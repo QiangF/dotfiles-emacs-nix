@@ -5,7 +5,7 @@
   :straight t
   :config
   (pg/leader
-   "h f" #'(helpful-function :wk "function")
+   "h f" #'(helpful-callable :wk "function")
    "h v" #'(helpful-variable :wk "variable")
    "h m" #'(helpful-macro :wk "macro")
    "h V" #'(apropos-value :wk "value")
