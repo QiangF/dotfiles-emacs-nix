@@ -10,6 +10,22 @@
   (setq hass-host "10.0.2.3")
   (setq hass-insecure t)
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+  (setq hass-dash-layout '(("Test" . (("input_boolean.hass_mode_test")
+                                      ("switch.bedroom_light" :name "Bedroom Light")
+                                      ("input_boolean.hass_mode_test" :name "Turn off Hass mode test"
+                                                                      :service "input_boolean.turn_off"
+                                                                      :state "vacuum.valetudo_vacuum")
+                                      ("scene.test_scene")))
+                           ("Vacuum" . (("vacuum.valetudo_vacuum" :name "State")
+                                        ("vacuum.valetudo_vacuum" :name "Clean" :icon nil :state nil)
+                                        ("vacuum.valetudo_vacuum" :name "Return to base"
+                                                                  :state nil
+                                                                  :icon nil
+                                                                  :service "vacuum.return_to_base")
+                                        ("vacuum.valetudo_vacuum" :name "Locate"
+                                                                  :icon nil
+                                                                  :service "vacuum.locate"
+                                                                  :state nil)))))
   (pg/leader
    :states 'normal
    "a" #'(:ignore t :wk "Automation")
