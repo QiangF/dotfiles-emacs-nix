@@ -16,7 +16,8 @@
   (setq dashboard-agenda-release-buffers t)
   (setq dashboard-items '((projects . 5)
                           (recents . 10)
-                          (agenda . 15)))
+                          (agenda . 15)
+                          (bookmarks . 5)))
 
   (add-hook 'dashboard-after-initialize-hook
     (lambda ()
