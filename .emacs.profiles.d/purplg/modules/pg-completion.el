@@ -91,7 +91,11 @@
    :states 'normal
    "s s" #'(consult-eglot-symbols :wk "Symbol")))
 
+(use-package all-the-icons
+  :straight t)
+
 (use-package all-the-icons-completion
+  :after all-the-icons
   :straight t
   :init
   (all-the-icons-completion-mode))
