@@ -7,13 +7,12 @@
   ("M-`" #'popper-cycle)
   ("C-M-`" #'popper-toggle-type)
   :init
-  (setq popper-reference-buffers '("\\*Messages\\*"
+  (setq popper-reference-buffers '(messages-buffer-mode "\\*Messages\\*"
                                     "^\\*helpful.*\\*$"
                                     "^\\*eldoc.*\\*$"
                                     "^\\*xref.*\\*$"
-                                    "^\\*eshell.*\\*$" eshell-mode
-                                    "^\\*vterm.*\\*$" vterm-mode
-                                    "^\\*hass-dash.*\\*$" hass-dash-mode
+                                    eshell-mode "^\\*eshell.*\\*$"
+                                    vterm-mode "^\\*vterm.*\\*$"
                                     flycheck-error-list-mode
                                     compilation-mode
                                     rustic-compilation-mode
@@ -31,7 +30,9 @@
   :straight t
   :after popper
   :init
-  (setq shackle-rules '((hass-dash-mode :align left :size 0.3)))
+  (setq shackle-select-reused-windows t)
+  (setq shackle-rules `((hass-dash-mode :align left :size 0.3)
+                        (,popper-reference-buffers :regexp t :align below :size 0.3)))
   :config
   (shackle-mode +1))
   
