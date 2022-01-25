@@ -20,7 +20,8 @@ set $right l
 ** Preferred applications
 #+BEGIN_SRC conf
 set $term alacritty
-set $emacs emacsclient -n -c
+set $emacs emacs
+set $emacsclient emacsclient -n -c
 set $browser firefox
 #+END_SRC
 
@@ -116,7 +117,8 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 
 #+BEGIN_SRC conf
 bindsym $mod+Return exec $term
-bindsym $mod+apostrophe exec $emacs
+bindsym $mod+Shift+apostrophe exec $emacs
+bindsym $mod+apostrophe exec $emacsclient
 bindsym $mod+z exec $browser
 #+END_SRC
 
