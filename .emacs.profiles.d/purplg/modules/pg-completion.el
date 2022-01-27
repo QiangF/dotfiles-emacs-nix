@@ -17,6 +17,11 @@
    "C-S-j" #'corfu-scroll-up
    "C-S-k" #'corfu-scroll-down))
 
+(use-package corfu
+  :after elisp-mode
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
+
 (use-package kind-icon
   :straight t
   :after corfu

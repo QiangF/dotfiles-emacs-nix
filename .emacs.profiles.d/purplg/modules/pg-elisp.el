@@ -2,9 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package elisp-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'corfu-mode)
-
   :config
   (pg/leader
       :keymaps 'emacs-lisp-mode-map
