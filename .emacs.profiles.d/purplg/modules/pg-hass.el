@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-theme)
 
 ;; Dev
 (use-package hass
