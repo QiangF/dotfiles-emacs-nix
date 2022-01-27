@@ -1,7 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(require 'pg-font)
-
 ;; Frame title
 (setq frame-title-format "PurplEmacs")
 

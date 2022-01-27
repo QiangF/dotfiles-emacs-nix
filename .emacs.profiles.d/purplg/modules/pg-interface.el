@@ -5,6 +5,7 @@
 (require 'pg-embark)
 (require 'pg-dashboard)
 (require 'pg-help)
+(require 'pg-font)
 (require 'pg-frame)
 (require 'pg-theme)
 (require 'pg-visual-page-breaks)
