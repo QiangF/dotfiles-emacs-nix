@@ -7,6 +7,7 @@
 (use-package telega
   :straight t
   :init
+  (setq telega-completing-read-function #'completing-read)
   (setq telega-emoji-use-images t)
   (setq telega-chat-show-avatars t)
   (setq telega-root-show-avatars t)
