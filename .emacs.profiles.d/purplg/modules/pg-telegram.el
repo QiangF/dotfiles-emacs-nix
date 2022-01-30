@@ -1,9 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
-(use-package alert
-  :straight t)
-
 (use-package telega
   :straight t
   :init
@@ -28,11 +25,18 @@
   (:keymaps 'telega-chat-mode-map
    "C-g" #'telega-chatbuf-cancel-aux))
 
+(use-package alert
+  :demand t
+  :straight t)
+
 (use-package telega-alert
   :after telega alert
   :config
   (telega-alert-mode 1)
-  (hook! 'telega-load-hook #'global-telega-squash-message-mode))
+  (add-hook 'telega-load-hook #'global-telega-squash-message-mode))
+  (alert-add-rule
+    :mode 'telega-chat-mode
+    :style 'notifications)
 
 (use-package telega-dashboard
   :after telega dashboard
