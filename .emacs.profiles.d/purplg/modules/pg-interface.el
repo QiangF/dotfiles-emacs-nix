@@ -1,5 +1,8 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+;; Don't show startup page
+(setq inhibit-startup-message t)
+
 (recentf-mode 1)
 
 ;; Fix scrolling so that it doesn't jump by pages
@@ -23,13 +26,19 @@
 ;; Prevent the scratch buffer from being deleted
 (with-current-buffer "*scratch*" (emacs-lock-mode 'kill))
 
+(when window-system 
+  (setq frame-title-format "PurplEmacs")
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (set-fringe-mode 10))
+
 (require 'pg-modeline)
 (require 'pg-completion)
 (require 'pg-embark)
 (require 'pg-dashboard)
 (require 'pg-help)
 (require 'pg-font)
-(require 'pg-frame)
 (require 'pg-theme)
 (require 'pg-visual-page-breaks)
 (require 'pg-workspaces)
