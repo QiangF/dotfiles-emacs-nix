@@ -17,13 +17,14 @@
    "e r" #'(eval-region :wk "region")))
 
 (use-package rainbow-delimiters
+  :after elisp-mode
   :straight t
   :init
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
 (use-package parinfer-rust-mode
   :straight t
-  :hook emacs-lisp-mode
+  :after elisp-mode
   :init
   (setq parinfer-rust-auto-download t)
   
