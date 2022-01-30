@@ -1,6 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package tree-sitter
+  :if (string= "x86_64" (car (split-string system-configuration "-")))
   :straight t)
 
 (use-package tree-sitter-langs
