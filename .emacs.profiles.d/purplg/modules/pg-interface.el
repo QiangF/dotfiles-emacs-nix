@@ -26,14 +26,16 @@
 ;; Prevent the scratch buffer from being deleted
 (with-current-buffer "*scratch*" (emacs-lock-mode 'kill))
 
-(add-hook 'server-after-make-frame-hook
-  (lambda ()
-    (when window-system 
-      (setq frame-title-format "PurplEmacs")
-      (scroll-bar-mode -1)
-      (tool-bar-mode -1)
-      (menu-bar-mode -1)
-      (set-fringe-mode 10))))
+(defun pg/config-frame ()
+  (when window-system 
+    (setq frame-title-format "PurplEmacs")
+    (scroll-bar-mode -1)
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (set-fringe-mode 10)))
+
+(pg/config-frame)
+(add-hook 'server-after-make-frame-hook #'pg/config-frame)
 
 (require 'pg-modeline)
 (require 'pg-completion)
