@@ -30,8 +30,7 @@
   
   (add-hook 'parinfer-rust-mode-hook
     (lambda ()
-      (electric-indent-mode 0)
-      (indent-tabs-mode 0)))
+      (electric-indent-mode 0)))
 
   :config
   (pg/local-leader
