@@ -31,6 +31,7 @@
 (require 'pg-lsp)
 (require 'pg-outshine)
 (require 'pg-projects)
+(require 'pg-python)
 (require 'pg-rust)
 (require 'pg-restclient)
 (require 'pg-snippets)
