@@ -38,7 +38,8 @@
 
   (pg/leader
    :keymaps 'org-mode-map
-   "t l" #'(org-toggle-link-display :wk "link display"))
+   "t l" #'(org-toggle-link-display :wk "link display")
+   "t s" #'(flyspell-mode :wk "spell check"))
     
   :general
   (:states 'normal :keymaps 'org-src-mode-map
