@@ -42,7 +42,7 @@
   :after telega dashboard
   :config
   (add-to-list 'dashboard-items '(telega-chats . 5) t)
-  (hook! 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
+  (add-hook 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
   (general-define-key
    :states 'normal
    :keymaps 'dashboard-mode-map
