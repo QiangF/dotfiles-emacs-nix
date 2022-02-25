@@ -65,7 +65,7 @@
    "TAB l" #'(persp-next :wk "next persp")
    "TAB h" #'(persp-prev :wk "prev persp"))
 
-  (add-to-list 'after-init-hook
+  (add-hook 'after-init-hook
    (lambda () (persp-switch (persp-name (persp-add-new "Session")))))
 
   (persp-mode))
