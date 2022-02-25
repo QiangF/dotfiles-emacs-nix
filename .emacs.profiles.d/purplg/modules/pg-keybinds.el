@@ -39,7 +39,8 @@
 
   (general-create-definer pg/leader
    :states '(normal visual)
-   :prefix "SPC")
+   :prefix "SPC"
+   :non-normal-prefix "M-SPC")
   
   (general-create-definer pg/local-leader
    :states '(normal visual)
