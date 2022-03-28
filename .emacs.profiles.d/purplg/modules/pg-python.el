@@ -12,8 +12,11 @@
 
 (use-package python :after eglot
   :config
-  (add-hook 'python-mode-hook 'eglot-ensure)
-  (add-to-list 'eglot-server-programs
-    `(python-mode . ("pyls" "-v" "--tcp" "--host" "localhost" "--port" :autoport))))
+  (add-hook 'python-mode-hook 'eglot-ensure))
+
+(use-package pyvenv
+ :straight t
+ :init
+ (setenv "WORKON_HOME" "/home/purplg/code/python/.venv"))
 
 (provide 'pg-python)
