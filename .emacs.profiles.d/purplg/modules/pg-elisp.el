@@ -32,6 +32,8 @@
     (lambda ()
       (electric-indent-mode 0)))
 
+  (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
+
   :config
   (pg/local-leader
    :keymaps 'emacs-lisp-mode-map
