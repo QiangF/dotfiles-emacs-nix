@@ -27,24 +27,13 @@
                                                                   :icon nil
                                                                   :service "vacuum.locate"
                                                                   :state nil)))))
+
   (pg/leader
    :states 'normal
    "a" #'(:ignore t :wk "Automation")
    "a d" #'(hass-dash-open :wk "Dashboard")
    "a c" #'(hass-call-service :wk "Call service"))
-  :config
-  (hass-setup))
 
-(use-package hass
-  :after popper
-  :init
-  (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
-  (add-to-list 'popper-reference-buffers 'hass-dash-mode))
-(use-package hass-websockets
-  :straight (:type git :host github :repo "purplg/hass-websockets")
-  ;; :straight (:local-repo "~/code/elisp/hass-websockets")
-  :after hass
-  :init
   ;; Dev packages aren't resolved automatically
   (straight-use-package 'websocket)
 
@@ -59,6 +48,15 @@
                  (set-theme 'doom-one-light)
                  (set-theme pg/hass-original-theme))))))
 
-  (hass-realtime-mode t))
+  (hass-websocket-mode t)
+
+  :config
+  (hass-setup))
+
+(use-package hass
+  :after popper
+  :init
+  (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
+  (add-to-list 'popper-reference-buffers 'hass-dash-mode))
 
 (provide 'pg-hass)
