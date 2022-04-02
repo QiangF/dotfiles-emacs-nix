@@ -22,8 +22,15 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
+(use-package lispy
+  :straight t
+  :after elisp-mode
+  :init
+  (add-to-list 'emacs-lisp-mode-hook #'lispy-mode))
+
 (use-package parinfer-rust-mode
   :straight t
+  :disabled
   :after elisp-mode
   :init
   (setq parinfer-rust-auto-download t)
