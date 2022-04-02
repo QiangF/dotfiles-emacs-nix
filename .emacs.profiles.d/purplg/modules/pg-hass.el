@@ -26,20 +26,22 @@
 (use-package hass
   :after websocket
   :config
-  (setq hass-dash-layout '(("Test" . (("input_boolean.hass_mode_test")
-                                      ("switch.bedroom_light" :name "Bedroom Light")
+  (setq hass-dash-layout '(("Light" . (("switch.bedroom_light" :name "Bedroom Light")))
+                           ("PC" . (("switch.desktop" :name "Desktop")
+                                    ("switch.framework_mqtt" :name "Framework")
+                                    ("switch.laptopbig_mqtt" :name "LaptopBig")))
+                           ("Test" . (("input_boolean.hass_mode_test")
                                       ("input_boolean.hass_mode_test" :name "Turn off Hass mode test"
                                                                       :service "input_boolean.turn_off"
                                                                       :state "vacuum.valetudo_vacuum")
-                                      ("scene.test_scene")))
+                                      ("scene.test_scene" :state nil)))
                            ("Vacuum" . (("vacuum.valetudo_vacuum" :name "State")
-                                        ("vacuum.valetudo_vacuum" :name "Clean" :icon nil :state nil)
+                                        ("vacuum.valetudo_vacuum" :name "Clean"
+                                                                  :state nil)
                                         ("vacuum.valetudo_vacuum" :name "Return to base"
-                                                                  :state nil
-                                                                  :icon nil
-                                                                  :service "vacuum.return_to_base")
+                                                                  :service "vacuum.return_to_base"
+                                                                  :state nil)
                                         ("vacuum.valetudo_vacuum" :name "Locate"
-                                                                  :icon nil
                                                                   :service "vacuum.locate"
                                                                   :state nil)))))
 
