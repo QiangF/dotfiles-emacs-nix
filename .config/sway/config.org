@@ -31,7 +31,7 @@ Note: pass the final command to swaymsg so that the resulting window can be open
 
 #+BEGIN_SRC conf
 set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
-set $pw_gui ~/sh/wofi-pass/wofi-pass | xargs swaymsg exec --
+set $pw_gui ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
 * Config
