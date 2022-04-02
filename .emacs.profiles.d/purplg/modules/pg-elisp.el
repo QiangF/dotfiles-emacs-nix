@@ -8,6 +8,7 @@
       "e" '(:wk "eval")
       "e b" #'(eval-buffer :wk "buffer")
       "e f" #'(eval-defun :wk "function")
+      "e s" #'(eval-last-sexp :wk "sexp")
       "b c" #'(emacs-lisp-byte-compile-and-load :wk "compile and load"))
 
   (pg/leader
