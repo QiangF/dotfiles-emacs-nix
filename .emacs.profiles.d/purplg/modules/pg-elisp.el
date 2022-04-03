@@ -3,6 +3,7 @@
 
 (use-package elisp-mode
   :config
+  (add-hook 'emacs-lisp-mode-hook (lambda () (setq indent-tabs-mode nil)))
   (pg/leader
       :keymaps 'emacs-lisp-mode-map
       "e" '(:wk "eval")
@@ -27,19 +28,17 @@
   :straight t
   :after elisp-mode
   :init
-  (add-to-list 'emacs-lisp-mode-hook #'lispy-mode))
+  (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
 
 (use-package parinfer-rust-mode
   :straight t
-  :disabled
   :after elisp-mode
   :init
   (setq parinfer-rust-auto-download t)
   
   (add-hook 'parinfer-rust-mode-hook
     (lambda ()
-      (electric-indent-mode 0)
-      (indent-tabs-mode 0)))
+      (electric-indent-mode 0)))
 
   (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
 
