@@ -14,7 +14,7 @@
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (pg/leader
    :states 'normal
-   "a" #'(:ignore t :wk "Automation")
+   "a" #'(:ignore t :wk "automation")
    "a c" #'(hass-call-service :wk "Call service"))
 
   (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
