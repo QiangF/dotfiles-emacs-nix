@@ -56,4 +56,7 @@
   :after org
   :hook (org-mode . org-auto-tangle-mode))
 
+(use-package org-make-toc
+  :straight t)
+
 (provide 'pg-org)
