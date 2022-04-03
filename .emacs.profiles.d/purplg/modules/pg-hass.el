@@ -26,24 +26,142 @@
 (use-package hass
   :after websocket
   :config
-  (setq hass-dash-layout '(("Light" . (("switch.bedroom_light" :name "Bedroom Light")))
-                           ("PC" . (("switch.desktop" :name "Desktop")
-                                    ("switch.framework_mqtt" :name "Framework")
-                                    ("switch.laptopbig_mqtt" :name "LaptopBig")))
-                           ("Test" . (("input_boolean.hass_mode_test")
-                                      ("input_boolean.hass_mode_test" :name "Turn off Hass mode test"
-                                                                      :service "input_boolean.turn_off"
-                                                                      :state "vacuum.valetudo_vacuum")
-                                      ("scene.test_scene" :state nil)))
-                           ("Vacuum" . (("vacuum.valetudo_vacuum" :name "State")
-                                        ("vacuum.valetudo_vacuum" :name "Clean"
-                                                                  :state nil)
-                                        ("vacuum.valetudo_vacuum" :name "Return to base"
-                                                                  :service "vacuum.return_to_base"
-                                                                  :state nil)
-                                        ("vacuum.valetudo_vacuum" :name "Locate"
-                                                                  :service "vacuum.locate"
-                                                                  :state nil)))))
+  (cl-defun pg/hass-dash-widget-formatter (label state icon &optional icon-formatter label-formatter state-formatter)
+    (concat (when icon (funcall icon-formatter icon))
+            (when state (funcall state-formatter state))
+            (funcall label-formatter label)))
+
+  (defun pg/hass-dash-label-formatter (label)
+    (propertize label 'face 'font-lock-function-name-face))
+
+  (defun pg/hass-dash-state-formatter (label)
+    (concat ": "
+      (propertize label 'face 'font-lock-keyword-face)))
+
+  (defun pg/hass-dash-icon-formatter (icon)
+    (concat icon "|"))
+
+  (defun pg/percent-suffix (str)
+    (concat ": " str "%"))
+
+  (defun pg/laptop-toggle-widget-formatter (_label state icon
+                                            label-formatter _state-formatter icon-formatter)
+    (if (string= "on" state)
+      (concat (when icon (funcall icon-formatter icon))
+              (funcall label-formatter "Turn off"))
+      "Powered off"))
+
+  (defun pg/hide-unavailable (widget)
+    (string= "unavailable" (hass-state-of (car widget))))
+
+  (setq pg/hass-dash-group-light
+    '("Light" .
+      (("switch.bedroom_light"
+        :label "Bedroom"
+        :widget-formatter (lambda (label state icon label-formatter state-formatter icon-formatter)
+                            (concat (when icon (funcall icon-formatter icon))
+                                    (funcall label-formatter label)
+                                    (when state (funcall state-formatter state))))
+        :label-formatter pg/hass-dash-label-formatter
+        :state-formatter pg/hass-dash-state-formatter
+        :icon-formatter pg/hass-dash-icon-formatter))))
+
+  (setq pg/hass-dash-group-desktop
+    '("Desktop" .
+      (("switch.desktop"
+          :label "Turn "
+          :state-formatter (lambda (state) (if (string= "off" state) "on" "off")))
+       ("sensor.desktop_cpu"
+          :label "CPU"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix)
+       ("sensor.desktop_ram"
+          :label "MEM"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix))))
+
+  (setq pg/hass-dash-group-framework
+    '("Framework" .
+      (("switch.framework_mqtt"
+          :label "Framework"
+          :widget-formatter pg/laptop-toggle-widget-formatter)
+       ("sensor.framework_battery0"
+          :label "BAT"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix)
+       ("sensor.framework_cpu"
+          :label "CPU"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix)
+       ("sensor.framework_ram"
+          :label "MEM"
+          :icon nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix))))
+
+  (setq pg/hass-dash-group-laptopbig
+    '("LaptopBig" .
+      (("switch.laptopbig_mqtt"
+          :label "LaptopBig")
+       ("sensor.laptopbig_battery0"
+          :label "BAT"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix)
+       ("sensor.laptopbig_cpu"
+          :label "CPU"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix)
+       ("sensor.laptopbig_ram"
+          :label "MEM"
+          :icon nil
+          :service nil
+          :hide-fn pg/hide-unavailable
+          :state-formatter pg/percent-suffix))))
+
+  (setq pg/hass-dash-group-test
+    '("Test" .
+      (("input_boolean.hass_mode_test")
+       ("input_boolean.hass_mode_test"
+          :label "Turn off Hass mode test"
+          :service "input_boolean.turn_off"
+          :state "vacuum.valetudo_vacuum")
+       ("scene.test_scene"
+          :state nil))))
+
+  (setq pg/hass-dash-group-vacuum
+   '("Vacuum" .
+     (("vacuum.valetudo_vacuum"
+         :label "State")
+      ("vacuum.valetudo_vacuum"
+         :label "Clean"
+         :state nil)
+      ("vacuum.valetudo_vacuum"
+         :label "Return to base"
+         :service "vacuum.return_to_base"
+         :state nil)
+      ("vacuum.valetudo_vacuum"
+         :label "Locate"
+         :service "vacuum.locate"
+         :state nil))))
+
+  (setq hass-dash-layout '(pg/hass-dash-group-light
+                           pg/hass-dash-group-desktop
+                           pg/hass-dash-group-framework
+                           pg/hass-dash-group-laptopbig
+                           pg/hass-dash-group-test
+                           pg/hass-dash-group-vacuum))
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
