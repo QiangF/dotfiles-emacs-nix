@@ -25,6 +25,11 @@
 (defun save-all-buffers ()
   (interactive)
   (save-some-buffers t))
+
+(defun yank-whole-buffer ()
+  (interactive)
+  (evil-yank (point-min) (point-max))
+  (message "Yanked entire buffer."))
   
 (use-package which-key
   :straight t
@@ -58,6 +63,8 @@
    "q" '(:ignore t :wk "quit")
    "w" '(:ignore t :wk "window")
    "b" '(:ignore t :wk "buffer")
+
+   "y" #'(yank-whole-buffer :wk "yank buffer")
 
    "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
    "t n" #'(display-line-numbers-mode :wk "line numbers")
