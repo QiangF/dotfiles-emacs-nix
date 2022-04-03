@@ -178,6 +178,6 @@
 
   (pg/leader
    :states 'normal
-   "a d" #'(hass-dash-open :wk "Dashboard")))
+   "a d" #'(hass-dash-open :wk "dashboard")))
 
 (provide 'pg-hass)
