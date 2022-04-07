@@ -2,6 +2,7 @@
 
 (use-package pass
   :straight t
+  :demand t
   :config
   (add-to-list 'auth-sources 'password-store))
 

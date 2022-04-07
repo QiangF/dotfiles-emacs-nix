@@ -8,6 +8,6 @@
   :straight t
   :after tree-sitter
   :config
-  (hook! 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (provide 'pg-treesitter)

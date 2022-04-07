@@ -33,14 +33,19 @@
   :after telega alert
   :config
   (telega-alert-mode 1)
-  (add-hook 'telega-load-hook #'global-telega-squash-message-mode))
+  (add-hook 'telega-load-hook #'global-telega-squash-message-mode)
   (alert-add-rule
     :mode 'telega-chat-mode
-    :style 'notifications)
+    :style 'notifications))
 
 (use-package telega-dashboard
   :after telega dashboard
   :config
+  (defun dashboard-refresh-buffer-silent ()
+    "Refresh buffer in background."
+    (interactive)
+    (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists)))
+
   (add-to-list 'dashboard-items '(telega-chats . 5) t)
   (add-hook 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
   (general-define-key

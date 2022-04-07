@@ -3,7 +3,11 @@
 
 (use-package elisp-mode
   :config
-  (add-hook 'emacs-lisp-mode-hook (lambda () (setq indent-tabs-mode nil)))
+  (add-hook
+   'emacs-lisp-mode-hook
+   (lambda ()
+     (setq indent-tabs-mode nil)
+     (setq fill-column 80)))
   (pg/leader
       :keymaps 'emacs-lisp-mode-map
       "e" '(:wk "eval")
@@ -58,5 +62,10 @@
 (use-package cask-mode
   :straight t
   :after elisp-mode)
+
+(use-package erefactor
+  :straight (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on))
 
 (provide 'pg-elisp)

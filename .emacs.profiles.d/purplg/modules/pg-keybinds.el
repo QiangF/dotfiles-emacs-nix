@@ -33,15 +33,14 @@
   
 (use-package which-key
   :straight t
-  :config
+  :init
   (setq which-key-idle-delay 1)
   (which-key-mode 1))
 
 (use-package general
   :straight t
+  :demand t
   :config
-  (defalias 'hook! 'general-add-hook)
-
   (general-create-definer pg/leader
    :states '(normal visual)
    :prefix "SPC"
@@ -111,7 +110,7 @@
 
 (use-package undo-fu-session
   :straight t
-  :config
+  :init
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   (setq undo-fu-session-file-limit 10)
   (setq undo-fu-session-compression t)
@@ -127,9 +126,9 @@
   (setq evil-undo-system 'undo-fu)
   (setq evil-lookup-func #'eldoc)
 
-  :config
   (evil-mode 1)
 
+  :config
   ;; Center buffer on point when jumping between sections
   (advice-add 'evil-forward-section-begin
               :after #'evil-scroll-line-to-center)
@@ -171,13 +170,13 @@
 (use-package evil-surround
   :straight t
   :after evil
-  :config
+  :init
   (global-evil-surround-mode 1))
 
 (use-package evil-collection
   :straight t
   :after evil
-  :config
+  :init
   (setq evil-collection-outline-bind-tab-p t)
   (evil-collection-init))
 

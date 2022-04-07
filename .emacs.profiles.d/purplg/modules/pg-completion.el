@@ -2,11 +2,11 @@
 (require 'pg-keybinds)
 
 (use-package corfu
-  :defer t
   :straight t
-  :config
+  :init
   (setq corfu-auto t)
   (setq corfu-auto-delay 0.0) 
+
   :general
   ; Clear conflicting C-k keybind
   (:keymaps 'evil-insert-state-map
@@ -31,6 +31,7 @@
 
 (use-package vertico
   :straight t
+  :demand t
   :init
   (vertico-mode 1)
 
@@ -117,6 +118,7 @@
   :straight t
   :after vertico
   :init
+  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
   (marginalia-mode 1))
 
 ;; ~orderless~ allows completion chunks (space delimited) to be search out of order. In other words, a
@@ -125,7 +127,7 @@
 
 (use-package orderless
   :straight t
-  :config
+  :init
   (setq completion-styles '(orderless partial-completion)))
 
 (use-package savehist

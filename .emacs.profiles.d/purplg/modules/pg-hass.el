@@ -2,12 +2,14 @@
 (require 'pg-theme)
 
 (use-package websocket
-  :straight t)
+  :straight t
+  :demand t)
 
 ;; Dev
 (use-package hass
-  :straight t
-  ;; :straight (:local-repo "~/code/elisp/hass")
+  ;; :straight t
+  :straight (:local-repo "~/code/elisp/hass")
+  :after pass
   :init
   (setq hass-host "10.0.2.3")
   (setq hass-insecure t)
@@ -25,7 +27,7 @@
 
 (use-package hass
   :after websocket
-  :config
+  :init
   (cl-defun pg/hass-dash-widget-formatter (label state icon &optional icon-formatter label-formatter state-formatter)
     (concat (when icon (funcall icon-formatter icon))
             (when state (funcall state-formatter state))
@@ -70,6 +72,10 @@
     '("Desktop" .
       (("switch.desktop"
           :label "Turn "
+          :confirm (lambda (entity-id)
+                     (if (hass-switch-p entity-id)
+                         (yes-or-no-p "Turn off? ")
+                         t))
           :state-formatter (lambda (state) (if (string= "off" state) "on" "off")))
        ("sensor.desktop_cpu"
           :label "CPU"
@@ -88,7 +94,11 @@
     '("Framework" .
       (("switch.framework_mqtt"
           :label "Framework"
-          :widget-formatter pg/laptop-toggle-widget-formatter)
+          :widget-formatter pg/laptop-toggle-widget-formatter
+          :confirm (lambda (entity-id)
+                     (if (hass-switch-p entity-id)
+                         (yes-or-no-p "Turn off? ")
+                         t)))
        ("sensor.framework_battery0"
           :label "BAT"
           :icon nil
@@ -110,7 +120,12 @@
   (setq pg/hass-dash-group-laptopbig
     '("LaptopBig" .
       (("switch.laptopbig_mqtt"
-          :label "LaptopBig")
+          :label "LaptopBig"
+          :confirm (lambda (entity-id)
+                     (if (hass-switch-p entity-id)
+                         (yes-or-no-p "Turn off? ")
+                         t))
+          :widget-formatter pg/laptop-toggle-widget-formatter)
        ("sensor.laptopbig_battery0"
           :label "BAT"
           :icon nil
@@ -176,6 +191,7 @@
 
   (hass-websocket-mode t)
 
+  :config
   (pg/leader
    :states 'normal
    "a d" #'(hass-dash-open :wk "dashboard")))

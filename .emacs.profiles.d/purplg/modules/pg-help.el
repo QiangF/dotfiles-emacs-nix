@@ -3,6 +3,7 @@
 
 (use-package helpful
   :straight t
+  :demand t
   :config
   (pg/leader
    "h f" #'(helpful-callable :wk "function")

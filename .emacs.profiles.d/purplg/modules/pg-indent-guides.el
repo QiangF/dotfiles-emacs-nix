@@ -2,9 +2,9 @@
 
 (use-package highlight-indent-guides
   :straight t
-  :config
-  (setq highlight-indent-guides-method 'column
-        highlight-indent-guides-responsive 'top)
-  (hook! 'prog-mode-hookd #'highlight-indent-guides-mode))
+  :init
+  (setq highlight-indent-guides-method 'column)
+  (setq highlight-indent-guides-responsive 'top)
+  (add-hook 'prog-mode-hookd #'highlight-indent-guides-mode))
 
 (provide 'pg-indent-guides)

@@ -7,6 +7,10 @@
   (dashboard-setup-startup-hook)
 
   :config
+  (add-hook 'dashboard-after-initialize-hook
+    (lambda ()
+      (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+
   (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-banners-directory (expand-file-name "banners/" pg/config-dir))
@@ -18,16 +22,6 @@
                           (recents . 10)
                           (agenda . 15)
                           (bookmarks . 5)))
-
-  (add-hook 'dashboard-after-initialize-hook
-    (lambda ()
-      (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
-
-  (defun dashboard-refresh-buffer-silent ()
-    "Refresh buffer in background."
-    (interactive)
-    (let ((dashboard-force-refresh t)) (dashboard-insert-startupify-lists)))
-  
   (defun dashboard-switch ()
     "Switch to dashboard buffer"
     (interactive)

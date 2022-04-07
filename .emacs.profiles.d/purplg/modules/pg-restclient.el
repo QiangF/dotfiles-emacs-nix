@@ -2,7 +2,9 @@
 
 (use-package restclient
   :straight t)
+
 (use-package ob-restclient
-  :straight t)
+  :straight t
+  :after restclient)
 
 (provide 'pg-restclient)

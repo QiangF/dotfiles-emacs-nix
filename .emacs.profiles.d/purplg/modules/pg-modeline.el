@@ -2,6 +2,7 @@
 
 (use-package doom-modeline
   :straight t
+  :demand t
   :config
   (doom-modeline-mode 1))
 
