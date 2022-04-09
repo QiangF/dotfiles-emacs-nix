@@ -31,8 +31,7 @@
   (cl-defun pg/hass-dash-widget-formatter (label state icon &optional icon-formatter label-formatter state-formatter)
     (concat (when icon (funcall icon-formatter icon))
             (when state (funcall state-formatter state))
-            (funcall label-formatter label)
-            "\n"))
+            (funcall label-formatter label)))
 
   (defun pg/hass-dash-label-formatter (label)
     (propertize label 'face 'font-lock-function-name-face))
@@ -51,8 +50,8 @@
                                             label-formatter _state-formatter icon-formatter)
     (if (string= "on" state)
       (concat (when icon (funcall icon-formatter icon))
-              (funcall label-formatter "Turn off\n"))
-      "Powered off\n"))
+              (funcall label-formatter "Turn off"))
+      "Powered off"))
 
   (defun pg/hide-unavailable (widget)
     (string= "unavailable" (hass-state-of (car widget))))
@@ -64,8 +63,7 @@
         :widget-formatter (lambda (label state icon label-formatter state-formatter icon-formatter)
                             (concat (when icon (funcall icon-formatter icon))
                                     (funcall label-formatter label)
-                                    (when state (funcall state-formatter state))
-                                    "\n"))
+                                    (when state (funcall state-formatter state))))
         :label-formatter pg/hass-dash-label-formatter
         :state-formatter pg/hass-dash-state-formatter
         :icon-formatter pg/hass-dash-icon-formatter))))
