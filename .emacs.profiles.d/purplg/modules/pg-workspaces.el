@@ -4,6 +4,7 @@
 
 (use-package persp-mode
   :straight t
+  :demand t
   :after doom-modeline
   :config
   (setq persp-auto-resume-time -1)
