@@ -15,6 +15,7 @@
 
 (use-package expand-region
   :straight t
+  :demand t
   :config
   (general-define-key
    :states 'visual
