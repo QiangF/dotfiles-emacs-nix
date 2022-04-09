@@ -9,16 +9,12 @@
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
 
-  (defun project-switch-with-workspace ()
-    (interactive)
-    (call-interactively #'persp-switch-to-new)
-    (call-interactively #'project-switch-project))
-
-  (defun persp-switch-to-new ()
-    (interactive)
-    (persp-switch
-      (persp-name
-        (call-interactively #'persp-add-new))))
+  (defun project-switch-with-workspace (project-path)
+    (interactive (list (project-prompt-project-dir)))
+    (let ((project-name (car (last (split-string (directory-file-name project-path) "/")))))
+      (message "%S -> %S" project-path project-name)
+      (persp-switch (persp-name (persp-add-new project-name)))
+      (project-switch-project project-path)))
 
   ;; Modified from Doom's `+workspace--tabline`
   (defun persp--format-tab (label active) 
