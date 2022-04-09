@@ -32,6 +32,7 @@
   (pg/leader
    "p f" #'(project-find-file :wk "file")
    "f p" #'(project-find-file :wk "file")
+   "p d" #'(project-forget-project :wk "delete")
    "p p" #'(project-switch-project :wk "open")))
 
 (use-package project
