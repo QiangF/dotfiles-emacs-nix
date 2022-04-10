@@ -31,7 +31,6 @@
 
 (use-package vertico
   :straight t
-  :demand t
   :init
   (vertico-mode 1)
 

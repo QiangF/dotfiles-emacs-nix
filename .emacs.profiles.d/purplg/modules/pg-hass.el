@@ -2,8 +2,7 @@
 (require 'pg-theme)
 
 (use-package websocket
-  :straight t
-  :demand t)
+  :straight t)
 
 ;; Dev
 (use-package hass

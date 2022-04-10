@@ -8,10 +8,8 @@
 
 (use-package doom-themes
   :straight t
-  :demand t
-  :config
+  :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-
   (set-theme 'doom-molokai))
 (provide 'pg-theme)

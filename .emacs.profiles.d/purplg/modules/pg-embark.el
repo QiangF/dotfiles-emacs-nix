@@ -3,7 +3,6 @@
 
 (use-package embark
   :straight t
-  :demand t
   :config
   (general-define-key
    :states '(normal visual insert)

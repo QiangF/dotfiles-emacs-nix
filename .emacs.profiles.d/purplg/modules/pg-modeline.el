@@ -2,8 +2,7 @@
 
 (use-package doom-modeline
   :straight t
-  :demand t
-  :config
+  :init
   (doom-modeline-mode 1))
 
 (provide 'pg-modeline)

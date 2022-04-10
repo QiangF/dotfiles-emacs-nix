@@ -26,7 +26,6 @@
    "C-g" #'telega-chatbuf-cancel-aux))
 
 (use-package alert
-  :demand t
   :straight t)
 
 (use-package telega-alert

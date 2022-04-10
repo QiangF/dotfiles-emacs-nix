@@ -2,8 +2,7 @@
 
 (use-package pass
   :straight t
-  :demand t
-  :config
+  :init
   (add-to-list 'auth-sources 'password-store))
 
 (provide 'pg-pass)

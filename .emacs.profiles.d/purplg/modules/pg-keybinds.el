@@ -39,7 +39,6 @@
 
 (use-package general
   :straight t
-  :demand t
   :config
   (general-create-definer pg/leader
    :states '(normal visual)
