@@ -3,6 +3,7 @@
 
 (use-package treemacs
   :straight t
+  :defer t
   :init
   (pg/leader
    "o p" #'treemacs)
@@ -22,6 +23,7 @@
 (use-package treemacs-all-the-icons
   :straight t
   :after treemacs
+  :defer t
   :config
   (treemacs-load-theme "all-the-icons"))
 
@@ -37,7 +39,7 @@
 
 (use-package project
   :after dashboard
-  :config
+  :init
   (setq dashboard-projects-backend 'project-el))
 
 (provide 'pg-projects)

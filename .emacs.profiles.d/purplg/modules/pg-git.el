@@ -2,6 +2,7 @@
 
 (use-package magit
   :straight t
+  :defer t
   :init
   (pg/leader
    "g" '(:wk "git")
@@ -9,7 +10,6 @@
 
 (use-package git-gutter
   :straight t
-  :init
-  (add-hook 'prog-mode-hook #'git-gutter-mode))
+  :hook (prog-mode . git-gutter-mode))
 
 (provide 'pg-git)

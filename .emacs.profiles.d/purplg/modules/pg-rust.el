@@ -4,6 +4,7 @@
 
 (use-package rustic
   :straight t
+  :mode ("\\.rs\\'" . rustic-mode)
   :init
   (with-eval-after-load 'corfu
     (add-hook 'rustic-mode-hook #'corfu-mode))

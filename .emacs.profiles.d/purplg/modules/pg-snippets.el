@@ -2,7 +2,7 @@
 
 (use-package yasnippet
   :straight t
-  :hook prog-mode-hook org-mode-hook
+  :hook prog-mode org-mode
   :config
   (push (expand-file-name "snippets" pg/config-dir) yas-snippet-dirs)
   (yas-global-mode 1))

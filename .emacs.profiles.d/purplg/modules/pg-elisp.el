@@ -25,26 +25,23 @@
 (use-package rainbow-delimiters
   :after elisp-mode
   :straight t
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
+  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
 
 (use-package lispy
   :straight t
   :after elisp-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'lispy-mode))
+  :hook (emacs-lisp-mode . lispy-mode))
 
 (use-package parinfer-rust-mode
   :straight t
   :after elisp-mode
+  :hook (emacs-lisp-mode . parinfer-rust-mode)
   :init
   (setq parinfer-rust-auto-download t)
   
   (add-hook 'parinfer-rust-mode-hook
     (lambda ()
       (electric-indent-mode 0)))
-
-  (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
 
   :config
   (pg/local-leader
@@ -53,19 +50,21 @@
 
 (use-package package-lint
   :straight t
+  :defer t
   :after elisp-mode)
 
 (use-package flycheck-package
   :straight t
+  :defer t
   :after elisp-mode)
 
 (use-package cask-mode
   :straight t
+  :defer t
   :after elisp-mode)
 
 (use-package erefactor
   :straight (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
-  :init
-  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on))
+  :hook (emacs-lisp-mode . erefactor-lazy-highlight-turn-on))
 
 (provide 'pg-elisp)

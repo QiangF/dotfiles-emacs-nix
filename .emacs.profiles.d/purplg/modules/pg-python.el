@@ -3,19 +3,17 @@
 (require 'pg-treesitter)
 
 (use-package python :after corfu
-  :config
-  (add-hook 'python-mode-hook #'corfu-mode))
+  :hook (python-mode . corfu-mode))
 
 (use-package python :after tree-sitter
-  :config
-  (add-hook 'python-mode-hook #'tree-sitter-mode))
+  :hook (python-mode . tree-sitter-mode))
 
 (use-package python :after eglot
-  :config
-  (add-hook 'python-mode-hook 'eglot-ensure))
+  :hook (python-mode . eglot-ensure))
 
 (use-package pyvenv
  :straight t
+ :after python
  :init
  (setenv "WORKON_HOME" "/home/purplg/code/python/.venv"))
 

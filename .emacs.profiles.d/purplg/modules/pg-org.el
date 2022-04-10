@@ -2,6 +2,9 @@
 (require 'pg-keybinds)
 
 (use-package org
+  :hook ((org-mode . flyspell-mode)
+         (org-mode . org-indent-mode)
+         (org-mode . visual-line-mode))
   :config
   (setq org-return-follows-link t)                ;; Press Enter to follow link under point
   (setq org-adapt-indentation nil)                ;; Stop putting indents everywhere
@@ -29,10 +32,6 @@
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))
 
-  (add-hook 'org-mode-hook #'flyspell-mode)
-  (add-hook 'org-mode-hook #'org-indent-mode)
-  (add-hook 'org-mode-hook #'visual-line-mode)
-
   (pg/leader
    "X" #'org-capture)
 
@@ -49,14 +48,14 @@
    
 (use-package htmlize
   :straight t
-  :after org)
+  :hook (org-mode . org-htmlize-mode))
 
 (use-package org-auto-tangle
   :straight t
-  :after org
   :hook (org-mode . org-auto-tangle-mode))
 
 (use-package org-make-toc
-  :straight t)
+  :straight t
+  :hook (org-mode . org-make-toc-mode))
 
 (provide 'pg-org)

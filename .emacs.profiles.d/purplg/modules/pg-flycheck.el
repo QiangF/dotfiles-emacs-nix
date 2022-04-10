@@ -13,8 +13,7 @@
  
 (use-package flymake
   :straight t
-  :init
-  (add-hook 'prog-mode #'flymake-mode)
+  :hook (prog-mode . flymake-mode)
 
   :config
   (general-define-key

@@ -3,6 +3,7 @@
 
 (use-package eglot
   :straight t
+  :defer t
   :config
   (pg/leader
      :keymaps 'eglot-mode-map
@@ -32,6 +33,7 @@
 
 (use-package lsp-ui
   :straight t
+  :disabled
   :after lsp-mode
   :config
   ;; recommended performance tweak

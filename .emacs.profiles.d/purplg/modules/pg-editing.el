@@ -29,7 +29,6 @@
 (require 'pg-indent-guides)
 (require 'pg-line-numbers)
 (require 'pg-lsp)
-(require 'pg-outshine)
 (require 'pg-projects)
 (require 'pg-python)
 (require 'pg-rust)
