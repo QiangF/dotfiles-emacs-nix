@@ -51,8 +51,8 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-(setq use-package-always-defer t)
-(setq straight-disable-native-compile t)
+(setq use-package-always-defer nil)
+(setq straight-disable-native-compile nil)
 
 ;;; * Emacs config
 (require 'pg-perf)
