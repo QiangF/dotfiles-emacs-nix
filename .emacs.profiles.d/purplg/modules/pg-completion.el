@@ -22,6 +22,11 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
+(use-package corfu-doc
+  :straight t
+  :after corfu
+  :hook (corfu-mode . corfu-doc-mode))
+
 (use-package kind-icon
   :straight t
   :after corfu
