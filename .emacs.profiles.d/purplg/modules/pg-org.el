@@ -2,9 +2,11 @@
 (require 'pg-keybinds)
 
 (use-package org
-  :hook ((org-mode . flyspell-mode)
-         (org-mode . org-indent-mode)
-         (org-mode . visual-line-mode))
+  :straight (:type built-in)
+  :init
+  (add-hook 'org-mode-hook #'flyspell-mode)
+  (add-hook 'org-mode-hook #'org-indent-mode)
+  (add-hook 'org-mode-hook #'visual-line-mode)
   :config
   (setq org-return-follows-link t)                ;; Press Enter to follow link under point
   (setq org-adapt-indentation nil)                ;; Stop putting indents everywhere
@@ -48,14 +50,15 @@
    
 (use-package htmlize
   :straight t
-  :hook (org-mode . org-htmlize-mode))
+  :defer t)
 
 (use-package org-auto-tangle
   :straight t
-  :hook (org-mode . org-auto-tangle-mode))
+  :init
+  (add-hook 'org-mode-hook #'org-auto-tangle-mode))
 
 (use-package org-make-toc
   :straight t
-  :hook (org-mode . org-make-toc-mode))
+  :defer t)
 
 (provide 'pg-org)
