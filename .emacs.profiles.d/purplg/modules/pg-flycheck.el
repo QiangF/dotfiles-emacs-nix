@@ -16,6 +16,7 @@
   :hook (prog-mode . flymake-mode)
 
   :config
+  (setq elisp-flymake-byte-compile-load-path load-path)
   (general-define-key
    :states 'normal
    "M-k" #'(flymake-goto-prev-error :wk "prev error")
