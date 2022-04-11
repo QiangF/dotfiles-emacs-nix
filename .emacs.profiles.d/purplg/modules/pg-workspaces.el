@@ -12,7 +12,6 @@
   (defun project-switch-with-workspace (project-path)
     (interactive (list (project-prompt-project-dir)))
     (let ((project-name (car (last (split-string (directory-file-name project-path) "/")))))
-      (message "%S -> %S" project-path project-name)
       (persp-switch (persp-name (persp-add-new project-name)))
       (project-switch-project project-path)))
 
