@@ -148,6 +148,7 @@
   (general-define-key
    :states 'normal
    "z c" #'evil-close-fold-below
+   "z m" #'hs-hide-level
    "z C" #'evil-close-fold)
     
   (general-define-key
