@@ -73,7 +73,7 @@
           :label "Turn "
           :confirm (lambda (entity-id)
                      (if (hass-switch-p entity-id)
-                         (yes-or-no-p "Turn off? ")
+                         (y-or-n-p "Turn off? ")
                          t))
           :state-formatter (lambda (state) (if (string= "off" state) "on" "off")))
        ("sensor.desktop_cpu"
@@ -96,7 +96,7 @@
           :widget-formatter pg/laptop-toggle-widget-formatter
           :confirm (lambda (entity-id)
                      (if (hass-switch-p entity-id)
-                         (yes-or-no-p "Turn off? ")
+                         (y-or-n-p "Turn off? ")
                          t)))
        ("sensor.framework_battery0"
           :label "BAT"
@@ -122,7 +122,7 @@
           :label "LaptopBig"
           :confirm (lambda (entity-id)
                      (if (hass-switch-p entity-id)
-                         (yes-or-no-p "Turn off? ")
+                         (y-or-n-p "Turn off? ")
                          t))
           :widget-formatter pg/laptop-toggle-widget-formatter)
        ("sensor.laptopbig_battery0"
@@ -149,6 +149,7 @@
       (("input_boolean.hass_mode_test")
        ("input_boolean.hass_mode_test"
           :label "Turn off Hass mode test"
+          :confirm t
           :service "input_boolean.turn_off"
           :state "vacuum.valetudo_vacuum")
        ("scene.test_scene"
