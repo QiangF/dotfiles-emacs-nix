@@ -32,7 +32,7 @@
   :straight t
   :init
   (setq shackle-select-reused-windows t)
-  (setq shackle-rules `((hass-dash-mode :align left :size 0.3)
+  (setq shackle-rules `((hass-dash-mode :align left :size 0.1)
                         (,popper-reference-buffers :regexp t :align below :size 0.3)))
   (shackle-mode +1))
   
