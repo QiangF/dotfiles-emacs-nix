@@ -6,7 +6,8 @@
   :init
   (pg/leader
    "g" '(:wk "git")
-   "g g" #'(magit-status :wk "status")))
+   "g g" #'(magit-status :wk "status")
+   "g b" #'(magit-blame :wk "blame")))
 
 (use-package git-gutter
   :straight t
