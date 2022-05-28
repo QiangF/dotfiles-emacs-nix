@@ -37,6 +37,11 @@
 (pg/config-frame)
 (add-hook 'server-after-make-frame-hook #'pg/config-frame)
 
+(use-package hl-todo
+  :straight t
+  :init
+  (add-hook 'prog-mode-hook #'hl-todo-mode))
+
 (require 'pg-modeline)
 (require 'pg-completion)
 (require 'pg-embark)
