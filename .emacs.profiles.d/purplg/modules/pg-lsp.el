@@ -16,15 +16,14 @@
   (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))
 
 (use-package lsp-mode
-  :straight t
   :disabled
+  :straight t
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
 
   (pg/leader
    :keymaps 'lsp-mode-map
    "c a" #'(lsp-execute-code-action :wk "execute action")
-   "c f" #'(lsp-format-buffer :wk "format")
    "c r" #'(lsp-rename :wk "rename"))
 
   :general
@@ -32,8 +31,8 @@
    "g D" #'lsp-find-references))
 
 (use-package lsp-ui
-  :straight t
   :disabled
+  :straight t
   :after lsp-mode
   :config
   ;; recommended performance tweak
