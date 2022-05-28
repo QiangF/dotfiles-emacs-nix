@@ -19,10 +19,6 @@
     (setq rustic-lsp-client 'eglot)
     (setq eglot-ignored-server-capabilities nil))
 
-  :config
-  (pg/local-leader
-     :keymaps 'eglot-mode-map
-     "f" #'(eglot-format :wk "format"))
 
   (setq rustic-format-on-save nil)
   (setq rustic-lsp-format nil)
