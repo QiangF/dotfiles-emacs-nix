@@ -7,7 +7,7 @@
 ;; Dev
 (use-package hass
   ;; :straight t
-  :straight (:local-repo "~/code/elisp/hass")
+  :straight t
   :after pass
   :init
   (setq hass-host "10.0.2.3")
@@ -32,18 +32,15 @@
             (when state (funcall state-formatter state))
             (funcall label-formatter label)))
 
-  (defun pg/hass-dash-label-formatter (label)
-    (propertize label 'face 'font-lock-function-name-face))
-
   (defun pg/hass-dash-state-formatter (label)
-    (concat ": "
-      (propertize label 'face 'font-lock-keyword-face)))
+    (concat " " (propertize label
+                  'face 'transient-purple)))
 
-  (defun pg/hass-dash-icon-formatter (icon)
-    (concat icon "|"))
+  (setq hass-dash-default-state-formatter #'pg/hass-dash-state-formatter)
 
   (defun pg/percent-suffix (str)
-    (concat ": " str "%"))
+    (concat " " (propertize (concat str "%")
+                  'face 'transient-purple)))
 
   (defun pg/laptop-toggle-widget-formatter (_label state icon
                                             label-formatter _state-formatter icon-formatter)
@@ -55,6 +52,16 @@
   (defun pg/hide-unavailable (widget)
     (string= "unavailable" (hass-state-of (car widget))))
 
+  (defun pg/hass-dash-light-label-formatter (label)
+    (propertize label 'face 'font-lock-function-name-face))
+
+  (defun pg/hass-dash-light-state-formatter (label)
+    (concat ": "
+      (propertize label 'face 'font-lock-keyword-face)))
+
+  (defun pg/hass-dash-light-icon-formatter (icon)
+    (concat icon "|"))
+
   (setq pg/hass-dash-group-light
     '("Light" .
       (("switch.bedroom_light"
@@ -63,9 +70,9 @@
                             (concat (when icon (funcall icon-formatter icon))
                                     (funcall label-formatter label)
                                     (when state (funcall state-formatter state))))
-        :label-formatter pg/hass-dash-label-formatter
-        :state-formatter pg/hass-dash-state-formatter
-        :icon-formatter pg/hass-dash-icon-formatter))))
+        :label-formatter pg/hass-dash-light-label-formatter
+        :state-formatter pg/hass-dash-light-state-formatter
+        :icon-formatter pg/hass-dash-light-icon-formatter))))
 
   (setq pg/hass-dash-group-desktop
     '("Desktop" .
@@ -151,9 +158,28 @@
           :label "Turn off Hass mode test"
           :confirm t
           :service "input_boolean.turn_off"
-          :state "vacuum.valetudo_vacuum")
+          :state nil)
        ("scene.test_scene"
           :state nil))))
+
+  (setq pg/hass-dash-group-phone
+    '("Phone" .
+       (("device_tracker.oneplus_7t_pro"
+         :label "Location")
+        ("sensor.oneplus_7t_pro_media_session"
+         :label "Media")
+        ("sensor.oneplus_7t_pro_phone_state"
+         :label "Call")
+        ("sensor.oneplus_7t_pro_battery_level"
+         :label "BAT"
+         :state-formatter
+         (lambda (state)
+           (concat " " (propertize (concat state "%")
+                        'face 'transient-purple))))
+        ("sensor.oneplus_7t_pro_battery_state"
+         :label ""
+         :icon nil
+         :state-formatter (lambda (state) state)))))
 
   (setq pg/hass-dash-group-vacuum
    '("Vacuum" .
@@ -175,8 +201,9 @@
                            pg/hass-dash-group-desktop
                            pg/hass-dash-group-framework
                            pg/hass-dash-group-laptopbig
-                           pg/hass-dash-group-test
-                           pg/hass-dash-group-vacuum))
+                           pg/hass-dash-group-phone
+                           pg/hass-dash-group-vacuum
+                           pg/hass-dash-group-test))
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
