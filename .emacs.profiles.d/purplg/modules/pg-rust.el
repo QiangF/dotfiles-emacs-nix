@@ -37,6 +37,7 @@
    "R" #'(rustic-cargo-run :wk "run w/ args")
    "a" #'(rustic-cargo-add :wk "add dep")
    "x" #'(rustic-cargo-rm :wk "rm dep")
+   "f" #'(rustic-format-buffer :wk "format")
    "c" #'(rustic-cargo-check :wk "check")
    "t" #'(rustic-cargo-test :wk "test")))
 
