@@ -13,6 +13,8 @@
 (setq vc-follow-symlinks t)
 (setq-default fill-column 100) ;; Wrap text at 100 characters
 
+(setq mouse-yank-at-point t)
+
 (use-package expand-region
   :straight t
   :config

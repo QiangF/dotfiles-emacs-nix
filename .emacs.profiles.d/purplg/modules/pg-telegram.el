@@ -12,6 +12,16 @@
   (setq telega-emoji-font-family "Noto Color Emoji")
   (setq telega-use-images t)
 
+  (defun pg/telega-online-status-function ()
+    (let ((telega-buffers (telega-chat-buffers)))
+     (push (telega-root--buffer) telega-buffers)
+     (-any?
+      (lambda (buffer)
+        (get-buffer-window buffer))
+      telega-buffers)))
+
+  (setq telega-online-status-function #'pg/telega-online-status-function)
+
   ;; Issues with colors while in daemon mode is causing it to fail on load. So load telega after a
   ;; frame is created
   (add-hook 'server-after-make-frame-hook (lambda () (telega 0)))
