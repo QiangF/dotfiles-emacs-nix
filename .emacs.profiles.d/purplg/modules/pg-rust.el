@@ -19,6 +19,8 @@
     (setq rustic-lsp-client 'eglot)
     (setq eglot-ignored-server-capabilities nil))
 
+  (with-eval-after-load 'hideshow
+    (add-hook 'rustic-mode-hook (lambda () (hs-hide-level 2))))
 
   (setq rustic-format-on-save nil)
   (setq rustic-lsp-format nil)
