@@ -67,15 +67,25 @@ output DP-2 resolution 2560x1440 position 0,0 transform 270
 
 Assign
 #+BEGIN_SRC conf
-workspace 1-1 output DP-1
-workspace 1-2 output DP-1
-workspace 1-3 output DP-1
-workspace 1-4 output DP-1
+set $ws1-1 1:1
+set $ws1-2 2:2
+set $ws1-3 3:3
+set $ws1-4 4:4
 
-workspace 2-1 output DP-2
-workspace 2-2 output DP-2
-workspace 2-3 output DP-2
-workspace 2-4 output DP-2
+set $ws2-1 7:A
+set $ws2-2 8:S
+set $ws2-3 9:D
+set $ws2-4 10:F
+
+workspace $ws1-1 output DP-1
+workspace $ws1-2 output DP-1
+workspace $ws1-3 output DP-1
+workspace $ws1-4 output DP-1
+
+workspace $ws2-1 output DP-2
+workspace $ws2-2 output DP-2
+workspace $ws2-3 output DP-2
+workspace $ws2-4 output DP-2
 #+END_SRC
 
 
@@ -208,29 +218,29 @@ bindsym $mod+Shift+Right move right
 *** Workspaces
 Switch to workspace
 #+BEGIN_SRC conf
-bindsym $mod+1 workspace 1-1
-bindsym $mod+2 workspace 1-2
-bindsym $mod+3 workspace 1-3
-bindsym $mod+4 workspace 1-4
+bindsym $mod+1 workspace $ws1-1
+bindsym $mod+2 workspace $ws1-2
+bindsym $mod+3 workspace $ws1-3
+bindsym $mod+4 workspace $ws1-4
 
-bindsym $mod+a workspace 2-1
-bindsym $mod+s workspace 2-2
-bindsym $mod+d workspace 2-3
-bindsym $mod+f workspace 2-4
+bindsym $mod+a workspace $ws2-1
+bindsym $mod+s workspace $ws2-2
+bindsym $mod+d workspace $ws2-3
+bindsym $mod+f workspace $ws2-4
 #+END_SRC
 
 Move focused container to workspace
 Note: workspaces can have any name you want, not just numbers.
 #+BEGIN_SRC conf
-bindsym $mod+Shift+1 move container to workspace 1-1
-bindsym $mod+Shift+2 move container to workspace 1-2
-bindsym $mod+Shift+3 move container to workspace 1-3
-bindsym $mod+Shift+4 move container to workspace 1-4
+bindsym $mod+Shift+1 move container to workspace $ws1-1
+bindsym $mod+Shift+2 move container to workspace $ws1-2
+bindsym $mod+Shift+3 move container to workspace $ws1-3
+bindsym $mod+Shift+4 move container to workspace $ws1-4
 
-bindsym $mod+Shift+a move container to workspace 2-1
-bindsym $mod+Shift+s move container to workspace 2-2
-bindsym $mod+Shift+d move container to workspace 2-3
-bindsym $mod+Shift+f move container to workspace 2-4
+bindsym $mod+Shift+a move container to workspace $ws2-1
+bindsym $mod+Shift+s move container to workspace $ws2-2
+bindsym $mod+Shift+d move container to workspace $ws2-3
+bindsym $mod+Shift+f move container to workspace $ws2-4
 #+END_SRC
 
 *** Layout stuff
@@ -339,36 +349,36 @@ bar {
 ** Window Rules
 *** Applications
 #+BEGIN_SRC conf
-for_window [class="discord"] move container to workspace 2-1
-for_window [class="emacs"] move container to workspace 2-3
+for_window [class="discord"] move container to workspace $ws2-1
+for_window [class="emacs"] move container to workspace $ws2-3
 for_window [app_id="org.gnome.Calculator"] floating enable
 #+END_SRC
 
 **** Unity
 #+BEGIN_SRC conf
-for_window [class="Unity"] move container to workspace 1-2
+for_window [class="Unity"] move container to workspace $ws1-2
 for_window [class="unityhub"] floating true
-for_window [class="unityhub"] move container to workspace 1-2
+for_window [class="unityhub"] move container to workspace $ws1-2
 #+END_SRC
 
 *** Games
 ***** Launchers
 #+BEGIN_SRC conf
-for_window [app_id="lutris"] move container to workspace 1-2
+for_window [app_id="lutris"] move container to workspace $ws1-2
 for_window [app_id="lutris"] floating enable
-for_window [class="Steam"] move container to workspace 1-2
-for_window [class="steam_*"] move container to workspace 1-3
+for_window [class="Steam"] move container to workspace $ws1-2
+for_window [class="steam_*"] move container to workspace $ws1-3
 #+END_SRC
 
 ***** Minecraft
 #+BEGIN_SRC conf
-for_window [class="Minecraft*"] move container to workspace 1-3
+for_window [class="Minecraft*"] move container to workspace $ws1-3
 #+END_SRC
 
 ***** Overwatch
 #+BEGIN_SRC conf
-for_window [class="battle.net.exe"] move container to workspace 1-2
-for_window [class="overwatch.exe"] move container to workspace 1-3
+for_window [class="battle.net.exe"] move container to workspace $ws1-2
+for_window [class="overwatch.exe"] move container to workspace $ws1-3
 for_window [class="overwatch.exe"] fullscreen enable
 # Stash floating wine system tray to scratchpad
 #for_window [title="Wine System Tray"] move container to scratchpad
@@ -376,36 +386,36 @@ for_window [class="overwatch.exe"] fullscreen enable
 
 ***** Gamescope
 #+BEGIN_SRC conf
-#for_window [class="gamescope"] move container to workspace 1-3
+#for_window [class="gamescope"] move container to workspace $ws1-3
 for_window [class="gamescope"] floating true
 #+END_SRC
 
 ***** SteamTinkerLauncher
 #+BEGIN_SRC conf
-for_window [app_id="yad"] move container to workspace 1-3
+for_window [app_id="yad"] move container to workspace $ws1-3
 for_window [app_id="yad"] floating true
 #+END_SRC
 
 ***** Mupen64
 #+BEGIN_SRC conf
-for_window [app_id="mupen64plus-gui"] move container to workspace 1-3
+for_window [app_id="mupen64plus-gui"] move container to workspace $ws1-3
 for_window [app_id="mupen64plus-gui"] floating true
 #+END_SRC
 
 ***** RetroArch
 #+BEGIN_SRC conf
-for_window [app_id="retroarch"] move container to workspace 1-3
+for_window [app_id="retroarch"] move container to workspace $ws1-3
 for_window [app_id="retroarch"] fullscreen true
 #+END_SRC
 
 ***** Some game? I should have labeled this...
 #+BEGIN_SRC conf
-for_window [class="steam_app_252950"] move container to workspace 1-3
+for_window [class="steam_app_252950"] move container to workspace $ws1-3
 for_window [class="steam_app_252950"] fullscreen true
 #+END_SRC
 ***** Dolphin
 #+BEGIN_SRC conf
-for_window [class="dolphin-emu"] move container to workspace 1-3
+for_window [class="dolphin-emu"] move container to workspace $ws1-3
 for_window [class="dolphin-emu"] floating true
 #+END_SRC
 
