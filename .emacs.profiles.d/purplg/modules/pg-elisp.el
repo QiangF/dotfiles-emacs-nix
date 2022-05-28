@@ -8,6 +8,11 @@
    (lambda ()
      (setq indent-tabs-mode nil)
      (setq fill-column 80)))
+
+  (with-eval-after-load 'hs-minor-mode
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda () (hs-hide-level 1))))
+
   (pg/leader
       :keymaps 'emacs-lisp-mode-map
       "e" '(:wk "eval")
