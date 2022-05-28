@@ -34,23 +34,6 @@ set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
 set $pw_gui ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
-* Include defaults
-#+BEGIN_SRC conf
-include /etc/sway/config.d/*
-#+END_SRC
-
-Unbind upload screenshot keybinds
-#+BEGIN_SRC conf
-unbindsym $mod+Print
-unbindsym $mod+Mod1+Print
-unbindsym $mod+Shift+Print
-#+END_SRC
-
-Rebind new screenshot keybinds
-#+BEGIN_SRC conf
-bindsym $mod+Print exec swayshot window
-#+END_SRC
-
 * Config
 ** Output configuration
 You can get the mes of your outputs by running:
@@ -72,22 +55,23 @@ set $ws1-2 2:2
 set $ws1-3 3:3
 set $ws1-4 4:4
 
-set $ws2-1 7:A
-set $ws2-2 8:S
-set $ws2-3 9:D
-set $ws2-4 10:F
-
 workspace $ws1-1 output DP-1
 workspace $ws1-2 output DP-1
 workspace $ws1-3 output DP-1
 workspace $ws1-4 output DP-1
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle desktop
+set $ws2-1 7:A
+set $ws2-2 8:S
+set $ws2-3 9:D
+set $ws2-4 10:F
 
 workspace $ws2-1 output DP-2
 workspace $ws2-2 output DP-2
 workspace $ws2-3 output DP-2
 workspace $ws2-4 output DP-2
 #+END_SRC
-
 
 Default colors
 #+begin_example conf
@@ -423,4 +407,30 @@ for_window [class="dolphin-emu"] floating true
 
 #+BEGIN_SRC conf
 exec discord-canary
+#+END_SRC
+
+* Defaults
+#+BEGIN_SRC conf
+include /etc/sway/config.d/*
+#+END_SRC
+
+Unbind upload screenshot keybinds
+#+BEGIN_SRC conf
+unbindsym $mod+Print
+unbindsym $mod+Mod1+Print
+unbindsym $mod+Shift+Print
+#+END_SRC
+
+Rebind new screenshot keybinds
+#+BEGIN_SRC conf
+bindsym $mod+Print exec swayshot window
+#+END_SRC
+
+* Include systems
+#+BEGIN_SRC conf :tangle (if (string= "desktop" (system-name)) "config" "")
+include desktop
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle (if (string= "framework" (system-name)) "config" "")
+include framework
 #+END_SRC
