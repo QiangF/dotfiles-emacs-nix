@@ -73,14 +73,14 @@ c-mode :condition (re-search-backward "^\\w*$" (line-beginning-position) 'noerro
 
 org-mode
 
-(title "#+title: " p n "#+author: Ben Whitley" n "#+language: en" n n)
-(quote "#+begin_quote" n> r> n> "#+end_quote")
-(example "#+begin_example" n> r> n> "#+end_example")
-(center "#+begin_center" n> r> n> "#+end_center")
-(comment "#+begin_comment" n> r> n> "#+end_comment")
-(verse "#+begin_verse" n> r> n> "#+end_verse")
-(src "#+begin_src " p n> r> n> "#+end_src")
-(elisp "#+begin_src emacs-lisp" n> r> n "#+end_src"
+(title "#+TITLE: " p n "#+AUTHOR: Ben Whitley" n "#+LANGUAGE: en" n n)
+(quote "#+BEGIN_QUOTE" n> r> n> "#+END_QUOTE")
+(example "#+BEGIN_EXAMPLE" n> r> n> "#+END_EXAMPLE")
+(center "#+BEGIN_CENTER" n> r> n> "#+END_CENTER")
+(comment "#+BEGIN_COMMENT" n> r> n> "#+END_COMMENT")
+(verse "#+BEGIN_VERSE" n> r> n> "#+END_VERSE")
+(src "#+BEGIN_SRC " p n> r> n> "#+END_SRC")
+(elisp "#+BEGIN_SRC emacs-lisp" n> r> n "#+END_SRC"
        :post (progn (tempel-done) (org-edit-src-code)))
 
 rustic-mode rust-mode
