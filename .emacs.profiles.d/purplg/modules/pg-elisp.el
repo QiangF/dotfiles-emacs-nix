@@ -38,12 +38,13 @@
   :hook (emacs-lisp-mode . lispy-mode))
 
 (use-package parinfer-rust-mode
+  :disabled
   :straight t
   :after elisp-mode
   :hook (emacs-lisp-mode . parinfer-rust-mode)
   :init
   (setq parinfer-rust-auto-download t)
-  
+
   (add-hook 'parinfer-rust-mode-hook
     (lambda ()
       (electric-indent-mode 0)))
