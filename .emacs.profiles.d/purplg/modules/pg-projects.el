@@ -1,7 +1,33 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package dired
+  :init
+  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode))))
+
+(use-package dired-sidebar
+  :straight t
+  :commands (dired-sidebar-toggle-sidebar)
+  :init
+  (setq dired-sidebar-close-sidebar-on-file-open t)
+  (defun pg/toggle-sidebar ()
+    (interactive)
+    (if (vc-root-dir)
+      (dired-sidebar-toggle-sidebar)
+      (dired-sidebar-toggle-with-current-directory))
+    ;; Hack to properly enable `dired-omit-mode'
+    (when-let ((buffer (dired-sidebar-buffer)))
+      (with-current-buffer buffer
+        (dired-omit-mode 1))))
+  (pg/leader
+    :states 'normal
+    "o p" #'(pg/toggle-sidebar :wk "sidebar")))
+
+(use-package ibuffer-sidebar
+  :straight t)
+
 (use-package treemacs
+  :disabled
   :straight t
   :defer t
   :init

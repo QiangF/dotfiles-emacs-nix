@@ -108,6 +108,12 @@
   :straight t
   :init
   (all-the-icons-completion-mode))
+
+(use-package all-the-icons-dired
+  :after all-the-icons
+  :straight t
+  :init
+  (add-hook 'dired-mode-hook #'all-the-icons-dired-mode))
     
 (use-package consult-lsp
   :disabled
