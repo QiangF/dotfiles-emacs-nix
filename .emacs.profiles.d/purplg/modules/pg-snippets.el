@@ -1,22 +1,20 @@
 ;;; --- -*- lexical-binding: t; -*-
-
-(use-package yasnippet
-  :disabled
-  :straight t
-  :defer t
-  :init
-  (add-hook 'org-mode-hook #'yas-minor-mode)
-  :config
-  (push (expand-file-name "snippets" pg/config-dir) yas-snippet-dirs))
-
-(use-package yasnippet-snippets
-  :disabled
-  :straight t
-  :after yasnippet)
+(require 'pg-keybinds)
 
 (use-package tempel
   :straight t
   :init
-  (setq tempel-path (expand-file-name "templates" pg/config-dir)))
+  (setq tempel-path (expand-file-name "templates" pg/config-dir))
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+  (add-hook 'fundamental-mode 'tempel-setup-capf)
+  (general-define-key
+    :states 'insert
+    "M-<tab>" #'tempel-expand
+    "M-S-<tab>" #'tempel-complete
+    "C-j" #'tempel-next
+    "C-k" #'tempel-previous))
 
 (provide 'pg-snippets)
