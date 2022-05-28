@@ -3,11 +3,11 @@
 
 (use-package elisp-mode
   :config
-  (add-hook
-   'emacs-lisp-mode-hook
+  (add-hook 'emacs-lisp-mode-hook
    (lambda ()
      (setq indent-tabs-mode nil)
      (setq fill-column 80)))
+  (add-hook 'emacs-lisp-mode-hook #'electric-pair-mode)
 
   (with-eval-after-load 'hs-minor-mode
     (add-hook 'emacs-lisp-mode-hook
