@@ -23,19 +23,23 @@
    "v" #'er/expand-region
    "V" (lambda () (interactive) (er/expand-region 2))))
 
+(require 'pg-lsp)
+(require 'pg-git)
+
 (require 'pg-docker)
-(require 'pg-elisp)
 (require 'pg-flycheck)
 (require 'pg-folding)
-(require 'pg-git)
 (require 'pg-indent-guides)
 (require 'pg-line-numbers)
-(require 'pg-lsp)
 (require 'pg-projects)
-(require 'pg-python)
-(require 'pg-rust)
 (require 'pg-restclient)
 (require 'pg-snippets)
+(require 'pg-vim)
+
+(require 'pg-elisp)
+(require 'pg-lua)
+(require 'pg-python)
+(require 'pg-rust)
 (require 'pg-yaml)
 
 (provide 'pg-editing)
