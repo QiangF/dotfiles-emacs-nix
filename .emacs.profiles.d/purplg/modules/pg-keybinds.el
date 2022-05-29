@@ -146,10 +146,7 @@
 
   (general-define-key
    :states 'visual
-   ";" #'comment-dwim)
-  (general-define-key
-   :states 'normal
-   ";" #'comment-line)
+   ":" #'comment-dwim)
 
  (pg/leader
   :states 'normal
