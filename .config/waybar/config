@@ -1,0 +1,101 @@
+{
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["mpd", "custom/pipewire", "cpu", "memory", "temperature", "clock", "idle_inhibitor", "custom/screenshot", "tray"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "mpd": {
+        "format": "{title} ({elapsedTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+	"on-click": "mpc toggle",
+	"on-click-right": "systemctl --user restart mpd ; systemctl --user restart mpc"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-right": "pavucontrol"
+    },
+    "custom/screenshot": {
+	"format": "",
+	"on-click":  "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot region",
+	"on-right":  "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot window",
+	"on-middle": "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot display",
+        "tooltip": false
+    },
+    "custom/pipewire": {
+        "format": "{icon}",
+        "return-type": "json",
+	"signal": 8,
+        "interval": "once",
+        "format-icons": {
+            "mute": "",
+            "default": ["", "", "", ""],
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pw-volume change +25%",
+        "on-scroll-down": "pw-volume change -25%",
+        "exec": "pw-volume status"
+    }
+}
