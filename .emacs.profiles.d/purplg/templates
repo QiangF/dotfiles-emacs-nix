@@ -85,13 +85,17 @@ org-mode
 
 rustic-mode rust-mode
 
+(fn "fn " p "(" p ") " p " {" n> q (p "todo!()") n "}")
+(new "pub fn new(" q ") -> Self {" n> "Self {" n> q n > "} " n> "}")
+(implfor "impl " p " for " p " {" n> q n "}")
+(impl "impl " p " {" n> q n "}")
+(mtest "#[cfg(test)]" n "mod test {" n n> "#[test]" n> "fn test() {" n> q n "}" n "}")
+(test "#[test]" n> "fn " (p "test") "() {" n> q n "}")
+
 (d "println!(\"" (s var) ": {:?}\", " (p "var" var) ");" q)
 (pl "println!(\"" q "\");")
 (p "print!(\"" q "\");")
-(fn "fn " p "(" p ") " p " {" n> q n "}")
-(new "pub fn new(" q ") -> Self {" n> "Self {" n> n > "} " n> "}" :post (rustic-format-buffer))
-(impl "impl " p " {" n> q n "}")
-(implfor "impl " p " for " p " {" n> q n "}")
-(derive "#[derive(" q ")]")
+(der "#[derive(" q ")]")
+(eq "#[derive(Eq, PartialEq)]")
 (todo "todo!()")
 (maperr ".map_err(|e| Error::" q "(e))?")
