@@ -33,7 +33,9 @@
                ("special" (or
                            (name . "^\\*scratch\\*$")
                            (name . "^\\*Messages\\*$")))
-               ("org" (mode . org-mode)))))))
+               ("org" (mode . org-mode))))))
+  (add-hook 'ibuffer-mode-hook
+            (lambda () (ibuffer-switch-to-saved-filter-groups "default"))))
 (pg/leader
   :states '(visual normal)
   "o i" #'(ibuffer-sidebar-toggle-sidebar :wk "ibuffer"))
