@@ -138,7 +138,7 @@
 (use-package orderless
   :straight t
   :init
-  (setq completion-styles '(orderless partial-completion)))
+  (setq completion-styles '(orderless flex)))
 
 (use-package savehist
   :straight t
