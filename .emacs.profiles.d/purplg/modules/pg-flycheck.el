@@ -13,7 +13,7 @@
  
 (use-package flymake
   :straight t
-  :hook (prog-mode . flymake-mode)
+  :hook (eglot--managed-mode . flymake-mode)
 
   :config
   (setq elisp-flymake-byte-compile-load-path load-path)
