@@ -108,6 +108,7 @@
   :straight t)
 
 (use-package undo-fu-session
+  :disabled
   :straight t
   :init
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
@@ -128,6 +129,10 @@
   (evil-mode 1)
 
   :config
+  (defun pg/scroll-line-to-center ()
+    (interactive)
+    (evil-scroll-line-to-center))
+  
   ;; Center buffer on point when jumping between sections
   (advice-add 'evil-forward-section-begin
               :after #'evil-scroll-line-to-center)
@@ -141,7 +146,7 @@
 
   (general-define-key
    :states 'visual
-   ":" #'comment-dwim)
+   ";" #'comment-dwim)
   (general-define-key
    :states 'normal
    ";" #'comment-line)

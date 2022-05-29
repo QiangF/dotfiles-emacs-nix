@@ -23,8 +23,14 @@
    "v" #'er/expand-region
    "V" (lambda () (interactive) (er/expand-region 2))))
 
+(use-package aggressive-indent
+  :straight t)
+
 (require 'pg-lsp)
 (require 'pg-git)
+
+
+;;
 
 (require 'pg-docker)
 (require 'pg-flycheck)

@@ -24,7 +24,23 @@
     "o p" #'(pg/toggle-sidebar :wk "sidebar")))
 
 (use-package ibuffer-sidebar
-  :straight t)
+  :straight t
+  :init
+  (setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("rust" (mode . rustic-mode))
+               ("elisp" (mode . emacs-lisp-mode))
+               ("special" (or
+                           (name . "^\\*scratch\\*$")
+                           (name . "^\\*Messages\\*$")))
+               ("org" (mode . org-mode)))))))
+(pg/leader
+  :states '(visual normal)
+  "o i" #'(ibuffer-sidebar-toggle-sidebar :wk "ibuffer"))
+
+
+;; M-h move point left
+;; M-l move point right
 
 (use-package treemacs
   :disabled

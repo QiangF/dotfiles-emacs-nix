@@ -42,6 +42,16 @@
   :init
   (add-hook 'prog-mode-hook #'hl-todo-mode))
 
+(use-package topspace
+  :straight t
+  :init
+  (setq topspace-active
+      (lambda ()
+        (and (topspace-default-active)
+             (derived-mode-p 'prog-mode))))
+  (topspace-default-active)
+  (global-topspace-mode 1))
+
 (require 'pg-modeline)
 (require 'pg-completion)
 (require 'pg-embark)

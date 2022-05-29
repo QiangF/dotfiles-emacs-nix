@@ -4,9 +4,9 @@
 (use-package elisp-mode
   :config
   (add-hook 'emacs-lisp-mode-hook
-   (lambda ()
-     (setq indent-tabs-mode nil)
-     (setq fill-column 80)))
+            (lambda ()
+              (setq indent-tabs-mode nil)
+              (setq fill-column 80)))
   (add-hook 'emacs-lisp-mode-hook #'electric-pair-mode)
 
   (with-eval-after-load 'hs-minor-mode
@@ -14,18 +14,23 @@
               (lambda () (hs-hide-level 1))))
 
   (pg/leader
-      :keymaps 'emacs-lisp-mode-map
-      "e" '(:wk "eval")
-      "e b" #'(eval-buffer :wk "buffer")
-      "e f" #'(eval-defun :wk "function")
-      "e s" #'(eval-last-sexp :wk "sexp")
-      "b c" #'(emacs-lisp-byte-compile-and-load :wk "compile and load"))
+    :keymaps 'emacs-lisp-mode-map
+    "e" '(:wk "eval")
+    "e b" #'(eval-buffer :wk "buffer")
+    "e f" #'(eval-defun :wk "function")
+    "e s" #'(eval-last-sexp :wk "sexp")
+    "b c" #'(emacs-lisp-byte-compile-and-load :wk "compile and load"))
 
   (pg/leader
-   :states 'visual
-   :keymaps 'emacs-lisp-mode-map
-   "e" '(:wk "eval")
-   "e r" #'(eval-region :wk "region")))
+    :states 'visual
+    :keymaps 'emacs-lisp-mode-map
+    "e" '(:wk "eval")
+    "e r" #'(eval-region :wk "region")))
+
+(use-package aggressive-indent
+  :after elisp
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
 
 (use-package rainbow-delimiters
   :after elisp-mode

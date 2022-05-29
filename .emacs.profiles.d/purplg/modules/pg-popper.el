@@ -13,6 +13,7 @@
            flycheck-error-list-mode
            compilation-mode
            hass-dash-mode
+           emacs-lisp-compilation-mode
            rustic-compilation-mode
            flymake-diagnostics-buffer-mode
            telega-root-mode
