@@ -12,9 +12,12 @@
    "M-l" #'(flycheck-next-error :wk "next error")))
  
 (use-package flymake
-  :straight t
+  ;; Next commit breaks compat with Emacs 28
+  ;; Uses function `defvar-keymap'
+  :straight (:host github
+             :repo "emacs-straight/flymake"
+             :commit "85076b79ee5c576c2b2ca28c6358045dee23ec8e")
   :hook (eglot--managed-mode . flymake-mode)
-
   :config
   (setq elisp-flymake-byte-compile-load-path load-path)
   (general-define-key
