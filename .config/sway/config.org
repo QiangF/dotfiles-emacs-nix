@@ -41,11 +41,16 @@ You can get the mes of your outputs by running:
 swaymsg -t get_outputs
  #+END_EXAMPLE
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC conf :tangle desktop
 output * bg #000000 solid_color
 output DP-1 resolution 2560x1440@165Hz position 1440,560 adaptive_sync on
 output DP-2 resolution 2560x1440 position 0,0 transform 270
 #output DP-2 disable
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle framework
+output * bg #000000 solid_color
+output eDP-1 resolution 2256x1504 scale 1.0
 #+END_SRC
 
 Assign
@@ -62,15 +67,27 @@ workspace $ws1-4 output DP-1
 #+END_SRC
 
 #+BEGIN_SRC conf :tangle desktop
-set $ws2-1 7:A
-set $ws2-2 8:S
-set $ws2-3 9:D
-set $ws2-4 10:F
+set $ws2-1 5:A
+set $ws2-2 6:S
+set $ws2-3 7:D
+set $ws2-4 8:F
 
 workspace $ws2-1 output DP-2
 workspace $ws2-2 output DP-2
 workspace $ws2-3 output DP-2
 workspace $ws2-4 output DP-2
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle framework
+set $ws2-1 5:5
+set $ws2-2 6:6
+set $ws2-3 7:7
+set $ws2-4 8:8
+
+workspace $ws2-1 output eDP-1
+workspace $ws2-2 output eDP-1
+workspace $ws2-3 output eDP-1
+workspace $ws2-4 output eDP-1
 #+END_SRC
 
 Default colors
@@ -107,9 +124,16 @@ exec swayidle -w \
 You can get the names of your inputs by running: swaymsg -t get_inputs
 Read =man 5 sway-input= for more information about this section.
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC conf :tangle desktop
 input "5426:133:Razer_Razer_Basilisk_V2" {
         accel_profile flat enabled
+}
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle framework
+input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
+        natural_scroll enabled
+        tap enabled
 }
 #+END_SRC
 
@@ -206,11 +230,20 @@ bindsym $mod+1 workspace $ws1-1
 bindsym $mod+2 workspace $ws1-2
 bindsym $mod+3 workspace $ws1-3
 bindsym $mod+4 workspace $ws1-4
+#+END_SRC
 
+#+BEGIN_SRC conf :tangle desktop
 bindsym $mod+a workspace $ws2-1
 bindsym $mod+s workspace $ws2-2
 bindsym $mod+d workspace $ws2-3
 bindsym $mod+f workspace $ws2-4
+#+END_SRC
+
+#+BEGIN_SRC conf :tangle framework
+bindsym $mod+5 workspace $ws2-1
+bindsym $mod+6 workspace $ws2-2
+bindsym $mod+7 workspace $ws2-3
+bindsym $mod+8 workspace $ws2-4
 #+END_SRC
 
 Move focused container to workspace
