@@ -8,6 +8,9 @@
 ;; Fix scrolling so that it doesn't jump by pages
 (setq scroll-conservatively 101)
 
+;; Scroll buffer when point is 15 lines from edge of window
+(setq scroll-margin 15)
+
 (setq compilation-scroll-output t)
 
 (add-to-list 'recentf-exclude (concat user-emacs-directory "bookmarks") t)
