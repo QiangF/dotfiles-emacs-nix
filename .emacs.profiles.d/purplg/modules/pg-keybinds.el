@@ -118,7 +118,7 @@
   :config
   (defun pg/scroll-line-to-center ()
     (interactive)
-    (evil-scroll-line-to-center))
+    (evil-scroll-line-to-center 0))
   
   ;; Center buffer on point when jumping between sections
   (advice-add 'evil-forward-section-begin
