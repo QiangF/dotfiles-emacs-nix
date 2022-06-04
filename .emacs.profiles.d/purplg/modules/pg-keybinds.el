@@ -131,10 +131,6 @@
               :around (lambda (inner &rest _)  
                         (save-excursion (funcall inner))))
 
-  (general-define-key
-   :states 'visual
-   ":" #'comment-dwim)
-
  (pg/leader
   :states 'normal
   "b p" #'(evil-prev-buffer :wk "previous")
