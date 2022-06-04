@@ -46,9 +46,4 @@
     "c" #'(rustic-cargo-check :wk "check")
     "t" #'(rustic-cargo-test :wk "test")))
 
-(use-package aggressive-indent
-  :after rustic
-  :init
-  (add-hook 'rustic-mode-hook #'aggressive-indent-mode))
-
 (provide 'pg-rust)
