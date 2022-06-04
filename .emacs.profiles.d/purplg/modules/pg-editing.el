@@ -34,6 +34,7 @@
 (require 'pg-projects)
 (require 'pg-restclient)
 (require 'pg-snippets)
+(require 'pg-undo)
 
 
 ;; Languages

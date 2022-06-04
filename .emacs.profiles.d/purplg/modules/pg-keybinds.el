@@ -104,26 +104,13 @@
    :keymaps 'dired-mode-map
    "SPC" nil))
 
-(use-package undo-fu
-  :straight t)
-
-(use-package undo-fu-session
-  :disabled
-  :straight t
-  :init
-  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
-  (setq undo-fu-session-file-limit 10)
-  (setq undo-fu-session-compression t)
-  (setq undo-fu-session-linear t)
-  (global-undo-fu-session-mode))
-
 (use-package evil
   :straight t
-  :functions undo-fu
+  :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
-  (setq evil-undo-system 'undo-fu)
+  (setq evil-undo-system 'undo-tree)
   (setq evil-lookup-func #'eldoc)
 
   (evil-mode 1)
