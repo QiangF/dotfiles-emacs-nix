@@ -48,7 +48,7 @@ alias sshot="maim -u -s | xclip -selection clipboard -t image/png"
 alias freeze="maim -u -s /tmp/ya.png && sxiv /tmp/ya.png"
 
 alias play="mpv --hwdec=autosafe"
-alias dl="youtube-dl -f bestvideo+bestaudio"
+alias dl="yt-dlp -f bestvideo+bestaudio"
 
 alias up="${HOME}/sh/update.sh"
 
