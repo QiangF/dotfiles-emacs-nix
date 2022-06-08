@@ -7,7 +7,6 @@
   (add-hook 'org-mode-hook #'flyspell-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'visual-line-mode)
-  :config
   (setq org-return-follows-link t)                ;; Press Enter to follow link under point
   (setq org-adapt-indentation nil)                ;; Stop putting indents everywhere
   (setq org-edit-src-content-indentation 0)       ;; Fixes indenting entire src block on enter
@@ -49,15 +48,18 @@
    "RET" #'org-return))
    
 (use-package htmlize
+  :after org
   :straight t
   :defer t)
 
 (use-package org-auto-tangle
+  :after org
   :straight t
   :init
   (add-hook 'org-mode-hook #'org-auto-tangle-mode))
 
 (use-package org-make-toc
+  :after org
   :straight t
   :defer t)
 
