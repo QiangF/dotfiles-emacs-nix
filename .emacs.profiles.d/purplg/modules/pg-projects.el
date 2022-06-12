@@ -40,10 +40,6 @@
   :states '(visual normal)
   "o i" #'(ibuffer-sidebar-toggle-sidebar :wk "ibuffer"))
 
-
-;; M-h move point left
-;; M-l move point right
-
 (use-package treemacs
   :disabled
   :straight t
