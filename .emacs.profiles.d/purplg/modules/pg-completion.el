@@ -63,9 +63,9 @@
   (pg/leader
    "f o" #'(pg/find-file-in-org-dir :wk "in org")
    "f c" #'(pg/find-file-in-profile-dir :wk "in config")
-   "f ~" #'(pg/find-file-in-home-dir :wk "in home")
+   "f `" #'(pg/find-file-in-home-dir :wk "in home")
    "f /" #'(pg/find-file-in-root-dir :wk "in root")
-   "f f" #'(find-file :wk "file")
+   "f f" #'(find-file :wk "here")
    "p S" #'(pg/project-search-thing-at-point :wk "search this"))
 
   :general
