@@ -1,5 +1,10 @@
 #!/bin/sh
 
+alias ..="cd .."
+alias ...="cd ../.."
+
+alias e="emacsclient -n"
+
 gclonecd() {
   git clone "$1" && cd "$(basename "$1" .git)"
 }
