@@ -4,13 +4,12 @@
 (use-package websocket
   :straight t)
 
-;; Dev
 (use-package hass
   ;; :straight t
-  :straight t
+  :straight '(:local-repo "~/code/elisp/hass")
   :after pass
   :init
-  (setq hass-host "10.0.2.3")
+  (setq hass-host "homeassistant.lan")
   (setq hass-insecure t)
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (pg/leader
@@ -34,13 +33,13 @@
 
   (defun pg/hass-dash-state-formatter (label)
     (concat " " (propertize label
-                  'face 'transient-purple)))
+                  'face 'all-the-icons-purple)))
 
   (setq hass-dash-default-state-formatter #'pg/hass-dash-state-formatter)
 
   (defun pg/percent-suffix (str)
     (concat " " (propertize (concat str "%")
-                  'face 'transient-purple)))
+                  'face 'all-the-icons-purple)))
 
   (defun pg/laptop-toggle-widget-formatter (_label state icon
                                             label-formatter _state-formatter icon-formatter)
@@ -175,7 +174,7 @@
          :state-formatter
          (lambda (state)
            (concat " " (propertize (concat state "%")
-                        'face 'transient-purple))))
+                        'face 'all-the-icons-purple))))
         ("sensor.oneplus_7t_pro_battery_state"
          :label ""
          :icon nil
@@ -207,14 +206,14 @@
 
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
-  (setq hass-tracked-entities '("switch.bedroom_light"))
+  (add-to-list 'hass-tracked-entities "switch.bedroom_light")
   (setq pg/hass-original-theme current-theme)
-  (add-hook 'hass-entity-state-updated-functions
+  (add-hook 'hass-entity-state-changed-functions
     (lambda (entity-id)
-      (cond ((string= entity-id "switch.bedroom_light")
-             (if (hass-switch-p entity-id)
-                 (set-theme 'doom-one-light)
-                 (set-theme pg/hass-original-theme))))))
+      (when (equal entity-id "switch.bedroom_light")
+            (if (hass-switch-p entity-id)
+                (set-theme 'modus-operandi)
+              (set-theme pg/hass-original-theme)))))
 
   (hass-websocket-mode t)
 
