@@ -1,0 +1,8 @@
+;;; --- -*- lexical-binding: t; -*-
+
+(use-package csharp-mode
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode)))
+
+(provide 'pg-csharp)
