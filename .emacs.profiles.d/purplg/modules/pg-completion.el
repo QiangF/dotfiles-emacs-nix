@@ -131,10 +131,6 @@
   (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
   (marginalia-mode 1))
 
-;; ~orderless~ allows completion chunks (space delimited) to be search out of order. In other words, a
-;; query for =some function= will return the same results as =function some= with possibly a different
-;; sort order based on accuracy.
-
 (use-package orderless
   :straight t
   :init
