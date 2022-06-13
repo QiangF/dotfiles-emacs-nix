@@ -27,6 +27,12 @@
    :states 'visual
    "v" #'er/expand-region
    "V" (lambda () (interactive) (er/expand-region 2))))
+(use-package auto-highlight-symbol
+  :straight t
+  :hook (prog-mode . auto-highlight-symbol-mode)
+  :init
+  (setq ahs-idle-interval 0.5))
+
 (require 'pg-flycheck)
 (require 'pg-folding)
 (require 'pg-git)
