@@ -22,10 +22,12 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
-(use-package corfu-doc
+(use-package eldoc-box
   :straight t
-  :after corfu
-  :hook (corfu-mode . corfu-doc-mode))
+  :hook (eldoc-mode . eldoc-box-hover-mode)
+  :general
+  (:states 'normal
+   "C-/" #'eldoc-box-eglot-help-at-point))
 
 (use-package kind-icon
   :straight t
