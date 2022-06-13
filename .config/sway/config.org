@@ -40,7 +40,7 @@ set $ws2-4 8:8
 
 ** Preferred applications
 #+BEGIN_SRC conf
-set $term alacritty
+set $term kitty
 set $emacsclient emacsclient -n -c
 set $emacs emacs
 set $browser firefox
