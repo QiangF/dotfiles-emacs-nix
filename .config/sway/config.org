@@ -31,13 +31,6 @@ set $ws2-3 7:D
 set $ws2-4 8:F
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle framework
-set $ws2-1 5:5
-set $ws2-2 6:6
-set $ws2-3 7:7
-set $ws2-4 8:8
-#+END_SRC
-
 ** Preferred applications
 #+BEGIN_SRC conf
 set $term kitty
@@ -246,20 +239,11 @@ bindsym $mod+1 workspace $ws1-1
 bindsym $mod+2 workspace $ws1-2
 bindsym $mod+3 workspace $ws1-3
 bindsym $mod+4 workspace $ws1-4
-#+END_SRC
 
-#+BEGIN_SRC conf :tangle desktop
 bindsym $mod+a workspace $ws2-1
 bindsym $mod+s workspace $ws2-2
 bindsym $mod+d workspace $ws2-3
 bindsym $mod+f workspace $ws2-4
-#+END_SRC
-
-#+BEGIN_SRC conf :tangle framework
-bindsym $mod+5 workspace $ws2-1
-bindsym $mod+6 workspace $ws2-2
-bindsym $mod+7 workspace $ws2-3
-bindsym $mod+8 workspace $ws2-4
 #+END_SRC
 
 Move focused container to workspace
