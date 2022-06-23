@@ -31,6 +31,14 @@
   (evil-yank (point-min) (point-max))
   (message "Yanked entire buffer."))
 
+(defun toggle-maximize-buffer ()
+  (interactive)
+  (if (= 1 (length (window-list)))
+      (jump-to-register '_)
+    (progn
+      (window-configuration-to-register '_)
+      (delete-other-windows))))
+
 (use-package which-key
   :straight t
   :init
@@ -132,10 +140,11 @@
                         (save-excursion (funcall inner))))
 
  (pg/leader
-  :states 'normal
-  "b p" #'(evil-prev-buffer :wk "previous")
-  "b n" #'(evil-next-buffer :wk "next")
-  "b N" #'(evil-buffer-new :wk "new"))
+   :states 'normal
+   "b p" #'(evil-prev-buffer :wk "previous")
+   "b n" #'(evil-next-buffer :wk "next")
+   "b N" #'(evil-buffer-new :wk "new")
+   "`" #'(toggle-maximize-buffer :wk "fullscreen"))
 
  (general-define-key
   :states 'normal
