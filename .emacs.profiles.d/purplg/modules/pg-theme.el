@@ -6,8 +6,9 @@
   (setq current-theme theme-name)
   (load-theme current-theme t))
 
-(use-package emacs
+(use-package modus-themes
   :bind ("<f5>" . modus-themes-toggle)
+  :straight t
   :init
   (setq modus-themes-italic-constructs t)
   (setq modus-themes-bold-constructs t)
@@ -23,6 +24,11 @@
   (advice-add 'modus-themes-toggle
               :after
               (lambda (&rest _) (setq current-theme (modus-themes--current-theme)))))
+
+(use-package org-modern
+  :straight t
+  :after modus-themes
+  :hook (org-mode . org-modern-mode))
 
 (use-package doom-themes
   :disabled
