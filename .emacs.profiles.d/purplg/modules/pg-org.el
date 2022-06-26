@@ -4,9 +4,13 @@
 (use-package org
   :straight (:type built-in)
   :init
+
+  ;; Hooks
   (add-hook 'org-mode-hook #'flyspell-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'visual-line-mode)
+
+  ;; Tweaks
   (setq org-return-follows-link t)                ;; Press Enter to follow link under point
   (setq org-adapt-indentation nil)                ;; Stop putting indents everywhere
   (setq org-edit-src-content-indentation 0)       ;; Fixes indenting entire src block on enter
@@ -14,11 +18,13 @@
   (setq org-confirm-babel-evaluate nil)           ;; Don't ask for confirmation when executing a codeblock
   (setq org-src-window-setup 'split-window-below) ;; Don't hide other windows when using `org-edit-special'
 
+  ;; Agenda
   (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
   (when-let (org-pc (expand-file-name "PC.org" org-directory))
     (setq org-agenda-files `(,org-pc))
     (setq initial-buffer-choice (lambda () (find-file org-pc))))
 
+  ;; Capture
   (setq org-capture-project-file "project.org")
   (setq org-capture-templates
         '(("w" "Work"
@@ -37,6 +43,7 @@
             entry (file+headline "~/.org/Home.org" "Tasks")
             "* TODO %?\n%i" :prepend t)))
 
+  ;; Keybinds
   (pg/leader
    "X" #'org-capture)
 
