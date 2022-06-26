@@ -13,8 +13,12 @@
   (setq org-src-preserve-indentation t)           ;; Stop annoying bug with indenting elisp in a code block
   (setq org-confirm-babel-evaluate nil)           ;; Don't ask for confirmation when executing a codeblock
   (setq org-src-window-setup 'split-window-below) ;; Don't hide other windows when using `org-edit-special'
-  (setq org-directory "~/.org")
-  (setq org-agenda-files '("~/.org/PC.org"))
+
+  (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
+  (when-let (org-pc (expand-file-name "PC.org" org-directory))
+    (setq org-agenda-files `(,org-pc))
+    (setq initial-buffer-choice (lambda () (find-file org-pc))))
+
   (setq org-capture-project-file "project.org")
   (setq org-capture-templates
         '(("w" "Work"

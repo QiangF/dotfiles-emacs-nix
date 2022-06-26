@@ -1,11 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
-(eval-after-load 'org
-  (setq initial-buffer-choice
-        (lambda ()
-         (find-file (expand-file-name "PC.org" org-directory)))))
-
 (use-package dashboard
   :disabled
   :straight t
