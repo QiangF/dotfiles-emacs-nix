@@ -181,4 +181,9 @@
   (setq evil-collection-outline-bind-tab-p t)
   (evil-collection-init))
 
+(use-package evil-nerd-commenter
+  :straight t
+  :init
+  (evilnc-default-hotkeys))
+
 (provide 'pg-keybinds)
