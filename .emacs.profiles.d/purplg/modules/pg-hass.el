@@ -6,7 +6,7 @@
 
 (use-package hass
   ;; :straight t
-  :straight '(:local-repo "~/code/elisp/hass")
+  :straight t
   :after pass
   :init
   (setq hass-host "homeassistant.lan")
