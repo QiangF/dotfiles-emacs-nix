@@ -4,7 +4,7 @@
   :straight t
   :hook (prog-mode . highlight-indent-guides-mode)
   :init
-  (setq highlight-indent-guides-method 'column)
-  (setq highlight-indent-guides-responsive 'top))
+  (setq highlight-indent-guides-method 'bitmap)
+  (setq highlight-indent-guides-responsive nil))
 
 (provide 'pg-indent-guides)
