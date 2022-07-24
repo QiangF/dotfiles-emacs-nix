@@ -26,8 +26,7 @@
 
   :config
   (telega-mode-line-mode 1)
-  (pg/leader "c" telega-prefix-map)
-  (pg/leader "C" #'(telega :whick-key "telegram"))
+  (pg/leader "C" telega-prefix-map)
 
   :general
   (:keymaps 'telega-chat-mode-map
