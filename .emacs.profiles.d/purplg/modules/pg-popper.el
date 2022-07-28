@@ -14,7 +14,10 @@
            compilation-mode
            hass-dash-mode
            emacs-lisp-compilation-mode
+           "^\\*rustfmt\\*$"
            rustic-compilation-mode
+           rustic-format-mode
+           rustic-cargo-fmt-mode
            flymake-diagnostics-buffer-mode
            telega-root-mode
            telega-chat-mode
@@ -34,6 +37,7 @@
   :init
   (setq shackle-select-reused-windows t)
   (setq shackle-rules `((hass-dash-mode :align left :size 0.1)
+                        (compilation-mode :regexp t :select nil)
                         (,popper-reference-buffers :regexp t :align below :size 0.3)))
   (shackle-mode +1))
   
