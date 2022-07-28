@@ -9,7 +9,7 @@
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
 
   (defun project-switch-with-workspace (project-path)
-    (interactive (list (project-prompt-project-dir)))
+    (interactive (list (project-prompt-project-dir "~/code/")))
     (let ((project-name (car (last (split-string (directory-file-name project-path) "/")))))
       (persp-switch (persp-name (persp-add-new project-name)))
       (project-switch-project project-path)))
