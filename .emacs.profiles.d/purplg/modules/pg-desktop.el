@@ -1,7 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-font)
 
-(set-font-face "Fira Code Retina-10")
+(set-font-face "JetBrainsMono-10")
 
 (require 'pg-tramp)
 
