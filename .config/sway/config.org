@@ -395,7 +395,7 @@ for_window [class="unityhub"] move container to workspace $ws2-2
 for_window [app_id="lutris"] move container to workspace $ws1-2
 for_window [app_id="lutris"] floating enable
 for_window [class="Steam"] move container to workspace $ws1-2
-for_window [class="steam_*"] move container to workspace $ws1-3
+for_window [class="steam"] move container to workspace $ws2-1
 #+END_SRC
 
 ***** Minecraft
@@ -414,7 +414,7 @@ for_window [class="overwatch.exe"] fullscreen enable
 
 ***** Gamescope
 #+BEGIN_SRC conf
-#for_window [class="gamescope"] move container to workspace $ws1-3
+for_window [class="gamescope"] move container to workspace $ws1-3
 for_window [class="gamescope"] floating true
 #+END_SRC
 
