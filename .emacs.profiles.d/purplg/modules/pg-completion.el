@@ -22,7 +22,14 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
+(use-package corfu-doc
+  :straight t
+  :hook (corfu-mode . corfu-doc-mode)
+  :init
+  (setq corfu-doc-delay 0.3))
+
 (use-package eldoc-box
+  :disabled
   :straight t
   :hook (eldoc-mode . eldoc-box-hover-mode)
   :general
