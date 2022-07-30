@@ -1,7 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-font)
 
-(set-font-face "FiraCode Nerd Font Mono-16")
+(set-font-face "JetBrainsMono Nerd Font-16")
 
 (display-battery-mode 1)
 
