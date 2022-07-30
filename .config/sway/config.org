@@ -149,7 +149,6 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 ** Key bindings
 *** Output
 #+BEGIN_SRC conf
-bindsym $mod+Shift+x output DP-2 enable
 #+END_SRC
 *** General
 Kill focused window
