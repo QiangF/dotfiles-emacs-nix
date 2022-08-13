@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ -f "$(which bat)" ] && alias cat=bat
+
 alias ..="cd .."
 alias ...="cd ../.."
 
