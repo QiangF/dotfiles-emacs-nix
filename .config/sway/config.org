@@ -165,7 +165,7 @@ exec "avizo-service"
 *** General
 Kill focused window
 #+BEGIN_SRC conf
-bindsym $mod+Shift+q kill
+bindsym $mod+Control+q kill
 #+END_SRC
 
 Launcher
