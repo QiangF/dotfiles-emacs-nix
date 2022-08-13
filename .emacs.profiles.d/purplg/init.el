@@ -1,12 +1,13 @@
 (setq byte-compile-warnings nil)
 (setq native-comp-async-report-warnings-errors nil)
 
-;;; * Config config
+;; * Config config
 (defconst pg/config-dir (file-truename (expand-file-name user-emacs-directory)))
 (defconst pg/module-dir (expand-file-name "modules" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
+(require 'pg-perf)
 
-; Keep config directory clean
+;; Keep config directory clean
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
 (setq url-history-file (expand-file-name "url/history" user-emacs-directory))
 
@@ -25,7 +26,7 @@
         (find-file (car matches))
         (user-error "module not found: %s" module-name))))
 
-;;; * Straight.el bootstrap
+;; * Straight.el bootstrap
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -43,8 +44,7 @@
 (setq use-package-always-defer nil)
 (setq straight-disable-native-compile nil)
 
-;;; * Emacs config
-(require 'pg-perf)
+;; * Emacs config
 (require 'pg-keybinds)
 (require 'pg-interface)
 (require 'pg-editing)
