@@ -20,6 +20,7 @@
 ;; Tooling
 (use-package aggressive-indent
   :straight t)
+
 (use-package expand-region
   :straight t
   :config
@@ -27,6 +28,7 @@
    :states 'visual
    "v" #'er/expand-region
    "V" (lambda () (interactive) (er/expand-region 2))))
+
 (use-package auto-highlight-symbol
   :straight t
   :hook (prog-mode . auto-highlight-symbol-mode)
