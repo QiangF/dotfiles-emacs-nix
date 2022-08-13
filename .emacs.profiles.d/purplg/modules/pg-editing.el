@@ -52,6 +52,7 @@
 (require 'pg-elisp)
 (require 'pg-lua)
 (require 'pg-python)
+(require 'pg-qml)
 (require 'pg-rust)
 (require 'pg-vim)
 (require 'pg-yaml)
