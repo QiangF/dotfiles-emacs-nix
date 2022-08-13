@@ -13,8 +13,6 @@
   (general-define-key
     :states 'insert
     "M-<tab>" #'tempel-expand
-    "M-S-<tab>" #'tempel-complete
-    "C-j" #'tempel-next
-    "C-k" #'tempel-previous))
+    "M-S-<tab>" #'tempel-complete))
 
 (provide 'pg-snippets)
