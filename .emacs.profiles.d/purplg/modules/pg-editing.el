@@ -33,6 +33,9 @@
   :init
   (setq ahs-idle-interval 0.5))
 
+(use-package just-mode
+  :straight t)
+
 (require 'pg-flycheck)
 (require 'pg-folding)
 (require 'pg-git)
