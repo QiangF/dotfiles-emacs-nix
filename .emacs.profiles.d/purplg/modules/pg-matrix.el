@@ -1,9 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
-(use-package plz
-  :straight (:type git :host github :repo "alphapapa/plz.el"))
-
 (use-package ement
   :straight (:type git :host github :repo "alphapapa/ement.el")
   :after plz
