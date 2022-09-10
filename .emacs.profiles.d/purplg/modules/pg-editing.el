@@ -58,6 +58,6 @@
 (require 'pg-rust)
 (require 'pg-vim)
 (require 'pg-yaml)
-
+(require 'pg-web)
 
 (provide 'pg-editing)
