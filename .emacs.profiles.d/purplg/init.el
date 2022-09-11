@@ -7,6 +7,8 @@
 (add-to-list 'load-path pg/module-dir)
 (require 'pg-perf)
 
+(setq custom-file (expand-file-name "custom.el" pg/config-dir))
+
 ;; Keep config directory clean
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
 (setq url-history-file (expand-file-name "url/history" user-emacs-directory))
