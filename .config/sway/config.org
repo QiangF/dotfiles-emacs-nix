@@ -72,6 +72,10 @@ output DP-2 resolution 2560x1440 position 0,0 transform 270
 #output DP-2 disable
 #+END_SRC
 
+#+BEGIN_SRC conf :tangle desktop
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+#+END_SRC
+
 #+BEGIN_SRC conf :tangle framework
 output * bg #000000 solid_color
 output eDP-1 resolution 2256x1504 scale 1.0
