@@ -16,7 +16,9 @@
 (use-package ef-themes
   :straight t
   :init
-  (set-theme 'ef-winter))
+  (set-theme 'ef-winter)
+  (with-eval-after-load 'hl-line
+    (set-face-background 'hl-line "#130e1b")))
 
 (use-package org-modern
   :straight t
