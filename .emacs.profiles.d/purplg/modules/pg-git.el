@@ -5,9 +5,11 @@
   :defer t
   :init
   (pg/leader
-   "g" '(:wk "git")
-   "g g" #'(magit-status :wk "status")
-   "g b" #'(magit-blame :wk "blame")))
+    "g" '(:wk "git")
+    "g g" #'(magit-status :wk "status")
+    "g b" #'(magit-blame :wk "blame")
+    "g w" #'(magit-worktree :wk "worktree")))
+
 
 (use-package git-gutter
   :disabled
