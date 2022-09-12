@@ -121,8 +121,6 @@
   (setq evil-undo-system 'undo-tree)
   (setq evil-lookup-func #'eldoc)
 
-  (evil-mode 1)
-
   :config
   (defun pg/scroll-line-to-center ()
     (interactive)
@@ -166,7 +164,9 @@
   "C-w C-j" #'evil-window-down
   "C-w C-k" #'evil-window-up
   "C-w C-l" #'evil-window-right
-  "C-<tab>" #'evil-switch-to-windows-last-buffer))
+  "C-<tab>" #'evil-switch-to-windows-last-buffer)
+
+  (evil-mode 1))
 
 (use-package evil-surround
   :straight t
@@ -179,6 +179,7 @@
   :after evil
   :init
   (setq evil-collection-outline-bind-tab-p t)
+  :config
   (evil-collection-init))
 
 (use-package evil-nerd-commenter
