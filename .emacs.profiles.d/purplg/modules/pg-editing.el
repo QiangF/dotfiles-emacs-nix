@@ -36,13 +36,26 @@
   (setq ahs-idle-interval 0.5)
 
   :config
-  ;; Set inner border for symbol highlights
-  (set-face-attribute 'ahs-face nil :box '(:line-width (-1 . -1) :color "dark violet" :style nil) :background 'unspecified :foreground 'unspecified)
-  (set-face-attribute 'ahs-plugin-default-face nil :background 'unspecified :foreground 'unspecified)
+  (with-eval-after-load 'pg-theme
+    ;; Set inner border for symbol highlights
+    (set-face-attribute 'ahs-face nil
+     :box `(:line-width (-1 . -1)
+            :color ,(face-attribute 'cursor :background) ;; Set the border color the same as the cursor
+            :style nil)
+     :background 'unspecified :foreground 'unspecified)
 
-  ;; Do not show symbol highlights when buffer isn't focused
-  (set-face-attribute 'ahs-face-unfocused nil :box nil)
-  (set-face-attribute 'ahs-plugin-default-face-unfocused nil :background 'unspecified :foreground 'unspecified))
+    ;; Make the highlight at point look the same as any highlight.
+    (set-face-attribute 'ahs-plugin-default-face nil
+     :background 'unspecified
+     :foreground 'unspecified)
+
+    ;; Do not show any symbol highlights when buffer isn't focused
+    (set-face-attribute 'ahs-face-unfocused nil
+     :box nil)
+
+    (set-face-attribute 'ahs-plugin-default-face-unfocused nil
+     :background 'unspecified
+     :foreground 'unspecified)))
 
 (use-package just-mode
   :straight t)
