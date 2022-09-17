@@ -36,8 +36,13 @@
   (setq ahs-idle-interval 0.5)
 
   :config
+  ;; Set inner border for symbol highlights
   (set-face-attribute 'ahs-face nil :box '(:line-width (-1 . -1) :color "dark violet" :style nil) :background 'unspecified :foreground 'unspecified)
-  (set-face-attribute 'ahs-plugin-default-face nil :background 'unspecified :foreground 'unspecified))
+  (set-face-attribute 'ahs-plugin-default-face nil :background 'unspecified :foreground 'unspecified)
+
+  ;; Do not show symbol highlights when buffer isn't focused
+  (set-face-attribute 'ahs-face-unfocused nil :box nil)
+  (set-face-attribute 'ahs-plugin-default-face-unfocused nil :background 'unspecified :foreground 'unspecified))
 
 (use-package just-mode
   :straight t)
