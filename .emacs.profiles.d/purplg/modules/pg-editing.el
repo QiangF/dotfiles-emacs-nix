@@ -33,7 +33,11 @@
   :straight t
   :hook (prog-mode . auto-highlight-symbol-mode)
   :init
-  (setq ahs-idle-interval 0.5))
+  (setq ahs-idle-interval 0.5)
+
+  :config
+  (set-face-attribute 'ahs-face nil :box '(:line-width (-1 . -1) :color "dark violet" :style nil) :background 'unspecified :foreground 'unspecified)
+  (set-face-attribute 'ahs-plugin-default-face nil :background 'unspecified :foreground 'unspecified))
 
 (use-package just-mode
   :straight t)
