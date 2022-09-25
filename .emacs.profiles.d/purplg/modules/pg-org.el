@@ -22,7 +22,11 @@
   (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
   (when-let (org-pc (expand-file-name "PC.org" org-directory))
     (setq org-agenda-files `(,org-pc))
-    (setq initial-buffer-choice (lambda () (find-file org-pc))))
+    (setq initial-buffer-choice
+          (lambda ()
+            (let ((buffer (find-file org-pc)))
+              (with-current-buffer buffer (auto-revert-mode 1))
+              buffer))))
 
   ;; Capture
   (setq org-capture-project-file "project.org")
