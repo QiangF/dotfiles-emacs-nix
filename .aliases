@@ -55,8 +55,3 @@ alias play="mpv --hwdec=autosafe"
 alias dl="yt-dlp -f bestvideo+bestaudio"
 
 alias up="${HOME}/sh/update.sh"
-
-mountboot () {
-  sudo mount ${1}2 $2
-  sudo mount ${1}1 $2/boot
-}
