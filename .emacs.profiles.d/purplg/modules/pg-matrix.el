@@ -3,7 +3,6 @@
 
 (use-package ement
   :straight (:type git :host github :repo "alphapapa/ement.el")
-  :after plz
   :init
   ;; Connection wrapper
   (defun pg/ement-connect ()
