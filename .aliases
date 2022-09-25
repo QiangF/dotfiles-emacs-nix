@@ -1,6 +1,7 @@
 #!/bin/sh
 
 [ -f "$(which bat)" ] && alias cat=bat
+[ -f "$(which exa)" ] && alias ls=exa
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -45,10 +46,6 @@ alias psaux="ps aux | rg -i"
 alias open="xdg-open"
 
 alias gns3env="cd $HOME/code/gns3 && source env"
-
-if which exa > /dev/null 2>&1; then
-	alias ls="exa"
-fi
 
 alias copy="xclip -selection clipboard"
 alias sshot="maim -u -s | xclip -selection clipboard -t image/png"
