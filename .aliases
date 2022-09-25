@@ -18,8 +18,6 @@ alias tmp="cd $(mktemp -d)"
 alias l=ls
 alias ll="ls -al"
 
-alias tmpd="cd $(mktemp -d)"
-
 alias watch="watch -n 1"
 
 alias dud="du -h -d1"
@@ -39,17 +37,7 @@ alias uenable="systemctl enable --user"
 alias udisable="systemctl disable --user"
 alias ureload="systemctl daemon-reload --user"
 
-alias cdprog="cd drive_c/Program\ Files\ \(x86\)"
-
-alias psaux="ps aux | rg -i"
-
 alias open="xdg-open"
-
-alias gns3env="cd $HOME/code/gns3 && source env"
-
-alias copy="xclip -selection clipboard"
-alias sshot="maim -u -s | xclip -selection clipboard -t image/png"
-alias freeze="maim -u -s /tmp/ya.png && sxiv /tmp/ya.png"
 
 alias play="mpv --hwdec=autosafe"
 alias dl="yt-dlp -f bestvideo+bestaudio"
