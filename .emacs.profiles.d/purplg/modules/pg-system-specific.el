@@ -10,4 +10,8 @@
       ((string= "framework" (system-name))
        (require 'pg-framework)))
 
+(let ((local-config (expand-file-name "local.el" pg/config-dir)))
+  (when (file-exists-p local-config)
+    (load-file local-config)))
+
 (provide 'pg-system-specific)
