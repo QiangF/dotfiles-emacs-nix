@@ -43,3 +43,5 @@ alias play="mpv --hwdec=autosafe"
 alias dl="yt-dlp -f bestvideo+bestaudio"
 
 alias up="${HOME}/sh/update.sh"
+
+alias ipython3="ipython3 --no-confirm-exit"
