@@ -43,7 +43,7 @@
       (add-hook 'server-after-make-frame-hook set-ahs-faces)))
 
   (with-eval-after-load 'hl-line
-    (set-face-background 'hl-line "#130e1b")))
+    (set-face-background 'hl-line "#150f1e")))
 
 (use-package org-modern
   :straight t
