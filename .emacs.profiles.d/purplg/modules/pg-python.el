@@ -2,14 +2,14 @@
 (require 'pg-keybinds)
 (require 'pg-treesitter)
 
-(use-package python :after corfu
-  :hook (python-mode . corfu-mode))
+(with-eval-after-load 'corfu
+  (add-hook 'python-mode-hook #'corfu-mode))
 
-(use-package python :after tree-sitter
-  :hook (python-mode . tree-sitter-mode))
+(with-eval-after-load 'tree-sitter
+  (add-hook 'python-mode-hook #'tree-sitter-mode))
 
-(use-package python :after eglot
-  :hook (python-mode . eglot-ensure))
+(with-eval-after-load 'eglot
+  (add-hook 'python-mode-hook #'eglot-ensure))
 
 (use-package pyvenv
  :straight t
