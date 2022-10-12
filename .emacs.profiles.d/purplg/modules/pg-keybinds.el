@@ -185,6 +185,8 @@
 (use-package evil-nerd-commenter
   :straight t
   :init
-  (evilnc-default-hotkeys))
+  (evilnc-default-hotkeys)
+  :general
+  ("C-:" #'evilnc-copy-and-comment-lines))
 
 (provide 'pg-keybinds)
