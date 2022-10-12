@@ -212,7 +212,7 @@
     (lambda (entity-id)
       (when (equal entity-id "switch.bedroom_light")
             (if (hass-switch-p entity-id)
-                (set-theme 'modus-operandi)
+                (set-theme 'ef-light)
               (set-theme pg/hass-original-theme)))))
 
   (hass-websocket-mode t)
