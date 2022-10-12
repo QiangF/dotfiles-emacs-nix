@@ -7,6 +7,7 @@
   :config
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
+  (setq persp-autokill-buffer-on-remove t)
 
   (defun project-switch-with-workspace (project-path)
     (interactive (list (project-prompt-project-dir "~/code/")))
