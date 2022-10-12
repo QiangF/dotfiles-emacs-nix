@@ -2,24 +2,24 @@
 (require 'pg-keybinds)
 
 (use-package eglot
+  :disabled
   :straight t
   :defer t
   :config
-  (pg/leader
-     :keymaps 'eglot-mode-map
-     "c a" #'(eglot-code-actions :wk "execute action")
-     "c r" #'(eglot-rename :wk "rename")))
 
-(use-package eglot
-  :after rustic
-  :init
-  (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))
+  (with-eval-after-load 'rustic-mode
+    (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))
+
+  (pg/leader
+    :keymaps 'eglot-mode-map
+    "c a" #'(eglot-code-actions :wk "execute action")
+    "c r" #'(eglot-rename :wk "rename")))
 
 (use-package lsp-mode
-  :disabled
   :straight t
   :config
   (setq evil-lookup-func #'lsp-describe-thing-at-point)
+  (setq lsp-auto-execute-action nil)
 
   (pg/leader
    :keymaps 'lsp-mode-map
@@ -28,10 +28,12 @@
 
   :general
   (:keymaps 'evil-motion-state-map
-   "g D" #'lsp-find-references))
+   "g D" #'lsp-find-references
+   "g r" #'lsp-find-references)
+  :init
+  (setq lsp-enable-snippet nil))
 
 (use-package lsp-ui
-  :disabled
   :straight t
   :after lsp-mode
   :config
