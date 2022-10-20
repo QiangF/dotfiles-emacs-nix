@@ -18,17 +18,27 @@ set $right l
 
 ** Workspace keybinds
 #+BEGIN_SRC conf
-set $ws1-1 1:1
-set $ws1-2 2:2
-set $ws1-3 3:3
-set $ws1-4 4:4
+set $ws1-1-key q
+set $ws1-2-key w
+set $ws1-3-key e
+set $ws1-4-key r
+
+set $ws1-1 1:$ws1-1-key:dev
+set $ws1-2 2:$ws1-2-key:launch
+set $ws1-3 3:$ws1-3-key:game
+set $ws1-4 4:$ws1-4-key:misc
 #+END_SRC
 
 #+BEGIN_SRC conf
-set $ws2-1 5:A
-set $ws2-2 6:S
-set $ws2-3 7:D
-set $ws2-4 8:F
+set $ws2-1-key a
+set $ws2-2-key s
+set $ws2-3-key d
+set $ws2-4-key f
+
+set $ws2-1 5:$ws2-1-key
+set $ws2-2 6:$ws2-2-key
+set $ws2-3 7:$ws2-3-key
+set $ws2-4 8:$ws2-4-key
 #+END_SRC
 
 ** Preferred applications
@@ -45,7 +55,8 @@ Note: pass the final command to swaymsg so that the resulting window can be open
 on the original workspace that the command was run on.
 
 #+BEGIN_SRC conf
-set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
+# set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
+set $menu rofi -show drun -show-icons -display-drun "Launch"
 set $pw_gui ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
@@ -169,12 +180,12 @@ exec "avizo-service"
 *** General
 Kill focused window
 #+BEGIN_SRC conf
-bindsym $mod+Control+q kill
+bindsym $mod+Shift+u kill
 #+END_SRC
 
 Launcher
 #+BEGIN_SRC conf
-bindsym $mod+space exec $menu
+bindsym $mod+u exec $menu
 #+END_SRC
 
 Drag floating windows by holding down $mod and left mouse button. Resize them with right mouse
@@ -250,29 +261,30 @@ bindsym $mod+Shift+Right move right
 *** Workspaces
 Switch to workspace
 #+BEGIN_SRC conf
-bindsym $mod+1 workspace $ws1-1
-bindsym $mod+2 workspace $ws1-2
-bindsym $mod+3 workspace $ws1-3
-bindsym $mod+4 workspace $ws1-4
 
-bindsym $mod+a workspace $ws2-1
-bindsym $mod+s workspace $ws2-2
-bindsym $mod+d workspace $ws2-3
-bindsym $mod+f workspace $ws2-4
+bindsym $mod+$ws1-1-key workspace $ws1-1
+bindsym $mod+$ws1-2-key workspace $ws1-2
+bindsym $mod+$ws1-3-key workspace $ws1-3
+bindsym $mod+$ws1-4-key workspace $ws1-4
+
+bindsym $mod+$ws2-1-key workspace $ws2-1
+bindsym $mod+$ws2-2-key workspace $ws2-2
+bindsym $mod+$ws2-3-key workspace $ws2-3
+bindsym $mod+$ws2-4-key workspace $ws2-4
 #+END_SRC
 
 Move focused container to workspace
 Note: workspaces can have any name you want, not just numbers.
 #+BEGIN_SRC conf
-bindsym $mod+Shift+1 move container to workspace $ws1-1
-bindsym $mod+Shift+2 move container to workspace $ws1-2
-bindsym $mod+Shift+3 move container to workspace $ws1-3
-bindsym $mod+Shift+4 move container to workspace $ws1-4
+bindsym $mod+Shift+$ws1-1-key move container to workspace $ws1-1
+bindsym $mod+Shift+$ws1-2-key move container to workspace $ws1-2
+bindsym $mod+Shift+$ws1-3-key move container to workspace $ws1-3
+bindsym $mod+Shift+$ws1-4-key move container to workspace $ws1-4
 
-bindsym $mod+Shift+a move container to workspace $ws2-1
-bindsym $mod+Shift+s move container to workspace $ws2-2
-bindsym $mod+Shift+d move container to workspace $ws2-3
-bindsym $mod+Shift+f move container to workspace $ws2-4
+bindsym $mod+shift+$ws2-1-key move container to workspace $ws2-1
+bindsym $mod+shift+$ws2-2-key move container to workspace $ws2-2
+bindsym $mod+shift+$ws2-3-key move container to workspace $ws2-3
+bindsym $mod+shift+$ws2-4-key move container to workspace $ws2-4
 #+END_SRC
 
 *** Layout stuff
@@ -287,18 +299,18 @@ Switch to different layouts
 #+BEGIN_SRC conf
 #bindsym $mod+s layout stacking
 #bindsym $mod+e layout tabbed
-bindsym $mod+e layout toggle all
-bindsym $mod+Shift+e split none
+bindsym $mod+Shift+y layout toggle all
+bindsym $mod+y split none
 #+END_SRC
 
 Toggle fullscreen
 #+BEGIN_SRC conf
-bindsym $mod+Shift+w fullscreen
+bindsym $mod+g fullscreen
 #+END_SRC
 
 Toggle floating
 #+BEGIN_SRC conf
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+g floating toggle
 #+END_SRC
 
 Swap focus between the tiling area and the floating area
@@ -313,9 +325,9 @@ Move focus to the parent container
 
 *** Media control
 #+BEGIN_SRC conf
-bindsym $mod+bracketright exec mpc prev
-bindsym $mod+bracketleft exec mpc next
-bindsym $mod+backslash exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec mpc toggle
 #+END_SRC
 
 *** Scratchpad:
@@ -336,21 +348,17 @@ bindsym $mod+minus scratchpad show
 *** Resizing containers:
 
 #+BEGIN_SRC conf
+
 mode "resize" {
     bindsym $left resize shrink width 100px
     bindsym $down resize grow height 100px
     bindsym $up resize shrink height 100px
     bindsym $right resize grow width 100px
 
-    bindsym Left resize shrink width 100px
-    bindsym Down resize grow height 100px
-    bindsym Up resize shrink height 100px
-    bindsym Right resize grow width 100px
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+x mode "resize"
 #+END_SRC
 
 ** Status Bar:
@@ -382,8 +390,15 @@ bar {
 *** Applications
 #+BEGIN_SRC conf
 for_window [class="discord"] move container to workspace $ws2-1
+for_window [app_id="discord"] move container to workspace $ws2-1
 for_window [class="emacs"] move container to workspace $ws2-3
 for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="zenity"] floating enable
+#+END_SRC
+
+**** Dev
+#+BEGIN_SRC conf :tangle desktop
+for_window [app_id="tauri-app"] move container to workspace $ws2-2
 #+END_SRC
 
 **** Unity
@@ -410,6 +425,7 @@ for_window [class="Minecraft*"] move container to workspace $ws1-3
 ***** Overwatch
 #+BEGIN_SRC conf
 for_window [class="battle.net.exe"] move container to workspace $ws1-2
+for_window [class="battle.net.exe"] floating enable
 for_window [class="overwatch.exe"] move container to workspace $ws1-3
 for_window [class="overwatch.exe"] fullscreen enable
 # Stash floating wine system tray to scratchpad
