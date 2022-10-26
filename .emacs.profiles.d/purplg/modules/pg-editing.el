@@ -53,6 +53,7 @@
 (require 'pg-docker)
 (require 'pg-elisp)
 (require 'pg-lua)
+(require 'pg-nix)
 (require 'pg-python)
 (require 'pg-qml)
 (require 'pg-rust)
