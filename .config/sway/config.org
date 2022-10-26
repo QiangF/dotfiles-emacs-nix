@@ -469,9 +469,9 @@ for_window [class="dolphin-emu"] floating true
 
 * Autostart
 
-#+BEGIN_SRC conf :tangle desktop
+#+BEGIN_SRC conf
 exec discord-canary
-exec /usr/bin/swaync
+exec swaync
 bindsym $mod+grave exec swaync-client -t -sw
 #+END_SRC
 
