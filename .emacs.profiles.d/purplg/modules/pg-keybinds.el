@@ -137,34 +137,34 @@
               :around (lambda (inner &rest _)  
                         (save-excursion (funcall inner))))
 
- (pg/leader
+  (pg/leader
+    :states 'normal
+    "b p" #'(evil-prev-buffer :wk "previous")
+    "b n" #'(evil-next-buffer :wk "next")
+    "b N" #'(evil-buffer-new :wk "new")
+    "`" #'(toggle-maximize-buffer :wk "fullscreen"))
+
+  (general-define-key
    :states 'normal
-   "b p" #'(evil-prev-buffer :wk "previous")
-   "b n" #'(evil-next-buffer :wk "next")
-   "b N" #'(evil-buffer-new :wk "new")
-   "`" #'(toggle-maximize-buffer :wk "fullscreen"))
+   "z c" #'evil-close-fold-below
+   "z m" #'hs-hide-level
+   "z C" #'evil-close-fold)
 
- (general-define-key
-  :states 'normal
-  "z c" #'evil-close-fold-below
-  "z m" #'hs-hide-level
-  "z C" #'evil-close-fold)
-
- (general-define-key
-  :states 'normal
-  "M-j" #'move-line-down
-  "M-k" #'move-line-up
-  "C-j" #'evil-forward-section-begin
-  "C-k" #'evil-backward-section-begin)
+  (general-define-key
+   :states 'normal
+   "M-j" #'move-line-down
+   "M-k" #'move-line-up
+   "C-j" #'evil-forward-section-begin
+   "C-k" #'evil-backward-section-begin)
 
   ;; I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
- (general-define-key
-  :states 'normal
-  "C-w C-h" #'evil-window-left
-  "C-w C-j" #'evil-window-down
-  "C-w C-k" #'evil-window-up
-  "C-w C-l" #'evil-window-right
-  "C-<tab>" #'evil-switch-to-windows-last-buffer)
+  (general-define-key
+   :states 'normal
+   "C-w C-h" #'evil-window-left
+   "C-w C-j" #'evil-window-down
+   "C-w C-k" #'evil-window-up
+   "C-w C-l" #'evil-window-right
+   "C-<tab>" #'evil-switch-to-windows-last-buffer)
 
   (evil-mode 1))
 
