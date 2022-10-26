@@ -5,6 +5,7 @@
 
 (display-battery-mode 1)
 
-(require 'pg-hass)
+(when (network-lookup-address-info "homeassistant.lan")
+  (require 'pg-hass))
 
 (provide 'pg-framework)
