@@ -42,6 +42,10 @@
   :after elisp-mode
   :hook (emacs-lisp-mode . lispy-mode))
 
+(use-package lispyville
+  :straight t
+  :hook (emacs-lisp-mode . lispyville-mode))
+
 (use-package parinfer-rust-mode
   :disabled
   :straight t
