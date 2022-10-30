@@ -18,9 +18,6 @@
 
 
 ;; Tooling
-(use-package aggressive-indent
-  :straight t)
-
 (use-package expand-region
   :straight t
   :config

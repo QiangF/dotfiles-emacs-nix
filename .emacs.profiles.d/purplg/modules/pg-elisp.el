@@ -27,11 +27,6 @@
     "e" '(:wk "eval")
     "e r" #'(eval-region :wk "region")))
 
-(use-package aggressive-indent
-  :after elisp
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
-
 (use-package rainbow-delimiters
   :after elisp-mode
   :straight t
