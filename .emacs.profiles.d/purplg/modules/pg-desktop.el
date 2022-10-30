@@ -5,6 +5,7 @@
 
 (require 'pg-tramp)
 
-(require 'pg-hass)
+(when (network-lookup-address-info "homeassistant.lan")
+  (require 'pg-hass))
 
 (provide 'pg-desktop)
