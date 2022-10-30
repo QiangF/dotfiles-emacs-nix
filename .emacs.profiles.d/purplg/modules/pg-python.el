@@ -11,6 +11,9 @@
 (with-eval-after-load 'eglot
   (add-hook 'python-mode-hook #'eglot-ensure))
 
+(with-eval-after-load 'lsp-mode
+  (add-hook 'python-mode-hook #'lsp))
+
 (use-package pyvenv
  :straight t
  :after python

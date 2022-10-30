@@ -36,21 +36,32 @@
 (use-package lsp-ui
   :straight t
   :after lsp-mode
+  :init
+  (pg/leader
+    :keymaps 'lsp-mode-map
+    "o i" #'(lsp-ui-imenu :wk "imenu"))
+
   :config
   ;; recommended performance tweak
   (setq read-process-output-max (* 1024 1024))
-  
+
   ;; Disable because it causes input lag
   (setq lsp-ui-doc-enable nil)
+
   (setq lsp-ui-sideline-show-hover t)
+
   (setq lsp-ui-sideline-delay 1.0)
+
+  (setq lsp-ui-imenu-auto-refresh t)
+  (setq lsp-ui-imenu-auto-refresh-delay 0.5)
+  (setq lsp-ui-imenu-buffer-position 'left)
 
   :general
   (:keymaps 'lsp-ui-peek-mode-map
-   "j" #'lsp-ui-peek--select-next
-   "h" #'lsp-ui-peek--select-prev-file
-   "l" #'lsp-ui-peek--select-next-file
-   "k" #'lsp-ui-peek--select-prev
-   "C-<return>" #'lsp-ui-peek--goto-xref-other-window))
+            "j" #'lsp-ui-peek--select-next
+            "h" #'lsp-ui-peek--select-prev-file
+            "l" #'lsp-ui-peek--select-next-file
+            "k" #'lsp-ui-peek--select-prev
+            "C-<return>" #'lsp-ui-peek--goto-xref-other-window))
 
 (provide 'pg-lsp)

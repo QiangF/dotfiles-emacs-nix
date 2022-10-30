@@ -101,6 +101,7 @@
    "f r" #'(consult-recent-file :wk "recent")))
 
 (use-package consult-eglot
+  :disabled
   :straight t
   :after consult eglot
   :config
