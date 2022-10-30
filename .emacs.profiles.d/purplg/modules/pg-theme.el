@@ -7,6 +7,7 @@
   (load-theme current-theme t))
 
 (use-package modus-themes
+  :disabled
   :bind ("<f5>" . modus-themes-toggle)
   :config
   (advice-add 'modus-themes-toggle
@@ -14,6 +15,7 @@
               (lambda (&rest _) (setq current-theme (modus-themes--current-theme)))))
 
 (use-package ef-themes
+  :disabled
   :straight t
   :init
   (set-theme 'ef-winter)
@@ -47,15 +49,13 @@
 
 (use-package org-modern
   :straight t
-  :after modus-themes
   :hook (org-mode . org-modern-mode))
 
 (use-package doom-themes
-  :disabled
   :straight t
   :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-  (set-theme 'doom-molokai))
+  (set-theme 'doom-monokai-spectrum))
 
 (provide 'pg-theme)
