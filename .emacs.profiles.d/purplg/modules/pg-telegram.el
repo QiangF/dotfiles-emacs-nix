@@ -3,6 +3,7 @@
 
 (use-package telega
   :straight t
+  :after dash
   :init
   (setq telega-completing-read-function #'completing-read)
   (setq telega-emoji-use-images t)
@@ -11,22 +12,22 @@
   (setq telega-user-show-avatars t)
   (setq telega-emoji-font-family "Noto Color Emoji")
   (setq telega-use-images t)
+  (set-face-background 'telega-msg-heading "#1b1326")
 
-  (with-eval-after-load 'dash
-    (defun pg/telega-online-status-function ()
-      (let ((telega-buffers (telega-chat-buffers)))
-        (push (telega-root--buffer) telega-buffers)
-        (-any? (lambda (buffer) (get-buffer-window buffer))
-               telega-buffers)))
-    (setq telega-online-status-function #'pg/telega-online-status-function))
+  (defun pg/telega-online-status-function ()
+    (let ((telega-buffers (telega-chat-buffers)))
+      (push (telega-root--buffer) telega-buffers)
+      (-any? (lambda (buffer) (get-buffer-window buffer))
+             telega-buffers)))
+  (setq telega-online-status-function #'pg/telega-online-status-function)
 
   ;; Issues with colors while in daemon mode is causing it to fail on load. So load telega after a
   ;; frame is created
   (add-hook 'server-after-make-frame-hook (lambda () (telega 0)))
+  (pg/leader "c" telega-prefix-map)
 
   :config
   (telega-mode-line-mode 1)
-  (pg/leader "C" telega-prefix-map)
 
   :general
   (:keymaps 'telega-chat-mode-map
@@ -45,6 +46,7 @@
     :style 'notifications))
 
 (use-package telega-dashboard
+  :disabled
   :after telega dashboard
   :config
   (defun dashboard-refresh-buffer-silent ()
@@ -58,5 +60,5 @@
    :states 'normal
    :keymaps 'dashboard-mode-map
    "t" #'dashboard-jump-to-telega-chats))
-  
+
 (provide 'pg-telegram)
