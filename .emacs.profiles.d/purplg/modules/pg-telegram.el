@@ -4,6 +4,7 @@
 (use-package telega
   :straight t
   :after dash
+  :commands (telega)
   :init
   (setq telega-completing-read-function #'completing-read)
   (setq telega-emoji-use-images t)
@@ -12,7 +13,6 @@
   (setq telega-user-show-avatars t)
   (setq telega-emoji-font-family "Noto Color Emoji")
   (setq telega-use-images t)
-  (set-face-background 'telega-msg-heading "#1b1326")
 
   (defun pg/telega-online-status-function ()
     (let ((telega-buffers (telega-chat-buffers)))
@@ -26,7 +26,23 @@
   (add-hook 'server-after-make-frame-hook (lambda () (telega 0)))
   (pg/leader "c" telega-prefix-map)
 
+  (setq telega-chat-button-brackets
+        '(((type private)    "p|" "")
+          ((type basicgroup) "g|" "")
+          ((type supergroup) "s|" "")
+          ((type channel)    "c|" "")
+          (all               "--" "")))
+
   :config
+
+  ;; Make chat window dedicated
+  (advice-add #'telega-chatbuf--switch-in
+              :after
+              (lambda (&rest _)
+                (message "%s" (current-buffer))
+                (set-window-dedicated-p (get-buffer-window (current-buffer)) t)))
+
+  (set-face-background 'telega-msg-heading "#1b1326")
   (telega-mode-line-mode 1)
 
   :general

@@ -19,8 +19,6 @@
            rustic-format-mode
            rustic-cargo-fmt-mode
            flymake-diagnostics-buffer-mode
-           telega-root-mode
-           telega-chat-mode
            flymake-project-diagnostics-mode))
 
   (setq popper-display-control nil)
@@ -38,6 +36,7 @@
   (setq shackle-select-reused-windows t)
   (setq shackle-rules `((hass-dash-mode :align left :size 0.1)
                         (compilation-mode :regexp t :select nil)
+                        (telega-chat-mode :popup t :select t :align left)
                         (,popper-reference-buffers :regexp t :align below :size 0.3)))
   (shackle-mode +1))
   
