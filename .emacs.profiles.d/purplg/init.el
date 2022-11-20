@@ -8,6 +8,7 @@
 (require 'pg-perf)
 
 (setq custom-file (expand-file-name "custom.el" pg/config-dir))
+(load custom-file)
 
 ;; Keep config directory clean
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
