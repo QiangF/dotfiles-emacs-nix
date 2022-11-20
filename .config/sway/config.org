@@ -409,7 +409,11 @@ for_window [class="unityhub"] move container to workspace $ws2-2
 #+END_SRC
 
 *** Games
-***** Launchers
+**** Guild Wars 2
+#+BEGIN_SRC conf
+for_window [class="gw2-64.exe"] move container to workspace $ws1-3
+#+END_SRC
+**** Launchers
 #+BEGIN_SRC conf
 for_window [app_id="lutris"] move container to workspace $ws1-2
 for_window [app_id="lutris"] floating enable
@@ -417,12 +421,12 @@ for_window [class="Steam"] move container to workspace $ws1-2
 for_window [class="steam"] move container to workspace $ws2-1
 #+END_SRC
 
-***** Minecraft
+**** Minecraft
 #+BEGIN_SRC conf
 for_window [class="Minecraft*"] move container to workspace $ws1-3
 #+END_SRC
 
-***** Overwatch
+**** Overwatch
 #+BEGIN_SRC conf
 for_window [class="battle.net.exe"] move container to workspace $ws1-2
 for_window [class="battle.net.exe"] floating enable
@@ -432,36 +436,36 @@ for_window [class="overwatch.exe"] fullscreen enable
 #for_window [title="Wine System Tray"] move container to scratchpad
 #+END_SRC
 
-***** Gamescope
+**** Gamescope
 #+BEGIN_SRC conf
 for_window [class="gamescope"] move container to workspace $ws1-3
 for_window [class="gamescope"] floating true
 #+END_SRC
 
-***** SteamTinkerLauncher
+**** SteamTinkerLauncher
 #+BEGIN_SRC conf
 for_window [app_id="yad"] move container to workspace $ws1-3
 for_window [app_id="yad"] floating true
 #+END_SRC
 
-***** Mupen64
+**** Mupen64
 #+BEGIN_SRC conf
 for_window [app_id="mupen64plus-gui"] move container to workspace $ws1-3
 for_window [app_id="mupen64plus-gui"] floating true
 #+END_SRC
 
-***** RetroArch
+**** RetroArch
 #+BEGIN_SRC conf
 for_window [app_id="retroarch"] move container to workspace $ws1-3
 for_window [app_id="retroarch"] fullscreen true
 #+END_SRC
 
-***** Some game? I should have labeled this...
+**** Some game? I should have labeled this...
 #+BEGIN_SRC conf
 for_window [class="steam_app_252950"] move container to workspace $ws1-3
 for_window [class="steam_app_252950"] fullscreen true
 #+END_SRC
-***** Dolphin
+**** Dolphin
 #+BEGIN_SRC conf
 for_window [class="dolphin-emu"] move container to workspace $ws1-3
 for_window [class="dolphin-emu"] floating true
@@ -473,6 +477,7 @@ for_window [class="dolphin-emu"] floating true
 exec discord-canary
 exec swaync
 bindsym $mod+grave exec swaync-client -t -sw
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+END_SRC
 
 * Defaults
