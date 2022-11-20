@@ -1,7 +1,13 @@
 #!/bin/sh
 
 [ -f "$(which bat)" ] && alias cat=bat
-[ -f "$(which exa)" ] && alias ls=exa
+
+alias l=ls
+alias ll="ls -al"
+[ -f "$(which exa)" ] && {
+  alias ls="exa"
+  alias ll="exa -al --git-ignore"
+}
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -14,9 +20,6 @@ gclonecd() {
 alias clone="cd $HOME/code/git && gclonecd"
 
 alias tmp="cd $(mktemp -d)"
-
-alias l=ls
-alias ll="ls -al"
 
 alias watch="watch -n 1"
 
