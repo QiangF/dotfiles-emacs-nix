@@ -56,6 +56,6 @@
   :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
-  (set-theme 'doom-monokai-spectrum))
+  (set-theme 'doom-monokai-pro))
 
 (provide 'pg-theme)
