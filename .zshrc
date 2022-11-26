@@ -51,3 +51,6 @@ eval $(keychain --quiet --eval id_ed25519 --noask)
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+[[ -f "/tmp/emacs-share-path" ]] && [[ -d "$(cat /tmp/emacs-share-path)" ]] && \
+  cd "$(/bin/cat /tmp/emacs-share-path)"

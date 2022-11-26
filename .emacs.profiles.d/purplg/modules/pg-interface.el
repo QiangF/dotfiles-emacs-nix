@@ -45,6 +45,11 @@
   :init
   (add-hook 'prog-mode-hook #'hl-todo-mode))
 
+(use-package share-path
+  :straight (:type git :host nil :repo "https://codeberg.org/purplg/share-path.el")
+  :init
+  (share-path-mode 1))
+
 (require 'pg-completion)
 (require 'pg-dashboard)
 (require 'pg-embark)
