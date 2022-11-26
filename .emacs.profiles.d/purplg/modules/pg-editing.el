@@ -34,6 +34,9 @@
 
 (use-package just-mode
   :straight t)
+(pg/leader
+  :states '(normal visual)
+  "t s" #'scroll-all-mode)
 
 (require 'pg-flycheck)
 (require 'pg-folding)
