@@ -29,6 +29,7 @@ export MOZ_ENABLE_WAYLAND=1
 
 export QT_QPA_PLATFORM=wayland
 export EDITOR="emacsclient"
+export CARGO_TARGET_DIR=$HOME/.cache/cargo/target/
 
 export GOPATH=${HOME}/code/go
 export PATH=$PATH:$GOPATH/bin
