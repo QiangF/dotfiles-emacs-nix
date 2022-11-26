@@ -27,6 +27,7 @@ export TERM=xterm
 export PATH=$PATH:$HOME/.local/bin
 export MOZ_ENABLE_WAYLAND=1
 
+export QT_QPA_PLATFORM=wayland
 
 export GOPATH=${HOME}/code/go
 export PATH=$PATH:$GOPATH/bin
