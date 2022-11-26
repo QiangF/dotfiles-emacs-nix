@@ -15,6 +15,7 @@
            hass-dash-mode
            emacs-lisp-compilation-mode
            "^\\*rustfmt\\*$"
+           "^\\*Warnings\\*$"
            rustic-compilation-mode
            rustic-format-mode
            rustic-cargo-fmt-mode
