@@ -57,7 +57,7 @@
 (require 'pg-qml)
 (require 'pg-rust)
 (require 'pg-vim)
-(require 'pg-yaml)
 (require 'pg-web)
+(require 'pg-yaml)
 
 (provide 'pg-editing)
