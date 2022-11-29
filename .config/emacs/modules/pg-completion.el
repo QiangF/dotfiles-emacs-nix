@@ -2,10 +2,11 @@
 (require 'pg-keybinds)
 
 (use-package corfu
-  :straight t
+  :straight (:files (:defaults "extensions/corfu-popupinfo.el"))
   :init
   (setq corfu-auto t)
-  (setq corfu-auto-delay 0.0) 
+  (setq corfu-auto-delay 0.0)
+  (setq corfu-popupinfo-delay 0.3)
 
   :general
   ; Clear conflicting C-k keybind
@@ -21,12 +22,6 @@
   :after elisp-mode
   :init
   (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
-
-(use-package corfu-doc
-  :straight t
-  :hook (corfu-mode . corfu-doc-mode)
-  :init
-  (setq corfu-doc-delay 0.3))
 
 (use-package eldoc-box
   :disabled
