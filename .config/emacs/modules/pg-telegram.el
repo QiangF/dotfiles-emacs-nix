@@ -34,12 +34,13 @@
           (all               "--" "")))
 
   :config
-  (add-hook 'telega-chat-mode-hook (lambda () (persp-switch "telegram")))
-  (add-hook 'telega-root-mode-hook
-            (lambda ()
-              (unless (persp-with-name-exists-p "telegram")
-                (persp-add-new "telegram"))
-              (persp-add-buffer telega-root-buffer-name (persp-get-by-name "telegram"))))
+  (with-eval-after-load 'persp-mode
+    (add-hook 'telega-chat-mode-hook (lambda () (persp-switch "telegram")))
+    (add-hook 'telega-root-mode-hook
+              (lambda ()
+                (unless (persp-with-name-exists-p "telegram")
+                  (persp-add-new "telegram"))
+                (persp-add-buffer telega-root-buffer-name (persp-get-by-name "telegram")))))
 
   ;; Make chat window dedicated
   (advice-add #'telega-chatbuf--switch-in
