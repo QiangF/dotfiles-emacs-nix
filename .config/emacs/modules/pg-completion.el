@@ -23,7 +23,6 @@
    "C-S-k" #'corfu-scroll-down))
 
 (use-package eldoc-box
-  :disabled
   :hook (eldoc-mode . eldoc-box-hover-mode)
   :general
   (:states 'normal

@@ -3,9 +3,7 @@
 
 (use-package eglot
   :init
-  (with-eval-after-load 'rustic-mode
-    (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))
-
+  (setq eglot-stay-out-of '(eldoc))
   (pg/leader
     :keymaps 'eglot-mode-map
     "c a" #'(eglot-code-actions :wk "execute action")
