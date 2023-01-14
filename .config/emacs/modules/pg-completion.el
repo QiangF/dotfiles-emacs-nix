@@ -138,4 +138,7 @@
   :init
   (savehist-mode))
 
+(use-package cape
+  :straight t)
+
 (provide 'pg-completion)
