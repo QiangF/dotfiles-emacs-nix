@@ -48,7 +48,7 @@
 
   (general-create-definer pg/local-leader
    :states '(normal visual)
-   :prefix "S-SPC")
+   :prefix "C-SPC")
 
   (pg/leader
    "m" '(:ignore t :wk "local")
