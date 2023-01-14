@@ -19,7 +19,6 @@
 
 ;; Tooling
 (use-package expand-region
-  :straight t
   :config
   (general-define-key
    :states 'visual
@@ -27,13 +26,12 @@
    "V" (lambda () (interactive) (er/expand-region 2))))
 
 (use-package auto-highlight-symbol
-  :straight t
   :hook (prog-mode . auto-highlight-symbol-mode)
   :init
   (setq ahs-idle-interval 0.5))
 
-(use-package just-mode
-  :straight t)
+(use-package just-mode)
+
 (pg/leader
   :states '(normal visual)
   "t s" #'scroll-all-mode)

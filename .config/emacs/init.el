@@ -47,6 +47,7 @@
 
 (straight-use-package 'use-package)
 (setq use-package-always-defer nil)
+(setq straight-use-package-by-default t)
 (setq straight-disable-native-compile nil)
 
 ;; * Emacs config

@@ -1,7 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package dirvish
-  :straight t
   :init
   (dirvish-override-dired-mode)
 

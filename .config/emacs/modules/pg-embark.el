@@ -2,11 +2,9 @@
 (require 'pg-keybinds)
 
 (use-package embark
-  :straight t
   :init
   (with-eval-after-load 'consult
-    (use-package embark-consult
-      :straight t))
+    (use-package embark-consult))
 
   :config
   (general-define-key

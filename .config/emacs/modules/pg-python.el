@@ -19,7 +19,6 @@
   (add-hook 'python-ts-mode-hook #'lsp))
 
 (use-package pyvenv
- :straight t
  :after python
  :init
  (setenv "WORKON_HOME" "/home/purplg/code/python/.venv"))

@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package nov
-  :mode ("\\.epub\\'" . nov-mode)
-  :straight t)
+  :mode ("\\.epub\\'" . nov-mode))
 
 (provide 'pg-epub)

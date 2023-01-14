@@ -3,7 +3,6 @@
 
 (use-package dashboard
   :disabled
-  :straight t
   :init
   (dashboard-setup-startup-hook)
 

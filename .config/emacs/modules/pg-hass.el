@@ -2,7 +2,6 @@
 (require 'pg-theme)
 
 (use-package hass
-  :straight t
   :after pass
   :init
   (setq hass-host "homeassistant.lan")

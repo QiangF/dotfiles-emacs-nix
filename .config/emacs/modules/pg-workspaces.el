@@ -3,7 +3,6 @@
 (require 'pg-modeline)
 
 (use-package persp-mode
-  :straight t
   :config
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)

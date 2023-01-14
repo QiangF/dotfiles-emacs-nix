@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package helpful
-  :straight t
   :init
   (pg/leader
    "h f" #'(helpful-callable :wk "function")

@@ -16,7 +16,6 @@
 
 (use-package ef-themes
   :disabled
-  :straight t
   :init
   (set-theme 'ef-winter)
   (with-eval-after-load 'auto-highlight-symbol
@@ -48,11 +47,9 @@
     (set-face-background 'hl-line "#150f1e")))
 
 (use-package org-modern
-  :straight t
   :hook (org-mode . org-modern-mode))
 
 (use-package doom-themes
-  :straight t
   :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)

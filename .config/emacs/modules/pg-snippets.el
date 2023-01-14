@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package tempel
-  :straight t
   :init
   (setq tempel-path (expand-file-name "templates" pg/config-dir))
   (defun tempel-setup-capf ()

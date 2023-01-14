@@ -1,7 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package magit
-  :straight t
   :defer t
   :init
   (pg/leader
@@ -13,11 +12,9 @@
 
 (use-package git-gutter
   :disabled
-  :straight t
   :hook (prog-mode . git-gutter-mode))
 
 (use-package diff-hl
-  :straight t
   :hook
   (prog-mode . diff-hl-mode)
   (prog-mode . diff-hl-flydiff-mode)

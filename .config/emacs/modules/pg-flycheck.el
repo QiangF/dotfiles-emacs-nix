@@ -2,7 +2,6 @@
 (require 'pg-lsp)
 
 (use-package flycheck
-  :straight t
   :config
   (add-hook 'lsp-mode-hook #'flycheck-mode)
   (general-define-key

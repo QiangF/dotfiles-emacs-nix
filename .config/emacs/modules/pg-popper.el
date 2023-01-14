@@ -1,7 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package popper
-  :straight t
   :init
   (setq popper-reference-buffers
         '(messages-buffer-mode "\\*Messages\\*"
@@ -32,7 +31,6 @@
   ("C-M-`" #'popper-toggle-type))
 
 (use-package shackle
-  :straight t
   :init
   (setq shackle-select-reused-windows t)
   (setq shackle-rules `((hass-dash-mode :align left :size 0.1)

@@ -33,13 +33,11 @@
       (delete-other-windows))))
 
 (use-package which-key
-  :straight t
   :init
   (setq which-key-idle-delay 1)
   (which-key-mode 1))
 
 (use-package general
-  :straight t
   :config
   (general-create-definer pg/leader
    :states '(normal visual)
@@ -106,7 +104,6 @@
    "SPC" nil))
 
 (use-package evil
-  :straight t
   :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
@@ -152,21 +149,19 @@
   (evil-mode 1))
 
 (use-package evil-surround
-  :straight t
   :after evil
   :init
   (global-evil-surround-mode 1))
 
 (use-package evil-collection
-  :straight t
   :after evil
   :init
   (setq evil-collection-outline-bind-tab-p t)
+  (setq evil-collection-want-unimpaired-p nil)
   :config
   (evil-collection-init))
 
 (use-package evil-nerd-commenter
-  :straight t
   :init
   (evilnc-default-hotkeys)
   :general

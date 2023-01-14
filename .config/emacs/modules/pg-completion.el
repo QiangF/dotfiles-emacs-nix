@@ -24,21 +24,18 @@
 
 (use-package eldoc-box
   :disabled
-  :straight t
   :hook (eldoc-mode . eldoc-box-hover-mode)
   :general
   (:states 'normal
    "C-/" #'eldoc-box-eglot-help-at-point))
 
 (use-package kind-icon
-  :straight t
   :after corfu
   :config
   (setq kind-icon-default-face 'corfu-default)
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package vertico
-  :straight t
   :init
   (vertico-mode 1)
 
@@ -80,7 +77,6 @@
    "C-l" #'vertico-insert))
 
 (use-package consult
-  :straight t
   :after vertico
   :config
   
@@ -95,7 +91,6 @@
    "f r" #'(consult-recent-file :wk "recent")))
 
 (use-package consult-eglot
-  :straight t
   :after consult eglot
   :config
   (pg/leader
@@ -103,39 +98,32 @@
    :states 'normal
    "s s" #'(consult-eglot-symbols :wk "Symbol")))
 
-(use-package all-the-icons
-  :straight t)
+(use-package all-the-icons)
 
 (use-package all-the-icons-completion
   :after all-the-icons
-  :straight t
   :init
   (all-the-icons-completion-mode))
 
 (use-package all-the-icons-dired
   :after all-the-icons
-  :straight t
   :init
   (add-hook 'dired-mode-hook #'all-the-icons-dired-mode))
     
 (use-package marginalia
-  :straight t
   :after vertico
   :init
   (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
   (marginalia-mode 1))
 
 (use-package orderless
-  :straight t
   :init
   (setq completion-styles '(orderless flex)))
 
 (use-package savehist
-  :straight t
   :init
   (savehist-mode))
 
-(use-package cape
-  :straight t)
+(use-package cape)
 
 (provide 'pg-completion)

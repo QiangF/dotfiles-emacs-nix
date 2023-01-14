@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package undo-tree
-  :straight t
   :init
   (add-hook 'text-mode-hook #'turn-on-undo-tree-mode)
   (add-hook 'prog-mode-hook #'turn-on-undo-tree-mode)

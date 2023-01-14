@@ -3,14 +3,12 @@
 
 (use-package eshell
   :defer t
-  :straight t
   :init
   (pg/leader
    "o e" #'(eshell :wk "terminal")))
 
 (use-package vterm
   :defer t
-  :straight t
   :init
   ;; Close the window when vterm exits
   (add-hook 'vterm-exit-functions

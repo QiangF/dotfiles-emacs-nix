@@ -4,7 +4,6 @@
 ;; Automatically pull credentials and autojoin channels from ~pass~.
 ;; Can't figure out why =erc-autojoin-channels-alist= isn't working even when passing a list of strings directly
 (use-package erc
-  :straight t
   :disabled
   :after pass
   :init

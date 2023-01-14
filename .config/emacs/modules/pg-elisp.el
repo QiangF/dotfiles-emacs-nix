@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package elisp-mode
+  :straight nil
   :config
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
@@ -29,21 +30,17 @@
 
 (use-package rainbow-delimiters
   :after elisp-mode
-  :straight t
   :hook (emacs-lisp-mode . rainbow-delimiters-mode))
 
 (use-package lispy
-  :straight t
   :after elisp-mode
   :hook (emacs-lisp-mode . lispy-mode))
 
 (use-package lispyville
-  :straight t
   :hook (emacs-lisp-mode . lispyville-mode))
 
 (use-package parinfer-rust-mode
   :disabled
-  :straight t
   :after elisp-mode
   :hook (emacs-lisp-mode . parinfer-rust-mode)
   :init
@@ -59,17 +56,14 @@
    "p" #'(parinfer-rust-toggle-paren-mode :wk "parinfer-toggle")))
 
 (use-package package-lint
-  :straight t
   :defer t
   :after elisp-mode)
 
 (use-package flycheck-package
-  :straight t
   :defer t
   :after elisp-mode)
 
 (use-package cask-mode
-  :straight t
   :defer t
   :after elisp-mode)
 

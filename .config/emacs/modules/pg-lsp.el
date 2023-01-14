@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package eglot
-  :straight t
   :init
   (with-eval-after-load 'rustic-mode
     (add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1))))

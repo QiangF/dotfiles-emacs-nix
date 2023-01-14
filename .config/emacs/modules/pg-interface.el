@@ -41,7 +41,6 @@
 (add-hook 'server-after-make-frame-hook #'pg/config-frame)
 
 (use-package hl-todo
-  :straight t
   :init
   (add-hook 'prog-mode-hook #'hl-todo-mode))
 

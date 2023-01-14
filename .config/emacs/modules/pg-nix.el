@@ -1,7 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package nix-mode
-  :straight t
   :init
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))

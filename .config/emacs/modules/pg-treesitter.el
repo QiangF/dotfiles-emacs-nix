@@ -2,6 +2,7 @@
 
 ;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
 (use-package treesit
+  :straight nil
   :commands (treesit-install-language-grammar)
   :if (version< "29" emacs-version)
   :init
@@ -53,12 +54,10 @@
 
 (use-package tree-sitter
   :if (and (version< emacs-version "29")
-           (string= "x86_64" (car (split-string system-configuration "-"))))
-  :straight t)
+           (string= "x86_64" (car (split-string system-configuration "-")))))
 
 (use-package tree-sitter-langs
   :if (version< emacs-version "29")
-  :straight t
   :after tree-sitter
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))

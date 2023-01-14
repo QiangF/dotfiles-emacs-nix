@@ -64,18 +64,15 @@
    
 (use-package htmlize
   :after org
-  :straight t
   :defer t)
 
 (use-package org-auto-tangle
   :after org
-  :straight t
   :init
   (add-hook 'org-mode-hook #'org-auto-tangle-mode))
 
 (use-package org-make-toc
   :after org
-  :straight t
   :defer t)
 
 (provide 'pg-org)

@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package telega
-  :straight t
   :after dash
   :commands (telega)
   :init
@@ -56,10 +55,10 @@
   (:keymaps 'telega-chat-mode-map
             "C-g" #'telega-chatbuf-cancel-aux))
 
-(use-package alert
-  :straight t)
+(use-package alert)
 
 (use-package telega-alert
+  :straight nil
   :after telega alert
   :config
   (telega-alert-mode 1)
@@ -70,6 +69,7 @@
 
 (use-package telega-dashboard
   :disabled
+  :straight nil
   :after telega dashboard
   :config
   (defun dashboard-refresh-buffer-silent ()
