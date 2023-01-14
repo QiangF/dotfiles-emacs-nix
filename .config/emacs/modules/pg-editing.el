@@ -52,6 +52,7 @@
 ;; Languages
 (require 'pg-docker)
 (require 'pg-elisp)
+(require 'pg-json)
 (require 'pg-lua)
 (require 'pg-nix)
 (require 'pg-python)
