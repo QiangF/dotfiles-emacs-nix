@@ -98,7 +98,6 @@
    "f r" #'(consult-recent-file :wk "recent")))
 
 (use-package consult-eglot
-  :disabled
   :straight t
   :after consult eglot
   :config
@@ -122,15 +121,6 @@
   :init
   (add-hook 'dired-mode-hook #'all-the-icons-dired-mode))
     
-(use-package consult-lsp
-  :disabled
-  :straight t
-  :after consult lsp
-  :config
-  (pg/leader
-   :keymaps 'lsp-mode-map
-   "s e" #'(consult-lsp-diagnostics :wk "errors")))
-
 (use-package marginalia
   :straight t
   :after vertico
