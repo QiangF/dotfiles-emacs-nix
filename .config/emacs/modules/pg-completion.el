@@ -9,6 +9,8 @@
   (setq corfu-popupinfo-delay 0.5)
 
   (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
+  (with-eval-after-load 'elisp-mode
+      (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
   :general
   ; Clear conflicting C-k keybind
@@ -19,11 +21,6 @@
    "C-k" #'corfu-previous
    "C-S-j" #'corfu-scroll-up
    "C-S-k" #'corfu-scroll-down))
-
-(use-package corfu
-  :after elisp-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
 (use-package eldoc-box
   :disabled
