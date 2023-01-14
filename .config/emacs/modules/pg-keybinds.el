@@ -1,12 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(defun evil-close-fold-below ()
-  "Close fold on current line instead of enclosing block at point"
-  (interactive)
-  (save-excursion
-    (end-of-line)
-    (evil-close-fold)))
-
 (defun move-line-up ()
     (interactive)
     (transpose-lines 1)
@@ -133,23 +126,12 @@
   (advice-add 'evil-backward-section-begin
               :after #'evil-scroll-line-to-center)
 
-  ;; Keep cursor in place when opening a fold
-  (advice-add 'evil-open-fold
-              :around (lambda (inner &rest _)  
-                        (save-excursion (funcall inner))))
-
   (pg/leader
     :states 'normal
     "b p" #'(evil-prev-buffer :wk "previous")
     "b n" #'(evil-next-buffer :wk "next")
     "b N" #'(evil-buffer-new :wk "new")
     "`" #'(toggle-maximize-buffer :wk "fullscreen"))
-
-  (general-define-key
-   :states 'normal
-   "z c" #'evil-close-fold-below
-   "z m" #'hs-hide-level
-   "z C" #'evil-close-fold)
 
   (general-define-key
    :states 'normal
