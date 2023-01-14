@@ -43,6 +43,7 @@
 (require 'pg-projects)
 (require 'pg-restclient)
 (require 'pg-snippets)
+(require 'pg-sqlite)
 (require 'pg-treesitter)
 (require 'pg-undo)
 
