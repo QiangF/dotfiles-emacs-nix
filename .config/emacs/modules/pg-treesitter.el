@@ -2,7 +2,7 @@
 
 ;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
 (use-package treesit
-  :commands (treesit-install-language-grammar nf/treesit-install-all-languages)
+  :commands (treesit-install-language-grammar)
   :if (version< "29" emacs-version)
   :init
   (setq treesit-language-source-alist
