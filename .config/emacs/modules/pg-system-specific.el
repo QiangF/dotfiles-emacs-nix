@@ -10,6 +10,7 @@
     (when (file-exists-p system-config)
       (load-file system-config))))
 
+;; local.el is an untracked / .gitignored file. Load it if it exists
 (let ((local-config (expand-file-name "local.el" pg/config-dir)))
   (when (file-exists-p local-config)
     (load-file local-config)))
