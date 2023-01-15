@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-environment)
 (require 'pg-keybinds)
 (require 'pg-treesitter)
 
