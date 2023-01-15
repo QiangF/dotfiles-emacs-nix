@@ -3,24 +3,31 @@
 (require 'pg-keybinds)
 (require 'pg-treesitter)
 
-(with-eval-after-load 'corfu
-  (add-hook 'python-mode-hook #'corfu-mode)
-  (add-hook 'python-ts-mode-hook #'corfu-mode))
+(let ((python-modes '(python-mode))
+      (python-hooks '(python-mode-hook)))
 
-(with-eval-after-load 'tree-sitter
-  (add-hook 'python-mode-hook #'tree-sitter-mode))
+  (when (pg/native-treesitter-p)
+    (add-to-list 'python-modes 'python-ts-mode)
+    (add-to-list 'python-hooks 'python-ts-mode-hook))
 
-(with-eval-after-load 'eglot
-  (dolist (mode '(python-mode
-                  python-ts-mode))
-    (add-to-list 'eglot-server-programs `(,mode . ("jedi-language-server"))))
+  (with-eval-after-load 'corfu
+    (dolist (hook python-hooks)
+      (add-hook hook #'corfu-mode)))
 
-  (dolist (hook '(python-mode-hook
-                  python-ts-mode-hook))
-    (add-hook hook #'eglot-ensure)))
+  ;; this version of tree-sitter is only used when native treesit is not
+  ;; available
+  (with-eval-after-load 'tree-sitter
+    (add-hook 'python-mode-hook #'tree-sitter-mode))
 
-(with-eval-after-load 'lsp-mode
-  (add-hook 'python-mode-hook #'lsp)
-  (add-hook 'python-ts-mode-hook #'lsp))
+  (with-eval-after-load 'eglot
+    (dolist (mode python-modes)
+      (add-to-list 'eglot-server-programs `(,mode . ("jedi-language-server"))))
+
+    (dolist (hook python-hooks)
+      (add-hook hook #'eglot-ensure)))
+
+  (with-eval-after-load 'lsp-mode
+    (dolist (hook python-hooks)
+      (add-hook hook #'lsp))))
 
 (provide 'pg-python)
