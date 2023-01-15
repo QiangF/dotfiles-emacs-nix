@@ -1,10 +1,14 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(defun pg/native-treesitter-p ()
+  (and (version< "29" emacs-version)
+       (treesit-available-p)))
+
 ;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
 (use-package treesit
   :straight nil
   :commands (treesit-install-language-grammar)
-  :if (version< "29" emacs-version)
+  :if (pg/native-treesitter-p)
   :init
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
@@ -54,11 +58,11 @@
         (treesit-install-language-grammar lang)))))
 
 (use-package tree-sitter
-  :if (and (version< emacs-version "29")
+  :if (and (not (pg/native-treesitter-p))
            (string= "x86_64" (car (split-string system-configuration "-")))))
 
 (use-package tree-sitter-langs
-  :if (version< emacs-version "29")
+  :if (not (pg/native-treesitter-p))
   :after tree-sitter
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
