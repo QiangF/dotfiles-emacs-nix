@@ -56,6 +56,10 @@
     (kbd "M-l") #'puni-slurp-forward
     (kbd "M-d") #'puni-kill-line))
 
+(use-package envrc
+  :init
+  (envrc-global-mode))
+
 (require 'pg-flycheck)
 (require 'pg-folding)
 (require 'pg-git)
