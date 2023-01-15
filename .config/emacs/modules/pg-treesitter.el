@@ -4,12 +4,12 @@
   (and (version< "29" emacs-version)
        (treesit-available-p)))
 
-;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
 (use-package treesit
+  :if (pg/native-treesitter-p)
   :straight nil
   :commands (treesit-install-language-grammar)
-  :if (pg/native-treesitter-p)
   :init
+  ;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
           (c . ("https://github.com/tree-sitter/tree-sitter-c"))
@@ -57,14 +57,13 @@
       (let ((lang (car grammar)))
         (treesit-install-language-grammar lang)))))
 
-(use-package tree-sitter
-  :if (and (not (pg/native-treesitter-p))
-           (string= "x86_64" (car (split-string system-configuration "-")))))
+(unless (pg/native-treesitter-p)
+  (use-package tree-sitter
+    :if (string= "x86_64" (car (split-string system-configuration "-"))))
 
-(use-package tree-sitter-langs
-  :if (not (pg/native-treesitter-p))
-  :after tree-sitter
-  :config
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  (use-package tree-sitter-langs
+    :after tree-sitter
+    :config
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)))
 
 (provide 'pg-treesitter)
