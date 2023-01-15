@@ -33,6 +33,7 @@
           (all               "--" "")))
 
   :config
+  (evil-set-initial-state 'telega-chat-mode 'insert)
   (with-eval-after-load 'persp-mode
     (add-hook 'telega-chat-mode-hook (lambda () (persp-switch "telegram")))
     (add-hook 'telega-root-mode-hook
