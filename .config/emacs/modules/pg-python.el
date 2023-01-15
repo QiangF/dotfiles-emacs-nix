@@ -10,17 +10,16 @@
   (add-hook 'python-mode-hook #'tree-sitter-mode))
 
 (with-eval-after-load 'eglot
-  (add-hook 'python-mode-hook #'eglot-ensure)
-  (add-hook 'python-ts-mode-hook #'eglot-ensure)
-  (add-to-list 'eglot-server-programs '(python-ts-mode . ("jedi-language-server"))))
+  (dolist (mode '(python-mode
+                  python-ts-mode))
+    (add-to-list 'eglot-server-programs `(,mode . ("jedi-language-server"))))
+
+  (dolist (hook '(python-mode-hook
+                  python-ts-mode-hook))
+    (add-hook hook #'eglot-ensure)))
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'python-ts-mode-hook #'lsp))
-
-(use-package pyvenv
- :after python
- :init
- (setenv "WORKON_HOME" "/home/purplg/code/python/.venv"))
 
 (provide 'pg-python)
