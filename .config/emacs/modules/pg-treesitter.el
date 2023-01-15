@@ -25,6 +25,7 @@
           (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
           (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
           (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
+          (yaml . ("https://github.com/panekj/tree-sitter-yaml"))
           (zig . ("https://github.com/GrayJack/tree-sitter-zig"))))
 
   (setq major-mode-remap-alist
