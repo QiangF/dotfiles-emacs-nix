@@ -104,6 +104,7 @@
    "SPC" nil))
 
 (use-package evil
+  :straight (:type git :host github :repo "emacs-evil/evil" :branch "00bd297")
   :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
