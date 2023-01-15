@@ -1,14 +1,14 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-apps)
 
-(when (daemonp)
-  (require 'pg-daemon))
+(let ((system-dir (expand-file-name "system-specific/" pg/config-dir)))
+  (when (daemonp)
+    (load-file (expand-file-name "daemon.el" system-dir)))
 
-;; Load system-specific modules (hostname)
-(cond ((string= "desktop" (system-name))
-       (require 'pg-desktop))
-      ((string= "framework" (system-name))
-       (require 'pg-framework)))
+  ;; Load system-specific modules (hostname)
+  (let ((system-config (expand-file-name (concat (system-name) ".el") system-dir)))
+    (when (file-exists-p system-config)
+      (load-file system-config))))
 
 (let ((local-config (expand-file-name "local.el" pg/config-dir)))
   (when (file-exists-p local-config)
