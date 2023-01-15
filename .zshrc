@@ -53,6 +53,8 @@ source $HOME/.aliases
 
 eval $(keychain --quiet --eval id_ed25519 --noask)
 
+export NIXPKGS_ALLOW_UNFREE=1
+
 # Starship prompt
 eval "$(starship init zsh)"
 
