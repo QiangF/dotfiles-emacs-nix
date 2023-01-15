@@ -79,10 +79,10 @@
     },
     "custom/screenshot": {
 	"format": "",
-	"on-click":  "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot region",
-	"on-right":  "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot window",
-	"on-middle": "SWAYSHOT_WL_COPY_FILE=1 /usr/bin/swayshot display",
-        "tooltip": false
+	"on-click":  "grimshot copy area",
+	"on-click-right":  "grimshot copy window",
+	"on-click-middle": "grimshot copy display",
+	"tooltip": false
     },
     "custom/pipewire": {
         "format": "{icon}",
