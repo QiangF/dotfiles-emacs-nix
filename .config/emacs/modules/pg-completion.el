@@ -123,6 +123,9 @@
   :init
   (savehist-mode))
 
-(use-package cape)
+(use-package cape
+  :init
+  (evil-define-key 'insert global-map
+    (kbd "C-f") #'cape-file))
 
 (provide 'pg-completion)
