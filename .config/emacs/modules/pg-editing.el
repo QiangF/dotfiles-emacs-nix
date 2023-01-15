@@ -36,11 +36,6 @@
   :states '(normal visual)
   "t s" #'scroll-all-mode)
 
-(use-package exec-path-from-shell
-  :functions exec-path-from-shell-initialize
-  :init
-  (exec-path-from-shell-initialize))
-
 (use-package puni
   :hook (prog-mode . puni-mode)
   :init
@@ -56,10 +51,7 @@
     (kbd "M-l") #'puni-slurp-forward
     (kbd "M-d") #'puni-kill-line))
 
-(use-package envrc
-  :init
-  (envrc-global-mode))
-
+(require 'pg-environment)
 (require 'pg-flycheck)
 (require 'pg-folding)
 (require 'pg-git)
