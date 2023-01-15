@@ -482,16 +482,3 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+BEGIN_SRC conf
 include /etc/sway/config.d/*
 #+END_SRC
-
-Unbind upload screenshot keybinds
-#+BEGIN_SRC conf
-unbindsym $mod+Print
-unbindsym $mod+Mod1+Print
-unbindsym $mod+Shift+Print
-#+END_SRC
-
-Rebind new screenshot keybinds
-#+BEGIN_SRC conf
-bindsym $mod+Print exec swayshot window
-#+END_SRC
-
