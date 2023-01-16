@@ -30,12 +30,12 @@
    "TAB l" #'(persp-next :wk "next persp")
    "TAB h" #'(persp-prev :wk "prev persp"))
 
-  (general-define-key
-    "M-1" (lambda () (interactive) (persp-switch (nth 0 persp-names-cache)) (persp-list))
-    "M-2" (lambda () (interactive) (persp-switch (nth 1 persp-names-cache)) (persp-list))
-    "M-3" (lambda () (interactive) (persp-switch (nth 2 persp-names-cache)) (persp-list))
-    "M-4" (lambda () (interactive) (persp-switch (nth 3 persp-names-cache)) (persp-list))
-    "M-5" (lambda () (interactive) (persp-switch (nth 4 persp-names-cache)) (persp-list)))
+  (evil-define-key* 'normal global-map
+    (kbd "M-1") (lambda () (interactive) (persp-switch (nth 0 persp-names-cache)) (persp-list))
+    (kbd "M-2") (lambda () (interactive) (persp-switch (nth 1 persp-names-cache)) (persp-list))
+    (kbd "M-3") (lambda () (interactive) (persp-switch (nth 2 persp-names-cache)) (persp-list))
+    (kbd "M-4") (lambda () (interactive) (persp-switch (nth 3 persp-names-cache)) (persp-list))
+    (kbd "M-5") (lambda () (interactive) (persp-switch (nth 4 persp-names-cache)) (persp-list)))
 
   (add-hook 'after-init-hook
    (lambda () (persp-switch (persp-name (persp-add-new "Session")))))
