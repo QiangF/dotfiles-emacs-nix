@@ -46,7 +46,6 @@
   (advice-add #'telega-chatbuf--switch-in
               :after
               (lambda (&rest _)
-                (message "%s" (current-buffer))
                 (set-window-dedicated-p (get-buffer-window (current-buffer)) t)))
 
   (set-face-background 'telega-msg-heading "#1b1326")
