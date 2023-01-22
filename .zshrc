@@ -25,7 +25,7 @@ export TERM=xterm
 # Environment
 
 # direnv
-[[ $(which direnv) ]] && eval "$(direnv hook zsh)"
+which direnv 2>&1 > /dev/null && eval "$(direnv hook zsh)"
 
 export PATH=$PATH:$HOME/.local/bin
 export MOZ_ENABLE_WAYLAND=1
