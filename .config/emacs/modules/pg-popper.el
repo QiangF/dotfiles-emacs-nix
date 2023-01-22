@@ -8,10 +8,10 @@
            "^\\*eldoc.*\\*$"
            "^\\*xref.*\\*$"
            eshell-mode "^\\*eshell.*\\*$"
-           vterm-mode "^\\*vterm.*\\*$"
            flycheck-error-list-mode
            compilation-mode
            hass-dash-mode
+	   inferior-python-mode
            emacs-lisp-compilation-mode
            "^\\*rustfmt\\*$"
            "^\\*Warnings\\*$"
