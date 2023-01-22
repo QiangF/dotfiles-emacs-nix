@@ -3,6 +3,9 @@
 ;; Don't show startup page
 (setq inhibit-startup-message t)
 
+;; Use `y-or-n-p' instead of `yes-or-no-p'
+(setq use-short-answers t)
+
 (recentf-mode 1)
 
 ;; Fix scrolling so that it doesn't jump by pages
