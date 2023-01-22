@@ -3,13 +3,13 @@
 
 * Variables
 ** Modifier
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 set $mod Mod4
 #+END_SRC
 
 ** Movement
 Keys to move around Sway
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 set $left h
 set $down j
 set $up k
@@ -17,7 +17,7 @@ set $right l
 #+END_SRC
 
 ** Workspace keybinds
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 set $ws1-1-key q
 set $ws1-2-key w
 set $ws1-3-key e
@@ -29,7 +29,7 @@ set $ws1-3 3:$ws1-3-key:game
 set $ws1-4 4:$ws1-4-key:misc
 #+END_SRC
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 set $ws2-1-key a
 set $ws2-2-key s
 set $ws2-3-key d
@@ -42,7 +42,7 @@ set $ws2-4 8:$ws2-4-key
 #+END_SRC
 
 ** Preferred applications
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 set $term alacritty
 set $emacsclient emacsclient -n -c
 set $emacs emacs
@@ -54,18 +54,18 @@ Preferred application launcher
 Note: pass the final command to swaymsg so that the resulting window can be opened
 on the original workspace that the command was run on.
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 # set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
 set $menu rofi -show drun -show-icons -display-drun "Launch"
 set $pw_gui ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
 ** Include systems
-#+BEGIN_SRC conf :tangle (if (string= "desktop" (system-name)) "config" "")
+#+BEGIN_SRC bash :tangle (if (string= "desktop" (system-name)) "config" "")
 include desktop
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle (if (string= "framework" (system-name)) "config" "")
+#+BEGIN_SRC bash :tangle (if (string= "framework" (system-name)) "config" "")
 include framework
 #+END_SRC
 
@@ -76,38 +76,38 @@ You can get the mes of your outputs by running:
 swaymsg -t get_outputs
  #+END_EXAMPLE
 
-#+BEGIN_SRC conf :tangle desktop
+#+BEGIN_SRC bash :tangle desktop
 output * bg #100116 solid_color
 output DP-1 resolution 2560x1440@165Hz position 1440,560 adaptive_sync on
 output DP-2 resolution 2560x1440 position 0,0 transform 270
 #output DP-2 disable
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle desktop
+#+BEGIN_SRC bash :tangle desktop
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle framework
+#+BEGIN_SRC bash :tangle framework
 output * bg #000000 solid_color
 output eDP-1 resolution 2256x1504 scale 1.0
 #+END_SRC
 
 Assign
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 workspace $ws1-1 output DP-1
 workspace $ws1-2 output DP-1
 workspace $ws1-3 output DP-1
 workspace $ws1-4 output DP-1
 #+END_SRC
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 workspace $ws2-1 output DP-2
 workspace $ws2-2 output DP-2
 workspace $ws2-3 output DP-2
 workspace $ws2-4 output DP-2
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle framework
+#+BEGIN_SRC bash :tangle framework
 workspace $ws2-1 output eDP-1
 workspace $ws2-2 output eDP-1
 workspace $ws2-3 output eDP-1
@@ -125,7 +125,7 @@ client.urgent 2f343a 900000 ffffff 900000 900000
 client.placeholder 000000 0c0c0c ffffff 000000 0c0c0c
 #+end_example
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 default_border pixel 3
 client.focused 2f004c 2f004c 2f004c 2f004c 2f004c
 #+END_SRC
@@ -148,13 +148,13 @@ exec swayidle -w \
 You can get the names of your inputs by running: swaymsg -t get_inputs
 Read =man 5 sway-input= for more information about this section.
 
-#+BEGIN_SRC conf :tangle desktop
+#+BEGIN_SRC bash :tangle desktop
 input "5426:133:Razer_Razer_Basilisk_V2" {
         accel_profile flat enabled
 }
 #+END_SRC
 
-#+BEGIN_SRC conf :tangle framework
+#+BEGIN_SRC bash :tangle framework
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
         natural_scroll enabled
         tap enabled
@@ -163,12 +163,12 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 
 ** Key bindings
 *** Output
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym --locked XF86MonBrightnessUp exec lightctl up
 bindsym --locked XF86MonBrightnessDown exec lightctl down
 #+END_SRC
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym --locked XF86AudioRaiseVolume exec volumectl -u up
 bindsym --locked XF86AudioLowerVolume exec volumectl -u down
 bindsym --locked XF86AudioMute exec volumectl toggle-mute
@@ -177,35 +177,35 @@ bindsym --locked XF86AudioMicMute exec volumectl -m toggle-mute
 
 *** General
 Kill focused window
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+u kill
 #+END_SRC
 
 Launcher
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+u exec $menu
 #+END_SRC
 
 Drag floating windows by holding down $mod and left mouse button. Resize them with right mouse
 button + $mod. Despite the name, also works for non-floating windows. Change normal to inverse to
 use left mouse button for resizing and right mouse button for dragging.
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 floating_modifier $mod normal
 #+END_SRC
 
 Reload the configuration file
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+c reload
 #+END_SRC
 
 Logout
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Control+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #+END_SRC
 
 *** Applications
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Return exec $term
 bindsym $mod+apostrophe exec $emacsclient
 bindsym $mod+Shift+apostrophe exec $emacs
@@ -213,14 +213,14 @@ bindsym $mod+z exec $browser
 #+END_SRC
 
 Password manager
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+p exec $pw_gui -t
 bindsym $mod+Shift+p exec $pw_gui
 #+END_SRC
 
 *** Moving around:
 Move your focus around
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -228,7 +228,7 @@ bindsym $mod+$right focus right
 #+END_SRC
 
 Or use $mod+[up|down|left|right]
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -236,12 +236,12 @@ bindsym $mod+Right focus right
 #+END_SRC
  
 Switch to other output
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Tab focus output left
 #+END_SRC
 
 Move the focused window with the same, but add Shift
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -249,7 +249,7 @@ bindsym $mod+Shift+$right move right
 #+END_SRC
 
 Ditto, with arrow keys
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -258,7 +258,7 @@ bindsym $mod+Shift+Right move right
 
 *** Workspaces
 Switch to workspace
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 
 bindsym $mod+$ws1-1-key workspace $ws1-1
 bindsym $mod+$ws1-2-key workspace $ws1-2
@@ -273,7 +273,7 @@ bindsym $mod+$ws2-4-key workspace $ws2-4
 
 Move focused container to workspace
 Note: workspaces can have any name you want, not just numbers.
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+$ws1-1-key move container to workspace $ws1-1
 bindsym $mod+Shift+$ws1-2-key move container to workspace $ws1-2
 bindsym $mod+Shift+$ws1-3-key move container to workspace $ws1-3
@@ -288,13 +288,13 @@ bindsym $mod+shift+$ws2-4-key move container to workspace $ws2-4
 *** Layout stuff
 You can "split" the current object of your focus with $mod+b or $mod+v, for horizontal and vertical
 splits respectively.
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Control+l splith
 bindsym $mod+Control+j splitv
 #+END_SRC
 
 Switch to different layouts
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 #bindsym $mod+s layout stacking
 #bindsym $mod+e layout tabbed
 bindsym $mod+Shift+y layout toggle all
@@ -302,27 +302,27 @@ bindsym $mod+y split none
 #+END_SRC
 
 Toggle fullscreen
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+g fullscreen
 #+END_SRC
 
 Toggle floating
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+g floating toggle
 #+END_SRC
 
 Swap focus between the tiling area and the floating area
-#+BEGIN_SRC conf :tangle no
+#+BEGIN_SRC bash :tangle no
 #bindsym $mod+space focus mode_toggle
 #+END_SRC
 
 Move focus to the parent container
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 #bindsym $mod+Shift+p focus parent
 #+END_SRC
 
 *** Media control
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPlay exec mpc toggle
@@ -333,19 +333,19 @@ Sway has a "scratchpad", which is a bag of holding for windows.
 You can send windows there and get them back later.
 
 Move the currently focused window to the scratchpad
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+Shift+minus move scratchpad
 #+END_SRC
 
 Show the next scratchpad window or hide the focused scratchpad window.
 If there are multiple scratchpad windows, this command cycles through them.
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bindsym $mod+minus scratchpad show
 #+END_SRC
 
 *** Resizing containers:
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 
 mode "resize" {
     bindsym $left resize shrink width 100px
@@ -378,107 +378,70 @@ bar {
 }
 #+END_EXAMPLE
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 bar {
     swaybar_command waybar
 }
 #+END_SRC
 
 ** Window Rules
-*** Applications
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
+# Apps
 for_window [class="discord"] move container to workspace $ws2-1
 for_window [app_id="discord"] move container to workspace $ws2-1
+for_window [app_id="pavucontrol"] move container to workspace $ws2-1
 for_window [class="emacs"] move container to workspace $ws2-3
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="zenity"] floating enable
-#+END_SRC
-
-**** Dev
-#+BEGIN_SRC conf :tangle desktop
-for_window [app_id="tauri-app"] move container to workspace $ws2-2
-#+END_SRC
-
-**** Unity
-#+BEGIN_SRC conf
+# Unity
 for_window [class="Unity"] move container to workspace $ws2-2
 for_window [class="unityhub"] floating true
 for_window [class="unityhub"] move container to workspace $ws2-2
-#+END_SRC
-
-*** Games
-**** Guild Wars 2
-#+BEGIN_SRC conf
-for_window [class="gw2-64.exe"] move container to workspace $ws1-3
-#+END_SRC
-**** Launchers
-#+BEGIN_SRC conf
+# Launchers
 for_window [app_id="lutris"] move container to workspace $ws1-2
 for_window [app_id="lutris"] floating enable
 for_window [class="Steam"] move container to workspace $ws1-2
 for_window [class="steam"] move container to workspace $ws2-1
-#+END_SRC
 
-**** Minecraft
-#+BEGIN_SRC conf
+# Guild Wars 2
+for_window [class="gw2-64.exe"] move container to workspace $ws1-3
+# Minecraft
 for_window [class="Minecraft*"] move container to workspace $ws1-3
-#+END_SRC
-
-**** Overwatch
-#+BEGIN_SRC conf
+# Overwatch
 for_window [class="battle.net.exe"] move container to workspace $ws1-2
 for_window [class="battle.net.exe"] floating enable
 for_window [class="overwatch.exe"] move container to workspace $ws1-3
 for_window [class="overwatch.exe"] fullscreen enable
 # Stash floating wine system tray to scratchpad
 #for_window [title="Wine System Tray"] move container to scratchpad
-#+END_SRC
-
-**** Gamescope
-#+BEGIN_SRC conf
+# Gamescope
 for_window [class="gamescope"] move container to workspace $ws1-3
-for_window [class="gamescope"] floating true
-#+END_SRC
-
-**** SteamTinkerLauncher
-#+BEGIN_SRC conf
+# SteamTinkerLauncher
+,#+BEGIN_SRC bash
 for_window [app_id="yad"] move container to workspace $ws1-3
 for_window [app_id="yad"] floating true
-#+END_SRC
-
-**** Mupen64
-#+BEGIN_SRC conf
+# Mupen64
 for_window [app_id="mupen64plus-gui"] move container to workspace $ws1-3
 for_window [app_id="mupen64plus-gui"] floating true
-#+END_SRC
-
-**** RetroArch
-#+BEGIN_SRC conf
+# RetroArch
 for_window [app_id="retroarch"] move container to workspace $ws1-3
 for_window [app_id="retroarch"] fullscreen true
-#+END_SRC
-
-**** Some game? I should have labeled this...
-#+BEGIN_SRC conf
-for_window [class="steam_app_252950"] move container to workspace $ws1-3
-for_window [class="steam_app_252950"] fullscreen true
-#+END_SRC
-**** Dolphin
-#+BEGIN_SRC conf
+# Dolphin
 for_window [class="dolphin-emu"] move container to workspace $ws1-3
 for_window [class="dolphin-emu"] floating true
 #+END_SRC
 
 * Autostart
 
-#+BEGIN_SRC conf
-exec discord-canary
+#+BEGIN_SRC bash
+exec discord
 exec swaync
+exec pavucontrol
 bindsym $mod+grave exec swaync-client -t -sw
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+END_SRC
 
 * Defaults
-#+BEGIN_SRC conf
+#+BEGIN_SRC bash
 include /etc/sway/config.d/*
 #+END_SRC
