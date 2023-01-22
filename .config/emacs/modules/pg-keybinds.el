@@ -132,6 +132,9 @@
     "`" #'(toggle-maximize-buffer :wk "fullscreen"))
 
   (general-define-key
+   "M-u" #'universal-argument)
+
+  (general-define-key
    :states 'normal
    "M-j" #'move-line-down
    "M-k" #'move-line-up
