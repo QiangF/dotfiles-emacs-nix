@@ -28,6 +28,12 @@
 
   (with-eval-after-load 'lsp-mode
     (dolist (hook python-hooks)
-      (add-hook hook #'lsp))))
+      (add-hook hook #'lsp)))
+
+  (advice-add #'run-python :around
+              (lambda (fn &rest args)
+                (let ((default-directory (or (project-root (project-current))
+                                             default-directory)))
+                  (apply fn args)))))
 
 (provide 'pg-python)
