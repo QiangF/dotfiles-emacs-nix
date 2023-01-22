@@ -1,6 +1,8 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(setq completion-ignore-case t)
+
 (use-package corfu
   :straight (:files (:defaults "extensions/corfu-popupinfo.el"))
   :init
