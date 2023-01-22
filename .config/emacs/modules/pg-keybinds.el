@@ -162,6 +162,7 @@
   (setq evil-collection-outline-bind-tab-p t)
   (setq evil-collection-want-unimpaired-p nil)
   (setq evil-collection-setup-minibuffer t)
+  (setq evil-collection-calendar-want-org-bindings t)
   :config
   (evil-collection-init))
 
