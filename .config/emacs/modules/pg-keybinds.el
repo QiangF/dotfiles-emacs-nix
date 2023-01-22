@@ -168,6 +168,7 @@
   :init
   (setq evil-collection-outline-bind-tab-p t)
   (setq evil-collection-want-unimpaired-p nil)
+  (setq evil-collection-setup-minibuffer t)
   :config
   (evil-collection-init))
 
