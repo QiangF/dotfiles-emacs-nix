@@ -147,6 +147,12 @@
    "C-w C-l" #'evil-window-right
    "C-<tab>" #'evil-switch-to-windows-last-buffer)
 
+  (general-define-key
+   :states 'normal
+   "C-a" '(:ignore t :wk "avy")
+   "C-a l" #'evil-avy-goto-line
+   "C-a c" #'evil-avy-goto-char)
+
   (evil-mode 1))
 
 (use-package evil-surround
