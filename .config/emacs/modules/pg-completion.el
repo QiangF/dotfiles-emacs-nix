@@ -88,6 +88,7 @@
    "b o" #'(consult-buffer-other-frame :wk "buffer-other")
    "s b" #'(consult-line :wk "buffer")
    "s p" #'(consult-line-multi :wk "project")
+   "s h" #'(consult-outline :wk "heading")
    "s r" #'(consult-ripgrep :wk "regex")
    "f r" #'(consult-recent-file :wk "recent")))
 
