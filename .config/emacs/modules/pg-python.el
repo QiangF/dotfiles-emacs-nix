@@ -36,4 +36,9 @@
                                              default-directory)))
                   (apply fn args)))))
 
+(with-eval-after-load 'ob-core
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t))))
+
 (provide 'pg-python)
