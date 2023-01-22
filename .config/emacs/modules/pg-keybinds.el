@@ -94,14 +94,7 @@
    "b s" #'(open-scratch-buffer :wk "scratch")
    "b m" #'(view-echo-area-messages :wk "messages")
 
-   ";" #'eval-expression)
-
-  ;; Unbind SPC in Dired mode
-  ;; Dired takes precendence for the ~SPC~ key. Don't like that
-  (general-define-key
-   :states 'normal
-   :keymaps 'dired-mode-map
-   "SPC" nil))
+   ";" #'eval-expression))
 
 (use-package evil
   :straight (:type git :host github :repo "emacs-evil/evil" :branch "00bd297")
