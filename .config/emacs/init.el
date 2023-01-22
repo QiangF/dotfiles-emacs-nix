@@ -50,6 +50,11 @@
 (setq straight-use-package-by-default t)
 (setq straight-disable-native-compile nil)
 
+(defun advice-unadvice (sym)
+  "Remove all advices from symbol SYM."
+  (interactive "aFunction symbol: ")
+  (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))
+
 ;; * Emacs config
 (require 'pg-keybinds)
 (require 'pg-interface)
