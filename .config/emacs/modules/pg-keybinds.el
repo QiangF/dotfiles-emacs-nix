@@ -97,7 +97,7 @@
    ";" #'eval-expression))
 
 (use-package evil
-  :straight (:type git :host github :repo "emacs-evil/evil" :branch "00bd297")
+  :straight t
   :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
