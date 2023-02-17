@@ -47,7 +47,6 @@
                 (setq current-theme (modus-themes--current-theme)))))
 
 (use-package ef-themes
-  :disabled
   :init
   (set-theme 'ef-winter)
   (with-eval-after-load 'hl-line
@@ -57,6 +56,7 @@
   :hook (org-mode . org-modern-mode))
 
 (use-package doom-themes
+  :disabled
   :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
