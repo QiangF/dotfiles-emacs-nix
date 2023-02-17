@@ -3,6 +3,7 @@
 (require 'pg-modeline)
 
 (use-package persp-mode
+  :disabled
   :config
   (setq persp-auto-resume-time -1)
   (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
@@ -43,6 +44,7 @@
   (persp-mode))
 
 (use-package persp-mode
+  :disabled
   :after doom-modeline
   :config
   ;; Modified from Doom's `+workspace--tabline`
@@ -73,5 +75,27 @@
   ;; Show list of perspectives after switching
   (advice-add 'persp-next :after #'persp-list)
   (advice-add 'persp-prev :after #'persp-list))
+
+(use-package tabspaces
+  :init
+  (setq tab-bar-show 1)
+  (tabspaces-mode)
+  :config
+  (pg/leader
+    :keymaps 'tabspaces-mode-map
+    "b b" #'(tabspaces-switch-to-buffer :wk "buffer")
+    "TAB" #'(:wk "spaces")
+    ;; "TAB TAB" #'(persp-list :wk "list")
+    "TAB s" #'(tabspaces-switch-buffer-and-tab :wk "switch")
+    ;; "TAB a" #'(persp-add-buffer :wk "add buffer")
+    "TAB x" #'(tabspaces-remove-selected-buffer :wk "remove buffer")
+    "TAB d" #'(tabspaces-kill-buffers-close-workspace :wk "kill")
+    ;; "TAB r" #'(persp-rename :wk "rename")
+    ;; "TAB n" #'(persp-switch-to-new :wk "new and switch")
+    ;; "TAB N" #'(persp-add-new :wk "new")
+    "TAB p" #'(tabspaces-open-or-create-project-and-workspace :wk "new with project")
+    "TAB l" #'(tab-next :wk "next")
+    "TAB h" #'(tab-previous :wk "prev")
+    ))
 
 (provide 'pg-workspaces)
