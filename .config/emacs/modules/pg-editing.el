@@ -65,6 +65,7 @@
 
 
 ;; Languages
+(require 'pg-csharp)
 (require 'pg-docker)
 (require 'pg-elisp)
 (require 'pg-json)
