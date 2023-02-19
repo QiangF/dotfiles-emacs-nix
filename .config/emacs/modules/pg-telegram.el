@@ -36,6 +36,7 @@
   (evil-set-initial-state 'telega-chat-mode 'insert)
   (with-eval-after-load 'persp-mode
     (add-hook 'telega-chat-mode-hook (lambda () (persp-switch "telegram")))
+    (add-hook 'telega-chat-mode-hook (lambda () (electric-pair-mode -1)))
     (add-hook 'telega-root-mode-hook
               (lambda ()
                 (unless (persp-with-name-exists-p "telegram")
