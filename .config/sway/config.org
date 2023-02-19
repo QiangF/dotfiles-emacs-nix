@@ -394,14 +394,14 @@ for_window [class="emacs"] move container to workspace $ws2-3
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="zenity"] floating enable
 # Unity
-for_window [class="Unity"] move container to workspace $ws2-2
+for_window [class="Unity"] floating true
 for_window [class="unityhub"] floating true
-for_window [class="unityhub"] move container to workspace $ws2-2
 # Launchers
 for_window [app_id="lutris"] move container to workspace $ws1-2
 for_window [app_id="lutris"] floating enable
 for_window [class="Steam"] move container to workspace $ws1-2
-for_window [class="steam"] move container to workspace $ws2-1
+for_window [class="steam"] move container to workspace $ws1-2
+for_window [class="steamwebhelper"] move container to workspace $ws1-2
 
 # Guild Wars 2
 for_window [class="gw2-64.exe"] move container to workspace $ws1-3
