@@ -79,6 +79,7 @@
         (list (car bounds)
               (cdr bounds)
               (mapcar #'car hass--available-entities)))))
+  (hass-ensure)
 
   :config
   ;; An automation just to "eat my own dogfood".
@@ -90,7 +91,6 @@
               (when (equal entity-id "switch.bedroom_light")
                 (if (hass-switch-p entity-id)
                     (set-theme 'tsdh-light)
-                  (set-theme pg/hass-original-theme)))))
-  (hass-ensure))
+                  (set-theme pg/hass-original-theme))))))
 
 (provide 'pg-hass)
