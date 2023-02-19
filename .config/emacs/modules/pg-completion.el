@@ -13,7 +13,7 @@
 
   (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
   (with-eval-after-load 'elisp-mode
-      (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
+    (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
   :general
   ; Clear conflicting C-k keybind
