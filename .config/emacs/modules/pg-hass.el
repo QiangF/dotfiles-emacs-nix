@@ -49,22 +49,26 @@
                                                          (hass-dash-button :entity-id "vacuum.valetudo_vacuum"
                                                                            :service "vacuum.locate"
                                                                            :format "%[%t%]\n"
-                                                                           :label "Locate"))))
-                            (testing . ((hass-dash-group :title "" :format "%v"
-                                                         (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                                         (hass-dash-button :entity-id "scene.test_scene"))))
-                            (broken . ((hass-dash-group :title "Group 1"
-                                                        (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                                        (hass-dash-group :title "Group 1 Subgroup 1"
-                                                                         (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
-                                                        (hass-dash-group :title "Group 1 Subgroup 2"
-                                                                         (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")))
-                                       (hass-dash-group :title "Group 2"
-                                                        (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                                        (hass-dash-group :title "Group 2 Subgroup 1"
-                                                                         (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
-                                                        (hass-dash-group :title "Group 2 Subgroup 2"
-                                                                         (hass-dash-toggle :entity-id "input_boolean.hass_mode_tes")))))))
+
+                                                                           :label "Locate"))))))
+  (when nil
+    (add-to-list 'hass-dash-layouts
+                 '(testing . ((hass-dash-group :title "" :format "%v"
+                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
+                                               (hass-dash-button :entity-id "scene.test_scene")))))
+    (add-to-list 'hass-dash-layouts
+                 '(broken . ((hass-dash-group :title "Group 1"
+                                              (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
+                                              (hass-dash-group :title "Group 1 Subgroup 1"
+                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
+                                              (hass-dash-group :title "Group 1 Subgroup 2"
+                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")))
+                             (hass-dash-group :title "Group 2"
+                                              (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
+                                              (hass-dash-group :title "Group 2 Subgroup 1"
+                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
+                                              (hass-dash-group :title "Group 2 Subgroup 2"
+                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_tes")))))))
 
   (defun hass-capf (&optional interactive)
     (interactive (list t))
