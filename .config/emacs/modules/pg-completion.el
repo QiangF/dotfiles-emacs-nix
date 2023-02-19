@@ -12,6 +12,7 @@
   (setq corfu-popupinfo-delay 0.5)
 
   (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
+
   (with-eval-after-load 'elisp-mode
     (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
