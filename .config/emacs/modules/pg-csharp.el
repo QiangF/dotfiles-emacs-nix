@@ -8,4 +8,12 @@
   (add-hook 'csharp-mode-hook #'lsp)
   (add-hook 'csharp-ts-mode-hook #'lsp))
 
+(with-eval-after-load 'eglot
+  (add-hook 'csharp-mode-hook #'eglot-ensure)
+  (add-hook 'csharp-ts-hook #'eglot-ensure))
+
+(with-eval-after-load 'corfu
+  (add-hook 'csharp-mode-hook #'corfu-mode)
+  (add-hook 'csharp-ts-mode-hook #'corfu-mode))
+
 (provide 'pg-csharp)
