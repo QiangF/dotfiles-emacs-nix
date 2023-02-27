@@ -93,9 +93,8 @@
     ;; "TAB r" #'(persp-rename :wk "rename")
     ;; "TAB n" #'(persp-switch-to-new :wk "new and switch")
     ;; "TAB N" #'(persp-add-new :wk "new")
-    "TAB p" #'(tabspaces-open-or-create-project-and-workspace :wk "new with project")
+    "TAB p" #'(tabspaces-project-switch-project-open-file :wk "new with project")
     "TAB l" #'(tab-next :wk "next")
-    "TAB h" #'(tab-previous :wk "prev")
-    ))
+    "TAB h" #'(tab-previous :wk "prev")))
 
 (provide 'pg-workspaces)
