@@ -70,7 +70,7 @@
    :states 'normal
    :keymaps 'org-present-mode-keymap
    "SPC" nil
-   "g g" #'org-previous-visible-heading)
+   "g g" (lambda () (interactive) (org-up-heading-all 99)))
 
   (pg/leader
     :states 'normal
