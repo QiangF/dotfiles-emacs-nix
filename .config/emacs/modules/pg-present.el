@@ -44,11 +44,14 @@
     (setq-local face-remapping-alist nil)
     (org-modern-mode 1))
 
+  (defun pg/org-present-prepare-slide (buffer-name heading)
+    (org-overview)
+    (org-fold-show-entry)
+    (org-fold-show-children))
+
   (add-hook 'org-present-mode-hook #'pg/org-present-start)
   (add-hook 'org-present-mode-quit-hook #'pg/org-present-end)
-
-  (setq visual-fill-column-mode 110)
-  (setq visual-fill-column-center-text t)
+  (add-hook 'org-present-after-navigate-functions #'pg/org-present-prepare-slide)
 
   :config
   (defun org-present-toggle-cursor ()
