@@ -36,7 +36,6 @@
         '((sh-mode         . bash-ts-mode)
           (c-mode          . c-ts-mode)
           (c++-mode        . c++-ts-mode)
-          (csharp-mode     . csharp-ts-mode)
           (cmake-mode      . cmake-ts-mode)
           (css-mode        . css-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
