@@ -32,7 +32,7 @@
 
   (advice-add #'run-python :around
               (lambda (fn &rest args)
-                (let ((default-directory (or (project-root (project-current))
+                (let ((default-directory (or (ignore-error (project-root (project-current)))
                                              default-directory)))
                   (apply fn args)))))
 
