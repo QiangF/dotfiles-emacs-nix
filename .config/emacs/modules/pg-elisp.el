@@ -34,7 +34,9 @@
 
 (use-package lispy
   :after elisp-mode
-  :hook (emacs-lisp-mode . lispy-mode))
+  :hook (emacs-lisp-mode . lispy-mode)
+  :init
+  (setq lispy-eval-display-style 'message))
 
 (use-package lispyville
   :hook (emacs-lisp-mode . lispyville-mode))
