@@ -10,8 +10,9 @@
                       completion-at-point-functions)))
   (add-hook 'fundamental-mode 'tempel-setup-capf)
   (general-define-key
+   :keymap 'tempel-map
     :states 'insert
-    "M-<tab>" #'tempel-expand
-    "M-S-<tab>" #'tempel-complete))
+    "M-<tab>" #'tempel-expand)
+  (add-hook 'org-mode-hook #'corfu-mode))
 
 (provide 'pg-snippets)
