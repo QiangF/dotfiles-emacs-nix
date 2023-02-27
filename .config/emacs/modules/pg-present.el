@@ -25,7 +25,7 @@
     (setq org-link-descriptive t)
     (org-link-descriptive-ensure)
 
-    (setq-local visual-fill-column-width 130)
+    (setq-local visual-fill-column-width 200)
     (setq-local visual-fill-column-center-text t)
     (visual-fill-column-mode 1)
     (setq-local face-remapping-alist '((default (:height 3.0) variable-pitch)
