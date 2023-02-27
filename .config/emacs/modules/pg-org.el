@@ -79,4 +79,10 @@
   :after org
   :defer t)
 
+(with-eval-after-load 'ob-core
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (shell . t))))
+
 (provide 'pg-org)
