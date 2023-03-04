@@ -9,7 +9,6 @@
     "g b" #'(magit-blame :wk "blame")
     "g w" #'(magit-worktree :wk "worktree")))
 
-
 (use-package git-gutter
   :disabled
   :hook (prog-mode . git-gutter-mode))
@@ -19,5 +18,10 @@
   (prog-mode . diff-hl-mode)
   (prog-mode . diff-hl-flydiff-mode)
   (prog-mode . diff-hl-show-hunk-mouse-mode))
+
+(use-package blamer
+  :init
+  (pg/leader
+    "t b" #'(blamer-mode :wk blame)))
 
 (provide 'pg-git)
