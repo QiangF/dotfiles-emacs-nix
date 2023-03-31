@@ -7,6 +7,7 @@
   (setq hass-host "homeassistant.lan")
   (setq hass-insecure t)
   (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
+
   (pg/leader
     :states 'normal
     "a" #'(:ignore t :wk "automation")
@@ -79,7 +80,8 @@
         (list (car bounds)
               (cdr bounds)
               (mapcar #'car hass--available-entities)))))
-  (hass-ensure)
+
+  (when hass-apikey (hass-ensure))
 
   :config
   ;; An automation just to "eat my own dogfood".
