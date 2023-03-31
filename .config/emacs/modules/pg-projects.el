@@ -12,7 +12,12 @@
    :around
    (lambda (inner &optional starting-directory)
      (let ((default-directory (or starting-directory default-directory)))
-       (funcall inner)))))
+       (funcall inner))))
+  (pg/leader
+    :states 'normal
+    "p" #'(:ignore t :wk "project")
+    "p f" #'(project-find-file :wk "find file")
+    "f p" #'(project-find-file :wk "find file")))
 
 (use-package treebund
   :straight (:type git :host github :repo "purplg/treebund.el")
