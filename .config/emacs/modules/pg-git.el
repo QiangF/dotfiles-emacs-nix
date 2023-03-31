@@ -19,7 +19,8 @@
   :hook
   (prog-mode . diff-hl-mode)
   (prog-mode . diff-hl-flydiff-mode)
-  (prog-mode . diff-hl-show-hunk-mouse-mode))
+  (prog-mode . diff-hl-show-hunk-mouse-mode)
+  (window-state-change . diff-hl-update))
 
 (use-package blamer
   :init
