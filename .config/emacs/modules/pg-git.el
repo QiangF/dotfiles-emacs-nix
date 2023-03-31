@@ -7,7 +7,9 @@
     "g" '(:wk "git")
     "g g" #'(magit-status :wk "status")
     "g b" #'(magit-blame :wk "blame")
-    "g w" #'(magit-worktree :wk "worktree")))
+    "g w" #'(magit-worktree :wk "worktree"))
+  :config
+  (define-key magit-status-mode-map (kbd "SPC") nil))
 
 (use-package git-gutter
   :disabled
