@@ -58,7 +58,16 @@
   (pg/leader
     :keymaps 'org-mode-map
     "t l" #'(org-toggle-link-display :wk "link display")
-    "t s" #'(flyspell-mode :wk "spell check"))
+    "t s" #'(flyspell-mode :wk "spell check")
+    "m s" #'((lambda ()
+               "Sort by priority, then todo."
+               (interactive)
+               (let ((line (org-current-line)))
+                 (org-up-heading-safe)
+                 (org-sort-entries nil ?p)
+                 (org-sort-entries nil ?o)
+                 (goto-line line))
+               (org-cycle-set-startup-visibility)) :wk "sort"))
     
   :general
   (:states 'normal :keymaps 'org-src-mode-map
