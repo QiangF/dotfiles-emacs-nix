@@ -66,6 +66,7 @@
    "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
    "t n" #'(display-line-numbers-mode :wk "line numbers")
    "t w" #'(whitespace-mode :wk "whitespace")
+   "t d" #'(toggle-debug-on-error :wk "debug on error")
 
    "f f" #'(find-file :wk "find")
    "f s" #'(save-buffer :wk "save")
@@ -85,6 +86,7 @@
    "w s" #'(split-window-below :wk "split below")
    "w v" #'(split-window-right :wk "split right")
    "w =" #'(balance-windows :wk "balance")
+   "w a" #'(ace-swap-window :wk "ace-swap")
 
    "b b" #'(switch-to-buffer :wk "open")
    "b B" #'(switch-to-buffer :wk "open")
@@ -146,6 +148,8 @@
   (general-define-key
    :states 'normal
    "C-a" '(:ignore t :wk "avy")
+   "C-a w" #'ace-window
+   "C-a W" #'ace-swap-window
    "C-a l" #'evil-avy-goto-line
    "C-a c" #'evil-avy-goto-char)
 
