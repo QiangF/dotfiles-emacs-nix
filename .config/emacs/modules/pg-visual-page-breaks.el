@@ -3,9 +3,13 @@
 
 (use-package page-break-lines
   :init
-  (add-hook 'emacs-lisp-mode-hook #'page-break-lines-mode)
+  (dolist (hook '(emacs-lisp-mode-hook
+                  help-mode-hook))
+    (add-hook hook #'page-break-lines-mode))
+
   (pg/leader
     :states 'normal
-    "i s" #'((lambda () (quoted-insert) :wk ""))))
+    "i s" `(,(lambda () (interactive) (insert ?\f)) :wk "form feed")))
+
 
 (provide 'pg-visual-page-breaks)
