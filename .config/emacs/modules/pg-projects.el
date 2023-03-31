@@ -14,6 +14,26 @@
      (let ((default-directory (or starting-directory default-directory)))
        (funcall inner)))))
 
+(use-package treebund
+  :straight (:type git :host github :repo "purplg/treebund.el")
+  :config
+  (pg/leader
+    :keymap 'treebund-map
+    :states 'normal
+    "TAB" '(:ignore t :wk "workspaces")
+    "TAB TAB" #'(treebund-open :wk "open")
+    "TAB o" #'(treebund-open :wk "open")
+    "TAB c" #'(treebund-clone :wk "clone")
+    "TAB C" #'(treebund-bare-delete :wk "rm bare")
+
+    "TAB p" '(:ignore t :wk "projects")
+    "TAB p a" #'(treebund-project-add :wk "add")
+    "TAB p r" #'(treebund-project-remove :wk "remove")
+
+    "TAB w" '(:ignore t :wk "workspace")
+    "TAB w n" #'(treebund-workspace-new :wk "new")
+    "TAB w d" #'(treebund-workspace-delete :wk "delete")))
+
 (use-package persp-mode
   :disabled
   :config
