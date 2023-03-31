@@ -1,18 +1,12 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-apps)
+(require 'pg-aliases)
 
+;; Load system-specific modules (hostname)
 (let ((system-dir (expand-file-name "system-specific/" pg/config-dir)))
-  (when (daemonp)
-    (load-file (expand-file-name "daemon.el" system-dir)))
-
-  ;; Load system-specific modules (hostname)
-  (let ((system-config (expand-file-name (concat (system-name) ".el") system-dir)))
-    (when (file-exists-p system-config)
-      (load-file system-config))))
+  (pg/load-file (concat (system-name) ".el") system-dir))
 
 ;; local.el is an untracked / .gitignored file. Load it if it exists
-(let ((local-config (expand-file-name "local.el" pg/config-dir)))
-  (when (file-exists-p local-config)
-    (load-file local-config)))
+(pg/load-file "local.el")
 
 (provide 'pg-system-specific)
