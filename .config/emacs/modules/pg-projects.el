@@ -1,6 +1,18 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package tab-bar
+  :init
+  (setq tab-bar-show 1)
+  (tab-bar-mode)
+  :config
+  (pg/leader
+    :keymap 'tab-bar-map
+    :states 'normal
+    "TAB h" #'(tab-bar-switch-to-prev-tab :wk "prev")
+    "TAB l" #'(tab-bar-switch-to-next-tab :wk "next")
+    "TAB d" #'(tab-bar-close-tab :wk "close")))
+
 (use-package project
   :init
   (setq project-switch-commands 'project-find-file)
@@ -23,6 +35,9 @@
 (use-package treebund
   :straight (:type git :host github :repo "purplg/treebund.el")
   :config
+  (with-eval-after-load 'tab-bar
+    (add-hook 'treebund-before-workspace-open-hook #'tab-bar-new-tab))
+
   (defun pg/open-project-notes ()
     (interactive)
     (if-let ((workspace-path (or (treebund--workspace-current) (treebund--read-workspace "Open notes for project: "))))
