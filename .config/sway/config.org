@@ -1,3 +1,4 @@
+
 #+PROPERTY: header-args :tangle config
 #+auto_tangle: t
 
@@ -77,9 +78,11 @@ swaymsg -t get_outputs
  #+END_EXAMPLE
 
 #+BEGIN_SRC bash :tangle desktop
-output * bg #100116 solid_color
+# output DP-1 disable
+output DP-1 bg #100116 solid_color
 output DP-1 resolution 2560x1440@165Hz position 1440,560 adaptive_sync on
 output DP-2 resolution 2560x1440 position 0,0 transform 270
+output DP-2 bg #000000 solid_color
 #output DP-2 disable
 #+END_SRC
 
@@ -130,6 +133,12 @@ default_border pixel 3
 client.focused 2f004c 2f004c 2f004c 2f004c 2f004c
 #+END_SRC
 
+#+BEGIN_EXAMPLE conf :tangle desktop
+exec swayidle -w \
+     timeout 60 'timeout 3 swaynag -m "Screen turning off in 3 seconds..." -s "cancel" || swaymsg "output * power off"' \
+     resume 'swaymsg "output * power on"'
+#+END_EXAMPLE
+
 ** Idle configuration
 
 This will lock your screen after 300 seconds of inactivity, then turn off
@@ -139,7 +148,7 @@ resumed. It will also lock your screen before your computer goes to sleep.
 #+BEGIN_EXAMPLE conf
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 #+END_EXAMPLE
 
@@ -340,7 +349,7 @@ bindsym $mod+Shift+minus move scratchpad
 Show the next scratchpad window or hide the focused scratchpad window.
 If there are multiple scratchpad windows, this command cycles through them.
 #+BEGIN_SRC bash
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, resize 135x35
 #+END_SRC
 
 *** Resizing containers:
@@ -413,7 +422,7 @@ for_window [class="battle.net.exe"] floating enable
 for_window [class="overwatch.exe"] move container to workspace $ws1-3
 for_window [class="overwatch.exe"] fullscreen enable
 # Stash floating wine system tray to scratchpad
-#for_window [title="Wine System Tray"] move container to scratchpad
+for_window [title="Wine System Tray"] move container to scratchpad
 # Gamescope
 for_window [class="gamescope"] move container to workspace $ws1-3
 # SteamTinkerLauncher
@@ -435,9 +444,12 @@ for_window [class="dolphin-emu"] floating true
 
 #+BEGIN_SRC bash
 exec discord
-exec swaync
+#exec swaync
+exec dunst
 exec pavucontrol
 bindsym $mod+grave exec swaync-client -t -sw
+# bindsym $mod+Shift+grave exec grim -g "$(slurp) - | wl-copy"
+bindsym $mod+Shift+grave exec grim -g 'echo "1440,560 2560x1440" | wl-copy'
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+END_SRC
 
