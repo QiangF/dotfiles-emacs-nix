@@ -1,3 +1,5 @@
 .doom.d/config.el
 .emacs.profiles.d/purplg/local.el
 eln-cache
+local.el
+custom.el
