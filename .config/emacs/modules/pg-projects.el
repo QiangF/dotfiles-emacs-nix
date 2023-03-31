@@ -4,25 +4,84 @@
 (use-package project
   :init
   (setq project-switch-commands 'project-find-file)
-  :config
 
+  :config
   ;; Add an optional `starting-directory' argument
   (advice-add
    'project-prompt-project-dir
    :around
    (lambda (inner &optional starting-directory)
      (let ((default-directory (or starting-directory default-directory)))
-       (funcall inner))))
+       (funcall inner)))))
+
+(use-package persp-mode
+  :disabled
+  :config
+  (setq persp-auto-resume-time -1)
+  (add-to-list 'recentf-exclude (concat user-emacs-directory "persp-confs/persp-auto-save") t)
+  (setq persp-autokill-buffer-on-remove t)
+
+  (defun project-switch-with-workspace (project-path)
+    (interactive (list (project-prompt-project-dir "~/code/")))
+    (let ((project-name (car (last (split-string (directory-file-name project-path) "/")))))
+      (persp-switch (persp-name (persp-add-new project-name)))
+      (project-switch-project project-path)))
 
   (pg/leader
-   "p f" #'(project-find-file :wk "file")
-   "f p" #'(project-find-file :wk "file")
-   "p d" #'(project-forget-project :wk "delete")
-   "p p" #'(project-switch-project :wk "open")))
+   :keymaps 'persp-mode-map
+   "b b" #'(persp-switch-to-buffer :wk "buffer")
+   "TAB" #'(:wk "perspectives")
+   "TAB TAB" #'(persp-list :wk "list")
+   "TAB s" #'(persp-switch :wk "switch")
+   "TAB a" #'(persp-add-buffer :wk "add buffer")
+   "TAB x" #'(persp-remove-buffer :wk "remove buffer")
+   "TAB d" #'(persp-kill :wk "kill persp")
+   "TAB r" #'(persp-rename :wk "rename")
+   "TAB n" #'(persp-switch-to-new :wk "new and switch")
+   "TAB N" #'(persp-add-new :wk "new")
+   "TAB l" #'(persp-next :wk "next persp")
+   "TAB h" #'(persp-prev :wk "prev persp"))
 
-(use-package project
-  :after dashboard
-  :init
-  (setq dashboard-projects-backend 'project-el))
+  (evil-define-key* 'normal global-map
+    (kbd "M-1") (lambda () (interactive) (persp-switch (nth 0 persp-names-cache)) (persp-list))
+    (kbd "M-2") (lambda () (interactive) (persp-switch (nth 1 persp-names-cache)) (persp-list))
+    (kbd "M-3") (lambda () (interactive) (persp-switch (nth 2 persp-names-cache)) (persp-list))
+    (kbd "M-4") (lambda () (interactive) (persp-switch (nth 3 persp-names-cache)) (persp-list))
+    (kbd "M-5") (lambda () (interactive) (persp-switch (nth 4 persp-names-cache)) (persp-list)))
+
+  (add-hook 'after-init-hook
+   (lambda () (persp-switch (persp-name (persp-add-new "Session")))))
+
+  (with-eval-after-load 'doom-modeline
+    ;; Modified from Doom's `+workspace--tabline`
+    (defun persp--format-tab (label active)
+      (propertize label
+                  'face (if active
+                            'doom-modeline-panel
+                          'doom-modeline-bar-inactive)))
+
+    (defun persp-list ()
+      "Display a list of perspectives"
+      (interactive)
+      (message "%s"
+               (let ((names persp-names-cache)
+                     (current-name (safe-persp-name (get-current-persp
+                                                     (selected-frame)
+                                                     (selected-window)))))
+                 (mapconcat
+                  #'identity
+                  (cl-loop for name in names
+                           for i to (length names)
+                           collect
+                           (persp--format-tab
+                            (format " %d:%s " (1+ i) name)
+                            (equal current-name name)))
+                  nil))))
+
+    ;; Show list of perspectives after switching
+    (advice-add 'persp-next :after #'persp-list)
+    (advice-add 'persp-prev :after #'persp-list))
+
+  (persp-mode))
 
 (provide 'pg-projects)
