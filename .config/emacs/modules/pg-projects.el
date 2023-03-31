@@ -17,6 +17,12 @@
 (use-package treebund
   :straight (:type git :host github :repo "purplg/treebund.el")
   :config
+  (defun pg/open-project-notes ()
+    (interactive)
+    (if-let ((workspace-path (or (treebund--workspace-current) (treebund--read-workspace "Open notes for project: "))))
+        (find-file-other-window (expand-file-name "project.org" workspace-path))
+      (message "Not in a workspace")))
+
   (pg/leader
     :keymap 'treebund-map
     :states 'normal
@@ -26,8 +32,11 @@
     "TAB c" #'(treebund-clone :wk "clone")
     "TAB C" #'(treebund-bare-delete :wk "rm bare")
 
+    "TAB n" #'(pg/open-project-notes :wk "notes")
+
     "TAB p" '(:ignore t :wk "projects")
     "TAB p a" #'(treebund-project-add :wk "add")
+    "TAB p A" #'(treebund-project-add-detailed :wk "add")
     "TAB p r" #'(treebund-project-remove :wk "remove")
 
     "TAB w" '(:ignore t :wk "workspace")
