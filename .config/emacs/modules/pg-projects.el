@@ -36,7 +36,17 @@
   :straight (:type git :host github :repo "purplg/treebund.el")
   :config
   (with-eval-after-load 'tab-bar
-    (add-hook 'treebund-before-workspace-open-hook #'tab-bar-new-tab))
+    (add-hook 'treebund-before-project-open-hook #'tab-bar-new-tab)
+    (add-hook 'treebund-after-project-open-hook
+              (lambda ()
+                (when-let ((workspace (treebund--workspace-current))
+                           (project (project-current)))
+                  (tab-bar-rename-tab
+                   (format "%s/%s"
+                           (treebund--workspace-name workspace)
+                           (treebund--bare-name
+                            (treebund--project-bare
+                             (project-root project)))))))))
 
   (defun pg/open-project-notes ()
     (interactive)
