@@ -6,14 +6,11 @@
 (defconst pg/config-dir (file-truename (expand-file-name user-emacs-directory)))
 (defconst pg/module-dir (expand-file-name "modules" pg/config-dir))
 (add-to-list 'load-path pg/module-dir)
-(require 'pg-perf)
-
-(setq custom-file (expand-file-name "custom.el" pg/config-dir))
-(when (file-exists-p custom-file)
-  (load custom-file))
 
 ;; Keep config directory clean
 (setq user-emacs-directory (expand-file-name "~/.cache/emacs/"))
+(setq custom-file (expand-file-name "custom.el" pg/config-dir))
+(when (file-exists-p custom-file) (load custom-file))
 (setq url-history-file (expand-file-name "url/history" user-emacs-directory))
 
 (defun pg/open-module (module-name)
@@ -51,12 +48,9 @@
 (setq straight-use-package-by-default t)
 (setq straight-disable-native-compile nil)
 
-(defun advice-unadvice (sym)
-  "Remove all advices from symbol SYM."
-  (interactive "aFunction symbol: ")
-  (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))
-
-;; * Emacs config
+(require 'pg-aliases)
+(require 'pg-perf)
+(require 'pg-aliases)
 (require 'pg-keybinds)
 (require 'pg-interface)
 (require 'pg-editing)
