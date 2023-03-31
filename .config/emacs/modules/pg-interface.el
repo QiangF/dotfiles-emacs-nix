@@ -62,7 +62,6 @@
 (require 'pg-modeline)
 (require 'pg-popper)
 (require 'pg-theme)
-(require 'pg-workspaces)
 (require 'pg-visual-page-breaks)
 
 (provide 'pg-interface)
