@@ -16,7 +16,9 @@
 
   (pg/leader
     :keymaps 'emacs-lisp-mode-map
-    "e" '(:wk "eval")
+    "e" '(:ignore t :wk "eval")
+    "c" '(:ignore t :wk "code")
+    "c e" #'(emacs-lisp-macroexpand :wk "expand")
     "e b" #'(eval-buffer :wk "buffer")
     "e f" #'(eval-defun :wk "function")
     "e s" #'(eval-last-sexp :wk "sexp")
@@ -71,6 +73,11 @@
 
 (use-package erefactor
   :straight (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
-  :hook (emacs-lisp-mode . erefactor-lazy-highlight-turn-on))
+  :hook (emacs-lisp-mode . erefactor-lazy-highlight-turn-on)
+  :init
+  (pg/leader
+    :keymap 'erefactor-map
+    :states 'normal
+    "c r" #'(erefactor-rename-symbol-in-buffer :wk "rename")))
 
 (provide 'pg-elisp)
