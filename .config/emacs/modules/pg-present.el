@@ -9,17 +9,6 @@
   :init
   (require 'org-faces)
 
-  (dolist (face '((org-level-1 . 1.0)
-                  (org-level-2 . 1.0)
-                  (org-level-3 . 1.0)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 1.0)
-                  (org-level-6 . 1.0)
-                  (org-level-7 . 1.0)
-                  (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil :font "Iosevka Aile" :weight 'bold :height (cdr face)))
-  ;; (set-face-attribute 'org-block-begin-line nil :inherit 'unspecified :foreground "#00ff00" :background "#ff0000")
-
   ;; Show these options
   (defvar org-present-show-options '("title:" "author:" "date:" "email:"))
   (dolist (item '("name:" "begin_src" "end_src"))
@@ -33,21 +22,22 @@
     (setq org-link-descriptive t)
     (org-link-descriptive-ensure)
 
-    (setq-local visual-fill-column-width 200)
+    (setq-local visual-fill-column-width 150)
     (setq-local visual-fill-column-center-text t)
     (setq-local scroll-margin 0)
     (visual-fill-column-mode 1)
     (setq-local face-remapping-alist `((default (:height 3.0) variable-pitch)
                                        (header-line (:height 1.0) variable-pitch)
-                                       (org-code (:height 1.0) org-code)
-                                       (org-verbatim (:height 1.0) org-verbatim)
-                                       (org-block (:height 1.0) org-block)
-                                       (org-block-begin-line (:height 1.0
+                                       (org-code (:height 1.0 :family "JetBrainsMono Nerd Font") org-code)
+                                       (org-verbatim (:height 1.0 :family "Iosevka Aile") org-verbatim)
+                                       (org-meta-line (:height 0.9) org-meta-line)
+                                       (org-block (:height 1.0 :family "JetBrainsMono Nerd Font") org-block)
+                                       (org-block-begin-line (:height 0.7
                                                               :extend t
-                                                              :foreground ,(face-foreground 'default)
-                                                              :background ,(color-darken-name (face-background 'org-block) 10))
-                                                              org-block)))
-    (org-present-read-only))
+                                                              :family "Iosevka Aile"
+                                                              :foreground ,(color-darken-name (face-foreground 'default) 30)
+                                                              :background ,(color-darken-name (face-background 'org-block) 30))
+                                                             org-block))))
   
   (defun pg/org-present-end ()
     (setq header-line-format nil)
