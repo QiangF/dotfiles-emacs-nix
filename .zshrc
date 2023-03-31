@@ -69,7 +69,8 @@ export PATH=$PATH:$PYENV_ROOT/bin
 source $HOME/.aliases
 
 #   ssh
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+# export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+which keychain >&/dev/null && eval $(keychain --eval --quiet --agents ssh,gpg)
 
 #   nix
 export NIXPKGS_ALLOW_UNFREE=1
