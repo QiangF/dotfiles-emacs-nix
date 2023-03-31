@@ -82,13 +82,12 @@
 
 (use-package consult
   :after vertico
-  :config
-  
-  (setq consult-project-root-function #'vc-root-dir)
-  
+  :init
+  (setq consult-project-root-function #'project-root)
   (pg/leader
    "b b" #'(consult-buffer :wk "buffer")
-   "b o" #'(consult-buffer-other-frame :wk "buffer-other")
+   "b o" #'(consult-buffer-other-frame :wk "buffer other")
+   "p b" #'(consult-project-buffer :wk "project file")
    "s b" #'(consult-line :wk "buffer")
    "s p" #'(consult-line-multi :wk "project")
    "s h" #'(consult-outline :wk "heading")
