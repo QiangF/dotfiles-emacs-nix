@@ -51,6 +51,10 @@
     (kbd "M-l") #'puni-slurp-forward
     (kbd "M-d") #'puni-kill-line))
 
+(use-package gitignore-templates
+  :init
+  (setq gitignore-templates-api 'github))
+
 (require 'pg-environment)
 (require 'pg-flycheck)
 (require 'pg-folding)
