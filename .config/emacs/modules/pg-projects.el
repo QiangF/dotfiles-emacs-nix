@@ -58,21 +58,23 @@
     :keymap 'treebund-map
     :states 'normal
     "TAB" '(:ignore t :wk "workspaces")
-    "TAB TAB" #'(treebund-open :wk "open")
+    "TAB TAB" #'(tab-bar-switch-to-prev-tab :wk "prev tab")
+    "TAB /" (lambda ()
+              (interactive)
+              (switch-to-buffer-other-window (treebund--gitlog-buffer)))
     "TAB o" #'(treebund-open :wk "open")
     "TAB c" #'(treebund-clone :wk "clone")
-    "TAB C" #'(treebund-bare-delete :wk "rm bare")
+    "TAB C" #'(treebund-delete-bare :wk "remove bare")
 
-    "TAB n" #'(pg/open-project-notes :wk "notes")
+    "TAB t" #'(pg/open-project-notes :wk "todos")
 
-    "TAB p" '(:ignore t :wk "projects")
-    "TAB p a" #'(treebund-project-add :wk "add")
-    "TAB p A" #'(treebund-project-add-detailed :wk "add")
-    "TAB p r" #'(treebund-project-remove :wk "remove")
+    "TAB p" #'(treebund-open-project :wk "open-project")
+    "TAB a" #'(treebund-add-project :wk "add-project")
+    "TAB r" #'(treebund-remove-project :wk "remove-project")
+    "TAB A" #'(treebund-add-project-detailed :wk "add")
 
-    "TAB w" '(:ignore t :wk "workspace")
-    "TAB w n" #'(treebund-workspace-new :wk "new")
-    "TAB w d" #'(treebund-workspace-delete :wk "delete")))
+    "TAB n" #'(treebund-new-workspace :wk "new workspace")
+    "TAB d" #'(treebund-delete-workspace :wk "delete workspace")))
 
 (use-package persp-mode
   :disabled
