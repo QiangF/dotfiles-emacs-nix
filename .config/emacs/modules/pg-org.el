@@ -54,20 +54,22 @@
   ;; Keybinds
   (pg/leader
     "X" #'org-capture)
+
+  (defun pg/sort-tasks ()
+    "Sort by priority, then todo."
+    (interactive)
+    (let ((line (org-current-line)))
+      (org-up-heading-safe)
+      (org-sort-entries nil ?p)
+      (org-sort-entries nil ?o)
+      (goto-line line))
+    (org-cycle-set-startup-visibility))
   
   (pg/leader
     :keymaps 'org-mode-map
     "t l" #'(org-toggle-link-display :wk "link display")
     "t s" #'(flyspell-mode :wk "spell check")
-    "m s" #'((lambda ()
-               "Sort by priority, then todo."
-               (interactive)
-               (let ((line (org-current-line)))
-                 (org-up-heading-safe)
-                 (org-sort-entries nil ?p)
-                 (org-sort-entries nil ?o)
-                 (goto-line line))
-               (org-cycle-set-startup-visibility)) :wk "sort"))
+    "m s" #'(pg/sort-tasks :wk "sort"))
     
   :general
   (:states 'normal :keymaps 'org-src-mode-map
