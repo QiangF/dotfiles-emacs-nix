@@ -444,8 +444,7 @@ for_window [class="dolphin-emu"] floating true
 
 #+BEGIN_SRC bash :tangle desktop
 exec discord
-#exec swaync
-exec dunst
+exec swaync
 exec pavucontrol
 bindsym $mod+grave exec swaync-client -t -sw
 # bindsym $mod+Shift+grave exec grim -g "$(slurp) - | wl-copy"
