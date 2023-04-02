@@ -66,14 +66,13 @@
     "TAB c" #'(treebund-clone :wk "clone")
     "TAB C" #'(treebund-delete-bare :wk "remove bare")
 
-    "TAB t" #'(pg/open-project-notes :wk "todos")
+    "TAB n" #'(pg/open-project-notes :wk "todos")
 
     "TAB p" #'(treebund-open-project :wk "open-project")
     "TAB a" #'(treebund-add-project :wk "add-project")
     "TAB r" #'(treebund-remove-project :wk "remove-project")
     "TAB A" #'(treebund-add-project-detailed :wk "add")
 
-    "TAB n" #'(treebund-new-workspace :wk "new workspace")
     "TAB d" #'(treebund-delete-workspace :wk "delete workspace")))
 
 (use-package persp-mode
