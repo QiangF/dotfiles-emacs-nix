@@ -11,7 +11,7 @@
     :states 'normal
     "TAB h" #'(tab-bar-switch-to-prev-tab :wk "prev")
     "TAB l" #'(tab-bar-switch-to-next-tab :wk "next")
-    "TAB d" #'(tab-bar-close-tab :wk "close")))
+    "TAB x" #'(tab-bar-close-tab :wk "close")))
 
 (use-package project
   :init
