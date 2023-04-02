@@ -89,6 +89,8 @@
    "b o" #'(consult-buffer-other-frame :wk "buffer other")
    "p b" #'(consult-project-buffer :wk "project file")
    "s b" #'(consult-line :wk "buffer")
+   "s i" #'(consult-imenu :wk "imenu")
+   "s I" #'(consult-imenu-multi :wk "imenu-multi")
    "s p" #'(consult-line-multi :wk "project")
    "s h" #'(consult-outline :wk "heading")
    "s r" #'(consult-ripgrep :wk "regex")
