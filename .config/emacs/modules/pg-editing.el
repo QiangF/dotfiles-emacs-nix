@@ -55,6 +55,11 @@
   :init
   (setq gitignore-templates-api 'github))
 
+(use-package jinx
+  :hook
+  (org-mode . jinx-mode)
+  (markdown-mode . jinx-mode)
+  (text-mode . jinx-mode))
 (require 'pg-environment)
 (require 'pg-flycheck)
 (require 'pg-folding)
