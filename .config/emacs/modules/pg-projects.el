@@ -35,7 +35,6 @@
     :states 'normal
     "p" #'(:ignore t :wk "project")
     "p f" #'(project-find-file :wk "find file")
-    "p b" #'(project-find-file :wk "find file")
     "f p" #'(project-find-file :wk "find file")))
 
 (use-package treebund
