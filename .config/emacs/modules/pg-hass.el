@@ -32,7 +32,7 @@
                                                          (hass-dash-state :entity-id "sensor.pixel_7_pro_phone_state" :label "Phone")
                                                          (hass-dash-state :entity-id "sensor.pixel_7_pro_media_session" :label "Media"))
                                         (hass-dash-group :title "TV" :format "%t\n%v\n"
-                                                         (hass-dash-button :entity-id "media_player.shield" :icon "" :label " Toggle"))
+                                                         (hass-dash-button :entity-id "media_player.shield" :icon "" :label "Toggle"))
                                         (hass-dash-group :title "Bedroom" :format "%t\n%v\n"
                                                          (hass-dash-toggle :entity-id "light.bedroom")
                                                          (hass-dash-toggle :entity-id "fan.bedroom"))
