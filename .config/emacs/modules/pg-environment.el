@@ -9,4 +9,8 @@
   :init
   (envrc-global-mode))
 
+(use-package keychain-environment
+  :init
+  (keychain-refresh-environment))
+
 (provide 'pg-environment)
