@@ -11,7 +11,13 @@
     :states 'normal
     "TAB h" #'(tab-bar-switch-to-prev-tab :wk "prev")
     "TAB l" #'(tab-bar-switch-to-next-tab :wk "next")
-    "TAB x" #'(tab-bar-close-tab :wk "close")))
+    "TAB x" #'(tab-bar-close-tab :wk "close"))
+  (evil-define-key* '(normal motion) global-map
+    (kbd "M-1") (lambda () (interactive) (tab-bar-select-tab 1))
+    (kbd "M-2") (lambda () (interactive) (tab-bar-select-tab 2))
+    (kbd "M-3") (lambda () (interactive) (tab-bar-select-tab 3))
+    (kbd "M-4") (lambda () (interactive) (tab-bar-select-tab 4))
+    (kbd "M-5") (lambda () (interactive) (tab-bar-select-tab 5))))
 
 (use-package project
   :init
