@@ -60,6 +60,15 @@
   (org-mode . jinx-mode)
   (markdown-mode . jinx-mode)
   (text-mode . jinx-mode))
+
+(use-package markdown-mode
+  :init
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+              (setq visual-fill-column-center-text t)
+              (setq visual-fill-column-fringes-outside-margins nil)
+              (visual-fill-column-mode t))))
+
 (require 'pg-environment)
 (require 'pg-flycheck)
 (require 'pg-folding)
