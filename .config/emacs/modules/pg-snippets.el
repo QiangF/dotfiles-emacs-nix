@@ -11,8 +11,9 @@
   (add-hook 'fundamental-mode 'tempel-setup-capf)
   (general-define-key
    :keymap 'tempel-map
-    :states 'insert
-    "M-<tab>" #'tempel-expand)
+   :states 'insert
+   "M-<tab>" #'tempel-expand
+   "<tab>" #'tempel-next)
   (add-hook 'org-mode-hook #'corfu-mode))
 
 (provide 'pg-snippets)
