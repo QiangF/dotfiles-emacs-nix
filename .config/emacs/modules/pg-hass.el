@@ -3,10 +3,10 @@
 
 (use-package hass
   :after pass
+  :defer t
   :init
   (setq hass-host "homeassistant.lan")
   (setq hass-insecure t)
-  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
 
   (pg/leader
     :states 'normal
@@ -81,11 +81,11 @@
               (cdr bounds)
               (mapcar #'car hass--available-entities)))))
 
-  (when hass-apikey (hass-ensure))
 
   :config
   ;; An automation just to "eat my own dogfood".
   ;; Changes Emacs theme based on the state of my bedroom light.
+  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (add-to-list 'hass-tracked-entities "switch.bedroom_light")
   (setq pg/hass-original-theme current-theme)
   (add-hook 'hass-entity-state-changed-functions
