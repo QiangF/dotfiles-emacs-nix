@@ -43,10 +43,13 @@
   (with-eval-after-load 'tab-bar
     (add-hook 'treebund-before-project-open-functions
               (lambda (project-path)
-                (tab-bar-select-tab-by-name
-                 (format "%s/%s"
-                         (treebund--workspace-name (treebund--workspace-current project-path))
-                         (treebund--bare-name (treebund--project-bare project-path)))))))
+                (message "project-path: %s" project-path)
+                (when-let ((workspace-path (treebund--workspace-current project-path))
+                           (bare-path (or (treebund--project-bare project-path) project-path)))
+                  (tab-bar-select-tab-by-name
+                   (format "%s/%s"
+                           (treebund--workspace-name workspace-path)
+                           (treebund--bare-name bare-path)))))))
 
   (defun pg/open-project-notes ()
     (interactive)
