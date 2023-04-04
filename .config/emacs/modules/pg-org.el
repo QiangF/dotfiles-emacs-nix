@@ -18,9 +18,10 @@
   (setq org-confirm-babel-evaluate nil) ;; Don't ask for confirmation when executing a codeblock
   (setq org-src-window-setup 'split-window-below) ;; Don't hide other windows when using `org-edit-special'
   (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-highlight-sparse-tree-matches nil)
 
   (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
-  (when-let (org-pc (expand-file-name "PC.org" org-directory))
+  (when-let (org-pc (expand-file-name "inbox.org" org-directory))
     (setq initial-buffer-choice
           (lambda ()
             (let ((buffer (find-file org-pc)))
