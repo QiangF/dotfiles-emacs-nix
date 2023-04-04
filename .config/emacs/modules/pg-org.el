@@ -21,7 +21,7 @@
   (setq org-highlight-sparse-tree-matches nil)
 
   (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
-  (when-let (org-pc (expand-file-name "inbox.org" org-directory))
+  (when-let (org-pc (expand-file-name "PC.org" org-directory))
     (setq initial-buffer-choice
           (lambda ()
             (let ((buffer (find-file org-pc)))
