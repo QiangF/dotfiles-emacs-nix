@@ -43,7 +43,6 @@
   (with-eval-after-load 'tab-bar
     (add-hook 'treebund-before-project-open-functions
               (lambda (project-path)
-                (message "project-path: %s" project-path)
                 (when-let ((workspace-path (treebund--workspace-current project-path))
                            (bare-path (or (treebund--project-bare project-path) project-path)))
                   (tab-bar-select-tab-by-name
