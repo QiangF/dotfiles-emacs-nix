@@ -15,5 +15,12 @@
         (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))))
   (add-hook 'nix-mode-hook #'corfu-mode))
 
+(use-package nixpkgs-fmt
+  :straight t
+  :init
+  (pg/leader
+    :keymaps 'nix-mode-map
+    :states 'normal
+    "m f" #'(nixpkgs-fmt-buffer :wk "format buffer")))
 
 (provide 'pg-nix)

@@ -5,6 +5,7 @@
   :init
   (setq tab-bar-show 1)
   (tab-bar-mode)
+  (tab-bar-rename-tab "Default" 1)
   :config
   (pg/leader
     :keymap 'tab-bar-map
