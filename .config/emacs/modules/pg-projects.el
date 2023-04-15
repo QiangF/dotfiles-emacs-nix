@@ -44,7 +44,7 @@
     (add-hook 'treebund-before-project-open-functions
               (lambda (project-path)
                 (when-let ((workspace-path (treebund--workspace-current project-path))
-                           (bare-path (or (treebund--project-bare project-path) project-path)))
+                           (bare-path project-path))
                   (tab-bar-select-tab-by-name
                    (format "%s/%s"
                            (treebund--workspace-name workspace-path)
