@@ -1,8 +1,10 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package nix-mode
-  :hook (nix-mode . eglot-ensure)
-  :init
+  :hook
+  (nix-mode . eglot-ensure)
+  (nix-mode . corfu-mode)
+  :config
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
     (lsp-register-client
@@ -10,10 +12,12 @@
                       :major-modes '(nix-mode)
                       :server-id 'nix))
     (add-hook 'nix-mode-hook #'lsp))
+
   (with-eval-after-load 'eglot
     (when (executable-find "nil")
-        (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))))
-  (add-hook 'nix-mode-hook #'corfu-mode))
+        (add-to-list 'eglot-server-programs '(nix-mode . ("nil"))))
+    (when (executable-find "rnix-lsp")
+        (add-to-list 'eglot-server-programs '(nix-mode . ("rnix-lsp"))))))
 
 (use-package nixpkgs-fmt
   :straight t
