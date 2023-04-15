@@ -44,7 +44,7 @@ set $ws2-4 8:$ws2-4-key
 
 ** Preferred applications
 #+BEGIN_SRC bash
-set $term alacritty
+set $term foot
 set $emacsclient emacsclient -n -c
 set $emacs emacs
 set $browser firefox
@@ -56,9 +56,8 @@ Note: pass the final command to swaymsg so that the resulting window can be open
 on the original workspace that the command was run on.
 
 #+BEGIN_SRC bash
-# set $menu ~/.config/rofi/launchers/misc/launcher.sh | xargs swaymsg exec --
-set $menu rofi -show drun -show-icons -display-drun "Launch"
-set $pw_gui ~/sh/wofi-pass/wofi-pass
+set $menu ~/.nix-profile/bin/rofi -show drun -show-icons -display-drun "Launch"
+set $menu_pass PASS_CMD="$HOME/.nix-profile/bin/pass" ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
 ** Include systems
@@ -223,8 +222,8 @@ bindsym $mod+z exec $browser
 
 Password manager
 #+BEGIN_SRC bash
-bindsym $mod+p exec $pw_gui -t
-bindsym $mod+Shift+p exec $pw_gui
+bindsym $mod+p exec $menu_pass -t 2>&1 | tee -a /tmp/wofi-pass.log
+bindsym $mod+Shift+p exec $menu_pass 2>&1 | tee -a /tmp/wofi-pass.log
 #+END_SRC
 
 *** Moving around:
@@ -444,7 +443,6 @@ for_window [class="dolphin-emu"] floating true
 
 #+BEGIN_SRC bash :tangle desktop
 exec discord
-exec swaync
 exec pavucontrol
 bindsym $mod+grave exec swaync-client -t -sw
 # bindsym $mod+Shift+grave exec grim -g "$(slurp) - | wl-copy"
