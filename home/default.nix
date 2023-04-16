@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   targets.genericLinux.enable = true;
 
   programs.home-manager.enable = true;
