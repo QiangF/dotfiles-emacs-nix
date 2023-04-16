@@ -16,7 +16,24 @@
       homeConfigurations = {
         desktop = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [ ./home ];
+          modules = [
+            ./hosts/common.nix
+            ./hosts/desktop.nix
+          ];
+        };
+        framework = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./hosts/common.nix
+            ./hosts/framework.nix
+          ];
+        };
+        work = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./hosts/common.nix
+            ./hosts/work.nix
+          ];
         };
       };
     };
