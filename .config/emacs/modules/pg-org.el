@@ -48,10 +48,6 @@
   (setq org-agenda-files '("~/.org/inbox.org"
                            "~/.org/tickler.org"))
 
-  (setq org-refile-targets '(("~/.org/inbox.org" :maxlevel . 3)
-                             ("~/.org/someday.org" :level . 1)
-                             ("~/.org/tickler.org" :maxlevel . 2)))
-  
   ;; Keybinds
   (pg/leader
     "X" #'org-capture)
