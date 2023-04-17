@@ -3,33 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    devenv.url = "github:cachix/devenv/latest";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs:
     {
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+      imports = [
+      ];
+
+      defaultPackage.x86_64-linux = inputs.home-manager.defaultPackage.x86_64-linux;
 
       homeConfigurations = {
-        desktop = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        desktop = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             ./hosts/common.nix
             ./hosts/desktop.nix
           ];
         };
-        framework = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        framework = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             ./hosts/common.nix
             ./hosts/framework.nix
           ];
         };
-        work = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        work = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             ./hosts/common.nix
             ./hosts/work.nix
