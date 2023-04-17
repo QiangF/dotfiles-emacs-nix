@@ -7,7 +7,8 @@
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (setq indent-tabs-mode nil)
-              (setq fill-column 80)))
+              (setq fill-column 80)
+              (outline-minor-mode 1)))
   (add-hook 'emacs-lisp-mode-hook #'electric-pair-mode)
 
   (with-eval-after-load 'hs-minor-mode
