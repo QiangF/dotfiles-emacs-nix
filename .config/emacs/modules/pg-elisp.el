@@ -38,6 +38,8 @@
 (use-package lispy
   :after elisp-mode
   :hook (emacs-lisp-mode . lispy-mode)
+        (lisp-data-mode . lispy-mode)
+        (cask-mode . lispy-mode)
   :init
   (setq lispy-eval-display-style 'message))
 
