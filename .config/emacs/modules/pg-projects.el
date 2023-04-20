@@ -71,10 +71,9 @@
 
     "TAB n" #'(pg/open-project-notes :wk "todos")
 
-    "TAB p" #'(treebund-open-project :wk "open-project")
-    "TAB a" #'(treebund-add-project :wk "add-project")
+    "TAB a" #'(treebund-add-project :wk "add")
     "TAB r" #'(treebund-remove-project :wk "remove-project")
-    "TAB A" #'(treebund-add-project-detailed :wk "add")
+    "TAB p" #'(treebund-open-project :wk "open-project")
 
     "TAB d" #'(treebund-delete-workspace :wk "delete workspace")))
 
