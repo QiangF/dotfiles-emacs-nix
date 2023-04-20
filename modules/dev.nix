@@ -18,5 +18,6 @@
     nil
     nixpkgs-fmt
     cachix
+    nodePackages.bash-language-server
   ];
 }
