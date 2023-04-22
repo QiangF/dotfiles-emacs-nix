@@ -33,12 +33,15 @@
 (with-current-buffer "*scratch*" (emacs-lock-mode 'kill))
 
 (defun pg/config-frame ()
-  (when window-system 
-    (setq frame-title-format "PurplEmacs")
-    (scroll-bar-mode -1)
-    (tool-bar-mode -1)
-    (menu-bar-mode -1)
-    (set-fringe-mode 10)))
+  (setq frame-title-format "PurplEmacs")
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (set-fringe-mode 10)
+  ;; SVG-LIB workaround
+  ;; https://github.com/rougier/svg-lib/issues/18
+  (with-eval-after-load 'svg-lib
+    (setq svg-lib-style-default (svg-lib-style-compute-default))))
 
 (pg/config-frame)
 (add-hook 'server-after-make-frame-hook #'pg/config-frame)
