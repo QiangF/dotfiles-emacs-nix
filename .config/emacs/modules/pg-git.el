@@ -11,6 +11,10 @@
   :config
   (define-key magit-status-mode-map (kbd "SPC") nil))
 
+(use-package magit-todos
+  :init
+  (magit-todos-mode))
+
 (use-package git-gutter
   :disabled
   :hook (prog-mode . git-gutter-mode))
