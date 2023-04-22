@@ -8,10 +8,19 @@
   (setq hass-host "homeassistant.lan")
   (setq hass-insecure t)
 
+  (defun pg/toggle-office-lights ()
+    (interactive)
+    (hass-call-service-with-payload
+     "light.toggle"
+     '((entity_id . "light.office")
+       (transition . "1")
+       (brightness . "255"))))
+
   (pg/leader
     :states 'normal
     "a" #'(:ignore t :wk "automation")
     "a c" #'(hass-call-service :wk "Call service")
+    "a l" #'(pg/toggle-office-lights :wk "Toggle lights")
     "a d" #'(hass-dash-open :wk "Call service"))
 
   (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
