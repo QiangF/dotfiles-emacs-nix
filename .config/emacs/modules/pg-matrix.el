@@ -2,7 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package ement
-  :straight (:type git :host github :repo "alphapapa/ement.el")
+  :straight t
   :init
   ;; Connection wrapper
   (defun pg/ement-connect ()
