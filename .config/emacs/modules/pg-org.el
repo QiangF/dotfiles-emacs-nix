@@ -9,6 +9,7 @@
   (add-hook 'org-mode-hook #'flyspell-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'org-mode-hook (lambda () (electric-pair-mode -1)))
 
   ;; Tweaks
   (setq org-return-follows-link t) ;; Press Enter to follow link under point
