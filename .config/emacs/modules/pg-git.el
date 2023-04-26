@@ -31,4 +31,8 @@
   (pg/leader
     "t b" #'(blamer-mode :wk blame)))
 
+(use-package magit-delta
+  :if (executable-find "delta")
+  :hook (magit-mode . magit-delta-mode))
+
 (provide 'pg-git)
