@@ -16,6 +16,16 @@
 ;; Don't move point to cursor when right-clicking to paste.
 (setq mouse-yank-at-point t)
 
+;; Max width
+(with-eval-after-load 'visual-fill-column
+  (dolist (hook '(text-mode-hook prog-mode-hook))
+    (add-hook hook
+              (lambda ()
+                (setq visual-fill-column-width 200)
+                (setq visual-fill-column-center-text t)
+                (setq visual-fill-column-fringes-outside-margins nil)
+                (visual-fill-column-mode)))))
+
 
 ;; Tooling
 (use-package expand-region
