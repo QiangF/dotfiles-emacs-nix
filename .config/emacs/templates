@@ -80,7 +80,7 @@ org-mode
 (comment "#+BEGIN_COMMENT" n> r> n> "#+END_COMMENT")
 (verse "#+BEGIN_VERSE" n> r> n> "#+END_VERSE")
 (src "#+BEGIN_SRC " p n> r> n> "#+END_SRC")
-(elisp "#+BEGIN_SRC emacs-lisp" n> r> n "#+END_SRC"
+(el "#+BEGIN_SRC emacs-lisp" n> r> n "#+END_SRC"
        :post (progn (tempel-done) (org-edit-src-code)))
 
 rustic-mode rust-mode
