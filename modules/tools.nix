@@ -6,5 +6,7 @@
     ripgrep
     bottom
     rsync
+    mpv
+    gping
   ];
 }
