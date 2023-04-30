@@ -442,7 +442,6 @@ for_window [class="dolphin-emu"] floating true
 * Autostart
 
 #+BEGIN_SRC bash :tangle desktop
-exec discord
 exec pavucontrol
 bindsym $mod+grave exec swaync-client -t -sw
 # bindsym $mod+Shift+grave exec grim -g "$(slurp) - | wl-copy"
