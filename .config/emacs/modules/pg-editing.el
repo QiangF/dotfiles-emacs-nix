@@ -21,7 +21,7 @@
   (dolist (hook '(text-mode-hook prog-mode-hook))
     (add-hook hook
               (lambda ()
-                (setq visual-fill-column-width 200)
+                (setq visual-fill-column-width 150)
                 (setq visual-fill-column-center-text t)
                 (setq visual-fill-column-fringes-outside-margins nil)
                 (visual-fill-column-mode)))))
