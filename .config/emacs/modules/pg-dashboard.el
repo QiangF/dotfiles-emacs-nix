@@ -27,12 +27,10 @@
     (interactive)
     (switch-to-buffer dashboard-buffer-name))
   
-  (pg/leader
-   "o d" #'(dashboard-switch :wk "dashboard"))
+  (evil-define-key* 'normal 'global
+   "<leader> o d" #'(dashboard-switch :wk "dashboard"))
 
-  :general
-  (:states 'normal
-   :keymaps 'dashboard-mode-map
+  (evil-define-key 'normal dashboard-mode-map
    "q" nil))
 
 (provide 'pg-dashboard)

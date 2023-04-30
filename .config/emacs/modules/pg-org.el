@@ -2,7 +2,6 @@
 (require 'pg-keybinds)
 
 (use-package org
-  :straight (:type built-in)
   :init
 
   ;; Hooks
@@ -21,13 +20,6 @@
   (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-highlight-sparse-tree-matches nil)
 
-  (when (file-exists-p "~/.org") (setq org-directory "~/.org"))
-  (when-let (org-pc (expand-file-name "PC.org" org-directory))
-    (setq initial-buffer-choice
-          (lambda ()
-            (let ((buffer (find-file org-pc)))
-              (with-current-buffer buffer (auto-revert-mode 1))
-              buffer))))
 
   ;; Capture
   (setq org-capture-project-file "project.org")
@@ -50,8 +42,8 @@
                            "~/.org/tickler.org"))
 
   ;; Keybinds
-  (pg/leader
-    "X" #'org-capture)
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> X") #'org-capture)
 
   (defun pg/sort-tasks ()
     "Sort by priority, then todo."
@@ -63,17 +55,17 @@
       (goto-line line))
     (org-cycle-set-startup-visibility))
   
-  (pg/leader
-    :keymaps 'org-mode-map
-    "t l" #'(org-toggle-link-display :wk "link display")
-    "t s" #'(flyspell-mode :wk "spell check")
-    "m s" #'(pg/sort-tasks :wk "sort"))
+  :config
+  (evil-define-key* 'normal org-mode-map
+    (kbd "<leader> t l") #'(org-toggle-link-display :wk "link display")
+    (kbd "<leader> t s") #'(flyspell-mode :wk "spell check")
+    (kbd "<leader> m s") #'(pg/sort-tasks :wk "sort"))
     
-  :general
-  (:states 'normal :keymaps 'org-src-mode-map
-           "C-c C-c" #'org-edit-src-exit)
-  (:states 'normal :keymaps 'org-mode-map
-           "RET" #'org-return))
+  (evil-define-key 'normal org-src-mode-map
+    (kbd "C-c C-c") #'org-edit-src-exit)
+
+  (evil-define-key 'normal org-mode-map
+    (kbd "RET") #'org-return))
    
 (use-package htmlize
   :after org

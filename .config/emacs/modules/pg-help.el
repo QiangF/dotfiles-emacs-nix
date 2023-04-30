@@ -3,12 +3,12 @@
 
 (use-package helpful
   :init
-  (pg/leader
-   "h f" #'(helpful-callable :wk "function")
-   "h v" #'(helpful-variable :wk "variable")
-   "h m" #'(helpful-macro :wk "macro")
-   "h V" #'(apropos-value :wk "value")
-   "h ." #'(helpful-at-point :wk "this")
-   "h k" #'(helpful-key :wk "key")))
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> h f") #'("function" . helpful-callable)
+    (kbd "<leader> h v") #'("variable" . helpful-variable)
+    (kbd "<leader> h m") #'("macro" . helpful-macro)
+    (kbd "<leader> h V") #'("value" . apropos-value)
+    (kbd "<leader> h .") #'("this" . helpful-at-point)
+    (kbd "<leader> h k") #'("key" . helpful-key)))
 
 (provide 'pg-help)

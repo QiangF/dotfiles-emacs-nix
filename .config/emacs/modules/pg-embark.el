@@ -1,19 +1,17 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(use-package embark-consult)
+
 (use-package embark
-  :init
-  (with-eval-after-load 'consult
-    (use-package embark-consult))
-
+  :after embark-consult
   :config
-  (general-define-key
-   :states '(normal visual insert)
-   "C-." #'embark-act)
+  (evil-define-key* '(normal visual insert) 'global
+   (kbd "C-.") #'embark-act)
 
-  (general-define-key
-   :keymap 'minibuffer-local-map
-   "C-." #'embark-act
-   "C-," #'embark-become))
+  (evil-define-key* '(normal insert)
+   minibuffer-local-map
+   (kbd "C-.") #'embark-act
+   (kbd "C-,") #'embark-become))
 
 (provide 'pg-embark)

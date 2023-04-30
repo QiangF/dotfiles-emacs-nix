@@ -2,10 +2,12 @@
 (require 'pg-keybinds)
 
 (use-package eshell
+  :elpaca nil
   :defer t
   :init
-  (pg/leader
-   "o e" #'(eshell :wk "terminal")))
+  (with-eval-after-load 'evil
+    (evil-define-key* 'normal 'global
+      (kbd "<leader> o e") #'(eshell :wk "terminal"))))
 
 (use-package vterm
   :defer t
@@ -14,7 +16,7 @@
   (add-hook 'vterm-exit-functions
             (lambda (buffer _event)
               (delete-window (get-buffer-window buffer))))
-  (pg/leader
-   "o t" #'(vterm-other-window :wk "terminal")))
+  (evil-define-key 'normal 'global
+   (kbd "<leader> o t") #'(vterm-other-window :wk "terminal")))
 
 (provide 'pg-term)

@@ -1,7 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package unity
-  :straight '(:type git :host github :repo "elizagamedev/unity.el")
+  :elpaca (:type git :host github :repo "elizagamedev/unity.el")
   :hook (after-init-hook . unity-mode))
 
 (let ((modes '(csharp-mode csharp-ts-mode))

@@ -35,14 +35,16 @@
     (interactive)
     (rustic-run-cargo-command "cargo run"))
 
-  (pg/local-leader
-    :keymaps '(rustic-mode-map rustic-compilation-mode-map)
-    "r" #'(rustic-cargo-run-no-args :wk "run")
-    "R" #'(rustic-cargo-run :wk "run w/ args")
-    "a" #'(rustic-cargo-add :wk "add dep")
-    "x" #'(rustic-cargo-rm :wk "rm dep")
-    "f" #'(rustic-format-buffer :wk "format")
-    "c" #'(rustic-cargo-check :wk "check")
-    "t" #'(rustic-cargo-test :wk "test")))
+  :config
+  (dolist (keymap '(rustic-mode-map rustic-compilation-mode-map))
+    (evil-define-key* 'normal keymap
+      (kbd "<leader> m r") #'("run" . rustic-cargo-run-no-args)
+      (kbd "<leader> m R") #'("run w/ args" . rustic-cargo-run)
+      (kbd "<leader> m a") #'("add dep" . rustic-cargo-add)
+      (kbd "<leader> m x") #'("rm dep" . rustic-cargo-rm)
+      (kbd "<leader> m f") #'("format" . rustic-format-buffer)
+      (kbd "<leader> m c") #'("check" . rustic-cargo-check)
+      (kbd "<leader> m t") #'("test" . rustic-cargo-test)))
+  )
 
 (provide 'pg-rust)

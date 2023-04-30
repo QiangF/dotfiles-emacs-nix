@@ -11,8 +11,7 @@
   (add-to-list 'dirvish-preview-dispatchers 'exa)
 
   (setq dirvish-side-follow-mode t)
-  (pg/leader
-    :states 'normal
-    "o p" #'(dirvish-side :wk "sidebar")))
+  (evil-define-key 'normal 'global
+    (kbd "<leader> o p") #'(dirvish-side :wk "sidebar")))
 
 (provide 'pg-dired)

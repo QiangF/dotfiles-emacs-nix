@@ -1,11 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-keybinds)
 
 ;; Disable global eldoc mode. I prefer an explicit keypress
 (global-eldoc-mode -1)
-(general-define-key
-  :states '(normal insert visual)
-  :keymaps 'prog-mode-map
-  "S-k" #'eldoc)
+(with-eval-after-load 'evil
+  (evil-define-key* '(normal insert visual) prog-mode-map
+    (kbd "S-k") #'eldoc))
 
 (setq initial-major-mode 'emacs-lisp-mode)
 (setq initial-scratch-message nil)
@@ -30,10 +30,9 @@
 ;; Tooling
 (use-package expand-region
   :config
-  (general-define-key
-   :states 'visual
-   "v" #'er/expand-region
-   "V" (lambda () (interactive) (er/expand-region 2))))
+  (evil-define-key* 'visual 'global
+   (kbd "v") #'er/expand-region
+   (kbd "V") (lambda () (interactive) (er/expand-region 2))))
 
 (use-package auto-highlight-symbol
   :hook (prog-mode . auto-highlight-symbol-mode)
@@ -42,9 +41,9 @@
 
 (use-package just-mode)
 
-(pg/leader
-  :states '(normal visual)
-  "t s" #'scroll-all-mode)
+(with-eval-after-load 'evil
+  (evil-define-key '(normal visual) 'global
+    (kbd "<leader> t s") #'scroll-all-mode))
 
 (use-package puni
   :hook (prog-mode . puni-mode)

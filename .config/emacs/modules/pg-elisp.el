@@ -2,7 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package elisp-mode
-  :straight nil
+  :elpaca nil
   :config
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
@@ -15,21 +15,16 @@
     (add-hook 'emacs-lisp-mode-hook
               (lambda () (hs-hide-level 1))))
 
-  (pg/leader
-    :keymaps 'emacs-lisp-mode-map
-    "e" '(:ignore t :wk "eval")
-    "c" '(:ignore t :wk "code")
-    "c e" #'(emacs-lisp-macroexpand :wk "expand")
-    "e b" #'(eval-buffer :wk "buffer")
-    "e f" #'(eval-defun :wk "function")
-    "e s" #'(eval-last-sexp :wk "sexp")
-    "b c" #'(emacs-lisp-byte-compile-and-load :wk "compile and load"))
+  (with-eval-after-load 'evil
+    (evil-define-key* 'normal emacs-lisp-mode-map
+      (kbd "<leader> c e") #'("expand" . emacs-lisp-macroexpand)
+      (kbd "<leader> e b") #'("buffer" . eval-buffer)
+      (kbd "<leader> e f") #'("function" . eval-defun)
+      (kbd "<leader> e s") #'("sexp" . eval-last-sexp)
+      (kbd "<leader> b c") #'("compile and load" . emacs-lisp-byte-compile-and-load))
 
-  (pg/leader
-    :states 'visual
-    :keymaps 'emacs-lisp-mode-map
-    "e" '(:wk "eval")
-    "e r" #'(eval-region :wk "region")))
+    (evil-define-key* 'visual emacs-lisp-mode-map
+      (kbd "<leader> e r") #'("region" . eval-region))))
 
 (use-package rainbow-delimiters
   :after elisp-mode
@@ -46,22 +41,6 @@
 (use-package lispyville
   :hook (emacs-lisp-mode . lispyville-mode))
 
-(use-package parinfer-rust-mode
-  :disabled
-  :after elisp-mode
-  :hook (emacs-lisp-mode . parinfer-rust-mode)
-  :init
-  (setq parinfer-rust-auto-download t)
-
-  (add-hook 'parinfer-rust-mode-hook
-    (lambda ()
-      (electric-indent-mode 0)))
-
-  :config
-  (pg/local-leader
-   :keymaps 'emacs-lisp-mode-map
-   "p" #'(parinfer-rust-toggle-paren-mode :wk "parinfer-toggle")))
-
 (use-package package-lint
   :defer t
   :after elisp-mode)
@@ -75,12 +54,10 @@
   :after elisp-mode)
 
 (use-package erefactor
-  :straight (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
+  :elpaca (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
   :hook (emacs-lisp-mode . erefactor-lazy-highlight-turn-on)
   :init
-  (pg/leader
-    :keymap 'erefactor-map
-    :states 'normal
-    "c r" #'(erefactor-rename-symbol-in-buffer :wk "rename")))
+  (evil-define-key* 'normal erefactor-map
+    "<leader> c r" #'("rename" . erefactor-rename-symbol-in-buffer)))
 
 (provide 'pg-elisp)

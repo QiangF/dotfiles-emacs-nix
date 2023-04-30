@@ -25,18 +25,21 @@
   (setq popper-display-function #'popper-display-popup-at-bottom)
 
   (popper-mode +1)
-  :general
-  ("C-`" #'popper-toggle-latest)
-  ("M-`" #'popper-cycle)
-  ("C-M-`" #'popper-toggle-type))
+
+  :config
+  (evil-define-key* '(normal insert) popper-mode-map
+   (kbd "C-`") #'popper-toggle-latest
+   (kbd "M-`") #'popper-cycle
+   (kbd "C-M-`") #'popper-toggle-type))
 
 (use-package shackle
+  :after popper
   :init
   (setq shackle-select-reused-windows t)
-  (setq shackle-rules `((hass-dash-mode :align left :size 0.1)
+  (setq shackle-rules `((hass-dash-mode :align left :size 0.2)
                         (compilation-mode :regexp t :select nil)
                         ;; (telega-chat-mode :popup t :select t :align left)
                         (,popper-reference-buffers :regexp t :align below :size 0.3)))
   (shackle-mode +1))
-  
+
 (provide 'pg-popper)

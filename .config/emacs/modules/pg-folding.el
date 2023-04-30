@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package hideshow
+  :elpaca nil
   :hook (prog-mode . hs-minor-mode)
   :init
   (setq hs-allow-nesting t)
@@ -14,8 +15,7 @@
         (end-of-line)
         (evil-close-fold)))
 
-    (general-define-key
-     :states 'normal
+    (evil-define-key* 'normal 'global
      "z c" #'evil-close-fold-below
      "z m" #'hs-hide-level
      "z C" #'evil-close-fold)

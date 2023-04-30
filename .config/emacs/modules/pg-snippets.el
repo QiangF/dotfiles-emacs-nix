@@ -9,11 +9,11 @@
                 (cons #'tempel-expand
                       completion-at-point-functions)))
   (add-hook 'fundamental-mode 'tempel-setup-capf)
-  (general-define-key
-   :keymap 'tempel-map
-   :states 'insert
-   "M-<tab>" #'tempel-expand
-   "<tab>" #'tempel-next)
+
+  :config
+  (evil-define-key* 'insert tempel-map
+   (kbd "M-<tab>") #'tempel-expand
+   (kbd "<tab>") #'tempel-next)
   (add-hook 'org-mode-hook #'corfu-mode))
 
 (provide 'pg-snippets)

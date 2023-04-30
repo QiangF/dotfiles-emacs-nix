@@ -5,33 +5,33 @@
 (setq read-buffer-completion-ignore-case t)
 
 (use-package corfu
-  :straight (:files (:defaults "extensions/corfu-popupinfo.el"))
+  :elpaca (:files (:defaults "extensions/corfu-popupinfo.el"))
   :init
   (setq corfu-auto t)
   (setq corfu-auto-delay 0)
   (setq corfu-auto-prefix 1)
   (setq corfu-popupinfo-delay 0.5)
 
-  (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
-
   (with-eval-after-load 'elisp-mode
     (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
 
-  :general
-  ; Clear conflicting C-k keybind
-  (:keymaps 'evil-insert-state-map
-   "C-k" nil)
-  (:keymaps 'corfu-map
-   "C-j" #'corfu-next
-   "C-k" #'corfu-previous
-   "C-S-j" #'corfu-scroll-up
-   "C-S-k" #'corfu-scroll-down))
+  (evil-define-key* 'insert 'global
+   (kbd "C-k") nil) ; Clear conflicting C-k keybind
+
+  :config
+  (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
+
+  (evil-define-key* '(normal insert) corfu-map
+   (kbd "C-j") #'corfu-next
+   (kbd "C-k") #'corfu-previous
+   (kbd "C-S-j") #'corfu-scroll-up
+   (kbd "C-S-k") #'corfu-scroll-down))
 
 (use-package eldoc-box
   :hook (eldoc-mode . eldoc-box-hover-mode)
-  :general
-  (:states 'normal
-   "C-/" #'eldoc-box-eglot-help-at-point))
+  :init
+  (evil-define-key* 'normal 'global
+   (kbd "C-/") #'eldoc-box-eglot-help-at-point))
 
 (use-package kind-icon
   :after corfu
@@ -64,45 +64,50 @@
     (interactive)
     (consult-ripgrep (consult--project-root) (thing-at-point 'symbol)))
 
-  (pg/leader
-   "f o" #'(pg/find-file-in-org-dir :wk "in org")
-   "f c" #'(pg/find-file-in-profile-dir :wk "in config")
-   "f `" #'(pg/find-file-in-home-dir :wk "in home")
-   "f /" #'(pg/find-file-in-root-dir :wk "in root")
-   "f f" #'(find-file :wk "here")
-   "p S" #'(pg/project-search-thing-at-point :wk "search this"))
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> f o") #'("in org" . pg/find-file-in-org-dir)
+   (kbd "<leader> f c") #'("in config" . pg/find-file-in-profile-dir)
+   (kbd "<leader> f `") #'("in home" . pg/find-file-in-home-dir)
+   (kbd "<leader> f /") #'("in root" . pg/find-file-in-root-dir))
 
-  :general
-  (:keymaps 'minibuffer-local-map
-   "C-S-k" #'scroll-down-command
-   "C-S-j" #'scroll-up-command
-   "C-k" #'previous-line
-   "C-j" #'next-line
-   "C-l" #'vertico-insert))
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> p S") #'("search this" . pg/project-search-thing-at-point))
+
+  (evil-define-key* '(normal insert) minibuffer-local-map
+   (kbd "C-S-k") #'scroll-down-command
+   (kbd "C-S-j") #'scroll-up-command
+   (kbd "C-k") #'previous-line
+   (kbd "C-j") #'next-line
+   (kbd "C-l") #'vertico-insert))
 
 (use-package consult
   :after vertico
   :init
   (setq consult-project-root-function #'project-root)
-  (pg/leader
-   "b b" #'(consult-buffer :wk "buffer")
-   "b o" #'(consult-buffer-other-frame :wk "buffer other")
-   "p b" #'(consult-project-buffer :wk "project file")
-   "s b" #'(consult-line :wk "buffer")
-   "s i" #'(consult-imenu :wk "imenu")
-   "s I" #'(consult-imenu-multi :wk "imenu-multi")
-   "s p" #'(consult-line-multi :wk "project")
-   "s h" #'(consult-outline :wk "heading")
-   "s r" #'(consult-ripgrep :wk "regex")
-   "f r" #'(consult-recent-file :wk "recent")))
+
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> b b") #'("buffer" . consult-buffer)
+   (kbd "<leader> b o") #'("buffer other" . consult-buffer-other-frame))
+
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> p b") #'("project file" . consult-project-buffer))
+
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> s b") #'("buffer" . consult-line)
+   (kbd "<leader> s i") #'("imenu" . consult-imenu)
+   (kbd "<leader> s I") #'("imenu-multi" . consult-imenu-multi)
+   (kbd "<leader> s p") #'("project" . consult-line-multi)
+   (kbd "<leader> s h") #'("heading" . consult-outline)
+   (kbd "<leader> s r") #'("regex" . consult-ripgrep))
+
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> f r") #'("recent" . consult-recent-file)))
 
 (use-package consult-eglot
   :after consult eglot
   :config
-  (pg/leader
-   :keymaps 'eglot-mode-map
-   :states 'normal
-   "s s" #'(consult-eglot-symbols :wk "Symbol")))
+  (evil-define-key* 'normal eglot-mode-map
+    (kbd "<leader> s s") #'("Symbol" . consult-eglot-symbols)))
 
 (use-package all-the-icons)
 
@@ -130,12 +135,13 @@
   (setq completion-styles '(orderless flex)))
 
 (use-package savehist
+  :elpaca nil
   :init
   (savehist-mode))
 
 (use-package cape
   :init
-  (evil-define-key 'insert global-map
+  (evil-define-key 'insert 'global
     (kbd "C-f") #'cape-file))
 
 (provide 'pg-completion)

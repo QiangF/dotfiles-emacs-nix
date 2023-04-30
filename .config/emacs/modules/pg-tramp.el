@@ -1,7 +1,9 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-keybinds)
 
 (use-package tramp
-  :straight nil
+  :after evil
+  :elpaca nil
   :config
   (setq tramp-default-method "sshx")
 
@@ -23,7 +25,7 @@
               (read-file-name "Find remote file:" (format "/%s:" path))))))
     (find-file host))
 
-  (pg/leader
-   "f R" #'(find-remote-file :wk "remote file")))
+  (evil-define-key* 'normal 'global
+   (kbd "<leader> f R") #'(find-remote-file :wk "remote file")))
 
 (provide 'pg-tramp)

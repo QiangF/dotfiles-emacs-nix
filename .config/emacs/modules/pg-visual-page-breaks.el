@@ -7,9 +7,9 @@
                   help-mode-hook))
     (add-hook hook #'page-break-lines-mode))
 
-  (pg/leader
-    :states 'normal
-    "i s" `(,(lambda () (interactive) (insert ?\f)) :wk "form feed")))
+  (evil-define-key 'normal 'global
+    (kbd "<leader> i s") `(,(lambda () (interactive) (insert ?\f)) :wk "form feed"))
+  )
 
 
 (provide 'pg-visual-page-breaks)

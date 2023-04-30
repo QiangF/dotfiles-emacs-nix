@@ -23,7 +23,9 @@
   ;; Issues with colors while in daemon mode is causing it to fail on load. So load telega after a
   ;; frame is created
   (add-hook 'server-after-make-frame-hook (lambda () (telega 0)))
-  (pg/leader "c" telega-prefix-map)
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> c")
+    telega-prefix-map)
 
   (setq telega-chat-button-brackets
         '(((type private)    "p|" "")
@@ -52,14 +54,13 @@
   (set-face-background 'telega-msg-heading "#1b1326")
   (telega-mode-line-mode 1)
 
-  :general
-  (:keymaps 'telega-chat-mode-map
-            "C-g" #'telega-chatbuf-cancel-aux))
+  (evil-define-key* 'normal telega-chat-mode-map
+    "C-g" #'telega-chatbuf-cancel-aux))
 
 (use-package alert)
 
 (use-package telega-alert
-  :straight nil
+  :elpaca nil
   :after telega alert
   :config
   (telega-alert-mode 1)
@@ -80,9 +81,7 @@
 
   (add-to-list 'dashboard-items '(telega-chats . 5) t)
   (add-hook 'telega-chat-update-hook (lambda (&rest _) (dashboard-refresh-buffer-silent)))
-  (general-define-key
-   :states 'normal
-   :keymaps 'dashboard-mode-map
+  (evil-define-key* 'normal dashboard-mode-map
    "t" #'dashboard-jump-to-telega-chats))
 
 (provide 'pg-telegram)

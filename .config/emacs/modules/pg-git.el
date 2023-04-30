@@ -3,13 +3,14 @@
 (use-package magit
   :defer t
   :init
-  (pg/leader
-    "g" '(:wk "git")
-    "g g" #'(magit-status :wk "status")
-    "g b" #'(magit-blame :wk "blame")
-    "g w" #'(magit-worktree :wk "worktree"))
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> g g") #'("status" . magit-status)
+    (kbd "<leader> g b") #'("blame" . magit-blame)
+    (kbd "<leader> g w") #'("worktree" . magit-worktree))
+
   :config
-  (define-key magit-status-mode-map (kbd "SPC") nil))
+  (evil-define-key 'normal magit-status-mode-map
+    (kbd "<leader>") nil))
 
 (use-package magit-todos
   :init
@@ -28,8 +29,8 @@
 
 (use-package blamer
   :init
-  (pg/leader
-    "t b" #'(blamer-mode :wk blame)))
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> t b") #'("blame" . blamer-mode)))
 
 (use-package magit-delta
   :if (executable-find "delta")

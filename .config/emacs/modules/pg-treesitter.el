@@ -6,7 +6,7 @@
 
 (use-package treesit
   :if (pg/native-treesitter-p)
-  :straight nil
+  :elpaca nil
   :commands (treesit-install-language-grammar)
   :init
   ;; https://www.nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/

@@ -33,73 +33,11 @@
       (delete-other-windows))))
 
 (use-package which-key
-  :init
+  :config
   (setq which-key-idle-delay 1)
   (which-key-mode 1))
 
-(use-package general
-  :config
-  (general-create-definer pg/leader
-   :states '(normal visual)
-   :prefix "SPC"
-   :non-normal-prefix "M-SPC")
-
-  (general-create-definer pg/local-leader
-   :states '(normal visual)
-   :prefix "C-SPC")
-
-  (pg/leader
-   "m" '(:ignore t :wk "local")
-   "s" '(:ignore t :wk "search")
-   "c" '(:ignore t :wk "code")
-   "p" '(:ignore t :wk "project")
-   "o" '(:ignore t :wk "open")
-   "t" '(:ignore t :wk "toggle")
-   "f" '(:ignore t :wk "file")
-   "h" '(:ignore t :wk "help")
-   "q" '(:ignore t :wk "quit")
-   "w" '(:ignore t :wk "window")
-   "b" '(:ignore t :wk "buffer")
-
-   "y" #'(yank-whole-buffer :wk "yank buffer")
-
-   "t f" #'(display-fill-column-indicator-mode :wk "fill-column")
-   "t n" #'(display-line-numbers-mode :wk "line numbers")
-   "t w" #'(whitespace-mode :wk "whitespace")
-   "t d" #'(toggle-debug-on-error :wk "debug on error")
-
-   "f f" #'(find-file :wk "find")
-   "f s" #'(save-buffer :wk "save")
-   "f S" #'(save-all-buffers :wk "save all")
-   "f ." #'(find-file-at-point :wk "this")
-   "f m" #'(pg/open-module :wk "module")
-
-   "h k" #'(describe-key :wk "key")
-   "h p" #'(describe-package :wk "package")
-
-   "q w" #'(delete-window :wk "window")
-   "q b" #'(kill-this-buffer :wk "buffer")
-   "q q" #'(save-buffers-kill-terminal :wk "really quit?")
-
-   "w d" #'(delete-window :wk "delete")
-   "w D" #'(kill-buffer-and-window :wk "delete with buffer")
-   "w s" #'(split-window-below :wk "split below")
-   "w v" #'(split-window-right :wk "split right")
-   "w =" #'(balance-windows :wk "balance")
-   "w a" #'(ace-swap-window :wk "ace-swap")
-
-   "b b" #'(switch-to-buffer :wk "open")
-   "b B" #'(switch-to-buffer :wk "open")
-   "b d" #'(kill-this-buffer :wk "delete")
-   "b D" #'(kill-buffer-and-window :wk "delete with window")
-   "b r" #'(revert-buffer :wk "revert")
-   "b s" #'(open-scratch-buffer :wk "scratch")
-   "b m" #'(view-echo-area-messages :wk "messages")
-
-   ";" #'eval-expression))
-
 (use-package evil
-  :straight t
   :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
@@ -112,46 +50,104 @@
   (defun pg/scroll-line-to-center ()
     (interactive)
     (evil-scroll-line-to-center 0))
-  
+
   ;; Center buffer on point when jumping between sections
   (advice-add 'evil-forward-section-begin
               :after #'evil-scroll-line-to-center)
   (advice-add 'evil-backward-section-begin
               :after #'evil-scroll-line-to-center)
 
-  (pg/leader
-    :states 'normal
-    "b p" #'(evil-prev-buffer :wk "previous")
-    "b n" #'(evil-next-buffer :wk "next")
-    "b N" #'(evil-buffer-new :wk "new")
-    "`" #'(toggle-maximize-buffer :wk "fullscreen"))
+  (evil-set-leader 'normal (kbd "SPC"))
 
-  (general-define-key
-   "M-u" #'universal-argument)
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> m") (cons "local" (make-sparse-keymap))
+    (kbd "<leader> s") (cons "search" (make-sparse-keymap))
+    (kbd "<leader> c") (cons "code" (make-sparse-keymap))
+    (kbd "<leader> p") (cons "project" (make-sparse-keymap))
+    (kbd "<leader> o") (cons "open" (make-sparse-keymap))
+    (kbd "<leader> t") (cons "toggle" (make-sparse-keymap))
+    (kbd "<leader> f") (cons "file" (make-sparse-keymap))
+    (kbd "<leader> h") (cons "help" (make-sparse-keymap))
+    (kbd "<leader> q") (cons "quit" (make-sparse-keymap))
+    (kbd "<leader> w") (cons "window" (make-sparse-keymap))
+    (kbd "<leader> b") (cons "buffer" (make-sparse-keymap))
+    (kbd "<leader> g") (cons "git" (make-sparse-keymap)))
 
-  (general-define-key
-   :states 'normal
-   "M-j" #'move-line-down
-   "M-k" #'move-line-up
-   "C-j" #'evil-forward-section-begin
-   "C-k" #'evil-backward-section-begin)
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> b p") #'("previous" . evil-prev-buffer)
+    (kbd "<leader> b n") #'("next" . evil-next-buffer)
+    (kbd "<leader> b N") #'("new" . evil-buffer-new))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> `") #'("fullscreen" . toggle-maximize-buffer))
+
+  (evil-define-key '(normal insert visual motion) 'global
+    (kbd "M-u") #'universal-argument)
+
+  (evil-define-key* 'normal 'global
+    (kbd "M-j") #'move-line-down
+    (kbd "M-k") #'move-line-up
+    (kbd "C-j") #'evil-forward-section-begin
+    (kbd "C-k") #'evil-backward-section-begin)
 
   ;; I often press =C-w C-h= to go left (for example) instead of =C-w h= so I'll just bind both.
-  (general-define-key
-   :states 'normal
-   "C-w C-h" #'evil-window-left
-   "C-w C-j" #'evil-window-down
-   "C-w C-k" #'evil-window-up
-   "C-w C-l" #'evil-window-right
-   "C-<tab>" #'evil-switch-to-windows-last-buffer)
+  (evil-define-key* '(normal insert) 'global
+    (kbd "C-w") (make-sparse-keymap)
+    (kbd "C-w C-h") #'evil-window-left
+    (kbd "C-w C-j") #'evil-window-down
+    (kbd "C-w C-k") #'evil-window-up
+    (kbd "C-w C-l") #'evil-window-right
+    (kbd "C-<tab>") #'evil-switch-to-windows-last-buffer)
 
-  (general-define-key
-   :states 'normal
-   "C-a" '(:ignore t :wk "avy")
-   "C-a w" #'ace-window
-   "C-a W" #'ace-swap-window
-   "C-a l" #'evil-avy-goto-line
-   "C-a c" #'evil-avy-goto-char)
+  ;; (evil-define-key* '(normal insert) 'global
+  ;;  "C-a" '(:ignore t :wk "avy")
+  ;;  "C-a w" #'ace-window
+  ;;  "C-a W" #'ace-swap-window
+  ;;  "C-a l" #'evil-avy-goto-line
+  ;;  "C-a c" #'evil-avy-goto-char)
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> b b") #'("open" . switch-to-buffer)
+    (kbd "<leader> b B") #'("open" . switch-to-buffer)
+    (kbd "<leader> b d") #'("delete" . kill-this-buffer)
+    (kbd "<leader> b D") #'("delete with window" . kill-buffer-and-window)
+    (kbd "<leader> b r") #'("revert" . revert-buffer)
+    (kbd "<leader> b s") #'("scratch" . open-scratch-buffer)
+    (kbd "<leader> b m") #'("messages" . view-echo-area-messages))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> t f") #'("fill-column" . display-fill-column-indicator-mode)
+    (kbd "<leader> t n") #'("line numbers" . display-line-numbers-mode)
+    (kbd "<leader> t w") #'("whitespace" . whitespace-mode)
+    (kbd "<leader> t d") #'("debug on error" . toggle-debug-on-error))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> f f") #'("find" . find-file)
+    (kbd "<leader> f s") #'("save" . save-buffer)
+    (kbd "<leader> f S") #'("save all" . save-all-buffers)
+    (kbd "<leader> f .") #'("this" . find-file-at-point)
+    (kbd "<leader> f m") #'("module" . pg/open-module))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> h k") #'("key" . describe-key)
+    (kbd "<leader> h p") #'("package" . describe-package))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> q w") #'("window" . delete-window)
+    (kbd "<leader> q b") #'("buffer" . kill-this-buffer)
+    (kbd "<leader> q q") #'("really quit?" . save-buffers-kill-terminal))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> w d") #'("delete" . delete-window)
+    (kbd "<leader> w D") #'("delete with buffer" . kill-buffer-and-window)
+    (kbd "<leader> w s") #'("split below" . split-window-below)
+    (kbd "<leader> w v") #'("split right" . split-window-right)
+    (kbd "<leader> w =") #'("balance" . balance-windows)
+    (kbd "<leader> w a") #'("ace-swap" . ace-swap-window))
+
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> y") #'yank-whole-buffer
+    (kbd "<leader> ;") #'eval-expression)
 
   (evil-mode 1))
 
@@ -171,9 +167,9 @@
   (evil-collection-init))
 
 (use-package evil-nerd-commenter
-  :init
+  :config
   (evilnc-default-hotkeys)
-  :general
-  ("C-:" #'evilnc-copy-and-comment-lines))
+  (evil-define-key* '(normal insert) 'global
+   (kbd "C-:") #'evilnc-copy-and-comment-lines))
 
 (provide 'pg-keybinds)

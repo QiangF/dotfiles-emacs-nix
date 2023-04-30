@@ -3,11 +3,11 @@
 
 (use-package sqlite-mode
   :if (version< "29" emacs-version)
-  :straight nil
+  :elpaca nil
   :after evil
   :config
   (evil-define-key* 'normal sqlite-mode-map
-    (kbd "RET") #'sqlite-mode-list-data
-    [tab] #'sqlite-mode-list-columns))
+    (kbd "<return>") #'sqlite-mode-list-data
+    (kbd "<tab>") #'sqlite-mode-list-columns))
 
 (provide 'pg-sqlite)

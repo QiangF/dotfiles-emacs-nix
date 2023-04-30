@@ -1,6 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
 
-(use-package outshine
-  :straight t)
+(use-package outshine)
 
 (provide 'pg-outshine)

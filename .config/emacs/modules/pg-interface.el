@@ -51,7 +51,7 @@
   (add-hook 'prog-mode-hook #'hl-todo-mode))
 
 (use-package share-path
-  :straight (:type git :host nil :repo "https://codeberg.org/purplg/share-path.el")
+  :elpaca (:type git :host nil :repo "https://codeberg.org/purplg/share-path.el")
   :init
   (share-path-mode 1))
 

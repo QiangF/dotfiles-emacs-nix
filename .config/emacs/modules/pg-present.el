@@ -4,7 +4,7 @@
   :demand t)
 
 (use-package org-present
-  :straight (:type git :host github :repo "purplg/org-present" :branch "show-options-var")
+  :elpaca (:type git :host github :repo "purplg/org-present" :branch "show-options-var")
   :after visual-fill-column
   :init
   (require 'org-faces)
@@ -83,19 +83,15 @@
     (call-interactively #'org-backward-heading-same-level)
     (call-interactively #'evil-scroll-line-to-top))
   
-  (general-define-key
-   :states 'normal
-   :keymaps 'org-present-mode-keymap
-   "SPC" nil
+  (evil-define-key 'normal org-present-mode-keymap
+   ;; "SPC" nil
    "g g" (lambda () (interactive) (org-up-heading-all 99))
-   "C-k" #'org-present-previous-heading
-   "C-j" #'org-present-next-heading)
+   (kbd "C-k") #'org-present-previous-heading
+   (kbd "C-j") #'org-present-next-heading)
 
-  (pg/leader
-    :states 'normal
-    :keymaps 'org-present-mode-keymap
-    "t c" #'(org-present-toggle-cursor :wk "cursor")
-    "t b" #'(org-present-toggle-big :wk "big")))
+  (evil-define-key* 'normal org-present-mode-keymap
+    "<leader> t c" #'(org-present-toggle-cursor :wk "cursor")
+    "<leader> t b" #'(org-present-toggle-big :wk "big")))
 
 (use-package hide-mode-line)
 

@@ -1,9 +1,8 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (use-package nix-mode
-  :hook
-  (nix-mode . eglot-ensure)
-  (nix-mode . corfu-mode)
+  :hook (nix-mode . eglot-ensure)
+        (nix-mode . corfu-mode)
   :config
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
@@ -20,11 +19,9 @@
         (add-to-list 'eglot-server-programs '(nix-mode . ("rnix-lsp"))))))
 
 (use-package nixpkgs-fmt
-  :straight t
-  :init
-  (pg/leader
-    :keymaps 'nix-mode-map
-    :states 'normal
-    "m f" #'(nixpkgs-fmt-buffer :wk "format buffer")))
+  :after nix-mode
+  :config
+  (evil-define-key* 'normal nix-mode-map
+    (kbd "<leader> m f") #'(nixpkgs-fmt-buffer :wk "format buffer")))
 
 (provide 'pg-nix)
