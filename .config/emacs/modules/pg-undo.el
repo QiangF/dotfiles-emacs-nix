@@ -3,12 +3,8 @@
 
 (use-package undo-tree
   :init
-  (dolist (hook '(text-mode-hook
-                  prog-mode-hook
-                  conf-mode-hook))
-    (add-hook hook (lambda () (undo-tree-mode 1))))
-  (let ((undo-dir (expand-file-name "undo" user-emacs-directory)))
-    (unless (f-directory-p undo-dir) (make-directory undo-dir))
-    (setq undo-tree-history-directory-alist `(("." . ,undo-dir)))))
+  (setq undo-tree-auto-save-history nil)
+  (with-eval-after-load 'evil
+    (add-hook 'evil-local-mode-hook #'turn-on-undo-tree-mode)))
 
 (provide 'pg-undo)
