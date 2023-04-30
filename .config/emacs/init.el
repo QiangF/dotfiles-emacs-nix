@@ -50,7 +50,6 @@
 
 (require 'pg-aliases)
 (require 'pg-perf)
-(require 'pg-aliases)
 (require 'pg-keybinds)
 (require 'pg-interface)
 (require 'pg-editing)
