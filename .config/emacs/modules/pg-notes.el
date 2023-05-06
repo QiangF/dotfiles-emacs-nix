@@ -17,6 +17,7 @@
     (kbd "<leader> x") (make-sparse-keymap)
     (kbd "<leader> x n") #'denote
     (kbd "<leader> x j") #'pg/denote-today
+    (kbd "<leader> f x") #'denote-open-or-create
     (kbd "<leader> x f") #'denote-open-or-create))
 
 (provide 'pg-notes)
