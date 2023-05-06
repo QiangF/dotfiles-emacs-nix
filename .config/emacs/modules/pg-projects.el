@@ -26,6 +26,7 @@
     (kbd "M-5") (lambda () (interactive) (tab-bar-select-tab 5))))
 
 (use-package project
+  :after evil
   :init
   (setq project-switch-commands 'project-find-file)
 
@@ -42,6 +43,7 @@
     (kbd "<leader> f p") #'("find file" . project-find-file)))
 
 (use-package treebund
+  :after evil
   ;; :elpaca (:type git :host github :repo "purplg/treebund.el")
   :elpaca (:repo "~/workspaces/treebund.el/main/")
   :config
