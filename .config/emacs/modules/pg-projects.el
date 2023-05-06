@@ -59,7 +59,7 @@
 
   (defun pg/open-project-notes ()
     (interactive)
-    (if-let ((workspace-path (or (treebund--workspace-current) (treebund--read-workspace "Open notes for project: "))))
+    (if-let ((workspace-path (or (treebund--workspace-current) (treebund--read-workspace))))
         (find-file-other-window (expand-file-name "project.org" workspace-path))
       (message "Not in a workspace")))
 
