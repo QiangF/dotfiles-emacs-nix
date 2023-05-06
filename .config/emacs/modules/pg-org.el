@@ -26,15 +26,15 @@
   (setq org-capture-templates
         '(("p" "PC" entry
            (file (lambda () (expand-file-name "PC.org" org-directory)))
-           "* TODO %i%?")
+           "* TODO %i%?\nSCHEDULED: %t")
 
           ("h" "Home" entry
            (file (lambda () (expand-file-name "Home.org" org-directory)))
-           "* TODO %i%?")
+           "* TODO %i%?\nSCHEDULED: %t")
 
           ("w" "Work" entry
            (file (lambda () (expand-file-name "Work.org" org-directory)))
-           "* TODO %i%?")))
+           "* TODO %i%?\nSCHEDULED: %t")))
 
   (setq org-agenda-custom-commands
         '(("w" "At work" tags-todo "@work"
