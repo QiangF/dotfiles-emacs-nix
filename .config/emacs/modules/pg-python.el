@@ -36,4 +36,9 @@
                                              default-directory)))
                   (apply fn args)))))
 
+(use-package blacken
+  :after python
+  :init
+  (add-hook 'python-base-mode-hook #'blacken-mode))
+
 (provide 'pg-python)
