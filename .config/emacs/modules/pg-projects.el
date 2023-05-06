@@ -1,6 +1,10 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(with-eval-after-load 'evil
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> TAB") (make-sparse-keymap)))
+
 (use-package tab-bar
   :elpaca nil
   :after evil
@@ -58,7 +62,6 @@
       (message "Not in a workspace")))
 
   (evil-define-key* 'normal 'global
-    (kbd "<leader> TAB") (make-sparse-keymap)
     (kbd "<leader> TAB TAB") #'("prev tab" . tab-bar-switch-to-prev-tab)
     (kbd "<leader> TAB /") (lambda ()
                              (interactive)
