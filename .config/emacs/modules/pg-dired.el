@@ -12,6 +12,6 @@
 
   (setq dirvish-side-follow-mode t)
   (evil-define-key 'normal 'global
-    (kbd "<leader> o p") #'(dirvish-side :wk "sidebar")))
+    (kbd "<leader> o p") #'("sidebar" . dirvish-side)))
 
 (provide 'pg-dired)
