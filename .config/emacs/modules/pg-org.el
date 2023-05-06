@@ -20,6 +20,8 @@
   (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq org-highlight-sparse-tree-matches nil)
 
+  (when (file-exists-p "~/.org")
+    (setq org-directory "~/.org"))
 
   ;; Capture
   (setq org-capture-project-file "project.org")
