@@ -8,5 +8,6 @@
     rsync
     mpv
     gping
+    qmk
   ];
 }
