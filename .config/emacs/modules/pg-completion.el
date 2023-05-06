@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
 
 (use-package corfu
