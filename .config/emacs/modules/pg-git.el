@@ -9,8 +9,8 @@
     (kbd "<leader> g w") #'("worktree" . magit-worktree))
 
   :config
-  (evil-define-key 'normal magit-status-mode-map
-    (kbd "<leader>") nil))
+  (define-key nil magit-status-mode-map
+    (kbd "SPC") nil))
 
 (use-package magit-todos
   :init
