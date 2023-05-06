@@ -9,7 +9,7 @@
   (tab-bar-mode)
   (tab-bar-rename-tab "Default" 1)
   :config
-  (evil-define-key* 'normal tab-bar-map
+  (evil-define-key* 'normal 'global
     (kbd "<leader> TAB h") #'("prev" . tab-bar-switch-to-prev-tab)
     (kbd "<leader> TAB l") #'("next" . tab-bar-switch-to-next-tab)
     (kbd "<leader> TAB x") #'("close" . tab-bar-close-tab))
