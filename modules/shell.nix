@@ -47,6 +47,8 @@
         EDITOR = "emacsclient -tc";
         VISUAL = "emacsclient -c -a emacs";
         TERM = "xterm";
+        SSH_AGENT_PID = "";
+        SSH_AUTH_SOCK = "$\{XDG_RUNTIME_DIR\}/gnupg/S.gpg-agent.ssh";
       };
       initExtra = ''
         alias ..="cd .."
@@ -59,17 +61,6 @@
     };
 
     starship.enable = true;
-    keychain = {
-      enable = false;
-      extraFlags = [
-        "--timeout 3600"
-        "--quiet"
-      ];
-      agents = [
-        "gpg"
-        "ssh"
-      ];
-    };
 
     bat.enable = true;
 

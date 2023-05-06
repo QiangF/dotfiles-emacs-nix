@@ -13,15 +13,7 @@
     '';
   };
 
-  programs.gpg.enable = true;
-
   home.packages = with pkgs; [
     wl-clipboard
   ];
-
-  services = {
-    gpg-agent.enable = true;
-    gpg-agent.enableSshSupport = true;
-    # gpg-agent.grabKeyboardAndMouse = false;
-  };
 }
