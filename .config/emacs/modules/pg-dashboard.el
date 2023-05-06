@@ -19,6 +19,14 @@
   (add-hook 'dashboard-after-initialize-hook
     (lambda ()
       (with-current-buffer "*dashboard*" (emacs-lock-mode 'kill))))
+
+  (add-hook 'dashboard-mode-hook
+            (lambda ()
+              (setq visual-fill-column-width 150)
+              (setq visual-fill-column-center-text t)
+              (setq visual-fill-column-fringes-outside-margins nil)
+              (visual-fill-column-mode)))
+
   (defun dashboard-switch ()
     "Switch to dashboard buffer"
     (interactive)
