@@ -22,7 +22,6 @@
   services = {
     gpg-agent.enable = true;
     gpg-agent.enableSshSupport = true;
-    gpg-agent.pinentryFlavor = "curses";
     # gpg-agent.grabKeyboardAndMouse = false;
   };
 }
