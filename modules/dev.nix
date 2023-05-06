@@ -19,5 +19,6 @@
     nixpkgs-fmt
     cachix
     nodePackages.bash-language-server
+    python310Packages.jedi-language-server
   ];
 }
