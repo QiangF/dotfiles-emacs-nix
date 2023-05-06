@@ -24,24 +24,26 @@
     (setq org-directory "~/.org"))
 
   ;; Capture
-  (setq org-capture-project-file "project.org")
   (setq org-capture-templates
-        '(("i" "Inbox" entry
-           (file+headline (lambda () (expand-file-name "inbox.org" org-directory)) "Tasks")
+        '(("p" "PC" entry
+           (file (lambda () (expand-file-name "PC.org" org-directory)))
            "* TODO %i%?")
 
-          ("t" "Tickler" entry
-           (file+headline (lambda () (expand-file-name "tickler.org" org-directory)) "Tickler")
-           "* %i%? \n %U")))
+          ("h" "Home" entry
+           (file (lambda () (expand-file-name "Home.org" org-directory)))
+           "* TODO %i%?")
+
+          ("w" "Work" entry
+           (file (lambda () (expand-file-name "Work.org" org-directory)))
+           "* TODO %i%?")))
 
   (setq org-agenda-custom-commands
         '(("w" "At work" tags-todo "@work"
            ((org-agenda-overriding-header "Work")))
           ("h" "At home" tags-todo "@home"
            ((org-agenda-overriding-header "Home")))))
-  
-  (setq org-agenda-files '("~/.org/inbox.org"
-                           "~/.org/tickler.org"))
+
+  (setq org-agenda-files '("~/.org/PC.org"))
 
   ;; Keybinds
   (evil-define-key* 'normal 'global
@@ -56,19 +58,19 @@
       (org-sort-entries nil ?o)
       (goto-line line))
     (org-cycle-set-startup-visibility))
-  
+
   :config
   (evil-define-key* 'normal org-mode-map
     (kbd "<leader> t l") #'(org-toggle-link-display :wk "link display")
     (kbd "<leader> t s") #'(flyspell-mode :wk "spell check")
     (kbd "<leader> m s") #'(pg/sort-tasks :wk "sort"))
-    
+
   (evil-define-key 'normal org-src-mode-map
     (kbd "C-c C-c") #'org-edit-src-exit)
 
   (evil-define-key 'normal org-mode-map
     (kbd "RET") #'org-return))
-   
+
 (use-package htmlize
   :after org
   :defer t)
