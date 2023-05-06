@@ -55,7 +55,7 @@
   (telega-mode-line-mode 1)
 
   (evil-define-key* 'normal telega-chat-mode-map
-    "C-g" #'telega-chatbuf-cancel-aux))
+    (kbd "C-g") #'telega-chatbuf-cancel-aux))
 
 (use-package alert)
 
