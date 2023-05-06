@@ -55,6 +55,11 @@
   :init
   (share-path-mode 1))
 
+(use-package rfc-mode
+  :init
+  (evil-define-key 'normal 'global
+    (kbd "<leader> o r") #'("RFC" . rfc-mode-browse)))
+
 (require 'pg-completion)
 (require 'pg-dashboard)
 (require 'pg-embark)
