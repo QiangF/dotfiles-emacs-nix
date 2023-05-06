@@ -1,84 +1,65 @@
 ;;; --- -*- lexical-binding: t; -*-
+
 (require 'pg-theme)
 
 (use-package hass
   :after pass
-  :defer t
+  :elpaca (:host github :repo "purplg/hass" :branch "dev")
+  :functions hass-mode
   :init
   (setq hass-host "homeassistant.lan")
+  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
   (setq hass-insecure t)
+  (setq hass-dash-update-delay 0.1)
+  (setq hass--debug t)
+  (setq hass--debug-ignore '("EVENT" "HTTP"))
 
   (defun pg/toggle-office-lights ()
     (interactive)
     (hass-call-service-with-payload
      "light.toggle"
      '((entity_id . "light.office")
-       (transition . "1")
-       (brightness . "255"))))
+       (transition . "3")
+       (brightness . "100"))))
 
-  (pg/leader
-    :states 'normal
-    "a" #'(:ignore t :wk "automation")
-    "a c" #'(hass-call-service :wk "Call service")
-    "a l" #'(pg/toggle-office-lights :wk "Toggle lights")
-    "a d" #'(hass-dash-open :wk "Call service"))
+  (defvar pg/away nil)
+  (defvar pg/away-light nil)
+  (defun pg/away-turn-on ()
+    (setq pg/away t)
+    (message "Enabled away")
+    (hass-call-service-with-payload
+     "input_number.set_value"
+     `((entity_id . "input_number.target_brightness")
+       (value . ,pg/away-light))))
+  
+  (defun pg/away-turn-off ()
+    (setq pg/away nil)
+    (message "Disable away")
+    (hass-call-service-with-payload
+     "input_number.set_value"
+     '((entity_id . "input_number.target_brightness")
+       (value . "0"))))
+
+  (defun pg/toggle-away ()
+    (interactive)
+    (unless pg/away-light
+      (setq pg/away-light (or (hass-attribute-of "light.office"
+                                                 'brightness)
+                              255)))
+    (if pg/away
+        (pg/away-turn-off)
+      (pg/away-turn-on)))
+
+  :config
+  (evil-define-key* 'normal 'global
+    (kbd "<leader> a") (make-sparse-keymap)
+    (kbd "<leader> a a") #'("Away" . pg/toggle-away)
+    (kbd "<leader> a c") #'("Call service" . hass-call-service)
+    (kbd "<leader> a l") #'("Toggle lights" . pg/toggle-office-lights)
+    (kbd "<leader> a d") #'("Call service" . hass-dash-open))
 
   (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
   (add-to-list 'popper-reference-buffers 'hass-dash-mode)
-  
-  (setq hass-dash-layouts '((default . ((hass-dash-group :title "Desktop" :format "%t\n%v\n"
-                                                         (hass-dash-toggle :entity-id "switch.desktop" :confirm t)
-                                                         (hass-dash-button :entity-id "media_player.mpd" :label "MEDIA")
-                                                         (hass-dash-state :entity-id "sensor.desktop_cpu" :label "CPU")
-                                                         (hass-dash-state :entity-id "sensor.desktop_ram" :label "RAM"))
-                                        (hass-dash-group :title "Laptop" :format "%t\n%v\n"
-                                                         (hass-dash-toggle :entity-id "switch.laptopbig" :label "Power" :confirm t)
-                                                         (hass-dash-state :entity-id "sensor.laptopbig_cpu" :label "CPU")
-                                                         (hass-dash-state :entity-id "sensor.laptopbig_ram" :label "RAM"))
-                                        (hass-dash-group :title "Phone" :format "%t\n%v\n"
-                                                         (hass-dash-state :entity-id "sensor.pixel_7_pro_battery_level" :label "Battery" :format "%t: %v%%\n")
-                                                         (hass-dash-state :entity-id "sensor.pixel_7_pro_battery_state" :label "Bat state?")
-                                                         (hass-dash-state :entity-id "sensor.pixel_7_pro_phone_state" :label "Phone")
-                                                         (hass-dash-state :entity-id "sensor.pixel_7_pro_media_session" :label "Media"))
-                                        (hass-dash-group :title "TV" :format "%t\n%v\n"
-                                                         (hass-dash-button :entity-id "media_player.shield" :icon "" :label "Toggle"))
-                                        (hass-dash-group :title "Bedroom" :format "%t\n%v\n"
-                                                         (hass-dash-toggle :entity-id "light.bedroom")
-                                                         (hass-dash-toggle :entity-id "fan.bedroom"))
-                                        (hass-dash-group :title "Vacuum"
-                                                         (hass-dash-state :entity-id "vacuum.valetudo_vacuum"
-                                                                          :format "%v\n")
-                                                         (hass-dash-button :entity-id "vacuum.valetudo_vacuum"
-                                                                           :service "vacuum.start"
-                                                                           :format "%[%t%]\n"
-                                                                           :label "Clean")
-                                                         (hass-dash-button :entity-id "vacuum.valetudo_vacuum"
-                                                                           :service "vacuum.return_to_base"
-                                                                           :format "%[%t%]\n"
-                                                                           :label "Return to base")
-                                                         (hass-dash-button :entity-id "vacuum.valetudo_vacuum"
-                                                                           :service "vacuum.locate"
-                                                                           :format "%[%t%]\n"
-
-                                                                           :label "Locate"))))))
-  (when nil
-    (add-to-list 'hass-dash-layouts
-                 '(testing . ((hass-dash-group :title "" :format "%v"
-                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                               (hass-dash-button :entity-id "scene.test_scene")))))
-    (add-to-list 'hass-dash-layouts
-                 '(broken . ((hass-dash-group :title "Group 1"
-                                              (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                              (hass-dash-group :title "Group 1 Subgroup 1"
-                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
-                                              (hass-dash-group :title "Group 1 Subgroup 2"
-                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")))
-                             (hass-dash-group :title "Group 2"
-                                              (hass-dash-toggle :entity-id "input_boolean.hass_mode_test")
-                                              (hass-dash-group :title "Group 2 Subgroup 1"
-                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_test"))
-                                              (hass-dash-group :title "Group 2 Subgroup 2"
-                                                               (hass-dash-toggle :entity-id "input_boolean.hass_mode_tes")))))))
 
   (defun hass-capf (&optional interactive)
     (interactive (list t))
@@ -90,18 +71,22 @@
               (cdr bounds)
               (mapcar #'car hass--available-entities)))))
 
+  (evil-define-key*
+    '(normal insert)
+    'global
+    (kbd "M-a") #'hass-call-service)
 
-  :config
-  ;; An automation just to "eat my own dogfood".
-  ;; Changes Emacs theme based on the state of my bedroom light.
-  (setq hass-apikey (auth-source-pass-get 'secret "home/hass/emacs-apikey"))
-  (add-to-list 'hass-tracked-entities "switch.bedroom_light")
-  (setq pg/hass-original-theme current-theme)
-  (add-hook 'hass-entity-state-changed-functions
-            (lambda (entity-id)
-              (when (equal entity-id "switch.bedroom_light")
-                (if (hass-switch-p entity-id)
-                    (set-theme 'tsdh-light)
-                  (set-theme pg/hass-original-theme))))))
+  (with-eval-after-load 'hass-dash
+    ;; (hass-dash-load-layout
+    ;;  (file-name-concat pg/config-dir
+    ;;                    "hass-dash-layouts.el"))
+    (evil-define-key* 'normal hass-dash-mode-map
+      (kbd "h") #'hass-dash-slider-decrease
+      (kbd "l") #'hass-dash-slider-increase))
+
+  (hass-dash-load-layout (file-name-concat pg/config-dir "hass-dash-layouts.el"))
+
+  (setq debug-on-error t)
+  (hass-mode 1))
 
 (provide 'pg-hass)
