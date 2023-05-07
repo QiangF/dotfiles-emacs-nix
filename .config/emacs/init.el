@@ -75,6 +75,7 @@
 (require 'pg-aliases)
 (require 'pg-perf)
 (require 'pg-keybinds)
+(require 'pg-bookmarks)
 (require 'pg-notes)
 (require 'pg-interface)
 (require 'pg-editing)
