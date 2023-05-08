@@ -59,9 +59,13 @@
 
   (defun pg/open-project-notes ()
     (interactive)
-    (if-let ((workspace-path (or (treebund--workspace-current) (treebund--read-workspace))))
-        (find-file-other-window (expand-file-name "project.org" workspace-path))
-      (message "Not in a workspace")))
+    (if-let ((workspace-path (or (treebund--workspace-current)
+                                 (treebund--read-workspace))))
+        (find-file-other-window
+         (file-name-concat org-directory
+                           "projects"
+                           (file-name-with-extension (treebund--workspace-name workspace-path) "org")))
+      (user-error "Not in a workspace")))
 
   (evil-define-key* 'normal 'global
     (kbd "<leader> TAB TAB") #'("prev tab" . tab-bar-switch-to-prev-tab)
