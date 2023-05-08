@@ -11,7 +11,11 @@
     (interactive)
     (denote
      (format-time-string "%A %e %B %Y")
-     '("journal")))
+     '("journal")
+     nil
+     nil
+     nil
+     'journal))
 
   (evil-define-key '(normal visual) 'global
     (kbd "<leader> x") (make-sparse-keymap)
