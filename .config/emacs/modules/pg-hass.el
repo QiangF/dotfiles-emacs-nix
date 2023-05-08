@@ -86,7 +86,6 @@
 
   (hass-dash-load-layout (file-name-concat pg/config-dir "hass-dash-layouts.el"))
 
-  (setq debug-on-error t)
   (hass-mode 1))
 
 (provide 'pg-hass)
