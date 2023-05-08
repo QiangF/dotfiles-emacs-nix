@@ -57,7 +57,7 @@
   :elpaca (:type git :host github :repo "mhayashi1120/Emacs-erefactor")
   :hook (emacs-lisp-mode . erefactor-lazy-highlight-turn-on)
   :init
-  (evil-define-key* 'normal erefactor-map
-    "<leader> c r" #'("rename" . erefactor-rename-symbol-in-buffer)))
+  (evil-define-key* 'normal emacs-lisp-mode-map
+    (kbd "<leader> c r") #'("rename" . erefactor-rename-symbol-in-buffer)))
 
 (provide 'pg-elisp)
