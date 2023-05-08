@@ -33,8 +33,7 @@
     (switch-to-buffer dashboard-buffer-name))
   
   (evil-define-key* 'normal 'global
-   (kbd "<leader> o d") #'("dashboard" . dashboard-switch))
-
+    (kbd "<leader> o d") #'("dashboard" . dashboard-open))
   (evil-define-key 'normal dashboard-mode-map
    (kbd "q") nil))
 
