@@ -149,6 +149,10 @@
     (kbd "<leader> y") #'yank-whole-buffer
     (kbd "<leader> ;") #'eval-expression)
 
+  (evil-define-key 'normal 'global
+    (kbd "<leader> k j") #'evil-jump-forward
+    (kbd "<leader> j k") #'evil-jump-backward)
+
   (evil-mode 1))
 
 (use-package evil-surround

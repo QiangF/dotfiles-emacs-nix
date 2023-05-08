@@ -6,6 +6,6 @@
   :after evil
   :init
   (evil-define-key 'normal 'global
-    (kbd "<leader> j") bookmark-map))
+    (kbd "<leader> m") bookmark-map))
 
 (provide 'pg-bookmarks)
