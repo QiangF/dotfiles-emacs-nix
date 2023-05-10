@@ -82,6 +82,8 @@
     ;;  (file-name-concat pg/config-dir
     ;;                    "hass-dash-layouts.el"))
     (evil-define-key* 'normal hass-dash-mode-map
+      (kbd "j") #'widget-forward
+      (kbd "k") #'widget-backward
       (kbd "h") #'hass-dash-slider-decrease
       (kbd "l") #'hass-dash-slider-increase))
 
