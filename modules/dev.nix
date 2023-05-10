@@ -18,6 +18,7 @@
     nil
     nixpkgs-fmt
     cachix
+    poetry
     nodePackages.bash-language-server
     python310Packages.jedi-language-server
   ];
