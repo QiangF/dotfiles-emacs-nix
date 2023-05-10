@@ -56,7 +56,8 @@
     (kbd "<leader> a a") #'("Away" . pg/toggle-away)
     (kbd "<leader> a c") #'("Call service" . hass-call-service)
     (kbd "<leader> a l") #'("Toggle lights" . pg/toggle-office-lights)
-    (kbd "<leader> a d") #'("Call service" . hass-dash-open))
+    (kbd "<leader> a d") #'("Call service" . hass-dash-open)
+    (kbd "<leader> a /") #'("Debug log" . (lambda () (interactive) (pop-to-buffer (hass--debug-buffer)))))
 
   (add-to-list 'popper-reference-buffers "^\\*hass-dash.*\\*$")
   (add-to-list 'popper-reference-buffers 'hass-dash-mode)
