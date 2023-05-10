@@ -7,7 +7,7 @@
   (add-hook 'eglot-managed-mode-hook #'corfu-mode)
   :config
   (evil-define-key* 'normal eglot-mode-map
-    (kbd "<leader> c a") #'(eglot-code-actions :wk "execute action")
-    (kbd "<leader> c r") #'(eglot-rename :wk "rename")))
+    (kbd "<leader> c a") #'("execute action" . eglot-code-actions)
+    (kbd "<leader> c r") #'("rename" :wk eglot-rename)))
 
 (provide 'pg-lsp)
