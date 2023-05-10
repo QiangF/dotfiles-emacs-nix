@@ -9,6 +9,7 @@
    (kbd "M-j") #'(flycheck-next-error :wk "next error")))
  
 (use-package flymake
+  :disabled
   :hook (eglot--managed-mode . flymake-mode)
   :config
   (setq elisp-flymake-byte-compile-load-path load-path)

@@ -41,4 +41,8 @@
   :init
   (add-hook 'python-base-mode-hook #'blacken-mode))
 
+(use-package flycheck-mypy
+  :init
+  (add-hook 'python-base-mode-hook #'flycheck-mode))
+
 (provide 'pg-python)
