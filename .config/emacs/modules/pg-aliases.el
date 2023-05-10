@@ -5,7 +5,7 @@
   (interactive "aFunction symbol: ")
   (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))
 
-(defun pg/load-file (file &optional dir)
+(defun pg/try-load-file (file &optional dir)
   (let ((file (expand-file-name file (or dir pg/config-dir))))
     (when (file-exists-p file)
       (load-file file))))

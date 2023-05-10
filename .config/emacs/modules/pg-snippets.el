@@ -16,4 +16,8 @@
    (kbd "<tab>") #'tempel-next)
   (add-hook 'org-mode-hook #'corfu-mode))
 
+(use-package gitignore-templates
+  :init
+  (setq gitignore-templates-api 'github))
+
 (provide 'pg-snippets)

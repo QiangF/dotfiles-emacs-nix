@@ -60,16 +60,9 @@
   (evil-define-key 'normal 'global
     (kbd "<leader> o r") #'("RFC" . rfc-mode-browse)))
 
-(require 'pg-completion)
-(require 'pg-dashboard)
-(require 'pg-embark)
-(require 'pg-font)
-(require 'pg-help)
-(require 'pg-indent-guides)
-(require 'pg-line-numbers)
-(require 'pg-modeline)
-(require 'pg-popper)
-(require 'pg-theme)
-(require 'pg-visual-page-breaks)
+(use-package auto-highlight-symbol
+  :hook (prog-mode . auto-highlight-symbol-mode)
+  :init
+  (setq ahs-idle-interval 0.5))
 
 (provide 'pg-interface)

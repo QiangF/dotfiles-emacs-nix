@@ -176,4 +176,10 @@
   (evil-define-key* '(normal insert) 'global
    (kbd "C-:") #'evilnc-copy-and-comment-lines))
 
+(use-package expand-region
+  :config
+  (evil-define-key* 'visual 'global
+   (kbd "v") #'er/expand-region
+   (kbd "V") (lambda () (interactive) (er/expand-region 2))))
+
 (provide 'pg-keybinds)

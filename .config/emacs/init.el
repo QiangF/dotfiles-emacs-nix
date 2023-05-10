@@ -65,19 +65,10 @@
     (load "./elpaca-autoloads")))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
-
 (elpaca elpaca-use-package
   (elpaca-use-package-mode)
   (setq elpaca-use-package-by-default t))
-
 (elpaca-wait)
 
-(require 'pg-aliases)
-(require 'pg-perf)
-(require 'pg-keybinds)
-(require 'pg-bookmarks)
-(require 'pg-notes)
-(require 'pg-interface)
-(require 'pg-editing)
-(require 'pg-apps)
-(require 'pg-system-specific)
+(load-file (file-name-concat pg/config-dir "modules.el"))
+(load-file (file-name-concat pg/config-dir "system-specific.el"))

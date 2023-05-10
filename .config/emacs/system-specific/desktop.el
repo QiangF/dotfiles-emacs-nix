@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-aliases)
 (require 'pg-font)
 
 (set-font-face "JetBrainsMono-10")
@@ -9,7 +10,6 @@
   (require 'pg-hass))
 
 (when (daemonp)
-  (pg/load-file "daemon.el"
-                (expand-file-name "system-specific/" pg/config-dir)))
+  (pg/try-load-file (file-name-concat "system-specific/" "daemon.el")))
 
 (provide 'pg-desktop)
