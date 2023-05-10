@@ -72,7 +72,7 @@
    (kbd "<leader> f /") #'("in root" . pg/find-file-in-root-dir))
 
   (evil-define-key* 'normal 'global
-   (kbd "<leader> p S") #'("search this" . pg/project-search-thing-at-point))
+   (kbd "<leader> s .") #'("search this" . pg/project-search-thing-at-point))
 
   (evil-define-key* '(normal insert) minibuffer-local-map
    (kbd "C-S-k") #'scroll-down-command
