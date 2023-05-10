@@ -1,6 +1,4 @@
 ;;; --- -*- lexical-binding: t; -*-
-(require 'pg-apps)
-
 (use-package keychain-environment
   :init
   (keychain-refresh-environment))
