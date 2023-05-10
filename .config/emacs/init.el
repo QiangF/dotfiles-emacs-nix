@@ -71,4 +71,4 @@
 (elpaca-wait)
 
 (load-file (file-name-concat pg/config-dir "modules.el"))
-(load-file (file-name-concat pg/config-dir "system-specific.el"))
+(load-file (file-name-concat pg/config-dir "system.el"))

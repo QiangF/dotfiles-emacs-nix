@@ -10,6 +10,6 @@
   (require 'pg-hass))
 
 (when (daemonp)
-  (pg/try-load-file (file-name-concat "system-specific/" "daemon.el")))
+  (pg/try-load-file (file-name-concat "system/" "daemon.el")))
 
 (provide 'pg-desktop)
