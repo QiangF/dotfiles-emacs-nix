@@ -3,7 +3,6 @@
   imports = [
     ../modules/dev.nix
     ../modules/dunst.nix
-    ../modules/firefox.nix
     ../modules/keys.nix
     ../modules/pass.nix
     ../modules/shell.nix
