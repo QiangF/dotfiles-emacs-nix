@@ -1,10 +1,67 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 (defvar current-theme nil)
+(defvar theme-dark nil)
+(defvar theme-light nil)
+
+(defvar after-theme-set-hook '())
+
+(add-hook 'server-after-make-frame-hook
+          (lambda () (run-hooks 'after-theme-set-hook)))
+
+(with-eval-after-load 'hl-line
+(add-hook 'after-theme-set-hook
+            (lambda ()
+              (set-face-background
+               'hl-line
+               (pcase current-theme
+                 ('ef-light (color-darken-name (face-background 'default) 5))
+                 ('ef-winter (color-lighten-name (face-background 'default) 50))
+                 ('modus-vivendi (color-lighten-name (face-background 'default) 10)))))))
 
 (defun set-theme (theme-name)
   (setq current-theme theme-name)
-  (load-theme current-theme t))
+  (load-theme current-theme t)
+  (run-hooks 'after-theme-set-hook))
+
+(defun toggle-theme ()
+    (interactive)
+    (if (eq pg/theme-light current-theme)
+        (set-theme pg/theme-dark)
+      (set-theme pg/theme-light)))
+
+(use-package modus-themes
+  :disabled
+  :bind ("<f5>" . modus-themes-toggle)
+  :init
+  (set-theme 'modus-vivendi-tinted)
+  (setq pg/theme-dark 'modus-vivendi)
+  (setq pg/theme-light 'modus-operandi)
+  :config
+  (advice-add 'modus-themes-toggle
+              :after
+              (lambda (&rest _)
+                (run-hooks 'modus-themes-post-toggle-hook))))
+
+(use-package ef-themes
+  :bind ("<f5>" . toggle-theme)
+  :init
+  (set-theme 'ef-winter)
+  (setq pg/theme-light 'ef-light)
+  (setq pg/theme-dark 'ef-winter))
+
+(use-package org-modern
+  :hook (org-mode . org-modern-mode))
+
+(use-package doom-themes
+  :disabled
+  :bind ("<f5>" . toggle-theme)
+  :init
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (set-theme 'doom-monokai-pro)
+  (setq pg/theme-dark 'doom-monokai-pro)
+  (setq pg/theme-light 'doom-acario-light))
 
 (with-eval-after-load 'auto-highlight-symbol
   (defun pg/set-ahs-faces ()
@@ -28,38 +85,6 @@
                         :background 'unspecified
                         :foreground 'unspecified))
   (pg/set-ahs-faces)
-  (add-hook 'server-after-make-frame-hook #'pg/set-ahs-faces))
-
-
-(use-package modus-themes
-  :disabled
-  :bind ("<f5>" . modus-themes-toggle)
-  :init
-  (set-theme 'modus-vivendi-tinted)
-  (add-hook 'modus-themes-post-load-hook
-            (lambda ()
-              (when (string= "modus-vivendi" (modus-themes--current-theme))
-                (set-face-background 'hl-line "#151826"))))
-  :config
-  (advice-add 'modus-themes-toggle
-              :after
-              (lambda (&rest _)
-                (setq current-theme (modus-themes--current-theme)))))
-
-(use-package ef-themes
-  :init
-  (set-theme 'ef-winter)
-  (with-eval-after-load 'hl-line
-    (set-face-background 'hl-line "#150f1e")))
-
-(use-package org-modern
-  :hook (org-mode . org-modern-mode))
-
-(use-package doom-themes
-  :disabled
-  :init
-  (setq doom-themes-enable-bold t)
-  (setq doom-themes-enable-italic t)
-  (set-theme 'doom-monokai-pro))
+  (add-hook 'after-theme-set-hook #'pg/set-ahs-faces))
 
 (provide 'pg-theme)
