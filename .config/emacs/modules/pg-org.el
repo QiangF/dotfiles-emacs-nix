@@ -60,9 +60,9 @@
 
   :config
   (evil-define-key* 'normal org-mode-map
-    (kbd "<leader> t l") #'(org-toggle-link-display :wk "link display")
-    (kbd "<leader> t s") #'(flyspell-mode :wk "spell check")
-    (kbd "<leader> m s") #'(pg/sort-tasks :wk "sort"))
+    (kbd "<leader> t l") #'("link display" . org-toggle-link-display)
+    (kbd "<leader> t s") #'("spell check" . flyspell-mode)
+    (kbd "<leader> m s") #'("sort" . pg/sort-tasks))
 
   (evil-define-key 'normal org-src-mode-map
     (kbd "C-c C-c") #'org-edit-src-exit)
