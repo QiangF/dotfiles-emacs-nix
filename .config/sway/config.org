@@ -87,6 +87,7 @@ output DP-2 bg #000000 solid_color
 
 #+BEGIN_SRC bash :tangle desktop
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+exec systemctl --user restart sunshine
 #+END_SRC
 
 #+BEGIN_SRC bash :tangle framework
