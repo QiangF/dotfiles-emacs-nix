@@ -8,6 +8,6 @@
   :config
   (evil-define-key* 'normal eglot-mode-map
     (kbd "<leader> c a") #'("execute action" . eglot-code-actions)
-    (kbd "<leader> c r") #'("rename" :wk eglot-rename)))
+    (kbd "<leader> c r") #'("rename" . eglot-rename)))
 
 (provide 'pg-lsp)
