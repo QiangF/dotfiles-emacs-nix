@@ -13,8 +13,7 @@
   (setq corfu-auto-prefix 1)
   (setq corfu-popupinfo-delay 0.5)
 
-  (with-eval-after-load 'elisp-mode
-    (add-hook 'emacs-lisp-mode-hook #'corfu-mode))
+  (global-corfu-mode)
 
   (evil-define-key* 'insert 'global
    (kbd "C-k") nil) ; Clear conflicting C-k keybind
