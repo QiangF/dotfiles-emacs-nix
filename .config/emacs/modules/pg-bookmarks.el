@@ -3,8 +3,8 @@
 
 (use-package bookmark
   :elpaca nil
-  :after evil
-  :init
+  :after evil bookmark
+  :config
   (evil-define-key 'normal 'global
     (kbd "<leader> m") bookmark-map))
 
