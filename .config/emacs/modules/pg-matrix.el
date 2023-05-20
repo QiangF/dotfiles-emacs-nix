@@ -6,26 +6,29 @@
   (defun pg/ement-connect ()
     (interactive)
     (ement-connect
-      :user-id (concat "@" (auth-source-pass-get "username" "matrix.org") ":matrix.org")
-      :password (auth-source-pass-get 'secret "matrix.org")))
+     :user-id (concat "@" (auth-source-pass-get "username" "matrix.org") ":matrix.org")
+     :password (auth-source-pass-get 'secret "matrix.org")))
 
   (evil-define-key 'normal 'global
-   (kbd "<leader> o m") #'("Matrix" . ement-list-rooms))
+    (kbd "<leader> o m") #'("Matrix" . pg/ement-connect))
 
   :config
-  ;; Don't open room list automatically
-  (remove-hook 'ement-after-initial-sync-hook 'ement-list-rooms)
+  ;; Rebind ement-connect to show rooms
+  (add-hook 'ement-after-initial-sync-hook
+            (lambda (&rest _)
+              (evil-define-key 'normal 'global
+                (kbd "<leader> o m") #'("Matrix" . ement-list-rooms))))
 
   (evil-define-key '(normal insert visual) ement-room-list-mode-map
-   (kbd "<return>") #'ement-room-list-RET)
+    (kbd "<return>") #'ement-room-list-RET)
   
   (evil-define-key '(normal insert visual) ement-room-mode-map
-   (kbd "<return>") #'ement-room-send-message
-   (kbd "e")        #'ement-room-send-emote
-   (kbd "r")        #'ement-room-send-reply
-   (kbd "d")        #'ement-room-delete-message)
-
-  (pg/ement-connect))
+    (kbd "<return>") #'ement-room-send-message
+    (kbd "e")        #'ement-room-send-emote
+    (kbd "i")        #'ement-room-edit-message
+    (kbd "r")        #'ement-room-write-reply
+    (kbd "d")        #'ement-room-delete-message
+    (kbd "q")        #'bury-buffer))
 
   
 (provide 'pg-matrix)

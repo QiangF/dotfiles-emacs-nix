@@ -30,7 +30,7 @@
 (require 'pg-pass)
 (require 'pg-present)
 ;;(require 'pg-irc)
-;;(require 'pg-matrix)
+(require 'pg-matrix)
 (require 'pg-term)
 (require 'pg-epub)
 
