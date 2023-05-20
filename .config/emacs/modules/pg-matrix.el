@@ -28,6 +28,7 @@
     (kbd "i")        #'ement-room-edit-message
     (kbd "r")        #'ement-room-write-reply
     (kbd "d")        #'ement-room-delete-message
+    (kbd "?")        #'ement-room-transient
     (kbd "q")        #'bury-buffer))
 
   
