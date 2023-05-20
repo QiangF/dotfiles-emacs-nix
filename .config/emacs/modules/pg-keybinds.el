@@ -38,12 +38,10 @@
   (which-key-mode 1))
 
 (use-package evil
-  :functions undo-tree
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-integration t)
-  (setq evil-undo-system 'undo-tree)
   (setq evil-lookup-func #'eldoc)
 
   :config
