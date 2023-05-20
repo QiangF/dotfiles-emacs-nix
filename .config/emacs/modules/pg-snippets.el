@@ -11,8 +11,9 @@
   (add-hook 'fundamental-mode 'tempel-setup-capf)
 
   :config
-  (evil-define-key* 'insert tempel-map
-   (kbd "M-<tab>") #'tempel-expand
+  (evil-define-key* 'insert 'global
+   (kbd "S-<return>") #'tempel-expand)
+  (evil-define-key '(normal insert) tempel-map
    (kbd "<tab>") #'tempel-next)
   (add-hook 'org-mode-hook #'corfu-mode))
 

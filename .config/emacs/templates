@@ -99,3 +99,9 @@ rustic-mode rust-mode
 (eq "#[derive(Eq, PartialEq)]")
 (todo "todo!()")
 (maperr ".map_err(|e| Error::" q "(e))?")
+
+
+python-base-mode
+
+(init "def __init__(self, " (p "*args, **kwargs" args) "):" n> q "super().__init__(" args ")")
+(def "def " (p "name" name) "(self, " (p "*args, **kwargs" args) "):" n> q "super()." name "(" args ")")
