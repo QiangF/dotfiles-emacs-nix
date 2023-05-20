@@ -36,10 +36,10 @@
                                              default-directory)))
                   (apply fn args)))))
 
-(use-package blacken
+(use-package apheleia
   :after python
   :init
-  (add-hook 'python-base-mode-hook #'blacken-mode))
+  (add-hook 'python-base-mode-hook #'apheleia-mode))
 
 (use-package flycheck-mypy
   :init
