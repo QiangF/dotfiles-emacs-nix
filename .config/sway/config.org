@@ -79,7 +79,7 @@ swaymsg -t get_outputs
 #+BEGIN_SRC bash :tangle desktop
 # output DP-1 disable
 output DP-1 bg #100116 solid_color
-output DP-1 resolution 2560x1440@165Hz position 0,0 adaptive_sync on
+output DP-1 resolution 2560x1440@165Hz position 0,0 adaptive_sync off
 output DP-2 resolution 2560x1440 position 2560,-570 transform 90
 output DP-2 bg #000000 solid_color
 #output DP-2 disable
