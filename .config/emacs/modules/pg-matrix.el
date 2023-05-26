@@ -1,23 +1,24 @@
 ;;; --- -*- lexical-binding: t; -*-
 (require 'pg-keybinds)
 
+(defun pg/ement/after-sync-hook (&rest _)
+  ;; Rebind ement-connect to show room list
+  (evil-define-key 'normal 'global
+    (kbd "<leader> o m") #'("Matrix" . ement-room-list-side-window)))
+
 (use-package ement
   :init
-  (defun pg/ement-connect ()
-    (interactive)
-    (ement-connect
-     :user-id (concat "@" (auth-source-pass-get "username" "matrix.org") ":matrix.org")
-     :password (auth-source-pass-get 'secret "matrix.org")))
-
   (evil-define-key 'normal 'global
-    (kbd "<leader> o m") #'("Matrix" . pg/ement-connect))
+    (kbd "<leader> o m") #'("Matrix" . ement-connect))
 
   :config
+  (setopt ement-save-sessions t)
+
+  ;; Don't show room list after connect
+  (remove-hook 'ement-after-initial-sync-hook 'ement-room-list--after-initial-sync)
+
   ;; Rebind ement-connect to show rooms
-  (add-hook 'ement-after-initial-sync-hook
-            (lambda (&rest _)
-              (evil-define-key 'normal 'global
-                (kbd "<leader> o m") #'("Matrix" . ement-list-rooms))))
+  (add-hook 'ement-after-initial-sync-hook 'pg/ement/after-sync-hook)
 
   (evil-define-key '(normal insert visual) ement-room-list-mode-map
     (kbd "<return>") #'ement-room-list-RET)
