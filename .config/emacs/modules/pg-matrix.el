@@ -6,14 +6,20 @@
   (evil-define-key 'normal 'global
     (kbd "<leader> o m") #'("Matrix" . ement-room-list-side-window)))
 
-(use-package ement
-  :init
+(defun pg/ement/disconnect-hook (&rest _)
+  ;; Rebind ement-connect to show room list
   (evil-define-key 'normal 'global
-    (kbd "<leader> o m") #'("Matrix" . ement-connect))
+    (kbd "<leader> o m") #'("Matrix" . ement-connect)))
+
+(use-package ement
+  :custom (ement-save-sessions t)
+          (ement-room-prism 'both)
+          (ement-room-send-message-filter #'ement-room-send-org-filter)
+  :hook (ement-disconnect-hook . #'pg/ement/disconnect-hook)
+  :init
+  (pg/ement/disconnect-hook)
 
   :config
-  (setopt ement-save-sessions t)
-
   ;; Don't show room list after connect
   (remove-hook 'ement-after-initial-sync-hook 'ement-room-list--after-initial-sync)
 
@@ -24,13 +30,12 @@
     (kbd "<return>") #'ement-room-list-RET)
   
   (evil-define-key '(normal insert visual) ement-room-mode-map
-    (kbd "<return>") #'ement-room-send-message
-    (kbd "e")        #'ement-room-send-emote
-    (kbd "i")        #'ement-room-edit-message
-    (kbd "r")        #'ement-room-write-reply
-    (kbd "d")        #'ement-room-delete-message
-    (kbd "?")        #'ement-room-transient
-    (kbd "q")        #'bury-buffer))
+    (kbd "t") #'ement-room-send-message
+    (kbd "e") #'ement-room-send-emote
+    (kbd "i") #'ement-room-edit-message
+    (kbd "r") #'ement-room-write-reply
+    (kbd "d") #'ement-room-delete-message
+    (kbd "?") #'ement-room-transient
+    (kbd "q") #'bury-buffer))
 
-  
 (provide 'pg-matrix)

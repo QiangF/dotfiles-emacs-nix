@@ -1,5 +1,11 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(setq dired-dwim-target t)
+
+(with-eval-after-load 'evil
+  (evil-define-key '(normal motion visual) dired-mode-map
+    (kbd "SPC") nil))
+
 (use-package dirvish
   :init
   (dirvish-override-dired-mode)
