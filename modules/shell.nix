@@ -57,6 +57,8 @@
         [[ -f "/tmp/emacs-share-path" ]] \
           && [[ -d "$(cat /tmp/emacs-share-path)" ]] \
           && cd "$(/bin/cat /tmp/emacs-share-path)"
+
+        export PATH=$HOME/.cargo/bin:$PATH
       '';
     };
 
