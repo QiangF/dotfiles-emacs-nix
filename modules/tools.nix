@@ -9,5 +9,6 @@
     mpv
     gping
     qmk
+    fd
   ];
 }
