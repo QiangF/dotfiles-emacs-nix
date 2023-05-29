@@ -37,6 +37,7 @@ emacs-lisp-mode
 (star "(let* (" p ")" n> r> ")")
 (rec "(letrec (" p ")" n> r> ")")
 (command "(defun " p " (" p ")\n  \"" p "\"" n> "(interactive)" n> r> ")")
+(msg "(message \"" var ": %s\" " (p "var" var) q ")")
 
 eshell-mode
 
