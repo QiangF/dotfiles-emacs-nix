@@ -32,6 +32,14 @@
       (window-configuration-to-register '_)
       (delete-other-windows))))
 
+(defun pg/erase-buffer ()
+  (interactive)
+  (if buffer-read-only
+      (when (yes-or-no-p "Buffer is read-only. Erase anyway?")
+        (let ((inhibit-read-only t))
+          (erase-buffer)))
+    (erase-buffer)))
+
 (use-package which-key
   :config
   (setq which-key-idle-delay 1)
@@ -74,7 +82,8 @@
   (evil-define-key* 'normal 'global
     (kbd "<leader> b p") #'("previous" . evil-prev-buffer)
     (kbd "<leader> b n") #'("next" . evil-next-buffer)
-    (kbd "<leader> b N") #'("new" . evil-buffer-new))
+    (kbd "<leader> b N") #'("new" . evil-buffer-new)
+    (kbd "<leader> b e") #'("erase" . pg/erase-buffer))
 
   (evil-define-key* 'normal 'global
     (kbd "<leader> `") #'("fullscreen" . toggle-maximize-buffer))
