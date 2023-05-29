@@ -51,16 +51,15 @@
   (with-eval-after-load 'tab-bar
     (add-hook 'treebund-before-project-open-functions
               (lambda (project-path)
-                (when-let ((workspace-path (treebund--workspace-current project-path))
-                           (bare-path project-path))
+                (when-let* ((workspace-path (treebund-current-workspace project-path))
+                            (workspace-name (treebund--workspace-name workspace-path))
+                            (project-name (treebund--project-name project-path)))
                   (tab-bar-select-tab-by-name
-                   (format "%s/%s"
-                           (treebund--workspace-name workspace-path)
-                           (treebund--bare-name bare-path)))))))
+                   (format "%s/%s" workspace-name project-name))))))
 
   (defun pg/open-project-notes ()
     (interactive)
-    (if-let ((workspace-path (or (treebund--workspace-current)
+    (if-let ((workspace-path (or (treebund-current-workspace)
                                  (treebund--read-workspace))))
         (find-file-other-window
          (file-name-concat org-directory
