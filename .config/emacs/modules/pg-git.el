@@ -39,4 +39,13 @@
   :if (executable-find "delta")
   :hook (magit-mode . magit-delta-mode))
 
+(use-package smerge-mode
+  :elpaca nil
+  :after evil
+  :config
+  (define-key smerge-mode-map (kbd "C-c C-c") #'smerge-keep-current)
+  (evil-define-key 'normal 'smerge-mode-map
+    (kbd "C-j") #'smerge-next
+    (kbd "C-k") #'smerge-prev))
+
 (provide 'pg-git)
