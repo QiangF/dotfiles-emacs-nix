@@ -16,7 +16,8 @@
 
 (use-package undo-hl
   :elpaca (:host github :repo "casouri/undo-hl")
-  :init
-  (undo-hl-mode))
+  :hook
+  (text-mode . undo-hl-mode)
+  (prog-mode . undo-hl-mode))
 
 (provide 'pg-undo)
