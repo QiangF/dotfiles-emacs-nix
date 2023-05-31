@@ -44,7 +44,7 @@
       };
       sessionVariables = {
         ALTERNATE_EDITOR = "";
-        EDITOR = "emacsclient -tc";
+        EDITOR = "emacsclient -c";
         VISUAL = "emacsclient -c -a emacs";
         TERM = "xterm";
         SSH_AGENT_PID = "";
