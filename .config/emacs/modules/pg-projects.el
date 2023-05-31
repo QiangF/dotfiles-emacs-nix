@@ -54,7 +54,9 @@
                             (workspace-name (treebund--workspace-name workspace-path))
                             (project-name (treebund--project-name project-path)))
                   (tab-bar-select-tab-by-name
-                   (format "%s/%s" workspace-name project-name))))))
+                   (format "%s/%s" workspace-name project-name))
+                  (let ((magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+                    (magit-status project-path))))))
 
   (defun pg/open-project-notes ()
     (interactive)
