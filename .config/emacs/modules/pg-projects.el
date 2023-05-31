@@ -45,8 +45,7 @@
 
 (use-package treebund
   :after evil
-  ;; :elpaca (:type git :host github :repo "purplg/treebund.el")
-  :elpaca (:repo "~/workspaces/treebund.el/main/")
+  :elpaca (:type git :host github :repo "purplg/treebund.el")
   :config
   (with-eval-after-load 'tab-bar
     (add-hook 'treebund-before-project-open-functions
