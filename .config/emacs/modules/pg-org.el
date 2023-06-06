@@ -70,6 +70,9 @@
   (evil-define-key 'normal org-mode-map
     (kbd "RET") #'org-return))
 
+(use-package org-modern
+  :hook (org-mode . org-modern-mode))
+
 (use-package htmlize
   :after org
   :defer t)

@@ -43,9 +43,6 @@
 
 (use-package ef-themes)
 
-(use-package org-modern
-  :hook (org-mode . org-modern-mode))
-
 (use-package doom-themes
   :disabled
   :init
