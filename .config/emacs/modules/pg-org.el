@@ -71,6 +71,7 @@
     (kbd "RET") #'org-return))
 
 (use-package org-modern
+  :disabled
   :hook (org-mode . org-modern-mode))
 
 (use-package htmlize
