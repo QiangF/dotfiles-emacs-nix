@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+(require 'pg-keybinds)
 
 (defvar current-theme nil)
 (defvar theme-dark nil)
@@ -19,6 +20,10 @@
                  ('ef-winter (color-lighten-name (face-background 'default) 50))
                  ('modus-vivendi (color-lighten-name (face-background 'default) 10)))))))
 
+(with-eval-after-load 'evil
+  (evil-define-key nil 'global
+    (kbd "<f5>") #'toggle-theme))
+
 (defun set-theme (theme-name)
   (setq current-theme theme-name)
   (load-theme current-theme t)
@@ -31,30 +36,18 @@
       (set-theme pg/theme-light)))
 
 (use-package modus-themes
-  :bind ("<f5>" . toggle-theme)
   :init
   (set-theme 'modus-vivendi-tinted)
   (setq pg/theme-dark 'modus-vivendi-tinted)
-  (setq pg/theme-light 'modus-operandi-tinted)
-  :config
-  (advice-add 'modus-themes-toggle
-              :after
-              (lambda (&rest _)
-                (run-hooks 'modus-themes-post-toggle-hook))))
+  (setq pg/theme-light 'modus-operandi-tinted))
 
-(use-package ef-themes
-  :bind ("<f5>" . toggle-theme)
-  :init
-  (set-theme 'ef-winter)
-  (setq pg/theme-light 'ef-light)
-  (setq pg/theme-dark 'ef-winter))
+(use-package ef-themes)
 
 (use-package org-modern
   :hook (org-mode . org-modern-mode))
 
 (use-package doom-themes
   :disabled
-  :bind ("<f5>" . toggle-theme)
   :init
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
