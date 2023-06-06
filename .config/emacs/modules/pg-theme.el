@@ -31,12 +31,11 @@
       (set-theme pg/theme-light)))
 
 (use-package modus-themes
-  :disabled
-  :bind ("<f5>" . modus-themes-toggle)
+  :bind ("<f5>" . toggle-theme)
   :init
   (set-theme 'modus-vivendi-tinted)
-  (setq pg/theme-dark 'modus-vivendi)
-  (setq pg/theme-light 'modus-operandi)
+  (setq pg/theme-dark 'modus-vivendi-tinted)
+  (setq pg/theme-light 'modus-operandi-tinted)
   :config
   (advice-add 'modus-themes-toggle
               :after
