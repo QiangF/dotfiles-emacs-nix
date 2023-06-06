@@ -87,6 +87,9 @@
   :after org
   :defer t)
 
+(use-package orgit
+  :after magit)
+
 (with-eval-after-load 'ob-core
   (org-babel-do-load-languages
    'org-babel-load-languages
