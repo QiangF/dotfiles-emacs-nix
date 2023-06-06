@@ -2,9 +2,12 @@
 
 (setq dired-dwim-target t)
 
-(with-eval-after-load 'evil
-  (evil-define-key '(normal motion visual) dired-mode-map
-    (kbd "SPC") nil))
+(use-package dired
+  :elpaca nil
+  :init
+  (with-eval-after-load 'evil
+    (evil-define-key '(normal visual) dired-mode-map
+      (kbd "SPC") nil)))
 
 (use-package dirvish
   :init
@@ -18,6 +21,10 @@
 
   (setq dirvish-side-follow-mode t)
   (evil-define-key 'normal 'global
-    (kbd "<leader> o p") #'("sidebar" . dirvish-side)))
+    (kbd "<leader> o p") #'("sidebar" . dirvish-side))
+  :config
+  (with-eval-after-load 'evil
+    (evil-define-key '(normal visual) dired-mode-map
+      (kbd "SPC") nil)))
 
 (provide 'pg-dired)
