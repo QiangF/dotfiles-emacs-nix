@@ -2,6 +2,7 @@
 (require 'pg-keybinds)
 
 (use-package dashboard
+  :disabled
   :init
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice #'dashboard-open)
