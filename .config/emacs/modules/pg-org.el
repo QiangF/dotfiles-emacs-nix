@@ -22,6 +22,9 @@
   (when (file-exists-p "~/.org")
     (setq org-directory "~/.org"))
 
+  (setq initial-buffer-choice
+        (file-name-concat org-directory "PC.org"))
+
   ;; Capture
   (setq org-capture-templates
         '(("p" "PC" entry
