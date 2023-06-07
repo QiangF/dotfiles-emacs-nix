@@ -11,14 +11,15 @@
           (lambda () (run-hooks 'after-theme-set-hook)))
 
 (with-eval-after-load 'hl-line
-(add-hook 'after-theme-set-hook
+  (add-hook 'after-theme-set-hook
             (lambda ()
               (set-face-background
                'hl-line
                (pcase current-theme
                  ('ef-light (color-darken-name (face-background 'default) 5))
                  ('ef-winter (color-lighten-name (face-background 'default) 50))
-                 ('modus-vivendi (color-lighten-name (face-background 'default) 10)))))))
+                 ('modus-vivendi (color-lighten-name (face-background 'default) 10))
+                 ('modus-vivendi-tinted (color-lighten-name (face-background 'default) 20)))))))
 
 (with-eval-after-load 'evil
   (evil-define-key nil 'global
