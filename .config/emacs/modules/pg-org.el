@@ -96,4 +96,7 @@
    '((python . t)
      (shell . t))))
 
+(use-package literate-calc-mode
+  :hook (org-mode . literate-calc-minor-mode))
+
 (provide 'pg-org)
