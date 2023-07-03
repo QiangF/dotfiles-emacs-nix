@@ -1,8 +1,8 @@
 ;;; --- -*- lexical-binding: t; -*-
 
 ;; Doom emacs performance tweaks
-(setq gc-cons-threshold most-positive-fixnum) ; 2^61 bytes
-(setq gc-cons-percentage 0.6)
+(setq gc-cons-threshold 10000000) ; 2^61 bytes
+(setq gc-cons-percentage 0.1)
 (setq load-prefer-newer noninteractive)
 (setq ad-redefinition-action 'accept)
 (setq highlight-nonselected-windows nil)
