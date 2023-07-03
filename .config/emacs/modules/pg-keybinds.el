@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (defun move-line-up ()
     (interactive)
     (transpose-lines 1)

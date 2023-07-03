@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 ;; Don't show startup page
 (setq inhibit-startup-message t)
 

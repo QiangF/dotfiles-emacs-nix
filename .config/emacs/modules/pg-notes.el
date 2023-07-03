@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package denote
   :init
   (setq denote-directory "~/.notes/")

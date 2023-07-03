@@ -1,4 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+
+(require 'pg-package)
 (require 'pg-keybinds)
 
 (defun pg/ement/after-sync-hook (&rest _)

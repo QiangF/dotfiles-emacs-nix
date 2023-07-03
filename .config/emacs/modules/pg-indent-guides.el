@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package highlight-indent-guides
   :hook (prog-mode . highlight-indent-guides-mode)
   :init

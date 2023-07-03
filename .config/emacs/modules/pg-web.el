@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package auto-rename-tag
   :hook (html-mode . auto-rename-tag-mode))
 

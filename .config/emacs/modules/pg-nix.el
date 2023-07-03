@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package nix-mode
   :hook (nix-mode . eglot-ensure)
         (nix-mode . corfu-mode)

@@ -1,4 +1,5 @@
 ;;; --- -*- lexical-binding: t; -*-
+
 (require 'pg-keybinds)
 
 ;; Disable global eldoc mode. I prefer an explicit keypress

@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package lua-mode
   :init
   (autoload 'lua-mode "lua-mode" "Lua editing mode." t)

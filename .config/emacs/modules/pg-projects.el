@@ -1,4 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+
+(require 'pg-package)
 (require 'pg-keybinds)
 
 (with-eval-after-load 'evil

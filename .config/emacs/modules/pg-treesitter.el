@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (defun pg/native-treesitter-p ()
   (and (version< "29" emacs-version)
        (treesit-available-p)))

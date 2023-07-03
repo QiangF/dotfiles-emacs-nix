@@ -1,4 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+
+(require 'pg-package)
 (require 'pg-pass)
 
 ;; Automatically pull credentials and autojoin channels from ~pass~.

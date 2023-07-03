@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package unity
   :elpaca (:type git :host github :repo "elizagamedev/unity.el")
   :hook (after-init-hook . unity-mode))

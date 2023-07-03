@@ -1,4 +1,6 @@
 ;;; --- -*- lexical-binding: t; -*-
+
+(require 'pg-package)
 (require 'pg-keybinds)
 
 (defvar current-theme nil)

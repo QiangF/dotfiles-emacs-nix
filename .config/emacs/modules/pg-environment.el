@@ -1,5 +1,7 @@
 ;;; --- -*- lexical-binding: t; -*-
 
+(require 'pg-package)
+
 (use-package exec-path-from-shell
   :functions exec-path-from-shell-initialize
   :init
