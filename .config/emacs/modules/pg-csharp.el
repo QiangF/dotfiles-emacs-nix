@@ -14,6 +14,7 @@
       (add-hook hook #'lsp)))
 
   (with-eval-after-load 'eglot
+    (setq eglot-connect-timeout 300)
     (dolist (hook hooks)
       (add-hook hook #'eglot-ensure))
     (dolist (mode modes)
