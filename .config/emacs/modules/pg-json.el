@@ -4,6 +4,7 @@
 
 (use-package jsonian
   :init
-  (jsonian-enable-flycheck))
+  (with-eval-after-load 'flycheck
+    (jsonian-enable-flycheck)))
 
 (provide 'pg-json)
