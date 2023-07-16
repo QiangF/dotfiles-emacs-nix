@@ -15,6 +15,7 @@
 (require 'pg-dashboard)
 (require 'pg-embark)
 (require 'pg-font)
+(require 'pg-golden-ratio)
 (require 'pg-help)
 (require 'pg-indent-guides)
 (require 'pg-line-numbers)
