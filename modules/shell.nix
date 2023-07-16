@@ -49,6 +49,7 @@
         TERM = "xterm";
         SSH_AGENT_PID = "";
         SSH_AUTH_SOCK = "$\{XDG_RUNTIME_DIR\}/gnupg/S.gpg-agent.ssh";
+        CARGO_TARGET_DIR = "$\{HOME\}/.cache/cargo/target";
       };
       initExtra = ''
         alias ..="cd .."
@@ -59,6 +60,9 @@
           && cd "$(/bin/cat /tmp/emacs-share-path)"
 
         export PATH=$HOME/.cargo/bin:$PATH
+
+        [[ -f "$HOME/.cargo/env" ]] \
+          && source "$HOME/.cargo/env"
       '';
     };
 
