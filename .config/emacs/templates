@@ -92,14 +92,22 @@ rustic-mode rust-mode
 (impl "impl " p " {" n> q n "}")
 (mtest "#[cfg(test)]" n "mod test {" n n> "#[test]" n> "fn test() {" n> q n "}" n "}")
 (test "#[test]" n> "fn " (p "test") "() {" n> q n "}")
-
-(d "println!(\"" (s var) ": {:?}\", " (p "var" var) ");" q)
-(pl "println!(\"" q "\");")
-(p "print!(\"" q "\");")
 (der "#[derive(" q ")]")
 (eq "#[derive(Eq, PartialEq)]")
 (todo "todo!()")
 (maperr ".map_err(|e| Error::" q "(e))?")
+
+;; LOGGING
+(error "error!(\"" q "\");")
+(errord "error!(\"" var ": {:?}\", " (p "var" var) ");" q)
+(warn "warn!(\"" q "\");")
+(warnd "warn!(\"" var ": {:?}\", " (p "var" var) ");" q)
+(info "info!(\"" q "\");")
+(infod "info!(\"" var ": {:?}\", " (p "var" var) ");" q)
+(debug "debug!(\"" q "\");")
+(debugd "debug!(\"" var ": {:?}\", " (p "var" var) ");" q)
+(d "println!(\"" var ": {:?}\", " (p "var" var) ");" q)
+(p "println!(\"" q "\");")
 
 
 python-base-mode
