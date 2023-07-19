@@ -47,4 +47,6 @@
   :init
   (add-hook 'python-base-mode-hook #'flycheck-mode))
 
+(use-package pet)
+
 (provide 'pg-python)
