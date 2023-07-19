@@ -38,6 +38,14 @@
     (rustic-run-cargo-command "cargo run"))
 
   :config
+
+  (with-eval-after-load 'popper
+    (add-to-list 'popper-reference-buffers "^\\*rustfmt\\*$")
+    (add-to-list 'popper-reference-buffers 'rustic-compilation-mode)
+    (add-to-list 'popper-reference-buffers 'rustic-cargo-run-mode)
+    (add-to-list 'popper-reference-buffers 'rustic-format-mode)
+    (add-to-list 'popper-reference-buffers 'rustic-cargo-fmt-mode))
+
   (evil-define-key* 'normal rustic-mode-map
     (kbd "<leader> m r") #'("run" . rustic-cargo-run-no-args)
     (kbd "<leader> m R") #'("run w/ args" . rustic-cargo-run)

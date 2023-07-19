@@ -15,12 +15,7 @@
            hass-dash-mode
 	   inferior-python-mode
            emacs-lisp-compilation-mode
-           "^\\*rustfmt\\*$"
            "^\\*Warnings\\*$"
-           rustic-compilation-mode
-           rustic-format-mode
-           rustic-cargo-run-mode
-           rustic-cargo-fmt-mode
            flymake-diagnostics-buffer-mode
            flymake-project-diagnostics-mode))
 
