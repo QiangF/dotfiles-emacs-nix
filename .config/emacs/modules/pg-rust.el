@@ -55,4 +55,17 @@
     (kbd "<leader> m c") #'("check" . rustic-cargo-check)
     (kbd "<leader> m t") #'("test" . rustic-cargo-test)))
 
+;; Override the rustic-process-kill-p function so it always kills a running process
+(with-eval-after-load 'rustic-compile
+  (defun rustic-process-kill-p (proc &optional no-error)
+    "Don't allow two rust processes at once.
+
+If NO-ERROR is t, don't throw error if user chooses not to kill running process."
+    (condition-case ()
+        (progn
+          (interrupt-process proc)
+          (sit-for 0.5)
+          (delete-process proc))
+      (error nil))))
+
 (provide 'pg-rust)
