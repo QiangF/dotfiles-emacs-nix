@@ -33,21 +33,18 @@
   (setq rustic-format-on-save nil)
   (setq rustic-lsp-format nil)
 
-  (defun rustic-cargo-run-no-args ()
-    (interactive)
-    (rustic-run-cargo-command "cargo run"))
-
   :config
-
   (with-eval-after-load 'popper
     (add-to-list 'popper-reference-buffers "^\\*rustfmt\\*$")
     (add-to-list 'popper-reference-buffers 'rustic-compilation-mode)
     (add-to-list 'popper-reference-buffers 'rustic-cargo-run-mode)
     (add-to-list 'popper-reference-buffers 'rustic-format-mode)
-    (add-to-list 'popper-reference-buffers 'rustic-cargo-fmt-mode))
+    (add-to-list 'popper-reference-buffers 'rustic-cargo-fmt-mode)
+    (when popper-mode
+      (popper-mode 1)))
 
   (evil-define-key* 'normal rustic-mode-map
-    (kbd "<leader> m r") #'("run" . rustic-cargo-run-no-args)
+    (kbd "<leader> m r") #'("run" . rustic-cargo-run)
     (kbd "<leader> m R") #'("run w/ args" . rustic-cargo-run)
     (kbd "<leader> m a") #'("add dep" . rustic-cargo-add)
     (kbd "<leader> m x") #'("rm dep" . rustic-cargo-rm)
