@@ -93,9 +93,12 @@
   (evil-define-key '(normal insert visual motion) 'global
     (kbd "M-u") #'universal-argument)
 
+  (unbind-key (kbd "M-j") nil)
+  (unbind-key (kbd "M-k") nil)
+
   (evil-define-key* 'normal 'global
-    (kbd "M-j") #'move-line-down
-    (kbd "M-k") #'move-line-up
+    (kbd "C-M-k") #'move-line-up
+    (kbd "C-M-j") #'move-line-down
     (kbd "C-j") #'evil-forward-section-begin
     (kbd "C-k") #'evil-backward-section-begin)
 
