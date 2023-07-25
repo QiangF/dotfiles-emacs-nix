@@ -6,6 +6,7 @@
 
 (use-package dired
   :elpaca nil
+  :hook (dired-mode . dired-omit-mode)
   :init
   (with-eval-after-load 'evil
     (evil-define-key '(normal visual) dired-mode-map
