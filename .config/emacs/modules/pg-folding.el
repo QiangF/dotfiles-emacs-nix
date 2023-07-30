@@ -18,15 +18,14 @@
         (evil-close-fold)))
 
     (evil-define-key* 'normal 'global
-     "z c" #'evil-close-fold-below
-     "z m" #'hs-hide-level
-     "z C" #'evil-close-fold)
+     (kbd "z c") #'evil-close-fold-below
+     (kbd "z m") #'hs-hide-level
+     (kbd "z C") #'evil-close-fold)
 
     ;; Keep cursor in place when opening a fold
     (advice-add #'evil-open-fold
                 :around (lambda (inner &rest _)
                           (save-excursion (funcall inner))))))
-
 
 (use-package origami
   :disabled
