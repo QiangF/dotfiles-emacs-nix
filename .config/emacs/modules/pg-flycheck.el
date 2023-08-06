@@ -15,7 +15,10 @@
   :config
   (setq elisp-flymake-byte-compile-load-path load-path)
   (evil-define-key* 'normal flymake-mode-map
-   (kbd "M-k") #'("prev error" . flymake-goto-prev-error)
-   (kbd "M-j") #'("next error" . flymake-goto-next-error)))
+    (kbd "M-k") #'("prev error" . flymake-goto-prev-error)
+    (kbd "M-j") #'("next error" . flymake-goto-next-error))
+
+  (evil-define-key 'normal flymake-mode-map
+    (kbd "<leader> o d") #'("proj-diag" . flymake-show-project-diagnostics)))
 
 (provide 'pg-flycheck)
