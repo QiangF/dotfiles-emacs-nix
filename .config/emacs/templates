@@ -96,6 +96,8 @@ rustic-mode rust-mode
 (eq "#[derive(Eq, PartialEq)]")
 (todo "todo!()")
 (maperr ".map_err(|e| Error::" q "(e))?")
+(macro "macro_rules! load {" n> "(" q ") => {}" n "}")
+(hash "#[derive(Hash, PartialEq, Eq)]")
 
 ;; LOGGING
 (error "error!(\"" q "\");")
@@ -108,6 +110,9 @@ rustic-mode rust-mode
 (debugd "debug!(\"" var ": {:?}\", " (p "var" var) ");" q)
 (d "println!(\"" var ": {:?}\", " (p "var" var) ");" q)
 (p "println!(\"" q "\");")
+
+;; BEVY
+(bevy "use bevy::prelude::*;")
 
 
 python-base-mode
