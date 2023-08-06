@@ -33,15 +33,20 @@
   (setq rustic-format-on-save nil)
   (setq rustic-lsp-format nil)
 
+  (setq rustic-compile-backtrace "1")
+
   :config
   (with-eval-after-load 'popper
-    (add-to-list 'popper-reference-buffers "^\\*rustfmt\\*$")
-    (add-to-list 'popper-reference-buffers 'rustic-compilation-mode)
-    (add-to-list 'popper-reference-buffers 'rustic-cargo-run-mode)
-    (add-to-list 'popper-reference-buffers 'rustic-format-mode)
-    (add-to-list 'popper-reference-buffers 'rustic-cargo-fmt-mode)
+    (dolist (rust-buffer '(rustic-compilation-mode
+                           rustic-cargo-run-mode
+                           rustic-format-mode
+                           rustic-cargo-fmt-mode))
+      (add-to-list 'popper-reference-buffers rust-buffer)
+      (add-to-list 'shackle-rules `(,rust-buffer :select nil)))
     (when popper-mode
-      (popper-mode 1)))
+      (popper-mode 1))
+    (when shackle-mode
+      (shackle-mode 1)))
 
   (evil-define-key* 'normal rustic-mode-map
     (kbd "<leader> m r") #'("run" . rustic-cargo-run)
