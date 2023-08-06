@@ -3,6 +3,6 @@
   :init
   (keychain-refresh-environment))
 
-(require 'pg-telegram)
+;; (require 'pg-telegram)
 
 (provide 'pg-daemon)
