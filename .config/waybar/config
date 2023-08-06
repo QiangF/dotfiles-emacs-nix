@@ -4,7 +4,7 @@
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": [],
-    "modules-right": ["mpd", "custom/pipewire", "cpu", "memory", "temperature", "clock", "idle_inhibitor", "custom/screenshot", "tray"],
+    "modules-right": ["mpd", "custom/pipewire", "cpu", "memory", "temperature", "clock", "custom/notification", "idle_inhibitor", "custom/screenshot", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -77,13 +77,6 @@
         "on-click": "pavucontrol",
         "on-right": "pavucontrol"
     },
-    "custom/screenshot": {
-	"format": "",
-	"on-click":  "grimshot copy area",
-	"on-click-right":  "grimshot copy window",
-	"on-click-middle": "grimshot copy display",
-	"tooltip": false
-    },
     "custom/pipewire": {
         "format": "{icon}",
         "return-type": "json",
@@ -97,5 +90,32 @@
         "on-scroll-up": "pw-volume change +25%",
         "on-scroll-down": "pw-volume change -25%",
         "exec": "pw-volume status"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+	    "notification": "<span foreground='red'><sup></sup></span>",
+	    "none": " ",
+	    "dnd-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-none": "",
+	    "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "inhibited-none": " ",
+	    "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-inhibited-none": ""
+	},
+	    "return-type": "json",
+	    "exec-if": "which swaync-client",
+	    "exec": "swaync-client -swb",
+	    "on-click": "swaync-client -t -sw",
+	    "on-click-right": "swaync-client -d -sw",
+	    "escape": true
+    },
+    "custom/screenshot": {
+	"format": "",
+	"on-click":  "grimshot copy area",
+	"on-click-right":  "grimshot copy window",
+	"on-click-middle": "grimshot copy display",
+	"tooltip": false
     }
 }
