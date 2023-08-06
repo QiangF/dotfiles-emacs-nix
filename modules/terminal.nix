@@ -4,7 +4,7 @@
     settings = {
       main = {
         shell = "zsh";
-        font = "JetBrainsMono:size=10";
+        font = "JetBrainsMono:size=12";
       };
       colors = {
         foreground = "dcdccc";
