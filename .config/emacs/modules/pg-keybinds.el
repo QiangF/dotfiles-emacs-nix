@@ -124,12 +124,12 @@
     (kbd "C-w C-l") #'evil-window-right
     (kbd "C-<tab>") #'evil-switch-to-windows-last-buffer)
 
-  ;; (evil-define-key* '(normal insert) 'global
-  ;;  "C-a" '(:ignore t :wk "avy")
-  ;;  "C-a w" #'ace-window
-  ;;  "C-a W" #'ace-swap-window
-  ;;  "C-a l" #'evil-avy-goto-line
-  ;;  "C-a c" #'evil-avy-goto-char)
+  (evil-define-key* '(normal insert) 'global
+   (kbd "C-a") (make-sparse-keymap)
+   (kbd "C-a w") #'ace-window
+   (kbd "C-a W") #'ace-swap-window
+   (kbd "C-a l") #'evil-avy-goto-line
+   (kbd "C-a c") #'evil-avy-goto-char)
 
   (evil-define-key* 'normal 'global
     (kbd "<leader> b b") #'("open" . switch-to-buffer)
