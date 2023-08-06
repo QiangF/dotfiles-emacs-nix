@@ -16,11 +16,11 @@
   (with-eval-after-load 'tree-sitter
     (add-hook 'rustic-mode-hook #'tree-sitter-mode))
 
-  (with-eval-after-load 'flymake
-    (add-hook 'rustic-mode-hook #'(lambda () (flymake-mode -1))))
+  (add-to-list 'flycheck-checkers 'rustic)
 
   (with-eval-after-load 'eglot
     (setq rustic-lsp-client 'eglot)
+    ;; (setq rustic-lsp-client 'lsp-mode)
     (setq eglot-ignored-server-capabilities nil))
 
   (with-eval-after-load 'hideshow
