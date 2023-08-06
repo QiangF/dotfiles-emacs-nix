@@ -5,7 +5,7 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       history.save = 100000;
       shellAliases = {
         e = "emacsclient -n";
@@ -75,5 +75,9 @@
       enableAliases = true;
       icons = true;
     };
+
+    fzf.enable = true;
+    fzf.enableBashIntegration = true;
+    fzf.enableZshIntegration = true;
   };
 }
