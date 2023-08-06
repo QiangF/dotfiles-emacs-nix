@@ -314,6 +314,7 @@ bindsym $MOD+Control+j splitv
 
 Switch to different layouts
 #+BEGIN_SRC bash
+bindsym $MOD+n layout stacking
 bindsym $MOD+t layout tabbed
 bindsym $MOD+b layout default
 bindsym $MOD+Shift+y layout toggle all
