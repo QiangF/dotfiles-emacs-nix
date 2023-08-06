@@ -134,8 +134,8 @@
   (evil-define-key* 'normal 'global
     (kbd "<leader> b b") #'("open" . switch-to-buffer)
     (kbd "<leader> b B") #'("open" . switch-to-buffer)
-    (kbd "<leader> b d") #'("delete" . kill-this-buffer)
-    (kbd "<leader> b D") #'("delete with window" . kill-buffer-and-window)
+    (kbd "<leader> b d") #'("delete" . bury-buffer)
+    (kbd "<leader> b D") #'("delete with window" . kill-buffer)
     (kbd "<leader> b r") #'("revert" . revert-buffer)
     (kbd "<leader> b s") #'("scratch" . open-scratch-buffer)
     (kbd "<leader> b m") #'("messages" . view-echo-area-messages))
