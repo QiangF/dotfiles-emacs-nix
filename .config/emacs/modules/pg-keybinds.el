@@ -90,7 +90,7 @@
   (evil-define-key* '(normal insert) 'global
     (kbd "C-SPC") (make-sparse-keymap)
     (kbd "C-SPC e") #'("insert emoji" . emoji-search))
-  
+
   (evil-define-key* 'normal 'global
     (kbd "<leader> `") #'("fullscreen" . toggle-maximize-buffer))
 
