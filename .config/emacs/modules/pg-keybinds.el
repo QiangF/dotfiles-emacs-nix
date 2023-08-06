@@ -100,6 +100,15 @@
   (unbind-key (kbd "M-j") nil)
   (unbind-key (kbd "M-k") nil)
 
+  (with-eval-after-load 'view
+    (unbind-key (kbd "SPC") 'view-mode-map)
+    (evil-define-key* 'normal view-mode-map
+      (kbd "SPC") nil))
+
+  (with-eval-after-load 'woman
+    (evil-define-key* 'normal woman-mode-map
+      (kbd "SPC") nil))
+
   (evil-define-key* 'normal 'global
     (kbd "C-M-k") #'move-line-up
     (kbd "C-M-j") #'move-line-down
