@@ -5,49 +5,60 @@
 * Variables
 ** Modifier
 #+BEGIN_SRC bash
-set $mod Mod4
+set $MOD Mod4
 #+END_SRC
 
 ** Movement
 Keys to move around Sway
 #+BEGIN_SRC bash
-set $left h
-set $down j
-set $up k
-set $right l
+set $LEFT h
+set $DOWN j
+set $UP k
+set $RIGHT l
 #+END_SRC
 
 ** Workspace keybinds
 #+BEGIN_SRC bash
-set $ws1-1-key q
-set $ws1-2-key w
-set $ws1-3-key e
-set $ws1-4-key r
+set $WS1-1-key q
+set $WS1-2-key w
+set $WS1-3-key e
+set $WS1-4-key r
 
-set $ws1-1 1:$ws1-1-key:dev
-set $ws1-2 2:$ws1-2-key:launch
-set $ws1-3 3:$ws1-3-key:game
-set $ws1-4 4:$ws1-4-key:misc
+set $WS1-1 1:$WS1-1-key:dev
+set $WS1-2 2:$WS1-2-key:launch
+set $WS1-3 3:$WS1-3-key:game
+set $WS1-4 4:$WS1-4-key:misc
 #+END_SRC
 
 #+BEGIN_SRC bash
-set $ws2-1-key a
-set $ws2-2-key s
-set $ws2-3-key d
-set $ws2-4-key f
+set $WS2-1-key a
+set $WS2-2-key s
+set $WS2-3-key d
+set $WS2-4-key f
 
-set $ws2-1 5:$ws2-1-key
-set $ws2-2 6:$ws2-2-key
-set $ws2-3 7:$ws2-3-key
-set $ws2-4 8:$ws2-4-key
+set $WS2-1 5:$WS2-1-key
+set $WS2-2 6:$WS2-2-key
+set $WS2-3 7:$WS2-3-key
+set $WS2-4 8:$WS2-4-key
+#+END_SRC
+
+** Displays
+
+#+BEGIN_SRC bash
+set $DP-MAIN DP-2
+set $DP-RIGHT DP-1
+#+END_SRC
+
+#+BEGIN_SRC bash :tangle framework
+set $DP-MAIN eDP-1
 #+END_SRC
 
 ** Preferred applications
 #+BEGIN_SRC bash
-set $term foot
-set $emacsclient emacsclient -n -c
-set $emacs emacs
-set $browser firefox
+set $TERM foot
+set $EMACSCLIENT emacsclient -n -c
+set $EMACS emacs
+set $BROWSER firefox
 #+END_SRC
 
 ** Launchers
@@ -56,8 +67,8 @@ Note: pass the final command to swaymsg so that the resulting window can be open
 on the original workspace that the command was run on.
 
 #+BEGIN_SRC bash
-set $menu ~/.nix-profile/bin/rofi -show drun -show-icons -display-drun "Launch"
-set $menu_pass PASS_CMD="$HOME/.nix-profile/bin/pass" ~/sh/wofi-pass/wofi-pass
+set $MENU ~/.nix-profile/bin/rofi -show drun -show-icons -display-drun "Launch"
+set $MENU_PASS PASS_CMD="$HOME/.nix-profile/bin/pass" ~/sh/wofi-pass/wofi-pass
 #+END_SRC
 
 ** Include systems
@@ -77,12 +88,12 @@ swaymsg -t get_outputs
  #+END_EXAMPLE
 
 #+BEGIN_SRC bash :tangle desktop
-# output DP-1 disable
-output DP-1 bg #100116 solid_color
-output DP-1 resolution 2560x1440@165Hz position 0,570 adaptive_sync off
-output DP-2 resolution 2560x1440 position 2560,0 transform 90
-output DP-2 bg #000000 solid_color
-#output DP-2 disable
+# output $DP-MAIN disable
+output $DP-MAIN bg #100116 solid_color
+output $DP-MAIN resolution 2560x1440@165Hz position 0,570 adaptive_sync on
+output $DP-RIGHT resolution 2560x1440 position 2560,0 transform 90
+output $DP-RIGHT bg #000000 solid_color
+#output $DP-RIGHT disable
 #+END_SRC
 
 #+BEGIN_SRC bash :tangle desktop
@@ -92,29 +103,29 @@ exec systemctl --user restart sunshine
 
 #+BEGIN_SRC bash :tangle framework
 output * bg #000000 solid_color
-output eDP-1 resolution 2256x1504 scale 1.0
+output DP-MAIN resolution 2256x1504 scale 1.0
 #+END_SRC
 
 Assign
 #+BEGIN_SRC bash
-workspace $ws1-1 output DP-1
-workspace $ws1-2 output DP-1
-workspace $ws1-3 output DP-1
-workspace $ws1-4 output DP-1
+workspace $WS1-1 output $DP-MAIN
+workspace $WS1-2 output $DP-MAIN
+workspace $WS1-3 output $DP-MAIN
+workspace $WS1-4 output $DP-MAIN
 #+END_SRC
 
 #+BEGIN_SRC bash
-workspace $ws2-1 output DP-2
-workspace $ws2-2 output DP-2
-workspace $ws2-3 output DP-2
-workspace $ws2-4 output DP-2
+workspace $WS2-1 output $DP-RIGHT
+workspace $WS2-2 output $DP-RIGHT
+workspace $WS2-3 output $DP-RIGHT
+workspace $WS2-4 output $DP-RIGHT
 #+END_SRC
 
 #+BEGIN_SRC bash :tangle framework
-workspace $ws2-1 output eDP-1
-workspace $ws2-2 output eDP-1
-workspace $ws2-3 output eDP-1
-workspace $ws2-4 output eDP-1
+workspace $WS2-1 output $DP-MAIN
+workspace $WS2-2 output $DP-MAIN
+workspace $WS2-3 output $DP-MAIN
+workspace $WS2-4 output $DP-MAIN
 #+END_SRC
 
 Default colors
@@ -130,7 +141,7 @@ client.placeholder 000000 0c0c0c ffffff 000000 0c0c0c
 
 #+BEGIN_SRC bash
 default_border pixel 3
-client.focused 2f004c 2f004c 2f004c 2f004c 2f004c
+client.focused 2f004c 2f004c cccccc 2f004c 2f004c
 #+END_SRC
 
 #+BEGIN_EXAMPLE conf :tangle desktop
@@ -187,147 +198,146 @@ bindsym --locked XF86AudioMicMute exec volumectl -m toggle-mute
 *** General
 Kill focused window
 #+BEGIN_SRC bash
-bindsym $mod+Shift+u kill
+bindsym $MOD+Shift+u kill
 #+END_SRC
 
 Launcher
 #+BEGIN_SRC bash
-bindsym $mod+u exec $menu
+bindsym $MOD+u exec $MENU
 #+END_SRC
 
-Drag floating windows by holding down $mod and left mouse button. Resize them with right mouse
-button + $mod. Despite the name, also works for non-floating windows. Change normal to inverse to
+Drag floating windows by holding down $MOD and left mouse button. Resize them with right mouse
+button + $MOD. Despite the name, also works for non-floating windows. Change normal to inverse to
 use left mouse button for resizing and right mouse button for dragging.
 #+BEGIN_SRC bash
-floating_modifier $mod normal
+floating_modifier $MOD normal
 #+END_SRC
 
 Reload the configuration file
 #+BEGIN_SRC bash
-bindsym $mod+Shift+c reload
+bindsym $MOD+Shift+c reload
 #+END_SRC
 
 Logout
 #+BEGIN_SRC bash
-bindsym $mod+Control+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $MOD+Control+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #+END_SRC
 
 *** Applications
 
 #+BEGIN_SRC bash
-bindsym $mod+Return exec $term
-bindsym $mod+apostrophe exec $emacsclient
-bindsym $mod+Shift+apostrophe exec $emacs
-bindsym $mod+z exec $browser
+bindsym $MOD+Return exec $TERM
+bindsym $MOD+apostrophe exec $EMACSCLIENT
+bindsym $MOD+Shift+apostrophe exec $EMACS
+bindsym $MOD+z exec $BROWSER
 #+END_SRC
 
 Password manager
 #+BEGIN_SRC bash
-bindsym $mod+p exec $menu_pass -t 2>&1 | tee -a /tmp/wofi-pass.log
-bindsym $mod+Shift+p exec $menu_pass 2>&1 | tee -a /tmp/wofi-pass.log
+bindsym $MOD+p exec $MENU_PASS -t 2>&1 | tee -a /tmp/wofi-pass.log
+bindsym $MOD+Shift+p exec $MENU_PASS 2>&1 | tee -a /tmp/wofi-pass.log
 #+END_SRC
 
 *** Moving around:
 Move your focus around
 #+BEGIN_SRC bash
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym $MOD+$LEFT focus left
+bindsym $MOD+$DOWN focus down
+bindsym $MOD+$UP focus up
+bindsym $MOD+$RIGHT focus right
 #+END_SRC
 
-Or use $mod+[up|down|left|right]
+Or use $MOD+[up|down|left|right]
 #+BEGIN_SRC bash
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $MOD+Left focus left
+bindsym $MOD+Down focus down
+bindsym $MOD+Up focus up
+bindsym $MOD+Right focus right
 #+END_SRC
  
 Switch to other output
 #+BEGIN_SRC bash
-bindsym $mod+Tab focus output left
+bindsym $MOD+Tab focus output left
 #+END_SRC
 
 Move the focused window with the same, but add Shift
 #+BEGIN_SRC bash
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $MOD+Shift+$LEFT move left
+bindsym $MOD+Shift+$DOWN move down
+bindsym $MOD+Shift+$UP move up
+bindsym $MOD+Shift+$RIGHT move right
 #+END_SRC
 
 Ditto, with arrow keys
 #+BEGIN_SRC bash
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $MOD+Shift+Left move left
+bindsym $MOD+Shift+Down move down
+bindsym $MOD+Shift+Up move up
+bindsym $MOD+Shift+Right move right
 #+END_SRC
 
 *** Workspaces
 Switch to workspace
 #+BEGIN_SRC bash
 
-bindsym $mod+$ws1-1-key workspace $ws1-1
-bindsym $mod+$ws1-2-key workspace $ws1-2
-bindsym $mod+$ws1-3-key workspace $ws1-3
-bindsym $mod+$ws1-4-key workspace $ws1-4
+bindsym $MOD+$WS1-1-key workspace $WS1-1
+bindsym $MOD+$WS1-2-key workspace $WS1-2
+bindsym $MOD+$WS1-3-key workspace $WS1-3
+bindsym $MOD+$WS1-4-key workspace $WS1-4
 
-bindsym $mod+$ws2-1-key workspace $ws2-1
-bindsym $mod+$ws2-2-key workspace $ws2-2
-bindsym $mod+$ws2-3-key workspace $ws2-3
-bindsym $mod+$ws2-4-key workspace $ws2-4
+bindsym $MOD+$WS2-1-key workspace $WS2-1
+bindsym $MOD+$WS2-2-key workspace $WS2-2
+bindsym $MOD+$WS2-3-key workspace $WS2-3
+bindsym $MOD+$WS2-4-key workspace $WS2-4
 #+END_SRC
 
 Move focused container to workspace
 Note: workspaces can have any name you want, not just numbers.
 #+BEGIN_SRC bash
-bindsym $mod+Shift+$ws1-1-key move container to workspace $ws1-1
-bindsym $mod+Shift+$ws1-2-key move container to workspace $ws1-2
-bindsym $mod+Shift+$ws1-3-key move container to workspace $ws1-3
-bindsym $mod+Shift+$ws1-4-key move container to workspace $ws1-4
+bindsym $MOD+Shift+$WS1-1-key move container to workspace $WS1-1
+bindsym $MOD+Shift+$WS1-2-key move container to workspace $WS1-2
+bindsym $MOD+Shift+$WS1-3-key move container to workspace $WS1-3
+bindsym $MOD+Shift+$WS1-4-key move container to workspace $WS1-4
 
-bindsym $mod+shift+$ws2-1-key move container to workspace $ws2-1
-bindsym $mod+shift+$ws2-2-key move container to workspace $ws2-2
-bindsym $mod+shift+$ws2-3-key move container to workspace $ws2-3
-bindsym $mod+shift+$ws2-4-key move container to workspace $ws2-4
+bindsym $MOD+shift+$WS2-1-key move container to workspace $WS2-1
+bindsym $MOD+shift+$WS2-2-key move container to workspace $WS2-2
+bindsym $MOD+shift+$WS2-3-key move container to workspace $WS2-3
+bindsym $MOD+shift+$WS2-4-key move container to workspace $WS2-4
 #+END_SRC
 
 *** Layout stuff
-You can "split" the current object of your focus with $mod+b or $mod+v, for horizontal and vertical
-splits respectively.
+
 #+BEGIN_SRC bash
-bindsym $mod+Control+l splith
-bindsym $mod+Control+j splitv
+bindsym $MOD+Control+l splith
+bindsym $MOD+Control+j splitv
 #+END_SRC
 
 Switch to different layouts
 #+BEGIN_SRC bash
-#bindsym $mod+s layout stacking
-#bindsym $mod+e layout tabbed
-bindsym $mod+Shift+y layout toggle all
-bindsym $mod+y split none
+bindsym $MOD+t layout tabbed
+bindsym $MOD+b layout default
+bindsym $MOD+Shift+y layout toggle all
+bindsym $MOD+y split none
 #+END_SRC
 
 Toggle fullscreen
 #+BEGIN_SRC bash
-bindsym $mod+g fullscreen
+bindsym $MOD+g fullscreen
 #+END_SRC
 
 Toggle floating
 #+BEGIN_SRC bash
-bindsym $mod+Shift+g floating toggle
+bindsym $MOD+Shift+g floating toggle
 #+END_SRC
 
 Swap focus between the tiling area and the floating area
 #+BEGIN_SRC bash :tangle no
-#bindsym $mod+space focus mode_toggle
+#bindsym $MOD+space focus mode_toggle
 #+END_SRC
 
 Move focus to the parent container
 #+BEGIN_SRC bash
-#bindsym $mod+Shift+p focus parent
+#bindsym $MOD+Shift+p focus parent
 #+END_SRC
 
 *** Media control
@@ -343,13 +353,13 @@ You can send windows there and get them back later.
 
 Move the currently focused window to the scratchpad
 #+BEGIN_SRC bash
-bindsym $mod+Shift+minus move scratchpad
+bindsym $MOD+Shift+minus move scratchpad
 #+END_SRC
 
 Show the next scratchpad window or hide the focused scratchpad window.
 If there are multiple scratchpad windows, this command cycles through them.
 #+BEGIN_SRC bash
-bindsym $mod+minus scratchpad show, resize 135x35
+bindsym $MOD+minus scratchpad show, resize 135x35
 #+END_SRC
 
 *** Resizing containers:
@@ -357,15 +367,15 @@ bindsym $mod+minus scratchpad show, resize 135x35
 #+BEGIN_SRC bash
 
 mode "resize" {
-    bindsym $left resize shrink width 100px
-    bindsym $down resize grow height 100px
-    bindsym $up resize shrink height 100px
-    bindsym $right resize grow width 100px
+    bindsym $LEFT resize shrink width 100px
+    bindsym $DOWN resize grow height 100px
+    bindsym $UP resize shrink height 100px
+    bindsym $RIGHT resize grow width 100px
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+x mode "resize"
+bindsym $MOD+x mode "resize"
 #+END_SRC
 
 ** Status Bar:
@@ -396,47 +406,47 @@ bar {
 ** Window Rules
 #+BEGIN_SRC bash
 # Apps
-for_window [class="discord"] move container to workspace $ws2-1
-for_window [app_id="discord"] move container to workspace $ws2-1
-for_window [app_id="pavucontrol"] move container to workspace $ws2-1
-for_window [class="emacs"] move container to workspace $ws2-3
+for_window [class="discord"] move container to workspace $WS2-1
+for_window [app_id="discord"] move container to workspace $WS2-1
+for_window [app_id="pavucontrol"] move container to workspace $WS2-1
+for_window [class="emacs"] move container to workspace $WS2-3
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [app_id="zenity"] floating enable
-# Unity
+# Dev
 for_window [class="Unity"] floating true
 for_window [class="unityhub"] floating true
+for_window [title="Bevy App"] floating true
 # Launchers
-for_window [app_id="lutris"] move container to workspace $ws1-2
+for_window [app_id="lutris"] move container to workspace $WS1-2
 for_window [app_id="lutris"] floating enable
-for_window [class="Steam"] move container to workspace $ws1-2
-for_window [class="steam"] move container to workspace $ws1-2
-for_window [class="steamwebhelper"] move container to workspace $ws1-2
-
+for_window [class="Steam"] move container to workspace $WS1-2
+for_window [class="steam"] move container to workspace $WS1-2
+for_window [class="steamwebhelper"] move container to workspace $WS1-2
 # Guild Wars 2
-for_window [class="gw2-64.exe"] move container to workspace $ws1-3
+for_window [class="gw2-64.exe"] move container to workspace $WS1-3
 # Minecraft
-for_window [class="Minecraft*"] move container to workspace $ws1-3
+for_window [class="Minecraft*"] move container to workspace $WS1-3
 # Overwatch
-for_window [class="battle.net.exe"] move container to workspace $ws1-2
+for_window [class="battle.net.exe"] move container to workspace $WS1-2
 for_window [class="battle.net.exe"] floating enable
-for_window [class="overwatch.exe"] move container to workspace $ws1-3
+for_window [class="overwatch.exe"] move container to workspace $WS1-3
 for_window [class="overwatch.exe"] fullscreen enable
 # Stash floating wine system tray to scratchpad
 for_window [title="Wine System Tray"] move container to scratchpad
 # Gamescope
-for_window [class="gamescope"] move container to workspace $ws1-3
+for_window [class="gamescope"] move container to workspace $WS1-3
 # SteamTinkerLauncher
 ,#+BEGIN_SRC bash
-for_window [app_id="yad"] move container to workspace $ws1-3
+for_window [app_id="yad"] move container to workspace $WS1-3
 for_window [app_id="yad"] floating true
 # Mupen64
-for_window [app_id="mupen64plus-gui"] move container to workspace $ws1-3
+for_window [app_id="mupen64plus-gui"] move container to workspace $WS1-3
 for_window [app_id="mupen64plus-gui"] floating true
 # RetroArch
-for_window [app_id="retroarch"] move container to workspace $ws1-3
+for_window [app_id="retroarch"] move container to workspace $WS1-3
 for_window [app_id="retroarch"] fullscreen true
 # Dolphin
-for_window [class="dolphin-emu"] move container to workspace $ws1-3
+for_window [class="dolphin-emu"] move container to workspace $WS1-3
 for_window [class="dolphin-emu"] floating true
 #+END_SRC
 
@@ -444,10 +454,10 @@ for_window [class="dolphin-emu"] floating true
 
 #+BEGIN_SRC bash :tangle desktop
 exec pavucontrol
-exec swaync
-bindsym $mod+grave exec swaync-client -t -sw
-# bindsym $mod+Shift+grave exec grim -g "$(slurp) - | wl-copy"
-bindsym $mod+Shift+grave exec grim -g 'echo "1440,560 2560x1440" | wl-copy'
+# exec swaync
+bindsym $MOD+grave exec swaync-client -t -sw
+# bindsym $MOD+Shift+grave exec grim -g "$(slurp) - | wl-copy"
+bindsym $MOD+Shift+grave exec grim -g 'echo "1440,560 2560x1440" | wl-copy'
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+END_SRC
 
