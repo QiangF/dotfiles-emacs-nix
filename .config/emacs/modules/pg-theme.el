@@ -21,7 +21,8 @@
                  ('ef-light (color-darken-name (face-background 'default) 5))
                  ('ef-winter (color-lighten-name (face-background 'default) 50))
                  ('modus-vivendi (color-lighten-name (face-background 'default) 10))
-                 ('modus-vivendi-tinted (color-lighten-name (face-background 'default) 20)))))))
+                 ('modus-vivendi-tinted (color-lighten-name (face-background 'default) 20))
+                 ('haki (color-lighten-name (face-background 'default) 20)))))))
 
 (with-eval-after-load 'evil
   (evil-define-key nil 'global
@@ -38,13 +39,17 @@
         (set-theme pg/theme-dark)
       (set-theme pg/theme-light)))
 
-(use-package modus-themes
-  :init
-  (set-theme 'modus-vivendi-tinted)
-  (setq pg/theme-dark 'modus-vivendi-tinted)
-  (setq pg/theme-light 'modus-operandi-tinted))
+(use-package modus-themes)
 
 (use-package ef-themes)
+
+(use-package haki-theme
+  :init
+  (setq pg/theme-dark 'haki)
+  (setq pg/theme-light 'modus-operandi-tinted)
+  (set-theme 'haki)
+  :config
+  (add-hook 'post-command-hook #'haki-modal-mode-line))
 
 (use-package doom-themes
   :disabled
