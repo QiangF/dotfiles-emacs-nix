@@ -5,7 +5,7 @@
 (use-package exec-path-from-shell
   :functions exec-path-from-shell-initialize
   :init
-  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "SSH_AUTH_SOCK"))
+  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "SSH_AUTH_SOCK" "EDITOR" "VISUAL"))
   (exec-path-from-shell-initialize)
   (with-eval-after-load 'magit
     (add-hook 'magit-status-mode-hook
