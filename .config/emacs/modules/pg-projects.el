@@ -67,7 +67,8 @@
         (find-file-other-window
          (file-name-concat org-directory
                            "projects"
-                           (file-name-with-extension (treebund--workspace-name workspace-path) "org")))
+                           (treebund--workspace-name workspace-path)
+                           "notes.org"))
       (user-error "Not in a workspace")))
 
   (evil-define-key* 'normal 'global
