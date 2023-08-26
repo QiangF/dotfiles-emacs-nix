@@ -61,4 +61,13 @@
   (evil-define-key* 'normal emacs-lisp-mode-map
     (kbd "<leader> c r") #'("rename" . erefactor-rename-symbol-in-buffer)))
 
+(use-package page-break-lines
+  :init
+  (dolist (hook '(emacs-lisp-mode-hook
+                  help-mode-hook))
+    (add-hook hook #'page-break-lines-mode))
+
+  (evil-define-key 'normal 'global
+    (kbd "<leader> i s") `(,(lambda () (interactive) (insert ?\f)) :wk "form feed")))
+
 (provide 'pg-elisp)

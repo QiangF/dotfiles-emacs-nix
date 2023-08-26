@@ -21,7 +21,6 @@
 (require 'pg-modeline)
 (require 'pg-popper)
 (require 'pg-theme)
-(require 'pg-visual-page-breaks)
 
 
 ;;; Apps
